@@ -1,0 +1,11 @@
+/* pages/login/signIn.wxss */
+.btn {
+  background-color: #516dff;
+  color: #fff;
+  height: 36px;
+  width: 680rpx!important;
+  border-radius: 18px;
+}
+.welcome-txt {
+  margin: 20px 0;
+}
