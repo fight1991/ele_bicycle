@@ -14,7 +14,11 @@ Page({
   onLoad: function (options) {
     console.log(wx.env);
   },
-
+  routeTo () {
+    wx.navigateTo({
+      url: '/pages/login/faceIdentify'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

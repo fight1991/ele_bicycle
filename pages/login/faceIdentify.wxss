@@ -1,0 +1,34 @@
+/* pages/login/faceIdentify.wxss */
+@import "./common/public.wxss";
+page {
+  height: 100%;
+}
+.bicyle-img {
+  width: 250rpx;
+  height: 180rpx;
+  background-color: #00aaee;
+  margin: 30px auto 10px;
+
+}
+.welcome-txt {
+  margin: 10px 0;
+}
+.top {
+  flex: 1;
+}
+.form-container {
+  padding: 40px 20px;
+}
+.form-item {
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+  font-size: 14px;
+}
+.label {
+  width: 70px;
+}
+.input-container {
+  flex: 1;
+  margin-left: 10px;
+}

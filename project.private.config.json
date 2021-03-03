@@ -1,0 +1,22 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "人脸认证",
+          "pathName": "pages/login/faceIdentify",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

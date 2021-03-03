@@ -1,0 +1,28 @@
+<!--pages/login/faceIdentify.wxml-->
+<view class="container">
+  <view class="top">
+    <view class="bicyle-img"></view>
+    <view class="form-container">
+      <view class="welcome-txt fs20 fw">欢迎登录</view>
+      <view class="form-item">
+        <label class="fs12 label">证件类型</label>
+        <view class="input-container">居民二代身份证</view>
+      </view>
+      <form>
+        <view class="form-item">
+          <label for="name" class="label">姓名</label>
+          <view class="input-container">
+            <input type="text" id="name" focus="{{true}}" placeholder="请输入姓名" bindinput="bindData"></input>
+          </view>
+        </view>
+        <view class="form-item">
+          <label for="idcard" class="label">证件号码</label>
+          <view class="input-container">
+            <input type="idcard" id="idcard" placeholder="请输入证件号码"></input>
+          </view>
+        </view>
+      </form>
+    </view>
+    <view class="btn" bindtap="startFaceIdentify">开始人脸识别验证</view>
+  </view>
+</view>

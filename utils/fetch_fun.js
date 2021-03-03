@@ -1,5 +1,3 @@
-// 成功状态码, 业务报错状态码, token失效
-const successCode = '0000', businessErrorCode = '0001', tokenErrorCode = '0002'
 // 显示loading
 const showLoading = (text = '加载中 ...') => {
   wx.showLoading({
@@ -14,11 +12,11 @@ const closeLoading = () => {
 // 处理业务分支
 const HandleBranch = _res => {
   switch (_res.code) {
-    case successCode:
+    case '0000': // 成功
       return { result: _res.data }
-    case businessErrorCode:
+    case '0001': // 业务报错, 如查询失败等...
       return { other: _res.data}
-    case tokenErrorCode:
+    case '0002': // token失效
       wx.showToast({
         title: _res.message,
         duration: 1500,
@@ -31,6 +29,11 @@ const HandleBranch = _res => {
       })
       return {result: null}
     default:
+      wx.showToast({
+        title: _res.message,
+        duration: 1500,
+        icon:'none'
+      })
       return {result: null}
   }
 }

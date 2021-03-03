@@ -45,7 +45,7 @@ wx.$get = async ({url, data, isLoading = true}) => {
     if (isLoading) showLoading()
     let res = await getInstance(url, data)
     if (isLoading) closeLoading()
-    HandleBranch(res.data)
+    return HandleBranch(res.data)
   } catch (error) {
     if (isLoading) closeLoading()
     console.log(error)
@@ -57,7 +57,7 @@ wx.$post = async ({url, data, isLoading = true}) => {
     if (isLoading) showLoading()
     let res = await postInstance(url, data)
     if (isLoading) closeLoading()
-    HandleBranch(res.data)
+    return HandleBranch(res.data)
   } catch (error) {
     if (isLoading) closeLoading()
     console.log(error)
@@ -69,7 +69,7 @@ wx.$upload = async ({url, data, isLoading = true}) => {
     if (isLoading) showLoading()
     let res = await uploadInstance(url, data)
     if (isLoading) closeLoading()
-    HandleBranch(res.data)
+    return HandleBranch(res.data)
   } catch (error) {
     if (isLoading) closeLoading()
     console.log(error)
