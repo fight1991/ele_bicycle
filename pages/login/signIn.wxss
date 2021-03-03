@@ -1,29 +1,45 @@
-/* pages/login/signIn.wxss */
-@import "./common/public.wxss";
 page {
   height: 100%;
 }
-.container {
-  padding: 10rpx 0;
-}
 .top {
   flex: 1;
-  margin-top: 200rpx;
-}
-.bottom {
-  color: #286491;
-  font-weight: bold;
-}
-
-.welcome-txt {
-  margin: 20px 0;
-  text-align: center;
+  width: 100%;
 }
 .user-img {
-  width: 250rpx;
-  height: 250rpx;
-  border-radius: 6rpx;
+  width: 200rpx;
+  height: 200rpx;
   background-color: #00aaee;
-  margin-bottom: 40px;
-  color: #fff;
+  border-radius: 50%;
+  margin: 30px auto 10px;
+}
+.form-container {
+  padding: 20px 20px;
+}
+.label {
+  width: 60px;
+}
+.form-item-code {
+  display: flex;
+  align-items: center;
+}
+.input-code {
+  flex: 1;
+}
+.btn-code {
+  width: 80px;
+  color: #00aaee;
+  font-size: 14px;
+}
+.idcard-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.idcard-container {
+  flex: 1;
+  margin-left: 10px;
+}
+.input-container {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
 }

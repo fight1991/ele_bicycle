@@ -1,0 +1,24 @@
+<!--pages/components/dialog.wxml-->
+<view class='wx_dialog_container' hidden="{{!isShow}}">
+  <view class='wx-mask' bindtap='hide'></view>
+  <view class='wx-dialog'>
+    <view class='wx-dialog-header'>
+      <block wx:if="{{imgSrc}}">
+        <image src="{{imgSrc}}" binderror="loadImageErr" mode="aspectFit" bindtap="changeImage"></image>
+      </block>
+      <block wx:else><view class="fs12">图片加载中...</view></block>
+    </view>
+    <view class='wx-dialog-content'>
+      <view class='wx-dialog-item'>
+        <view class="input">
+          <input placeholder='请输入图中验证码'  bindinput='bindData' id="code" value='{{code}}'></input>
+        </view>
+        <icon type="clear" bindtap="clear"></icon>
+      </view>
+    </view>
+    <view class='dialog-button'>
+       <!-- <view class='btn-left' bindtap='cancel'>取消</view> -->
+       <view class='btn-right' bindtap='ok'>确认</view> 
+    </view>
+  </view>
+</view>

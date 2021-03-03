@@ -66,6 +66,9 @@
 .fs12 {
   font-size: 12px;
 }
+.text-center {
+  text-align: center;
+}
 .fw {
   font-weight: bold;
 }

@@ -1,44 +1,23 @@
-// pages/login/signIn.js
+// pages/login/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    idcard: '123333333',
-    code: '',
-    imgSrc: ''
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { idcard } = options
-    if(idcard) {
-      var startText = idcard.slice(0, 6)
-      var endText = idcard.slice(idcard.length-4)
-      this.setData({
-        idcard: startText + "****" + endText
-      })
-    }
-    this.myDialog = this.selectComponent('#myDialog')
+    console.log(wx.env);
   },
-  // 显示dialog
-  showDialog () {
-    this.myDialog.show()
-  },
-  // 关闭dialog
-  colseDialog () {
-    this.myDialog.hide()
-  },
-  // 获取验证码
-  getCode (code) {
-    this.data.code = code
-  },
-  // 获取验证码图片
-  getImg () {
-
+  routeTo () {
+    wx.navigateTo({
+      url: '/pages/login/faceIdentify'
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

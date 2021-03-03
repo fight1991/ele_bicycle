@@ -45,7 +45,7 @@ Page({
         value: formData
       }
     }
-    // checkform参数 要是form事件对象
+    // checkform参数 要是form事件对象,故包装一下
     let isPass = validate.checkForm(temp)
     if (!isPass) {
       let error = validate.errorList[0]
@@ -53,6 +53,43 @@ Page({
       return
     }
     // 调用人脸识别接口
+    wx.startFacialRecognitionVerify({
+      name: formData.name,
+      idCardNumber: formData.idcard,
+      success: this.faceVerifySuccess,
+      fail: this.faceVerifyFail
+    })
+  },
+  // 人脸识别成功
+  async faceVerifySuccess (res) {
+    let {result} = await wx.$post({
+      url: '',
+      data: {
+        name: formData.name,
+        idCardNumber: formData.idcard,
+        verifyResult: res.verifyResult
+      }
+    })
+    if (result) {}
+  },
+  // 跳转到登录页
+  routeToSignIn () {
+    wx.reLaunch({
+      url: '/pages/login/signIn?idcard=' + 320981189709140978,
+    })
+  },
+  // 人脸识别失败
+  faceVerifyFail (res) {
+    wx.showModal({
+      title: '提示',
+      showCancel: false,
+      content: `人脸识别失败,${res.errMsg}`,
+      success: (res) => {
+        if (res.confirm) {
+          wx.navigateBack()
+        }
+      }
+    })
   },
   // 初始化验证方法
   initValidate () {

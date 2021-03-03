@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/login/signIn",
+    "pages/login/index",
     "pages/login/faceIdentify",
+    "pages/login/signIn",
     "pages/index/index",
     "pages/logs/logs"
   ],

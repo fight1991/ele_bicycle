@@ -1,12 +1,34 @@
 <!--pages/login/signIn.wxml-->
 <view class="container">
-  <view class="top flex-vertical-center">
-    <view class="user-img flex-center-x">头像</view>
-    <view class="welcome-txt">
-      <view class="fs20 fc-444">您好, 欢迎使用注册系统</view>
-      <view class="fs12 fc-ccc">登录后可查询、办理电动自行车相关业务</view>
+  <view class="top">
+    <view class="user-img"></view>
+    <view class="form-container">
+      <view class="idcard-item">
+        <label class="fs12 label">证件号码</label>
+        <view class="idcard-container fw">{{idcard}}</view>
+      </view>
+      <form class="row-num">
+        <view class="form-item">
+          <view class="input-container">
+            <input type="number" maxlength="11" id="phone" placeholder-class="fs14" placeholder="请输入手机号" bindinput="bindData"></input>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="input-container form-item-code">
+            <view class="input-code">
+              <input type="number" disabled="true" maxlength="4" id="code" placeholder-class="fs14" placeholder="验证码" bindinput="bindData"></input>
+            </view>
+            <view class="btn-code" bindtap="showDialog">获取验证码</view>
+          </view>
+        </view>
+      </form>
     </view>
-    <view class="btn" bindtap="routeTo">居民二代身份证</view>
   </view>
-  <view class="bottom fs12">中国交警</view>
 </view>
+<!-- dialog组件 -->
+<dialog 
+ id='myDialog'
+ bindchangeImage="getImg"
+ bindcancelEvent="colseDialog"
+ bindconfirmEvent="getCode">
+</dialog>

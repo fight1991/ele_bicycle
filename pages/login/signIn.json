@@ -1,6 +1,5 @@
 {
-  "navigationBarTitleText": "注册/登录",
   "usingComponents": {
-
+    "dialog": "../components/dialog/dialog"
   }
 }

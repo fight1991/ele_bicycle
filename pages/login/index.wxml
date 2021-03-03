@@ -1,0 +1,12 @@
+<!--pages/login/index.wxml-->
+<view class="container">
+  <view class="top flex-vertical-center">
+    <view class="user-img flex-center-x">头像</view>
+    <view class="welcome-txt">
+      <view class="fs20 fc-444">您好, 欢迎使用注册系统</view>
+      <view class="fs12 fc-ccc">登录后可查询、办理电动自行车相关业务</view>
+    </view>
+    <view class="btn" bindtap="routeTo">居民二代身份证</view>
+  </view>
+  <view class="bottom fs12">中国交警</view>
+</view>

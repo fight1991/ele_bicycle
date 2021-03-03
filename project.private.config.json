@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -14,6 +15,13 @@
         {
           "name": "人脸认证",
           "pathName": "pages/login/faceIdentify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/login/signIn",
+          "query": "idcard=320982199009840845",
           "scene": null
         }
       ]
