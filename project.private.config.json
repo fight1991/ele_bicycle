@@ -23,6 +23,12 @@
           "pathName": "pages/login/signIn",
           "query": "idcard=320982199009840845",
           "scene": null
+        },
+        {
+          "name": "个人中心首页",
+          "pathName": "pages/user/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

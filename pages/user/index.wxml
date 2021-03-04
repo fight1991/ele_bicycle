@@ -1,0 +1,27 @@
+<!--pages/user/index.wxml-->
+<view class="box">
+  <view class="person-info">
+    <view class="name fs20">张飞</view>
+    <view class="idcard f12 fc-ccc">1233233343344</view>
+  </view>
+  <view class="banner">
+    <view class="title1">电子备案证</view>
+    <view class="title2">备案申报</view>
+  </view>
+  <view class="bussiness-box" bindtap="routeTo">
+    <view class="bus-item" data-bustype="1">
+      <view class="left stopTap">
+        <view class="head-title fs16">居民个人业务</view>
+        <view class="head-title fs12 fc-ccc">Personal Business</view>
+      </view>
+      <view class="right stopTap"></view>
+    </view>
+    <view class="bus-item" data-bustype="2">
+      <view class="left stopTap">
+        <view class="head-title fs16">民生行业业务</view>
+        <view class="head-title fs12 fc-ccc">Personal Business</view>
+      </view>
+      <view class="right stopTap"></view>
+    </view>
+  </view>
+</view>

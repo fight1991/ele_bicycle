@@ -3,8 +3,10 @@
     "pages/login/index",
     "pages/login/faceIdentify",
     "pages/login/signIn",
+    "pages/user/index",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/user/personalBusiness/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,4 +1,7 @@
 /**app.wxss**/
+page {
+  font-size: 14px;
+}
 .container {
   color: #444;
   height: 100%;
@@ -8,6 +11,10 @@
   justify-content: space-between;
   padding: 20rpx 0;
   box-sizing: border-box;
+}
+/* 禁止点击 */
+.stopTap {
+  pointer-events:none;
 }
 /* 元素居中并水平排列 */
 .flex-center-x {

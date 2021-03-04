@@ -24,11 +24,13 @@
 }
 
 .wx-dialog-header {
-  padding: 15px 15px;
+  margin: 5px 15px;
+  height: 60px;
+  background-color: #ccc;
 }
 
 .wx-dialog-content {
-  padding:20px 15px; 
+  padding:10px 15px; 
 }
 
 .wx-dialog-item {

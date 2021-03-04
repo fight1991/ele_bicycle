@@ -43,3 +43,9 @@ page {
   border-bottom: 1px solid #ccc;
   padding: 20px 0;
 }
+.confirm-btn {
+  color: #fff;
+  background-color: #00aaee;
+  margin-top: 20px;
+  border-radius: 20px;
+}

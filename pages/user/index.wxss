@@ -1,0 +1,44 @@
+/* pages/user/index.wxss */
+.box {
+  padding: 15px;
+}
+.person-info {
+  padding: 15px 0;
+}
+.banner {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #00aaee;
+  padding: 15px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+}
+.bussiness-box {
+  margin-top: 15px;
+}
+.bus-item {
+  height: 60px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bus-item .right {
+  width: 50px;
+  height: 50px;
+  background-color: #00aaee;
+  border-radius: 50%;
+}
+.bus-item .left .head-title {
+  padding: 2px 0;
+}
+.title2 {
+  font-size: 16px;
+  padding-bottom: 15px;
+}

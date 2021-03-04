@@ -4,9 +4,9 @@
   <view class='wx-dialog'>
     <view class='wx-dialog-header'>
       <block wx:if="{{imgSrc}}">
-        <image src="{{imgSrc}}" binderror="loadImageErr" mode="aspectFit" bindtap="changeImage"></image>
+        <image src="{{imgSrc}}" binderror="loadImageErr" mode="aspectFit" bindtap="getImage"></image>
       </block>
-      <block wx:else><view class="fs12">图片加载中...</view></block>
+      <block wx:else><view class="fs12" bindtap="getImage">图片加载中...</view></block>
     </view>
     <view class='wx-dialog-content'>
       <view class='wx-dialog-item'>

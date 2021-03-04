@@ -7,7 +7,9 @@ Page({
   data: {
     idcard: '123333333',
     code: '',
-    imgSrc: ''
+    imgSrc: '',
+    phone: '18862348287',
+    isDisable: true, // 按钮禁用
   },
 
   /**
@@ -24,8 +26,24 @@ Page({
     }
     this.myDialog = this.selectComponent('#myDialog')
   },
+  // 绑定数据
+  bindData (e) {
+    let id = e.currentTarget.id
+    this.data[id] = e.detail.value
+  },
   // 显示dialog
   showDialog () {
+    // 校验手机号是否正确
+    var reg = /^1[3456789]\d{9}$/
+    var isPass = reg.test(this.data.phone)
+    if (!isPass) {
+      wx.showToast({
+        title: '请输入11位的手机号码',
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
     this.myDialog.show()
   },
   // 关闭dialog
@@ -33,12 +51,21 @@ Page({
     this.myDialog.hide()
   },
   // 获取验证码
-  getCode (code) {
-    this.data.code = code
+  getCode (e) {
+    this.setData({
+      code: e.detail,
+      isDisable: false
+    })
   },
   // 获取验证码图片
   getImg () {
-
+    console.log('请求图片')
+  },
+  // 确定按钮 跳转到首页
+  confirmBtn () {
+    wx.reLaunch({
+      url: '/pages/user/index',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
