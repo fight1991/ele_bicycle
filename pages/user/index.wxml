@@ -1,13 +1,11 @@
 <!--pages/user/index.wxml-->
 <view class="box">
-  <view class="person-info">
-    <view class="name fs20">张飞</view>
-    <view class="idcard f12 fc-ccc">1233233343344</view>
-  </view>
-  <view class="banner">
-    <view class="title1">电子备案证</view>
-    <view class="title2">备案申报</view>
-  </view>
+  <banner 
+    name="张三"
+    idcard="123441441411414"
+    headTile1="电子备案证"
+    headTile2="备案申报">
+  </banner>
   <view class="bussiness-box" bindtap="routeTo">
     <view class="bus-item" data-bustype="1">
       <view class="left stopTap">

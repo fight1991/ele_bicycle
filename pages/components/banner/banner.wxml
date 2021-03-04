@@ -1,0 +1,12 @@
+<!--pages/components/banner/banner.wxml-->
+<view class="person-info">
+  <view class="name">张飞</view>
+  <view class="idcard">
+    <text>{{trueIdcard}}</text>
+    <text bindtap="switchIdCardStatus">{{hideStatus? '显示':'隐藏'}}</text>
+  </view>
+</view>
+<view class="banner">
+  <view class="title1">电子备案证</view>
+  <view class="title2">备案申报</view>
+</view>
