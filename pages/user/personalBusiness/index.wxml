@@ -1,2 +1,28 @@
 <!--pages/user/personalBusiness/index.wxml-->
-<text>pages/user/personalBusiness/index.wxml</text>
+<view class="box">
+  <banner 
+    name="张三"
+    idcard="123441441411414"
+    headTile1="电子备案证"
+    headTile2="备案申报">
+  </banner>
+  <view class="grid-box">
+    <view class="block-item">
+      <view class="img-box"></view>
+      <view class="text">备案申报</view>
+    </view>
+    <view class="block-item">
+      <view class="img-box"></view>
+      <view class="text">扫码</view>
+    </view>
+    <view class="block-item">
+      <view class="img-box"></view>
+      <view class="text">备案人变更</view>
+    </view>
+    <view class="block-item">
+      <view class="img-box"></view>
+      <view class="text">一键报失</view>
+    </view>
+
+  </view>
+</view>

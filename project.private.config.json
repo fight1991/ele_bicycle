@@ -29,6 +29,12 @@
           "pathName": "pages/user/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "个人业务首页",
+          "pathName": "pages/user/personalBusiness/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

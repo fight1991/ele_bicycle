@@ -3,8 +3,8 @@
   <banner 
     name="张三"
     idcard="123441441411414"
-    headTile1="电子备案证"
-    headTile2="备案申报">
+    headTile1="电动车居民个人电子备案证"
+    headTile2="请进行备案申报">
   </banner>
   <view class="bussiness-box" bindtap="routeTo">
     <view class="bus-item" data-bustype="1">

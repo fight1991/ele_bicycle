@@ -1,1 +1,30 @@
 /* pages/user/personalBusiness/index.wxss */
+.box {
+  padding: 15px;
+}
+.grid-box {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.block-item {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 220rpx;
+  /* height: 50px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  /* border: 1px solid #ccc; */
+  box-shadow: 3px 3px 6px 0px #999;
+}
+.img-box {
+  height: 80px;
+  width: 80px;
+  background-color: #00aaee;
+}
+.block-item .text {
+  margin-top: 10px;
+}

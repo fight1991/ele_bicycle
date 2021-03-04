@@ -18,6 +18,12 @@ Page({
   routeTo (e) {
     console.log(e)
     console.log(e.target.dataset.bustype)
+    let { bustype } = e.target.dataset
+    if (bustype == 1) {
+      wx.navigateTo({
+        url: '/pages/user/personalBusiness/index',
+      })
+    }
   },
   // 防止冒泡
   stopTapEvent () {},
