@@ -12,19 +12,22 @@
   box-sizing: border-box;
   padding: 10px;
   width: 220rpx;
+  height: 220rpx;
   /* height: 50px; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 10px;
   /* border: 1px solid #ccc; */
-  box-shadow: 3px 3px 6px 0px #999;
+  box-shadow: 3px 4px 6px 0px #999;
 }
 .img-box {
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
+  border-radius: 5px;
   background-color: #00aaee;
 }
-.block-item .text {
+/* .block-item .text {
   margin-top: 10px;
-}
+} */

@@ -1,0 +1,56 @@
+<!--pages/user/record/index.wxml-->
+<scroll-view class="scroll-container" scroll-y="true">
+  <view class="record">
+    <!-- 步骤区域 -->
+    <view class="step-box">
+      <view class="step-item{{currentStep >= 1 ? ' active' : ''}}">
+        <view class="line-through{{currentStep >= 2 ? ' active' : ''}}"></view>
+        <view class="dot-box">
+          <view class="dot"></view>
+        </view>
+        <view class="text">完善个人信息</view>
+      </view>
+      <view class="step-item{{currentStep>=2 ? ' active' : ''}}">
+        <view class="line-through{{currentStep>=3 ? ' active' : ''}}"></view>
+        <view class="dot-box">
+          <view class="dot"></view>
+        </view>
+        <view class="text">完善车辆信息</view>
+      </view>
+      <view class="step-item{{currentStep>=3 ? ' active' : ''}}">
+        <view class="dot-box">
+          <view class="dot"></view>
+        </view>
+        <view class="text">等待审核</view>
+      </view>
+    </view>
+    <!-- 拍照上传区域 -->
+    <view class="phone-area">
+      <!-- 人脸区域 -->
+      <view class="face-img flex-center-y">
+        <view class="title fs16 fw">拍摄并上传人脸照片</view>
+        <view class="face-btn" bindtap="faceBtn"></view>
+      </view>
+      <view class="tips">
+        <view class="title fs16 fw">拍摄并上传本人证件</view>
+        <view class="tips-detail">
+          <view class="tag">*</view>
+          <view class="tips-text">
+            证件可选择居民身份证、临时居民身份证、驾驶证、公民护照。
+          </view>
+        </view>
+      </view>
+      <!-- 身份证正面区域 -->
+      <view class="idcard idcard-front">
+        <view class="icon"></view>
+        <view class="idcard-text">点击拍摄/上传证件正面</view>
+      </view>
+      <!-- 身份证反面区域 -->
+      <view class="idcard idcard-back">
+        <view class="icon"></view>
+        <view class="idcard-text">点击拍摄/上传证件反面</view>
+      </view>
+    </view>
+    <view class="common-btn">下一步</view>
+  </view>
+</scroll-view>

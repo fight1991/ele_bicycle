@@ -7,7 +7,7 @@
     headTile2="备案申报">
   </banner>
   <view class="grid-box">
-    <view class="block-item">
+    <view class="block-item" bindtap="showSubscription">
       <view class="img-box"></view>
       <view class="text">备案申报</view>
     </view>

@@ -35,6 +35,12 @@
           "pathName": "pages/user/personalBusiness/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "备案申报页面",
+          "pathName": "pages/user/record/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

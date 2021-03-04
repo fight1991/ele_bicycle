@@ -1,0 +1,53 @@
+
+Page{
+	background-color: #F7F7F7;
+}
+
+/* 最外层 */
+.item{
+	width: 622rpx;
+	margin-left: 32rpx;
+	margin-bottom: 56rpx;
+}
+/* END */
+
+/* 第二层 */
+.item_idPhoto{
+	margin-top: 40rpx;
+	display: flex;
+	justify-content: space-between;
+}
+/* END */
+
+/* 第三层 */
+.idPhoto{
+	width: 299rpx;
+	height: 190rpx;
+	background-color: #FFFFFF;
+	border: 2rpx dashed #CCCCCC;
+	text-align: center;
+}
+/* END */
+
+/* 图片 */
+.idPhoto_img{
+	width: 64rpx;
+	height: 53rpx;
+	margin-top: 50rpx;
+}
+/* END */
+
+/* 文字 */
+.idPhoto_txt{
+	font-size: 22rpx;
+	color: #CCCCCC;
+	font-weight: normal;
+}
+/* END */
+
+/* 拍照后预览相框 */
+.front {
+	width: 100%;
+	height: 100%;
+}
+/* END */

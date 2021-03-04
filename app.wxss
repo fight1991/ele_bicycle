@@ -61,7 +61,7 @@ page {
 .fs20 {
   font-size: 20px;
 }
-.fs16 {
+.fs18 {
   font-size: 18px;
 }
 .fs16 {
@@ -78,4 +78,12 @@ page {
 }
 .fw {
   font-weight: bold;
+}
+.common-btn {
+  color: #fff;
+  background-color: #00aaee;
+  margin: 20px;
+  padding: 10px 0;
+  border-radius: 20px;
+  text-align: center;
 }

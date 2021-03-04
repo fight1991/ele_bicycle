@@ -1,0 +1,31 @@
+<!-- 默认宽高占满屏幕100%，推荐放在单独页 -->
+<!-- 拍照完成后会返回临时路径 -->
+<!-- 封装良苦用心 | 注释满满 | 不忙时麻烦给你Star 谢谢！ -->
+
+<!-- 调起摄像头拍照 —— 【身份证正面】 -->
+<view class="camera_box">
+  <camera class="camera" wx:if="{{!show}}" device-position="back" flash="off" binderror="error">
+    <cover-view class="id_m">
+
+      <!-- 这是拍照轮廓图（如果是人像拍照则替换图片即可） -->
+      <cover-image class="img" src="https://img-blog.csdnimg.cn/2020081419131165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE5ODk2NQ==,size_16,color_FFFFFF,t_70#pic_center"></cover-image>
+      <!-- END -->
+
+      <!-- 这是文字提示（不需要删除即可） -->
+      <cover-view class="tips_txt">请将头像面放到框内，并调整好光线</cover-view>
+      <!-- END -->
+
+    </cover-view>
+  </camera>
+  <image class="camera_img" src="{{src}}" wx:if="{{show}}"></image>
+  <view class="action">
+
+    <!-- 这是三个按钮：拍照 / 确认 / 重拍(取消) -->
+    <button class="takeBtn" type="primary" bindtap="takePhoto" wx:if="{{!show}}"></button>
+    <button class="saveImg" type="primary" bindtap="saveImg" wx:if="{{show}}"></button>
+    <button class="cancelBtn" wx:if="{{show}}" type="primary" bindtap="cancelBtn"></button>
+    <!-- END -->
+
+  </view>
+</view>
+<!-- END -->
