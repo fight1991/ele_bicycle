@@ -44,7 +44,6 @@ Page({
   idcartBtn (e) {
     // mode=front 为身份证正面, mode=back为身份证反面
     var mode = e.currentTarget.dataset.mode
-    console.log(mode, '2222222222222')
     wx.showActionSheet({
       itemList: ['拍照','从相册中选择'],
       success: (res) => {
@@ -56,7 +55,7 @@ Page({
         }
         if (res.tapIndex == 1) {
           this.choosePhoto('album', (res) => {
-            console.log('----------')
+            console.log('从相册中选择图片----------')
             console.log(res)
             this.setData({
               [mode + 'Src']: res.tempFilePaths[0],
@@ -79,14 +78,36 @@ Page({
       }
     })
   },
-  // 下一步
-  nextStep () {
+  // 控制状态条进度
+  progressStatus () {
     var stepNum = this.data.currentStep
     stepNum++
     if (stepNum > 3) return
     this.setData({
       currentStep: stepNum
     })
+  },
+  // 下一步的按钮
+  nextStep () {
+    var isPass = this.nextIsPass()
+    if (!isPass) return
+  },
+  nextIsPass () {
+    var title = ''
+    let { faceSrc, frontSrc, backSrc } = this.data
+    if (!faceSrc) {
+      title = '请上传人脸照片'
+    } else if (!frontSrc) {
+      title = '请上传身份证正面照片'
+    } else {
+      title = '请上传身份证反面照片'
+    }
+    wx.showToast({
+      title: title,
+      icon: 'none',
+      duration: 1500
+    })
+    return faceSrc && frontSrc && backSrc
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

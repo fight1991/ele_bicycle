@@ -12,8 +12,6 @@ Page({
     devicePosition: 'back', // 前置摄像头front 后置为back
   },
 
-
-
   // 取消/重新拍照按钮
   cancelBtn() {
     this.setData({//更新数据

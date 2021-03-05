@@ -1,0 +1,14 @@
+<!--pages/components/myImage/myImage.wxml-->
+<!-- 解决图片旋转问题 -->
+<button  catchtap="onUploadAction">选择图片</button>
+<view>旋转前</view>
+<image class="rotateBefore" src="{{rotateBefore}}" mode="aspectFit"></image>
+<view>旋转后</view>
+<image class="rotateAfter" src="{{rotateAfter}}" mode="aspectFit"></image>
+
+<!-- canvas在容器外不可见 用来临时放置图片 -->
+<canvas
+  canvas-id="my-canvas" 
+  style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;position:absolute;top:-2000%;">
+</canvas>
+
