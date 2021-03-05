@@ -5,29 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentStep: 1, // 当前操作步骤
-
-    // 占位图片是否显示
-    faceShow: true,
-		frontShow: true,
-    backShow: true,
-
-    // 图片临时路径
-    faceSrc: '',
-		frontSrc: '',
-    backSrc: '',
-
-    // 图片源数据
-    faceImageData: null,
-    frontImageData: null,
-    backImageData: null,
+    currentStep: 2, // 当前操作步骤
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.personInfoComponent = this.selectComponent('#personInfo')
   },
 
   // 点击拍摄人脸按钮
@@ -86,28 +71,6 @@ Page({
     this.setData({
       currentStep: stepNum
     })
-  },
-  // 下一步的按钮
-  nextStep () {
-    var isPass = this.nextIsPass()
-    if (!isPass) return
-  },
-  nextIsPass () {
-    var title = ''
-    let { faceSrc, frontSrc, backSrc } = this.data
-    if (!faceSrc) {
-      title = '请上传人脸照片'
-    } else if (!frontSrc) {
-      title = '请上传身份证正面照片'
-    } else {
-      title = '请上传身份证反面照片'
-    }
-    wx.showToast({
-      title: title,
-      icon: 'none',
-      duration: 1500
-    })
-    return faceSrc && frontSrc && backSrc
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

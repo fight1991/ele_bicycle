@@ -3,7 +3,7 @@
 
 <!-- 调起摄像头拍照 —— 【身份证正面】 -->
 <view class="camera_box">
-  <camera class="camera" wx:if="{{!show}}" device-position="{{devicePosition}}" flash="off" binderror="error">
+  <camera class="camera" wx:if="{{!show}}" resolution="high" device-position="{{mode == 'face' ? 'front' : 'back'}}" flash="off" binderror="error">
     <cover-view class="id_m">
 
       <!-- 这是拍照轮廓图（如果是人像拍照则替换图片即可） -->

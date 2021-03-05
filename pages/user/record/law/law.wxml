@@ -1,0 +1,7 @@
+<!--pages/user/record/law/law.wxml-->
+<scroll-view class="scroll-container" scroll-y="true">
+  <view class="graph">本人声明在办理深圳市电动二轮车备案登记的过程中，所提交的所有信息、材料(证件、证照、照片等)均为真实、有效、合法;申请备案的车辆来源合法且为本人合法所有，权属无争议，非他人车辆、涉案车辆或通过违法违规行为所得，并保证依法依规使用该车辆。</view>
+  <view class="graph">本人保证以.上声明真实有效，对于违反声明及相应的法律后果已全部知晓并充分理解。若隐瞒真实情况或提交虚假信息、材料等，本人愿意承担由此造成的一切法律后果。</view>
+  <view>特此声明。</view>
+</scroll-view>
+

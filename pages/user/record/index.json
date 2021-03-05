@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "personInfo": "./personInfo/personInfo",
+    "busInfo": "./busInfo/busInfo"
+  },
   "navigationBarTitleText": "备案申报"
 }

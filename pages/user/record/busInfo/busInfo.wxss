@@ -1,1 +1,89 @@
 /* pages/user/record/busInfo/busInfo.wxss */
+
+image {
+  width: 100%;
+}
+
+.tag {
+  color: red;
+  font-size: 12px;
+}
+
+/* 表单样式区域 */
+.outer {
+  padding: 0px 15px;
+}
+.form-area {
+  font-size: 14px;
+  /* width: 580rpx;
+  margin: 0 auto; */
+  padding: 15px;
+  box-shadow: 2px 2px 3px 2px #ccc;
+  border-radius: 10px;
+}
+.form-item .input-label {
+  width: 85px;
+  color: #444;
+}
+.form-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f5;
+  display: flex;
+  align-items: center;
+}
+.scan-input {
+  flex: 1;
+}
+.scan {
+  width: 38rpx;
+  height: 38rpx;
+}
+.holder-style {
+  font-size: 12px;
+}
+.fw {
+  font-weight: bold;
+}
+.common-btn {
+  color: #fff;
+  background-color: #00aaee;
+  margin: 10px;
+  padding: 10px 0;
+  border-radius: 20px;
+  text-align: center;
+}
+.text-line {
+  padding: 10px 0 20px;
+}
+.upload-box {
+  display: flex;
+  align-items: center;
+}
+.btn-box {
+  margin-right: 40px;
+  width: 60px;
+  font-size: 12px;
+  position: relative;
+}
+
+.remove-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(100%, -50%);
+}
+.upload-bg {
+  width: 60px;
+  height: 60px;
+}
+.radioBtn {
+  transform:scale(0.7)
+}
+.agree-content {
+  padding: 20px 0 10px;
+  display: flex;
+  align-items: center;
+}
+.declare {
+  color: #00aaee;
+}

@@ -63,7 +63,8 @@ Page({
       // 获取当前图片路径(用户拍下的照片)
       var src = currentPage.data.src;
       var tempMode = this.data.mode
-      prevPage.setData({
+      // 更新record页面中组件personInfo的数据
+      prevPage.personInfoComponent.setData({
         [tempMode + 'Show']: false, // 显示图片
         [tempMode + 'Src']: src // 照片路径
       })
@@ -85,8 +86,7 @@ Page({
     let mode = options.mode
     console.log(mode)
     this.setData({
-      mode: mode,
-      devicePosition: mode == 'face' ? 'front' : 'back'
+      mode: mode
     })
   },
 

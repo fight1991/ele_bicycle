@@ -1,0 +1,10 @@
+/* pages/user/record/law/law.wxss */
+page {
+  height: 100%;
+}
+.scroll-container {
+  height: 100%;
+}
+.graph {
+  text-indent: 2rem;
+}

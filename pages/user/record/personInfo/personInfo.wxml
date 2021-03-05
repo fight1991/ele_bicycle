@@ -1,2 +1,92 @@
 <!--pages/user/record/personInfo/personInfo.wxml-->
-<text>pages/user/record/personInfo/personInfo.wxml</text>
+<!-- 完善个人信息组件 -->
+<view>
+  <!-- 拍照上传区域 -->
+  <view hidden="{{showForm}}" class="photo-area">
+    <!-- 人脸区域 -->
+    <view class="face-img">
+      <view class="title fs16 fw">拍摄并上传人脸照片</view>
+      <view class="face-btn" bindtap="faceBtn">
+        <!-- 初始未上传图片= -->
+        <image wx:if="{{ faceShow }}" mode="aspectFit" src="../../../image/face.png"></image>
+        <!-- 用户拍照完显示预览的图片 -->
+        <image wx:else mode="aspectFit" src="{{ faceSrc }}"></image>
+      </view>
+      
+    </view>
+    <view class="tips">
+      <view class="title fs16 fw">拍摄并上传本人证件</view>
+      <view class="tips-detail">
+        <view class="tag">*</view>
+        <view class="tips-text">
+          证件可选择居民身份证、临时居民身份证、驾驶证、公民护照。
+        </view>
+      </view>
+    </view>
+    <!-- 身份证正面区域 -->
+    <view class="idcard idcard-front" bindtap="idcartBtn" data-mode="front">
+      <image wx:if="{{ frontShow }}" mode="aspectFit" src="../../../image/front.svg"></image>
+      <image wx:else src="{{ frontSrc }}" mode="aspectFit"></image>
+      <!-- <view class="icon"></view>
+      <view class="idcard-text">点击拍摄/上传证件正面</view> -->
+    </view>
+    <!-- 身份证反面区域 -->
+    <view class="idcard idcard-back" bindtap="idcartBtn" data-mode="back">
+      <image wx:if="{{ backShow }}" mode="aspectFit" src="../../../image/back.svg"></image>
+      <image wx:else src="{{ backSrc }}" mode="aspectFit"></image>
+    </view>
+  </view>
+  <!-- 个人信息表单区域 -->
+  <view hidden="{{!showForm}}" class="form-area">
+    <form>
+      <view class="form-item">
+        <view class="input-label">姓名</view>
+        <view class="input">
+          <input type="text" model:value="{{}}"/>
+        </view>
+      </view>
+      <view class="form-item idcard-type">
+        <view class="input-label">证件类型</view>
+        <view class="input fw">
+          居民身份证
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="input-label">证件号码</view>
+        <view class="input">
+          <input type="text" model:value="{{}}"/>
+        </view>
+      </view>
+      <picker bindchange="sexChange" model:value="{{sexIndex}}" range-key="label" range="{{sexArr}}">
+        <view class="form-item">
+          <view class="input-label">性别</view>
+          <view>{{sexArr[sexIndex]['label']}}</view>
+        </view>
+      </picker>
+      <view class="form-item">
+        <view class="input-label">手机号</view>
+        <view class="input">
+          <input type="text" model:value="{{}}"/>
+        </view>
+      </view>
+      <!-- 省/市/地区 -->
+      <picker mode="region" model:value="{{regionIndex}}" bindchange="getAddressInfo">
+        <view class="form-item">
+          <view class="input-label">联系地址</view>
+          <view class="input">
+            {{regionLabel}}
+          </view>
+        </view>
+      </picker>
+      <view class="form-item">
+        <view class="input-label">详细地址</view>
+        <view class="input">
+          <input type="text" model:value="{{}}" placeholder-class="holder-style" placeholder="精确到小区/街道-门牌号"/>
+        </view>
+      </view>
+    </form>
+  </view>
+  <view wx:if="{{!showForm}}" class="common-btn" bindtap="nextStep">下一步</view>
+  <view wx:else class="common-btn" bindtap="commitNext">下一步</view>
+</view>
+

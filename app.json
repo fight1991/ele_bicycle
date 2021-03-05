@@ -9,7 +9,8 @@
     "pages/user/personalBusiness/index",
     "pages/user/record/index",
     "pages/user/camera/index",
-    "pages/user/phototest/index/index"
+    "pages/user/phototest/index/index",
+    "pages/user/record/law/law"
   ],
   "window": {
     "backgroundTextStyle": "light",

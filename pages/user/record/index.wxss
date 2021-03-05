@@ -62,48 +62,4 @@ image {
 .active.line-through {
   border-top-color: #00aaee;
 }
-.photo-area {
-  border: 1px solid #ccc;
-  padding: 20px 10px;
-  border-radius: 10px;
-}
-.face-btn {
-  height: 150px;
-  width: 150px;
-  /* background-color: #ccc; */
-}
-.face-btn image {
-  width: 100%;
-  height: 100%;
-}
-.title {
-  padding: 10px 0;
-  text-align: center;
-}
-.tips-detail {
-  padding: 0 30px;
-  display: flex;
-  font-size: 12px;
-}
-.tag {
-  color: red;
-}
-.idcard {
-  /* background-color: #ccc; */
-  height: 140px;
-  width: 600rpx;
-  margin: 20px auto;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.idcard-text {
-  text-align: center;
-}
-.idcard .icon {
-  margin: 0 auto;
-  height: 80px;
-  width: 80px;
-  background-color: #00aaee;
-}
+
