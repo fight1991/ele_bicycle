@@ -5,7 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentStep: 1
+    currentStep: 1, // 当前操作步骤
+
+    // 占位图片是否显示
+    faceShow: true,
+		frontShow: true,
+    backShow: true,
+
+    // 图片临时路径
+    faceSrc: '',
+		frontSrc: '',
+    backSrc: '',
+
+    // 图片源数据
+    faceImageData: null,
+    frontImageData: null,
+    backImageData: null,
   },
 
   /**
@@ -17,32 +32,43 @@ Page({
 
   // 点击拍摄人脸按钮
   faceBtn () {
-    this.choosePhoto('camera', (res) => {
-      const tempFilePaths = res.tempFilePaths
-        // 存储照片信息
-    })
+    wx.navigateTo({
+			url: '/pages/user/camera/index?mode=face',
+		})
+    // this.choosePhoto('camera', (res) => {
+    //   const tempFilePaths = res.tempFilePaths
+    //     // 存储照片信息
+    // })
   },
   // 点击身份证按钮
-  idcartBtn () {
+  idcartBtn (e) {
+    // mode=front 为身份证正面, mode=back为身份证反面
+    var mode = e.currentTarget.dataset.mode
+    console.log(mode, '2222222222222')
     wx.showActionSheet({
       itemList: ['拍照','从相册中选择'],
       success: (res) => {
         console.log(res.tapIndex)
         if (res.tapIndex == 0) {
-          this.choosePhoto('camera', (res) => {
-            console.log(res)
+          wx.navigateTo({
+            url: '/pages/user/camera/index?mode=' + mode,
           })
         }
         if (res.tapIndex == 1) {
           this.choosePhoto('album', (res) => {
+            console.log('----------')
             console.log(res)
+            this.setData({
+              [mode + 'Src']: res.tempFilePaths[0],
+              [mode + 'Show']: false
+            })
           })
         }
       }
     })
   },
-   // 打开相册或摄像头
-   choosePhoto (type, callback) {
+  // 打开相册或摄像头
+  choosePhoto (type, callback) {
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
@@ -51,6 +77,15 @@ Page({
         // tempFilePath可以作为img标签的src属性显示图片
         callback && callback(res)
       }
+    })
+  },
+  // 下一步
+  nextStep () {
+    var stepNum = this.data.currentStep
+    stepNum++
+    if (stepNum > 3) return
+    this.setData({
+      currentStep: stepNum
     })
   },
   /**

@@ -8,6 +8,7 @@
     "pages/logs/logs",
     "pages/user/personalBusiness/index",
     "pages/user/record/index",
+    "pages/user/camera/index",
     "pages/user/phototest/index/index"
   ],
   "window": {
