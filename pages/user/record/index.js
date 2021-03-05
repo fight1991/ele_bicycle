@@ -72,6 +72,11 @@ Page({
       currentStep: stepNum
     })
   },
+  routeToPage () {
+    wx.reLaunch({
+      url: '/pages/user/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

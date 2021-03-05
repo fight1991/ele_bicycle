@@ -62,4 +62,20 @@ image {
 .active.line-through {
   border-top-color: #00aaee;
 }
-
+.status-image {
+  width: 150px;
+  margin: 0 auto;
+}
+.status-text {
+  text-align: center;
+}
+.backPage {
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff;
+  background-color: #516dff;
+}

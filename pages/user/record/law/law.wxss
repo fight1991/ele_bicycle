@@ -5,6 +5,9 @@ page {
 .scroll-container {
   height: 100%;
 }
+.box {
+  padding: 20rpx;
+}
 .graph {
   text-indent: 2rem;
 }

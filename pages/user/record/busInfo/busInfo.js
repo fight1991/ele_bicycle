@@ -77,6 +77,11 @@ Component({
         isChecked: !this.data.isChecked
       })
     },
+    routeTo () {
+      wx.navigateTo({
+        url: '/pages/user/record/law/law',
+      })
+    },
     // 提交按钮
     submitBtn () {
       // 校验表单

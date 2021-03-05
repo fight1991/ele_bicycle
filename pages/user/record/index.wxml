@@ -32,5 +32,15 @@
     <view class="bus-area" wx:if="{{currentStep==2}}">
       <busInfo id="busInfo" bindnextStep="progressStatus"></busInfo>
     </view>
+    <!-- 等待审核区域 -->
+    <view class="check-area" wx:if="{{currentStep==3}}">
+      <view class="status-image">
+        <image src="/pages/image/check-status.png" mode="aspectFit"></image>
+      </view>
+      <view class="status-text">备案审核中, 请耐心等待</view>
+      <view class="status-erweima"></view>
+       <!-- 返回个人中心按钮 -->
+      <view class="backPage" bindtap="routeToPage">返回个人中心</view>
+    </view>
   </view>
 </scroll-view>

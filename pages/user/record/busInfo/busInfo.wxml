@@ -58,7 +58,7 @@
     <radio class="radioBtn" bindtap="radioBtn" checked="{{isChecked}}"></radio>
     <view>
       <text>阅读并同意一下内容</text>
-      <text class="declare">《车辆来源合法声明》</text>
+      <text class="declare" bindtap="routeTo">《车辆来源合法声明》</text>
     </view>
   </view>
   <view class="common-btn" bindtap="submitBtn">提交</view>
