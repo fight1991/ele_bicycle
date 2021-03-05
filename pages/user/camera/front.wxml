@@ -1,0 +1,6 @@
+<!--pages/user/camera/front.wxml-->
+<!-- 前置摄像头 -->
+<myCamera
+  position="front"
+  imgType="face">
+</myCamera>

@@ -4,13 +4,13 @@
 
 <!-- 调起摄像头拍照 —— 【身份证正面】 -->
 <view class="camera_box">
-  <camera class="camera" wx:if="{{!show}}" resolution="high" device-position="{{mode}}" flash="off" binderror="error">
+  <camera class="camera" wx:if="{{!show}}" resolution="high" device-position="{{position}}" flash="off" binderror="error">
     <cover-view class="id_m">
 
       <!-- 这是拍照轮廓图（如果是人像拍照则替换图片即可） -->
-      <!-- <cover-image wx:if="{{mode=='face'}}" class="img" src="https://img-blog.csdnimg.cn/2020081419131165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE5ODk2NQ==,size_16,color_FFFFFF,t_70#pic_center"></cover-image> -->
-      <cover-image wx:if="{{mode=='front'}}" class="img" src="https://img-blog.csdnimg.cn/2020081419131165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE5ODk2NQ==,size_16,color_FFFFFF,t_70#pic_center"></cover-image>
-      <cover-image wx:if="{{mode=='back'}}" class="img" src="https://img-blog.csdnimg.cn/2020081419131167.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE5ODk2NQ==,size_16,color_FFFFFF,t_70#pic_center"></cover-image>
+      <cover-image wx:if="{{imgType=='face'}}" class="face-img" src="/pages/image/personImg.png"></cover-image>
+      <cover-image wx:if="{{imgType=='front'}}" class="img" src="https://img-blog.csdnimg.cn/2020081419131165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE5ODk2NQ==,size_16,color_FFFFFF,t_70#pic_center"></cover-image>
+      <cover-image wx:if="{{imgType=='back'}}" class="img" src="https://img-blog.csdnimg.cn/2020081419131167.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDE5ODk2NQ==,size_16,color_FFFFFF,t_70#pic_center"></cover-image>
       <!-- END -->
 
       <!-- 这是文字提示（不需要删除即可） -->

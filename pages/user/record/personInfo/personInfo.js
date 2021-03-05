@@ -68,7 +68,7 @@ Component({
     // 点击拍摄人脸按钮
     faceBtn () {
       wx.navigateTo({
-        url: '/pages/user/camera/index?mode=face',
+        url: '/pages/user/camera/front',
       })
       // this.choosePhoto('camera', (res) => {
       //   const tempFilePaths = res.tempFilePaths
@@ -79,13 +79,14 @@ Component({
     idcartBtn (e) {
       // mode=front 为身份证正面, mode=back为身份证反面
       var mode = e.currentTarget.dataset.mode
+      console.log(mode)
       wx.showActionSheet({
         itemList: ['拍照','从相册中选择'],
         success: (res) => {
           console.log(res.tapIndex)
           if (res.tapIndex == 0) {
             wx.navigateTo({
-              url: '/pages/user/camera/index?mode=' + mode,
+              url: '/pages/user/camera/back?mode=' + mode,
             })
           }
           if (res.tapIndex == 1) {

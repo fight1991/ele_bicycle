@@ -1,0 +1,6 @@
+<!--pages/user/camera/back.wxml-->
+<myCamera
+  position="back"
+  imgType="{{mode}}"
+  >
+</myCamera>

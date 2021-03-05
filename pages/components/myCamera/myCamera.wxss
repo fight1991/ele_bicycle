@@ -22,6 +22,14 @@
   left: 0; right: 0; margin: auto auto;
   top: 0; bottom: 0;
 }
+.id_m .face-img {
+  position: absolute;
+  width: 712rpx;
+  height: 672rpx;
+  top: 100rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .id_m .tips_txt {
   transform:rotate(90deg);
 }
