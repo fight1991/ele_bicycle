@@ -8,11 +8,11 @@
     "pages/logs/logs",
     "pages/user/personalBusiness/index",
     "pages/user/record/index",
-    "pages/user/phototest/index/index",
     "pages/user/record/law/law",
     "pages/user/scanCode/scanCode",
     "pages/user/camera/front",
-    "pages/user/camera/back"
+    "pages/user/camera/back",
+    "pages/user/center/center"
   ],
   "window": {
     "backgroundTextStyle": "light",

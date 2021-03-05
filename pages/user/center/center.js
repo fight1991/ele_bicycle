@@ -1,8 +1,4 @@
-/*
-* 图像路径的更新在拍照页完成
-* 具体查看拍照页saveImg()方法
-*/
-
+// pages/user/center/center.js
 Page({
 
   /**
@@ -10,31 +6,6 @@ Page({
    */
   data: {
 
-    // 判断显示文字还是图片(预览图片标识)
-		frontShow: true,
-		// 身份证正面路径
-		frontSrc: '',
-
-		//判断显示文字还是图片(预览图片标识)
-    otherShow: true,
-    
-		//身份证反面路径
-    otherSrc: '',
-
-  },
-
-  // 拍摄身份证正面-跳转到拍摄页
-  goFront: function() {
-    wx.navigateTo({
-			url: '/pages/user/phototest/frontOfIDCard/frontOfIDCard',
-		})
-  },
-
-  // 拍摄身份证反面-跳转到拍摄页
-  goOther: function() {
-    wx.navigateTo({
-			url: '/pages/user/phototest/otherOfIDCard/otherOfIDCard',
-		})
   },
 
   /**

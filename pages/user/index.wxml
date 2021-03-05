@@ -16,8 +16,8 @@
     </view>
     <view class="bus-item" data-bustype="2">
       <view class="left stopTap">
-        <view class="head-title fs16">民生行业业务</view>
-        <view class="head-title fs12 fc-ccc">Personal Business</view>
+        <view class="head-title fs16">管理员业务</view>
+        <view class="head-title fs12 fc-ccc">Administrator Business</view>
       </view>
       <view class="right stopTap"></view>
     </view>

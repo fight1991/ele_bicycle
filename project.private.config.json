@@ -47,6 +47,11 @@
           "pathName": "pages/user/scanCode/scanCode",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "个人中心-个人信息",
+          "pathName": "pages/user/center/center",
+          "scene": null
         }
       ]
     }

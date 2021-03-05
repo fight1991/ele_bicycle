@@ -56,6 +56,12 @@ Component({
         hideStatus: !hideStatus,
         trueIdcard: tempStatus ? this.hideText(trueIdcard) : this.data.idcard
       })
+    },
+    // 跳转到个人中心
+    routeToMePage () {
+      wx.navigateTo({
+        url: '/pages/user/center/center',
+      })
     }
   }
 })

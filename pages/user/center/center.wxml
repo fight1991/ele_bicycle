@@ -1,0 +1,16 @@
+<!--pages/user/center/center.wxml-->
+<view class="outer">
+  <view class="user-bg">
+    <view class="user-left"></view>
+    <view class="user-middle">
+      <view class="fs20">张飞</view>
+      <view>12312413</view>
+      <view>1333884</view>
+    </view>
+    <view class="user-right"></view>
+  </view>
+  <view class="change-tab">
+    <view>更换手机号</view>
+    <view></view>
+  </view>
+</view>
