@@ -13,7 +13,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    showForm: true, // 是否显示个人表单信息
+    showForm: false, // 是否显示个人表单信息
     // 占位图片是否显示
     faceShow: true,
 		frontShow: true,

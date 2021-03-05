@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentStep: 2, // 当前操作步骤
+    currentStep: 1, // 当前操作步骤
   },
 
   /**

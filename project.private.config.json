@@ -41,6 +41,12 @@
           "pathName": "pages/user/record/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "扫码详情",
+          "pathName": "pages/user/scanCode/scanCode",
+          "query": "",
+          "scene": null
         }
       ]
     }

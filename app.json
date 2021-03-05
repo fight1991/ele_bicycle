@@ -10,7 +10,8 @@
     "pages/user/record/index",
     "pages/user/camera/index",
     "pages/user/phototest/index/index",
-    "pages/user/record/law/law"
+    "pages/user/record/law/law",
+    "pages/user/scanCode/scanCode"
   ],
   "window": {
     "backgroundTextStyle": "light",

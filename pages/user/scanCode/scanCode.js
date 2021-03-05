@@ -1,11 +1,14 @@
-// pages/user/personalBusiness/index.js
+// pages/user/scanCode/scanCode.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    busNum: '-',
+    busBrand: '-',
+    busProp: '-',
+    busStatus: '-'
   },
 
   /**
@@ -13,34 +16,6 @@ Page({
    */
   onLoad: function (options) {
 
-  },
-  // 调起客户端小程序订阅消息界面 必须是手动点击
-  showSubscription () {
-    console.log('调起通知')
-    wx.requestSubscribeMessage({
-      tmplIds: [],
-      success: (res) => {
-        // 订阅成功
-      },
-      fail: () => {
-
-      }
-    })
-    wx.navigateTo({
-      url: '/pages/user/record/index',
-    })
-  },
-  // 扫码
-  scanCode () {
-    wx.scanCode({
-      onlyFromCamera: true,
-      success: _res => {
-        // 跳转到扫码详情页
-        wx.navigateTo({
-          url: '/pages/user/scanCode/scanCode',
-        })
-      }
-    })
   },
 
   /**

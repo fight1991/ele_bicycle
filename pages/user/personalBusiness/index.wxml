@@ -13,7 +13,7 @@
     </view>
     <view class="block-item">
       <view class="img-box"></view>
-      <view class="text">扫码</view>
+      <view class="text" bindtap="scanCode">扫码</view>
     </view>
     <view class="block-item">
       <view class="img-box"></view>
