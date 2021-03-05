@@ -117,7 +117,7 @@ Component({
     // 下一步的按钮
     nextStep () {
       var isPass = this.nextIsPass()
-      // if (!isPass) return
+      if (!isPass) return
       this.setData({
         showForm: true
       })
@@ -154,12 +154,15 @@ Component({
       } else {
         title = '请上传身份证反面照片'
       }
-      wx.showToast({
-        title: title,
-        icon: 'none',
-        duration: 1500
-      })
-      return faceSrc && frontSrc && backSrc
+      let valid = faceSrc && frontSrc && backSrc
+      if (!valid){
+        wx.showToast({
+          title: title,
+          icon: 'none',
+          duration: 1500
+        })
+      }
+      return valid
     },
     // 表单方法区域
     bindData (e) {
