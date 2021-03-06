@@ -87,3 +87,12 @@ page {
   border-radius: 20px;
   text-align: center;
 }
+.common-form-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+}
+.common-form-item .input {
+  flex: 1;
+}

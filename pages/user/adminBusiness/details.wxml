@@ -1,0 +1,27 @@
+<!--pages/user/adminBusiness/details.wxml-->
+<view class="outer">
+  <view class="form-container">
+    <view class="common-form-item">
+      <view class="label">车牌号码</view>
+      <view class="input">
+        <input type="text" disabled model:value="{{brandNum}}"/>
+      </view>
+      <view class="icon" bindtap="scanBtn" data-flag="brand">
+        <image src="/pages/image/scan.png"></image>
+      </view>
+    </view>
+    <view class="common-form-item">
+      <view class="label">整车编号</view>
+      <view class="input">
+        <input type="text" disabled model:value="{{carNum}}"/>
+      </view>
+      <view class="icon" bindtap="scanBtn" data-flag="car">
+        <image src="/pages/image/scan.png"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 附件区域 -->
+  <view class="license">
+
+  </view>
+</view>

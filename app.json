@@ -15,7 +15,9 @@
     "pages/user/center/center",
     "pages/user/center/editPhone",
     "pages/user/center/relogin",
-    "pages/user/adminBusiness/index"
+    "pages/user/adminBusiness/index",
+    "pages/user/adminBusiness/installer",
+    "pages/user/adminBusiness/details"
   ],
   "window": {
     "backgroundTextStyle": "light",

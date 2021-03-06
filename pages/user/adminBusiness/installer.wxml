@@ -1,0 +1,7 @@
+<!--pages/user/adminBusiness/installer.wxml-->
+<view class="container">
+  <view class="scan-img">
+    <image src="/pages/image/scan.png" bindtap="routeTo"></image>
+  </view>
+  <view class="fs18">请扫描车主安装码</view>
+</view>

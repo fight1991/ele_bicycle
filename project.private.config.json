@@ -71,6 +71,18 @@
           "pathName": "pages/user/adminBusiness/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "安装上报扫码",
+          "pathName": "pages/user/adminBusiness/installer",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "安装上报扫码详情页",
+          "pathName": "pages/user/adminBusiness/details",
+          "query": "",
+          "scene": null
         }
       ]
     }
