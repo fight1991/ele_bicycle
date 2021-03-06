@@ -10,7 +10,7 @@
     </view>
   </view>
   <view class="grid-box">
-    <view class="block-item" bindtap="showSubscription">
+    <view class="block-item" bindtap="routeTo">
       <view class="img-box"></view>
       <view class="text">安装上报</view>
     </view>

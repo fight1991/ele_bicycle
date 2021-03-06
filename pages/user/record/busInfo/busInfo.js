@@ -41,34 +41,13 @@ Component({
         }
       })
     },
-    // 上传图片
-    uploadBImg (e) {
-      var flag = e.currentTarget.dataset.flag
-      this.chooseImg((res) => {
-        this.setData({
-          [flag + 'Src']: res.tempFilePaths[0],
-          [flag + 'Bg']: false
-        })
-      })
+    // 获取车辆合格证信息
+    getBusFile (e) {
+
     },
-    chooseImg (callback) {
-      wx.chooseImage({
-        count: 1,
-        sizeType: ['original', 'compressed'],
-        sourceType: ['album'],
-        success: (res) => {
-          // tempFilePath可以作为img标签的src属性显示图片
-          callback && callback(res)
-        }
-      })
-    },
-    // 删除已选的图片
-    removeBg (e) {
-      var flag = e.currentTarget.dataset.flag
-      this.setData({
-        [flag + 'Bg']: true,
-        [flag + 'Src']: ''
-      })
+    // 获取购车发票信息
+    getTicketFile (e) {
+
     },
     // 单选按钮
     radioBtn (e) {

@@ -23,6 +23,10 @@ Page({
       wx.navigateTo({
         url: '/pages/user/personalBusiness/index',
       })
+    } else if (bustype == 2) {
+      wx.navigateTo({
+        url: '/pages/user/adminBusiness/index',
+      })
     }
   },
   // 防止冒泡
