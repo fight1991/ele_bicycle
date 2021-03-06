@@ -1,0 +1,39 @@
+/* pages/user/center/editPhone.wxss */
+.form-container {
+  padding: 20px 20px;
+}
+.form-item-label {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 15px 0;
+}
+.form-item {
+  border-bottom: 1px solid #ccc;
+  padding: 15px 0;
+}
+.input-label {
+  width: 100px;
+}
+/* .input-container {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+} */
+.form-item-code {
+  display: flex;
+  justify-content: space-between;
+}
+.input-code {
+  flex: 1;
+}
+.btn-code {
+  width: 80px;
+  color: #00aaee;
+  font-size: 14px;
+}
+.confirm-btn {
+  color: #fff;
+  background-color: #00aaee;
+  margin-top: 20px;
+  border-radius: 20px;
+}

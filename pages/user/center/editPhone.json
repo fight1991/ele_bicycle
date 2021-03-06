@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "dialog": "../../components/dialog/dialog"
+  },
+  "navigationBarTitleText": "修改手机号"
+
+}

@@ -12,7 +12,8 @@
     "pages/user/scanCode/scanCode",
     "pages/user/camera/front",
     "pages/user/camera/back",
-    "pages/user/center/center"
+    "pages/user/center/center",
+    "pages/user/center/editPhone"
   ],
   "window": {
     "backgroundTextStyle": "light",

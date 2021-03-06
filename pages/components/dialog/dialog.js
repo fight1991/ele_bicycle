@@ -38,7 +38,7 @@ Component({
     },
     // 请求图片
     getImage () {
-
+      // 点击获取图片
     },
     bindData (e) {
       this.data.code = e.detail.value
@@ -56,7 +56,10 @@ Component({
       
     },
     ok () {
-      // 输入的code和图片数据的code比对, 如果一样, 向父组件传递code,并关闭
+      // 1.将用户输入的验证码发送到后端进行比对,
+      // 2. 成功之后关闭dialog框, 并提示验证码已发送
+      // 3. 用户收到验证码,并输入
+      // 4. 再进行后面操作
       if (!this.data.code) {
         this.showToast('请输入验证码')
         return
@@ -69,8 +72,9 @@ Component({
         })
         return
       }
+      // 如果比对成功, 通知父组件, 验证码输入框变成可编辑状态
       this.hide()
-      this.triggerEvent("confirmEvent", this.data.code) 
+      this.triggerEvent("confirmEvent", true) 
     },
     showToast (title, callback) {
       wx.showToast({

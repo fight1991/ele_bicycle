@@ -36,6 +36,12 @@ Page({
     var endText = tempStr.toString().slice(tempStr.length - endIndex)
     return startText + "********" + endText
   },
+  // 跳转到更换手机号页面
+  goToPage () {
+    wx.navigateTo({
+      url: '/pages/user/center/editPhone',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

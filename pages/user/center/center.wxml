@@ -9,8 +9,8 @@
     </view>
     <view class="user-right" bindtap="showText"></view>
   </view>
-  <view class="change-tab">
+  <view class="change-tab" bindtap="goToPage">
     <view>更换手机号</view>
-    <view></view>
+    <view class="arrow-r">〉</view>
   </view>
 </view>

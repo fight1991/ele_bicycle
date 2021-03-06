@@ -51,6 +51,12 @@
         {
           "name": "个人中心-个人信息",
           "pathName": "pages/user/center/center",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "修改手机号页面",
+          "pathName": "pages/user/center/editPhone",
           "scene": null
         }
       ]
