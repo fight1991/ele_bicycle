@@ -2,17 +2,41 @@
 .outer {
   padding: 10rpx;
 }
-.form-container {
+.form-container, .license {
   padding: 10rpx 20rpx;
 }
 .label {
-  margin-right: 10px;
+  margin-right: 15px;
 }
 .icon {
   width: 20px;
   height: 20px;
+  margin-right: 10px;
 }
 .icon image {
   width: 100%;
   height: 100%;
+}
+.license {
+  display: flex;
+  padding: 30rpx 20rpx;
+  border: 1px solid #ccc;
+  margin: 20rpx;
+  border-radius: 10px;
+}
+
+.img-box {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+}
+.submit-btn {
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff;
+  background-color: #516dff;
 }

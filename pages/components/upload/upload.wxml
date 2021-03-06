@@ -1,0 +1,7 @@
+<!--pages/components/upload/upload.wxml-->
+<view class="btn-box" style="width:{{width}}px" bindtap="uploadBImg">
+  <icon class="remove-icon" hidden="{{uploadBg}}" type="cancel" catchtap="removeBg"></icon>
+  <image hidden="{{!uploadBg}}" mode="widthFix" class="upload-bg" src="/pages/image/upload.png"></image>
+  <image hidden="{{uploadBg}}" mode="widthFix" src="{{imgSrc}}"></image>
+  <slot></slot>
+</view>

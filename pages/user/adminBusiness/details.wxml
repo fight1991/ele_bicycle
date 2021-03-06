@@ -4,7 +4,7 @@
     <view class="common-form-item">
       <view class="label">车牌号码</view>
       <view class="input">
-        <input type="text" disabled model:value="{{brandNum}}"/>
+        <input type="text" disabled model:value="{{brand}}"/>
       </view>
       <view class="icon" bindtap="scanBtn" data-flag="brand">
         <image src="/pages/image/scan.png"></image>
@@ -13,7 +13,7 @@
     <view class="common-form-item">
       <view class="label">整车编号</view>
       <view class="input">
-        <input type="text" disabled model:value="{{carNum}}"/>
+        <input type="text" disabled model:value="{{car}}"/>
       </view>
       <view class="icon" bindtap="scanBtn" data-flag="car">
         <image src="/pages/image/scan.png"></image>
@@ -22,6 +22,15 @@
   </view>
   <!-- 附件区域 -->
   <view class="license">
-
+    <view class="title">附件</view>
+    <view class="img-box">
+      <upload bindgetImgInfo="getUpladImgInfo">
+        <text>车架照片</text>
+      </upload>
+      <upload bindgetImgInfo="getTotalImgInfo">
+        <text>整车照片</text>
+      </upload>
+    </view>
   </view>
+  <view class="submit-btn" bindtap="submitBtn">提交</view>
 </view>

@@ -1,0 +1,20 @@
+/* pages/components/upload/upload.wxss */
+.btn-box {
+  /* margin-right: 40px; */
+  font-size: 12px;
+  position: relative;
+}
+
+.remove-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(100%, -50%);
+}
+/* .upload-bg {
+  width: 60px;
+  height: 60px;
+} */
+image {
+  width: 100%;
+}
