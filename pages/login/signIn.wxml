@@ -16,7 +16,7 @@
         <view class="form-item">
           <view class="input-container form-item-code">
             <view class="input-code">
-              <input type="number" value="{{code}}" disabled="true" maxlength="4" id="code" placeholder-class="fs14" placeholder="验证码" bindinput="bindData"></input>
+              <input type="number" value="{{code}}" disabled="{{!isEditCode}}" focus="{{isEditCode}}" maxlength="4" id="code" placeholder-class="fs14" placeholder="验证码" bindinput="bindData"></input>
             </view>
             <view class="btn-code" bindtap="showDialog">获取验证码</view>
           </view>
@@ -29,7 +29,6 @@
 <!-- dialog组件 -->
 <dialog 
  id='myDialog'
- bindchangeImage="getImg"
  bindcancelEvent="colseDialog"
- bindconfirmEvent="getCode">
+ bindconfirmEvent="checkImgCodeStatus">
 </dialog>

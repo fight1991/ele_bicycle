@@ -1,4 +1,5 @@
 // pages/login/signIn.js
+const utils = require('../../utils/util')
 Page({
 
   /**
@@ -9,7 +10,7 @@ Page({
     code: '',
     imgSrc: '',
     phone: '18862348287',
-    isDisable: true, // 按钮禁用
+    isEditCode: false, // 按钮禁用
   },
 
   /**
@@ -34,35 +35,29 @@ Page({
   // 显示dialog
   showDialog () {
     // 校验手机号是否正确
-    var reg = /^1[3456789]\d{9}$/
-    var isPass = reg.test(this.data.phone)
-    if (!isPass) {
-      wx.showToast({
-        title: '请输入11位的手机号码',
-        icon: 'none',
-        duration: 1500
-      })
-      return
+    var isPass = utils.checkPhone(this.data.phone)
+    if (isPass) {
+      this.myDialog.show()
     }
-    this.myDialog.show()
   },
   // 关闭dialog
   colseDialog () {
     this.myDialog.hide()
   },
-  // 获取验证码
-  getCode (e) {
-    this.setData({
-      code: e.detail,
-      isDisable: false
-    })
-  },
-  // 获取验证码图片
-  getImg () {
-    console.log('请求图片')
+  // 是否可以输入验证码
+  checkImgCodeStatus (status) {
+    if (status) {
+      this.setData({
+        isEditCode: true
+      })
+    }
   },
   // 确定按钮 跳转到首页
   confirmBtn () {
+    let { phone, code } = this.data
+    if (!utils.checkPhone(phone) || !utils.checkCode(code)) {
+      return
+    }
     wx.reLaunch({
       url: '/pages/user/index',
     })

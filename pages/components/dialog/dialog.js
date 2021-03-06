@@ -39,9 +39,7 @@ Component({
     // 请求图片
     getImage () {
       // 点击获取图片
-    },
-    bindData (e) {
-      this.data.code = e.detail.value
+      console.log('请求验证码图片')
     },
     changeImage () {
       this.triggerEvent('changeImage')
@@ -72,9 +70,17 @@ Component({
         })
         return
       }
-      // 如果比对成功, 通知父组件, 验证码输入框变成可编辑状态
-      this.hide()
-      this.triggerEvent("confirmEvent", true) 
+      // 调用获取验证码的api
+      wx.showToast({
+        title: '验证码发送成功',
+        duration: 1500,
+        success: () => {
+          // 如果比对成功, 通知父组件, 验证码输入框变成可编辑状态
+          this.hide()
+          this.triggerEvent("confirmEvent", true) 
+        }
+      })
+      
     },
     showToast (title, callback) {
       wx.showToast({

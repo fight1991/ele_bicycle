@@ -11,7 +11,7 @@
     <view class='wx-dialog-content'>
       <view class='wx-dialog-item'>
         <view class="input">
-          <input placeholder='请输入图中验证码'  bindinput='bindData' id="code" value='{{code}}'></input>
+          <input placeholder='请输入图中验证码' model:value='{{code}}'></input>
         </view>
         <icon type="clear" bindtap="clear"></icon>
       </view>

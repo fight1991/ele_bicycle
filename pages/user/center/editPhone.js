@@ -1,6 +1,5 @@
 // pages/user/center/editPhone.js
-import WxValidate from '../../../utils/WxValidate'
-
+const utils = require('../../../utils/util')
 Page({
 
   /**
@@ -20,33 +19,9 @@ Page({
   onLoad: function (options) {
     this.myDialog = this.selectComponent('#myDialog')
   },
-  // 校验手机号
-  checkPhone () {
-    var reg = /^1[3456789]\d{9}$/
-    var isPass = reg.test(this.data.newPhone)
-    if (!isPass) {
-      wx.showToast({
-        title: '请输入正确格式的11位手机号码',
-        icon: 'none',
-        duration: 1500
-      })
-      return false
-    }
-    return true
-  },
-  // 校验验证码
-  checkCode () {
-    if (!this.data.code) {
-      wx.showToast({
-        title: '验证码不能为空',
-      })
-      return false
-    }
-    return true
-  },
   showDialog () {
     // 校验手机号是否正确
-    var isPass = this.checkPhone()
+    var isPass = utils.checkPhone(this.data.newPhone)
     if (isPass) {
       this.myDialog.show()
     }
@@ -61,7 +36,8 @@ Page({
   // 提交按钮
   confirmBtn () {
     // 再校验手机号和验证码是否输入
-    if (!this.checkPhone() || !this.checkCode()) {
+    let { newPhone, code } = this.data
+    if (!utils.checkPhone(newPhone) || !utils.checkCode(code)) {
       return
     }
   },
