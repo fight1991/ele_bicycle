@@ -13,7 +13,9 @@
     "pages/user/camera/front",
     "pages/user/camera/back",
     "pages/user/center/center",
-    "pages/user/center/editPhone"
+    "pages/user/center/editPhone",
+    "pages/user/center/relogin",
+    "pages/user/adminBusiness/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

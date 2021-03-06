@@ -57,6 +57,19 @@
         {
           "name": "修改手机号页面",
           "pathName": "pages/user/center/editPhone",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "重新登录",
+          "pathName": "pages/user/center/relogin",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "管理员业务",
+          "pathName": "pages/user/adminBusiness/index",
+          "query": "",
           "scene": null
         }
       ]

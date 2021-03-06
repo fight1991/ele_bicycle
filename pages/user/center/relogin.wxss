@@ -1,0 +1,4 @@
+/* pages/user/center/relogin.wxss */
+.common-btn {
+  width: 350rpx;
+}

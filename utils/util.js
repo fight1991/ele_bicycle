@@ -13,6 +13,7 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : `0${n}`
 }
+// 校验手机号
 const checkPhone = (num) => {
   var reg = /^1[3456789]\d{9}$/
   var isPass = reg.test(num)
@@ -26,6 +27,7 @@ const checkPhone = (num) => {
   }
   return true
 }
+// 校验验证码
 const checkCode = (num) => {
   if (!num) {
     wx.showToast({
@@ -37,8 +39,18 @@ const checkCode = (num) => {
   }
   return true
 }
+// 隐藏字符
+const hideText = (str, type) => {
+  var startIndex = type == 'phone' ? 3 : 6
+  var endIndex = type == 'phone' ? 2 : 4
+  var tempStr = str.toString()
+  var startText = tempStr.slice(0, startIndex)
+  var endText = tempStr.toString().slice(tempStr.length - endIndex)
+  return startText + "********" + endText
+}
 module.exports = {
   formatTime,
   checkPhone,
-  checkCode
+  checkCode,
+  hideText
 }

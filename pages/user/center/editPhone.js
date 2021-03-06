@@ -40,6 +40,10 @@ Page({
     if (!utils.checkPhone(newPhone) || !utils.checkCode(code)) {
       return
     }
+    // 如果修改成功, 跳转到relog页面
+    wx.reLaunch({
+      url: '/pages/user/center/relogin',
+    })
   },
   // 是否可以输入验证码
   checkImgCodeStatus (status) {

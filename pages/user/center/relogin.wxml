@@ -1,0 +1,5 @@
+<!--pages/user/center/relogin.wxml-->
+<view class="container">
+  <view class="fs18">修改成功</view>
+  <view class="common-btn" bindtap="reloginBtn">请重新登录</view>
+</view>

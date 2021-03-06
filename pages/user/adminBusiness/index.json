@@ -2,6 +2,6 @@
   "usingComponents": {
     "banner": "../../components/banner/banner"
   },
-  "navigationBarTitleText": "居民个人业务"
+  "navigationBarTitleText": "管理员业务"
 
 }

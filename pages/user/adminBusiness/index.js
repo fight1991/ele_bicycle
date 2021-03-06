@@ -1,4 +1,4 @@
-// pages/user/center/center.js
+// pages/user/adminBusiness/index.js
 const utils = require('../../../utils/util')
 Page({
 
@@ -6,35 +6,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name: '张三丰',
-    isShowNum: false,
-    idcard: 12312121212121212,
-    phone: 13348404848,
+    name: '张三',
+    idcard: '121224241444',
     trueIdcard: '',
-    truePhone: ''
+    hideStatus: true
   },
-
+  switchIdCardStatus () {
+    let { hideStatus, idcard } = this.data
+    var tempStatus = !hideStatus
+    this.setData({
+      hideStatus: !hideStatus,
+      trueIdcard: tempStatus ? utils.hideText(idcard) : idcard
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.showText()
-  },
-  showText () {
-    var { isShowNum, idcard, phone } = this.data
-    var temp = !isShowNum
     this.setData({
-      isShowNum: temp,
-      trueIdcard: temp ? utils.hideText(idcard) : idcard,
-      truePhone: temp ? utils.hideText(phone, 'phone') : phone
+      trueIdcard: utils.hideText(this.data.idcard)
     })
   },
-  // 跳转到更换手机号页面
-  goToPage () {
-    wx.navigateTo({
-      url: '/pages/user/center/editPhone',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
