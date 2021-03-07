@@ -5,18 +5,18 @@
     <view class="form-container">
       <view class="idcard-item">
         <label class="fs12 label">证件号码</label>
-        <view class="idcard-container fw">{{idcard}}</view>
+        <view class="idcard-container fw">{{idNO}}</view>
       </view>
       <form class="row-num">
         <view class="form-item">
           <view class="input-container">
-            <input type="number" maxlength="11" id="phone" placeholder-class="fs14" placeholder="请输入手机号" value="{{phone}}" bindinput="bindData"></input>
+            <input type="number" maxlength="11" placeholder-class="fs14" placeholder="请输入手机号" model:value="{{mobile}}"></input>
           </view>
         </view>
         <view class="form-item">
           <view class="input-container form-item-code">
             <view class="input-code">
-              <input type="number" value="{{code}}" disabled="{{!isEditCode}}" focus="{{isEditCode}}" maxlength="4" id="code" placeholder-class="fs14" placeholder="验证码" bindinput="bindData"></input>
+              <input type="number" model:value="{{authCode}}" disabled="{{!isEditCode}}" focus="{{isEditCode}}" maxlength="4" placeholder-class="fs14" placeholder="验证码"></input>
             </view>
             <view class="btn-code" bindtap="showDialog">获取验证码</view>
           </view>

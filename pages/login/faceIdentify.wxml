@@ -12,13 +12,13 @@
         <view class="form-item">
           <label for="name" class="label">姓名</label>
           <view class="input-container">
-            <input type="text" id="name" placeholder="请输入姓名" bindinput="bindData"></input>
+            <input type="text" model:value="{{idName}}" placeholder="请输入姓名"></input>
           </view>
         </view>
         <view class="form-item">
           <label for="idcard" class="label">证件号码</label>
           <view class="input-container">
-            <input type="idcard" id="idcard" placeholder="请输入证件号码" bindinput="bindData"></input>
+            <input type="idcard" model:value="{{idNO}}" placeholder="请输入证件号码" bindinput="bindData"></input>
           </view>
         </view>
       </form>

@@ -7,10 +7,8 @@ Page({
    */
   data: {
     validate: null,
-    formData: {
-      name: '',
-      idcard: ''
-    }
+    idName: '', // 姓名
+    idNO: '' // 身份证
   },
 
   /**
@@ -18,11 +16,6 @@ Page({
    */
   onLoad: function (options) {
     this.initValidate()
-  },
-  // 表单绑定
-  bindData (e) {
-    let id = e.currentTarget.id
-    this.data.formData[id] = e.detail.value
   },
   showModal(error) {
     wx.showToast({
@@ -33,18 +26,16 @@ Page({
   },
   // 点击人脸识别按钮
   startFaceIdentify () {
- 
+    let {validate, idNO, idName} = this.data
     var temp = {
       detail: {
-        value: this.data.formData
+        value: {
+          idNO,
+          idName
+        }
       }
     }
-    let {validate, formData} = this.data
-    var temp = {
-      detail: {
-        value: formData
-      }
-    }
+    console.log(temp)
     // checkform参数 要是form事件对象,故包装一下
     let isPass = validate.checkForm(temp)
     if (!isPass) {
@@ -54,28 +45,28 @@ Page({
     }
     // 调用人脸识别接口
     wx.startFacialRecognitionVerify({
-      name: formData.name,
-      idCardNumber: formData.idcard,
+      name: idName,
+      idCardNumber: idNO,
       success: this.faceVerifySuccess,
       fail: this.faceVerifyFail
     })
   },
-  // 人脸识别成功
+  // 人脸识别成功, 跳转到首页个人中心/pages/user/index
   async faceVerifySuccess (res) {
-    let {result} = await wx.$post({
-      url: '',
-      data: {
-        name: formData.name,
-        idCardNumber: formData.idcard,
-        verifyResult: res.verifyResult
-      }
-    })
-    if (result) {}
+    // let {result} = await wx.$post({
+    //   url: '',
+    //   data: {
+    //     this.data.idNO,
+    //     this.data.idName,
+    //     verifyResult: res.verifyResult
+    //   }
+    // })
+    // if (result) {}
   },
   // 跳转到登录页
   routeToSignIn () {
     wx.reLaunch({
-      url: '/pages/login/signIn?idcard=' + 320981189709140978,
+      url: '/pages/login/signIn?idNO=' + this.data.idNO,
     })
   },
   // 人脸识别失败
@@ -94,19 +85,19 @@ Page({
   // 初始化验证方法
   initValidate () {
     let rules = {
-      name: {
+      idName: {
         required: true
       },
-      idcard: {
+      idNO: {
         required: true,
         idcard: true
       }
     }
     let messages = {
-      name: {
+      idName: {
         required: '请填写姓名'
       },
-      idcard: {
+      idNO: {
         required: '请填写身份证号码',
         idcard: '请填写正确的身份证号'
       }
