@@ -11,6 +11,9 @@ Page({
     mobile: '18862348287',
     authCode: '', // 验证码
     isEditCode: false, // 按钮禁用
+    codeText: '获取验证码',
+    timerId: 0,
+    codeTime: 10
   },
 
   /**
@@ -29,9 +32,9 @@ Page({
   showDialog () {
     // 校验手机号是否正确
     var isPass = utils.checkPhone(this.data.mobile)
-    if (isPass) {
-      this.myDialog.show()
-    }
+    if (!isPass) return
+    if (this.data.timerId > 0) return
+    this.myDialog.show()
   },
   // 关闭dialog
   colseDialog () {
@@ -39,11 +42,37 @@ Page({
   },
   // 是否可以输入验证码
   checkImgCodeStatus (status) {
+    // status为true时代表验证码发送成功
+    // 开始倒计时
     if (status) {
       this.setData({
         isEditCode: true
       })
+      this.computedTime()
     }
+  },
+  // 倒计时
+  computedTime () {
+    if (this.data.timerId > 0) return
+    this.setData({
+      codeText: this.data.codeTime + 's'
+    })
+    var seconds = this.data.codeTime
+    var timerId = setInterval(() => {
+      seconds--
+      this.setData({
+        codeText: seconds + 's'
+      })
+      if (seconds < 0) {
+        this.setData({
+          codeText: '获取验证码'
+        })
+        clearInterval(timerId)
+        this.data.timerId = 0
+      }
+    }, 1000)
+    this.data.timerId = timerId
+    console.log(timerId)
   },
   // 确定按钮 跳转到首页
   confirmBtn () {
@@ -80,7 +109,8 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(this.data.timerId)
+    this.data.timerId = 0
   },
 
   /**

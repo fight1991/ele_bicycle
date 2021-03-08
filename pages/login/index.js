@@ -13,6 +13,14 @@ Page({
    */
   onLoad: function (options) {
     console.log(wx.env);
+    wx.getUserProfile({
+      success: res => {
+        console.log(res)
+      },
+      fail: res => {
+        console.log(res)
+      }
+    })
   },
   routeTo () {
     wx.navigateTo({
