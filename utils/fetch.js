@@ -26,54 +26,48 @@ class Fetch {
 }
 // 生成实例
 const {instance: getInstance} = new Fetch({
-  baseURL: config.API
+  baseURL: config.API,
+  method: 'GET'
 })
 const {instance: postInstance} = new Fetch({
   baseURL: config.API,
-  method: 'post'
+  method: 'POST'
+})
+const {instance: putInstance} = new Fetch({
+  baseURL: config.API,
+  method: 'PUT'
 })
 const {instance: uploadInstance} = new Fetch({
   baseURL: config.FILE,
-  method: 'post',
+  method: 'POST',
   contentType: 'multipart/form-data'
 })
 
+// 方法统一包装
+const ajaxFunc = async (url, data, isLoading, func) => {
+  try {
+    if (isLoading) showLoading()
+    let res = await func(url, data)
+    if (isLoading) closeLoading()
+    return HandleBranch(res.data)
+  } catch (error) {
+    if (isLoading) closeLoading()
+    console.log(error)
+    return { error: error}
+  }
+}
 
 // 方法绑定
-wx.$get = async ({url, data, isLoading = true}) => {
-  try {
-    if (isLoading) showLoading()
-    let res = await getInstance(url, data)
-    if (isLoading) closeLoading()
-    return HandleBranch(res.data)
-  } catch (error) {
-    if (isLoading) closeLoading()
-    console.log(error)
-    return { error: error}
-  }
+wx.$get = ({url, data, isLoading = true}) => {
+  return ajaxFunc(url, data, isLoading, getInstance)
 }
-wx.$post = async ({url, data, isLoading = true}) => {
-  try {
-    if (isLoading) showLoading()
-    let res = await postInstance(url, data)
-    if (isLoading) closeLoading()
-    return HandleBranch(res.data)
-  } catch (error) {
-    if (isLoading) closeLoading()
-    console.log(error)
-    return { error: error}
-  }
+wx.$post = ({url, data, isLoading = true}) => {
+  return ajaxFunc(url, data, isLoading, postInstance)
 }
-wx.$upload = async ({url, data, isLoading = true}) => {
-  try {
-    if (isLoading) showLoading()
-    let res = await uploadInstance(url, data)
-    if (isLoading) closeLoading()
-    return HandleBranch(res.data)
-  } catch (error) {
-    if (isLoading) closeLoading()
-    console.log(error)
-    return { error: error}
-  }
+wx.$put = ({url, data, isLoading = true}) => {
+  return ajaxFunc(url, data, isLoading, putInstance)
+}
+wx.$upload = ({url, data, isLoading = true}) => {
+  return ajaxFunc(url, data, isLoading, uploadInstance)
 }
 // export default null
