@@ -1,7 +1,9 @@
 <!--pages/login/signIn.wxml-->
 <view class="container">
   <view class="top">
-    <view class="user-img"></view>
+    <view class="user-img">
+      <image wx:if="{{imgSrc}}" src="{{imgSrc}}" mode="cover" alt=""></image>
+    </view>
     <view class="form-container">
       <view class="idcard-item">
         <label class="fs12 label">证件号码</label>

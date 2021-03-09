@@ -1,12 +1,12 @@
 /* pages/user/record/recordAgree/recordAgree.wxss */
 .mask-container {
-  height: 85vh;
+  height: 80vh;
 }
 .scroll-container {
   height: 100%;
 }
 .content {
-  padding: 0 10px;
+  padding: 0 15px;
 }
 .title {
   text-align: center;

@@ -1,5 +1,6 @@
 // pages/login/signIn.js
 const utils = require('../../utils/util')
+var app = getApp()
 Page({
 
   /**
@@ -24,6 +25,11 @@ Page({
     if(idNO) {
       this.setData({
         idNO: utils.hideText(idNO)
+      })
+    }
+    if (app.globalData.userInfo) {
+      this.setData({
+        imgSrc: app.globalData.userInfo.avatarUrl
       })
     }
   },

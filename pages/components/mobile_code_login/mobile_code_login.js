@@ -25,7 +25,7 @@ Component({
     isEditCode: false, // 按钮禁用
     codeText: '获取验证码',
     timerId: 0,
-    codeTime: 10
+    codeTime: 60
   },
   lifetimes: {
     attached: function (e) {
@@ -38,6 +38,7 @@ Component({
   methods: {
     // 获取验证码
     getCode () {
+      if (this.data.timerId) return
       // 调用获取验证码api成功后, 开启倒计时
       utils.showToast.success('发送成功', () => {
         this.setData({
@@ -87,7 +88,7 @@ Component({
             codeText: '获取验证码'
           })
           clearInterval(timerIdTemp)
-          this.data.timerIdTemp = 0
+          this.data.timerId = 0
         }
       }, 1000)
       this.data.timerId = timerIdTemp
