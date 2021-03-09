@@ -49,13 +49,11 @@ const hideText = (str, type) => {
   return startText + "********" + endText
 }
 // 不足2位数补0
-const addZero = (num, times) => {
-  if (num >= times) {
-    return num
-  } else if (num > 0 && num < times) {
+const addZero = (num) => {
+  if (num > 0 && num < 10) {
     return '0' + num
   } else {
-    return 0
+    return num
   }
 }
 const showToast = {

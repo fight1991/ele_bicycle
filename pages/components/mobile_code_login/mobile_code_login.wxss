@@ -14,10 +14,16 @@
   width: 80px;
   color: #00aaee;
   font-size: 14px;
+  text-align: center;
 }
 .confirm-btn {
   color: #fff;
-  background-color: #00aaee;
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #516dff;
+  height: 40px;
   border-radius: 20px;
+  padding: 0 40px;
+  margin-top: 30px;
 }

@@ -30,6 +30,9 @@ Component({
   lifetimes: {
     attached: function (e) {
       this.myDialog = this.selectComponent('#myDialog')
+    },
+    detached: function (e) {
+      this.data.timerId && clearInterval(this.data.timerId)
     }
   },
   /**
@@ -75,13 +78,13 @@ Component({
       let { codeTime, timerId } = this.data
       if (timerId > 0) return
       this.setData({
-        codeText: codeTime + 's'
+        codeText: codeTime + ' 秒'
       })
       var seconds = codeTime
       var timerIdTemp = setInterval(() => {
         seconds--
         this.setData({
-          codeText: utils.addZero(seconds, codeTime) + 's'
+          codeText: utils.addZero(seconds, codeTime) + ' 秒'
         })
         if (seconds < 0) {
           this.setData({
