@@ -16,7 +16,7 @@ page {
 }
 
 .welcome-txt {
-  margin: 20px 0;
+  margin: 40rpx 0;
   text-align: center;
 }
 .user-img {
@@ -30,4 +30,7 @@ page {
 .user-img image {
   width: 100%;
   height: 100%;
+}
+.common-btn {
+  margin-top: 80rpx;
 }

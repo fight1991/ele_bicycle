@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    idNO: ''
+    idNO: '',
+    isClick: false, // 是否已经点击获取头像// 节流
   },
 
   /**
@@ -35,6 +36,8 @@ Page({
     }
   },
   wechatPermission () {
+    if (this.data.isClick) return
+    this.data.isClick = true
     wx.getUserProfile({
       desc: '头像展示',
       success: res => {
@@ -48,7 +51,14 @@ Page({
         }
       },
       fail: res => {
+        wx.showToast({
+          title: '头像获取失败',
+          icon: 'none'
+        })
         console.log(res, '头像获取失败')
+      },
+      complete: res => {
+        this.data.isClick = false
       }
     })
   },
