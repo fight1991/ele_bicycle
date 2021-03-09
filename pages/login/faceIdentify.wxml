@@ -5,9 +5,9 @@
       <image wx:if="wxImg" src="{{wxImg}}" mode="cover"></image>
     </view>
     <view class="form-container">
-      <view class="welcome-txt fs20 fw">欢迎登录</view>
+      <view class="welcome-txt fs20 fw">欢迎注册</view>
       <view class="form-item">
-        <label class="fs12 label">证件类型</label>
+        <label class="label">证件类型</label>
         <view class="input-container">居民二代身份证</view>
       </view>
       <form>

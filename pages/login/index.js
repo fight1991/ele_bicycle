@@ -1,12 +1,13 @@
 // pages/login/index.js
 var app = getApp()
+import { checkCode } from '../api/index'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    idNO: ''
   },
 
   /**
@@ -15,16 +16,35 @@ Page({
   onLoad: function (options) {
     
   },
+  // 入口路由跳转
+  // 1. 判断有无token
+  // 2. 无token调取api结果, 判断是去注册还是去登录
+  // 3. 有token 说明登录过 跳转到首页
+  async routeValid () {
+    var token = wx.getStorageSync('token')
+    if (token) {
+      this.routeTo('/pages/user/index')
+    } else {
+      // 请求后端接口进行登录凭证校验, 有身份证号, 跳转到登录页面, 无身份证号跳转到注册页面
+      let { result } = await checkCode({
+        jscode: app.globalData.jsCode
+      })
+      if (result) {
+        this.data.idNO = result.idNO
+      }
+    }
+  },
   wechatPermission () {
     wx.getUserProfile({
       desc: '头像展示',
       success: res => {
         if (res.errMsg == 'getUserProfile:ok') {
           app.globalData.userInfo = res.userInfo
-          // 假设去注册
-          wx.reLaunch({
-            url: '/pages/login/faceIdentify',
-          })
+          if (this.data.idNO) {
+            this.routeTo('/pages/login/signIn')
+          } else {
+            this.routeTo('/pages/login/faceIdentify')
+          }
         }
       },
       fail: res => {
@@ -32,10 +52,10 @@ Page({
       }
     })
   },
-  routeTo () {
-    // 微信授权弹窗
+  // 跳转到人脸识别注册页面
+  routeTo (url) {
     wx.navigateTo({
-      url: '/pages/login/faceIdentify'
+      url
     })
   },
   /**
