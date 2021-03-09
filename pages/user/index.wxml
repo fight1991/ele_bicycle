@@ -14,6 +14,27 @@
       </view>
       <view class="right stopTap"></view>
     </view>
+    <view class="bus-item mask" data-bustype="none">
+      <view class="left stopTap">
+        <view class="head-title fs16">民生行业业务</view>
+        <view class="head-title fs12 fc-ccc">Personal Business</view>
+      </view>
+      <view class="right stopTap"></view>
+    </view>
+    <view class="bus-item mask" data-bustype="none">
+      <view class="left stopTap">
+        <view class="head-title fs16">单位业务</view>
+        <view class="head-title fs12 fc-ccc">Personal Business</view>
+      </view>
+      <view class="right stopTap"></view>
+    </view>
+    <view class="bus-item mask" data-bustype="none">
+      <view class="left stopTap">
+        <view class="head-title fs16">销售门店业务</view>
+        <view class="head-title fs12 fc-ccc">Personal Business</view>
+      </view>
+      <view class="right stopTap"></view>
+    </view>
     <view class="bus-item" data-bustype="2">
       <view class="left stopTap">
         <view class="head-title fs16">管理员业务</view>

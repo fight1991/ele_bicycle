@@ -16,16 +16,21 @@ Page({
   },
   // 路由跳转
   routeTo (e) {
-    console.log(e)
-    console.log(e.target.dataset.bustype)
     let { bustype } = e.target.dataset
     if (bustype == 1) {
+      // 订阅消息弹窗, 再路由跳转
       wx.navigateTo({
         url: '/pages/user/personalBusiness/index',
       })
     } else if (bustype == 2) {
       wx.navigateTo({
         url: '/pages/user/adminBusiness/index',
+      })
+    } else {
+      wx.showToast({
+        title: '开发中, 敬请期待',
+        icon: 'none',
+        duration: 1500
       })
     }
   },
