@@ -1,0 +1,26 @@
+<!--pages/components/mobile_code_login/mobile_code_login.wxml-->
+<view>
+  <form class="row-num">
+    <view class="form-item">
+      <view class="input-container">
+        <input type="number" maxlength="11" placeholder-class="fs14" placeholder="请输入手机号" model:value="{{mobile}}"></input>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="input-container form-item-code">
+        <view class="input-code">
+          <input type="number" model:value="{{authCode}}" disabled="{{!isEditCode}}" focus="{{isEditCode}}" maxlength="4" placeholder-class="fs14" placeholder="验证码"></input>
+        </view>
+        <view class="btn-code" bindtap="showDialog">{{codeText}}</view>
+      </view>
+    </view>
+  </form>
+  <button bindtap="confirmBtn" class="confirm-btn">{{btnText}}</button>
+</view>
+<!-- dialog组件 -->
+<dialog 
+ id='myDialog'
+ bindcancelEvent="colseDialog"
+ bindconfirmEvent="checkImgCodeStatus">
+</dialog>
+

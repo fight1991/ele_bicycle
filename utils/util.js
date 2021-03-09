@@ -48,9 +48,20 @@ const hideText = (str, type) => {
   var endText = tempStr.toString().slice(tempStr.length - endIndex)
   return startText + "********" + endText
 }
+// 不足2位数补0
+const addZero = (num, times) => {
+  if (num >= times) {
+    return num
+  } else if (num > 0 && num < times) {
+    return '0' + num
+  } else {
+    return 0
+  }
+}
 module.exports = {
   formatTime,
   checkPhone,
   checkCode,
-  hideText
+  hideText,
+  addZero
 }

@@ -1,0 +1,23 @@
+/* pages/components/mobile_code_login/mobile_code_login.wxss */
+.input-container {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+}
+.form-item-code {
+  display: flex;
+  align-items: center;
+}
+.input-code {
+  flex: 1;
+}
+.btn-code {
+  width: 80px;
+  color: #00aaee;
+  font-size: 14px;
+}
+.confirm-btn {
+  color: #fff;
+  background-color: #00aaee;
+  margin-top: 20px;
+  border-radius: 20px;
+}

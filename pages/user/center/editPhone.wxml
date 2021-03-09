@@ -1,33 +1,14 @@
 <!--pages/user/center/editPhone.wxml-->
 <view>
   <view class="form-container">
-    <form class="row-num">
-      <view class="form-item-label">
-        <view class="input-label">原手机号</view>
-        <view class="input">
-          <input type="text" model:value="{{oldPhone}}"/>
-        </view>
+
+    <view class="form-item-label">
+      <view class="input-label">原手机号</view>
+      <view class="input">
+        <input type="text" model:value="{{oldPhone}}"/>
       </view>
-      <view class="form-item">
-        <view class="input-container">
-          <input type="number" maxlength="11" id="phone" placeholder-class="fs14" placeholder="请输入手机号" model:value="{{newPhone}}" bindinput="bindData"></input>
-        </view>
-      </view>
-      <view class="form-item form-item-code">
-        <view class="input-code">
-          <input type="number" model:value="{{code}}" disabled="{{!isEditCode}}" focus="{{isEditCode}}" maxlength="4" placeholder-class="fs14" placeholder="验证码"></input>
-        </view>
-        <view class="btn-code" bindtap="showDialog">获取验证码</view>
-      </view>
-    </form>
-    <button bindtap="confirmBtn" class="confirm-btn">提交</button>
+    </view>
+    <mobileCode flag="{{2}}" btnText="提交"></mobileCode>
   </view>
 </view>
 
-<!-- dialog组件 -->
-<dialog 
- id='myDialog'
- bindchangeImage="getImg"
- bindcancelEvent="colseDialog"
- bindconfirmEvent="checkImgCodeStatus">
-</dialog>
