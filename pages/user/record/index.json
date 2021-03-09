@@ -3,7 +3,8 @@
     "personInfo": "./personInfo/personInfo",
     "busInfo": "./busInfo/busInfo",
     "mask": "/pages/components/mask/mask",
-    "agree": "./recordAgree/recordAgree"
+    "agree": "./recordAgree/recordAgree",
+    "step": "/pages/components/step/step"
   },
   "navigationBarTitleText": "备案申报"
 }

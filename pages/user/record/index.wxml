@@ -2,38 +2,17 @@
 <scroll-view class="scroll-container" scroll-y="true">
   <view class="record">
     <!-- 步骤区域 -->
-    <view class="step-box">
-      <view class="step-item{{currentStep >= 1 ? ' active' : ''}}">
-        <view class="line-through{{currentStep >= 2 ? ' active' : ''}}"></view>
-        <view class="dot-box">
-          <view class="dot"></view>
-        </view>
-        <view class="text">完善个人信息</view>
-      </view>
-      <view class="step-item{{currentStep>=2 ? ' active' : ''}}">
-        <view class="line-through{{currentStep>=3 ? ' active' : ''}}"></view>
-        <view class="dot-box">
-          <view class="dot"></view>
-        </view>
-        <view class="text">完善车辆信息</view>
-      </view>
-      <view class="step-item{{currentStep>=3 ? ' active' : ''}}">
-        <view class="dot-box">
-          <view class="dot"></view>
-        </view>
-        <view class="text">等待审核</view>
-      </view>
-    </view>
+    <step stepList="{{stepList}}" step="{{currentStep}}"></step>
     <!-- 个人信息区域 -->
-    <view class="person-area" wx:if="{{currentStep==1}}">
+    <view class="person-area" wx:if="{{currentStep==0}}">
       <personInfo id="personInfo" bindnextStep="progressStatus"></personInfo>
     </view>
     <!-- 完善车辆信息区域 -->
-    <view class="bus-area" wx:if="{{currentStep==2}}">
+    <view class="bus-area" wx:if="{{currentStep==1}}">
       <busInfo id="busInfo" bindnextStep="progressStatus"></busInfo>
     </view>
     <!-- 等待审核区域 -->
-    <view class="check-area" wx:if="{{currentStep==3}}">
+    <view class="check-area" wx:if="{{currentStep==2}}">
       <view class="status-image">
         <image src="/pages/image/check-status.png" mode="aspectFit"></image>
       </view>

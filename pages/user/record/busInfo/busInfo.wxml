@@ -9,7 +9,7 @@
         <view class="input scan-input">
           <input type="text" disabled model:value="{{scanCode}}"/>
         </view>
-        <image bindtap="scanBtn" src="/pages/image/scan.png" class="scan" bindtap="scanBtn"></image>
+        <image class="image" bindtap="scanBtn" src="/pages/image/scan.png" class="scan" bindtap="scanBtn"></image>
       </view>
       <view class="tag">*支持新国标车合格证扫码填写</view>
       <view class="form-item">
@@ -48,18 +48,6 @@
               <text>购车发票</text>
             </upload>
           </view>
-          <!-- <view class="btn-box" bindtap="uploadBImg" data-flag="bus">
-            <icon class="remove-icon" hidden="{{busBg}}" type="cancel" catchtap="removeBg" data-flag="bus"></icon>
-            <image hidden="{{!busBg}}" class="upload-bg" src="../../../image/upload.png"></image>
-            <image hidden="{{busBg}}" mode="apectFit" src="{{busSrc}}"></image>
-            <text>车辆合格证</text>
-          </view>
-          <view class="btn-box" bindtap="uploadBImg" data-flag="tick">
-            <icon class="remove-icon" hidden="{{tickBg}}" type="cancel" catchtap="removeBg" data-flag="tick"></icon>
-            <image hidden="{{!tickBg}}" class="upload-bg" src="../../../image/upload.png"></image>
-            <image hidden="{{tickBg}}" mode="apectFit" src="{{tickSrc}}"></image>
-            <text>购车发票</text>
-          </view> -->
         </view>
       </view>
     </form>

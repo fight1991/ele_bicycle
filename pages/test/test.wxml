@@ -1,0 +1,3 @@
+<!--pages/test/test.wxml-->
+<step step="{{step}}"></step>
+<button bindtap="stepClick">向前</button>

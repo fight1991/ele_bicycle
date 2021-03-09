@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentStep: 1, // 当前操作步骤
+    currentStep: 0, // 当前操作步骤
+    stepList: ['完善个人信息', '完善车辆信息', '等待审核']
   },
 
   /**
@@ -69,7 +70,7 @@ Page({
   progressStatus () {
     var stepNum = this.data.currentStep
     stepNum++
-    if (stepNum > 3) return
+    if (stepNum > 2) return
     this.setData({
       currentStep: stepNum
     })

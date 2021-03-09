@@ -3,7 +3,7 @@
   <view class="name">
     <view>{{name}}</view>
     <view bindtap="routeToMePage" class="routeMePage">
-      <image src="/pages/image/profile.png"></image>
+      <image class="image" src="/pages/image/profile.png"></image>
     </view>
   </view>
   <view class="idcard">

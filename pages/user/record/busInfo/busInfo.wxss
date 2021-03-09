@@ -1,6 +1,6 @@
 /* pages/user/record/busInfo/busInfo.wxss */
 
-image {
+.image {
   width: 100%;
 }
 

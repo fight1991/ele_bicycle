@@ -1,0 +1,13 @@
+<!--pages/components/step/step.wxml-->
+<!-- 步骤组件 -->
+<view class="step-box">
+  <block wx:for="{{stepList}}" wx:key="item">
+    <view style="width:{{100/(stepList.length)}}%" class="step-item{{step >= index ? ' active' : ''}}">
+    <view hidden="{{index == stepList.length -1}}" class="line-through{{step >= index + 1 ? ' active' : ''}}"></view>
+    <view class="dot-box">
+      <view class="dot"></view>
+    </view>
+    <view class="text">{{item}}</view>
+  </view>
+  </block>
+</view>

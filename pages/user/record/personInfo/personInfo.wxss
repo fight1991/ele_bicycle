@@ -1,6 +1,6 @@
 /* pages/user/record/personInfo/personInfo.wxss */
 
-image {
+.image {
   width: 100%;
 }
 .photo-area {
@@ -14,7 +14,7 @@ image {
   margin: 0 auto;
   /* background-color: #ccc; */
 }
-.face-btn image {
+.face-btn .image {
   width: 100%;
   height: 100%;
 }
