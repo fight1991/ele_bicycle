@@ -13,6 +13,8 @@ Page({
    */
   onLoad: function (options) {
     this.personInfoComponent = this.selectComponent('#personInfo')
+    this.agreeModal = this.selectComponent('#agreeModal')
+    this.agreeModal.show()
   },
 
   // 点击拍摄人脸按钮
@@ -76,6 +78,11 @@ Page({
     wx.reLaunch({
       url: '/pages/user/index',
     })
+  },
+  // 关闭已阅读蒙层
+  closeAgreeModal () {
+    console.log('哈哈')
+    this.agreeModal.hide()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

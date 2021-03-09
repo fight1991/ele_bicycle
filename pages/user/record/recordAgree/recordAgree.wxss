@@ -1,0 +1,32 @@
+/* pages/user/record/recordAgree/recordAgree.wxss */
+.mask-container {
+  height: 85vh;
+}
+.scroll-container {
+  height: 100%;
+}
+.content {
+  padding: 0 10px;
+}
+.title {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
+.line1 {
+  margin: 15px 0;
+}
+.line-item {
+  padding-bottom: 10px;
+}
+.read-btn {
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background-color: #00aaee;
+  margin: 20px auto;
+}

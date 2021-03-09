@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    // this.routeValid()
   },
   // 入口路由跳转
   // 1. 判断有无token

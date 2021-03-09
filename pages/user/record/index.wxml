@@ -44,3 +44,8 @@
     </view>
   </view>
 </scroll-view>
+
+<!-- 蒙层 -->
+<mask onClickModalClose="{{false}}" id="agreeModal">
+  <agree bindcloseAgreeModal="closeAgreeModal"></agree>
+</mask>
