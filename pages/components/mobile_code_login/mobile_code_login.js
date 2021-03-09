@@ -36,9 +36,18 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // 获取验证码
+    getCode () {
+      // 调用获取验证码api成功后, 开启倒计时
+      utils.showToast.success('发送成功', () => {
+        this.setData({
+          isEditCode: true
+        })
+        this.computedTime()
+      })
+    },
     // 显示dialog
     showDialog () {
-      console.log('哈哈')
       // 校验手机号是否正确
       var isPass = utils.checkPhone(this.data.mobile)
       if (!isPass) return

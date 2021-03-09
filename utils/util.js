@@ -58,10 +58,29 @@ const addZero = (num, times) => {
     return 0
   }
 }
+const showToast = {
+  success: (title, success) => {
+    wx.showToast({
+      title: title,
+      duration: 1500,
+      success: () => {
+        success && success()
+      }
+    })
+  },
+  common: (title) => {
+    wx.showToast({
+      title: title,
+      duration: 1500,
+      icon: 'none'
+    })
+  }
+}
 module.exports = {
   formatTime,
   checkPhone,
   checkCode,
   hideText,
-  addZero
+  addZero,
+  showToast
 }
