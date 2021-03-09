@@ -1,4 +1,5 @@
 // pages/login/index.js
+var app = getApp()
 Page({
 
   /**
@@ -12,17 +13,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(wx.env);
+    
+  },
+  wechatPermission () {
     wx.getUserProfile({
+      desc: '头像展示',
       success: res => {
-        console.log(res)
+        if (res.errMsg == 'getUserProfile:ok') {
+          app.globalData.userInfo = res.userInfo
+          // 假设去注册
+          wx.reLaunch({
+            url: '/pages/login/faceIdentify',
+          })
+        }
       },
       fail: res => {
-        console.log(res)
+        console.log(res, '头像获取失败')
       }
     })
   },
   routeTo () {
+    // 微信授权弹窗
     wx.navigateTo({
       url: '/pages/login/faceIdentify'
     })

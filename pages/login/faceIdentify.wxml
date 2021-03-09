@@ -1,7 +1,9 @@
 <!--pages/login/faceIdentify.wxml-->
 <view class="container">
   <view class="top">
-    <view class="bicyle-img"></view>
+    <view class="bicyle-img">
+      <image wx:if="wxImg" src="{{wxImg}}" mode="cover"></image>
+    </view>
     <view class="form-container">
       <view class="welcome-txt fs20 fw">欢迎登录</view>
       <view class="form-item">
