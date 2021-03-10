@@ -40,6 +40,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    jsCode: ''
+    jsCode: '',
+    idcard: '14124141242412424',
+    name: '张三'
   }
 })

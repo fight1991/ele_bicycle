@@ -1,37 +1,6 @@
 /* pages/user/personalBusiness/index.wxss */
+@import "../style/common.wxss";
 .box {
   padding: 30rpx;
 }
-.grid-box {
-  padding: 20px 0;
-  display: flex;
-  /* justify-content: space-between; */
-  flex-wrap: wrap;
-}
-.block-item {
-  box-sizing: border-box;
-  padding: 20rpx 0;
-  width: 220rpx;
-  height: 220rpx;
-  margin-right: 15rpx;
-  /* height: 50px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  /* border: 1px solid #ccc; */
-  box-shadow: 3px 4px 6px 0px #999;
-}
-.block-item:nth-child(3n + 3) {
-  margin-right: 0rpx;
-}
-.img-box {
-  height: 60px;
-  width: 60px;
-  border-radius: 5px;
-  background-color: #00aaee;
-}
-/* .block-item .text {
-  margin-top: 10px;
-} */
+

@@ -1,0 +1,9 @@
+/* pages/components/show_hide_icon/showHideIcon.wxss */
+.icon {
+  width: 28rpx;
+  height: 18rpx;
+}
+.icon-box {
+  /* padding: 0 5px; */
+  display: inline-block;
+}

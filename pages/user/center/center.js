@@ -1,5 +1,6 @@
 // pages/user/center/center.js
 const utils = require('../../../utils/util')
+var app = getApp()
 Page({
 
   /**
@@ -11,22 +12,34 @@ Page({
     idcard: 12312121212121212,
     phone: 13348404848,
     trueIdcard: '',
-    truePhone: ''
+    truePhone: '',
+    wxUserImg: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.showText()
+    this.initStatus()
+    if (app.globalData.userInfo) {
+      this.setData({
+        wxUserImg: app.globalData.userInfo.avatarUrl
+      })
+    }
   },
-  showText () {
-    var { isShowNum, idcard, phone } = this.data
-    var temp = !isShowNum
+  initStatus () {
+    var { idcard, phone } = this.data
     this.setData({
-      isShowNum: temp,
-      trueIdcard: temp ? utils.hideText(idcard) : idcard,
-      truePhone: temp ? utils.hideText(phone, 'phone') : phone
+      trueIdcard: utils.hideText(idcard),
+      truePhone: utils.hideText(phone, 'phone')
+    })
+  },
+  showText (e) {
+    var { idcard, phone } = this.data
+    var temp = e.detail
+    this.setData({
+      trueIdcard: !temp ? utils.hideText(idcard) : idcard,
+      truePhone: !temp ? utils.hideText(phone, 'phone') : phone
     })
   },
   // 跳转到更换手机号页面

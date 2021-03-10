@@ -1,16 +1,21 @@
 <!--pages/user/center/center.wxml-->
 <view class="outer">
   <view class="user-bg">
-    <view class="user-left"></view>
+    <view class="user-left">
+      <image class="img" src="{{wxUserImg}}" mode="cover"></image>
+    </view>
     <view class="user-middle">
       <view class="fs20">{{name}}</view>
       <view>{{trueIdcard}}</view>
       <view>{{truePhone}}</view>
     </view>
-    <view class="user-right" bindtap="showText"></view>
+    <view class="user-right">
+      <show-hide-icon bindswitchOp="showText"></show-hide-icon>
+    </view>
   </view>
   <view class="change-tab" bindtap="goToPage">
     <view>更换手机号</view>
     <view class="arrow-r">〉</view>
   </view>
+  <view class="common-btn">退出</view>
 </view>

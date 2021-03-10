@@ -1,0 +1,14 @@
+<!--pages/components/name_idcard/name_idcard.wxml-->
+<view class="person-info">
+  <view class="name">
+    <view>{{name}}</view>
+    <view bindtap="routeToMePage" class="routeMePage">
+      <image class="image" src="/pages/image/arrow-right.png"></image>
+    </view>
+  </view>
+  <view class="idcard">
+    <text>{{trueIdcard}}</text>
+    <switchIcon class="comp-icon" bindswitchOp="switchIdCardStatus"></switchIcon>
+    <!-- <text bindtap="switchIdCardStatus">{{hideStatus? '显示':'隐藏'}}</text> -->
+  </view>
+</view>

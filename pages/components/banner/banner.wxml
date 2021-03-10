@@ -1,17 +1,5 @@
 <!--pages/components/banner/banner.wxml-->
-<view class="person-info">
-  <view class="name">
-    <view>{{name}}</view>
-    <view bindtap="routeToMePage" class="routeMePage">
-      <image class="image" src="/pages/image/profile.png"></image>
-    </view>
-  </view>
-  <view class="idcard">
-    <text>{{trueIdcard}}</text>
-    <text bindtap="switchIdCardStatus">{{hideStatus? '显示':'隐藏'}}</text>
-  </view>
-</view>
-<view class="banner">
+<view class="banner" style="background-image: url('/pages/image/record_banner.png');">
   <view class="title1">{{headTile1}}</view>
   <view class="title2">{{headTile2}}</view>
 </view>

@@ -1,5 +1,5 @@
 /* pages/login/faceIdentify.wxss */
-@import "./common/public.wxss";
+@import "./style/common.wxss";
 page {
   height: 100%;
 }

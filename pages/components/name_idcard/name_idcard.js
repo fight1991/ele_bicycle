@@ -1,33 +1,21 @@
-// pages/components/banner/banner.js
-const utils = require('../../../utils/util')
+// pages/components/name_idcard/name_idcard.js
+const utils = require("../../../utils/util")
+const app = getApp()
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    name: {
-      type: String,
-      value: '-'
-    },
-    idcard: {
-      type: String,
-      value: ''
-    },
-    headTile1: {
-      type: String,
-      value: '-'
-    },
-    headTile2: {
-      type: String,
-      value: '-'
-    }
+  
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    trueIdcard: '',
+    trueIdcard: app.globalData.idcard,
+    idcard: app.globalData.idcard,
+    name: app.globalData.name,
     isShow: false
   },
   lifetimes: {

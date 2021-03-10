@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "banner": "../../components/banner/banner"
+    "banner": "../../components/banner/banner",
+    "name-idcard": "/pages/components/name_idcard/name_idcard"
   },
   "navigationBarTitleText": "居民个人业务"
-
 }

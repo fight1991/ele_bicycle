@@ -1,17 +1,11 @@
 <!--pages/user/adminBusiness/index.wxml-->
 <view class="box">
-  <view class="person-info">
-    <view class="name">
-      <view>{{name}}</view>
-    </view>
-    <view class="idcard">
-      <text>{{trueIdcard}}</text>
-      <text bindtap="switchIdCardStatus">{{hideStatus? '显示':'隐藏'}}</text>
-    </view>
-  </view>
+  <name-idcard></name-idcard>
   <view class="grid-box">
     <view class="block-item" bindtap="routeTo">
-      <view class="img-box"></view>
+      <view class="img-box">
+        <image class="img-box-item" src="/pages/image/installer.png" mode="cover"></image>
+      </view>
       <view class="text">安装上报</view>
     </view>
   </view>

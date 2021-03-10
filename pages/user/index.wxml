@@ -1,46 +1,42 @@
 <!--pages/user/index.wxml-->
 <view class="box">
+  <name-idcard></name-idcard>
   <banner 
     name="张三"
     idcard="123441441411414"
-    headTile1="电动车居民个人电子备案证"
+    headTile1="电动二轮车居民个人电子备案证"
     headTile2="请进行备案申报">
   </banner>
   <view class="bussiness-box" bindtap="routeTo">
-    <view class="bus-item" data-bustype="1">
+    <view class="bus-item bg-img-base" style="background-image:url('/pages/image/bus-pers.png')" data-bustype="1">
       <view class="left stopTap">
         <view class="head-title fs16">居民个人业务</view>
         <view class="head-title fs12 fc-ccc">Personal Business</view>
       </view>
-      <view class="right stopTap"></view>
     </view>
-    <view class="bus-item mask" data-bustype="none">
+    <view class="bus-item bg-img-base mask" style="background-image:url('/pages/image/bus-live.png')" data-bustype="none">
       <view class="left stopTap">
         <view class="head-title fs16">民生行业业务</view>
         <view class="head-title fs12 fc-ccc">Personal Business</view>
       </view>
-      <view class="right stopTap"></view>
     </view>
-    <view class="bus-item mask" data-bustype="none">
+    <view class="bus-item bg-img-base mask" style="background-image:url('/pages/image/bus-company.png')" data-bustype="none">
       <view class="left stopTap">
         <view class="head-title fs16">单位业务</view>
         <view class="head-title fs12 fc-ccc">Personal Business</view>
       </view>
-      <view class="right stopTap"></view>
     </view>
-    <view class="bus-item mask" data-bustype="none">
+    <view class="bus-item bg-img-base mask" style="background-image:url('/pages/image/bus-owner.png')"  data-bustype="none">
       <view class="left stopTap">
         <view class="head-title fs16">销售门店业务</view>
         <view class="head-title fs12 fc-ccc">Personal Business</view>
       </view>
-      <view class="right stopTap"></view>
     </view>
-    <view class="bus-item" data-bustype="2">
+    <view class="bus-item bg-img-base" style="background-image:url('/pages/image/bus-admin.png')" data-bustype="2">
       <view class="left stopTap">
         <view class="head-title fs16">管理员业务</view>
         <view class="head-title fs12 fc-ccc">Administrator Business</view>
       </view>
-      <view class="right stopTap"></view>
     </view>
   </view>
 </view>

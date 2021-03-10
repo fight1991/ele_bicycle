@@ -1,5 +1,6 @@
 <!--pages/user/personalBusiness/index.wxml-->
 <view class="box">
+  <name-idcard></name-idcard>
   <banner 
     name="张三"
     idcard="123441441411414"
@@ -8,31 +9,45 @@
   </banner>
   <view class="grid-box">
     <view class="block-item" bindtap="showSubscription">
-      <view class="img-box"></view>
+      <view class="img-box">
+        <image class="img-box-item" src="/pages/image/record.png" mode="cover"></image>
+      </view>
       <view class="text">备案申报</view>
     </view>
     <view class="block-item" bindtap="scanCode">
-      <view class="img-box"></view>
+      <view class="img-box">
+        <image class="img-box-item" src="/pages/image/scan_big1.png" mode="cover"></image>
+      </view>
       <view class="text">扫码</view>
     </view>
     <view class="block-item mask">
-      <view class="img-box"></view>
+      <view class="img-box">
+        <image class="img-box-item" src="/pages/image/peopleChange.png" mode="cover"></image>
+      </view>
       <view class="text">备案人变更</view>
     </view>
     <view class="block-item mask">
-      <view class="img-box"></view>
+      <view class="img-box">
+        <image class="img-box-item" src="/pages/image/baoshi.png" mode="cover"></image>
+      </view>
       <view class="text">一键报失</view>
     </view>
     <view class="block-item mask">
-      <view class="img-box"></view>
+      <view class="img-box">
+        <image class="img-box-item" src="/pages/image/baofei.png" mode="cover"></image>
+      </view>
       <view class="text">一键报废</view>
     </view>
     <view class="block-item mask">
-      <view class="img-box"></view>
+      <view class="img-box">
+        <image class="img-box-item" src="/pages/image/purchase.png" mode="cover"></image>
+      </view>
       <view class="text">购买保险查询</view>
     </view>
     <view class="block-item mask">
-      <view class="img-box"></view>
+      <view class="img-box">
+        <image class="img-box-item" src="/pages/image/safe_study.png" mode="cover"></image>
+      </view>
       <view class="text">安全学习</view>
     </view>
   </view>

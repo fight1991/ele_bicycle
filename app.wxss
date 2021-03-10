@@ -1,6 +1,7 @@
 /**app.wxss**/
 page {
   font-size: 14px;
+  background-color: #f0f7ff;
 }
 .container {
   color: #444;
@@ -101,4 +102,9 @@ page {
 .mask {
   background-color: rgba(0,0,0,.05);
   pointer-events: none;
+}
+.bg-img-base {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

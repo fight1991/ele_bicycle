@@ -8,8 +8,8 @@
 .bus-item {
   height: 60px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  /* border: 1px solid #ccc; */
+  border-radius: 8px;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
