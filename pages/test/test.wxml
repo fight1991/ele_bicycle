@@ -1,4 +1,5 @@
 <!--pages/test/test.wxml-->
 <step step="{{step}}"></step>
 <button bindtap="stepClick">向前</button>
-<rotateImg></rotateImg>
+<!-- <rotateImg></rotateImg> -->
+<qrcode text="哈哈哈哈哈"></qrcode>

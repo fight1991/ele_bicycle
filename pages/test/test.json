@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "step": "/pages/components/step/step",
-    "rotateImg": "/pages/components/rotateImg/rotateImg"
+    "rotateImg": "/pages/components/rotateImg/rotateImg",
+    "qrcode": "/pages/components/qrcode/qrcode"
   }
 }
