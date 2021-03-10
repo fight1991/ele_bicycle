@@ -3,8 +3,10 @@
 .image {
   width: 100%;
 }
+.photo-area, .form-area {
+  background-color: #fff;
+}
 .photo-area {
-  border: 1px solid #ccc;
   padding: 20px 10px;
   border-radius: 10px;
 }

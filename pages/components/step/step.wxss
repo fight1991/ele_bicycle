@@ -26,7 +26,7 @@
   padding: 0 10px;
   position: relative;
   z-index: 2;
-  background-color: #fff;
+  background-color: #f0f7ff;
 }
 .step-item .dot {
   position: relative;

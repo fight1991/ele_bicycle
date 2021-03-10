@@ -1,6 +1,9 @@
 /* pages/user/center/editPhone.wxss */
 .form-container {
-  padding: 20px 20px;
+  margin: 40rpx 20rpx;
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 10px;
 }
 .form-item-label {
   display: flex;

@@ -83,22 +83,21 @@ Component({
       wx.showActionSheet({
         itemList: ['拍照','从相册中选择'],
         success: (res) => {
-          console.log(res.tapIndex)
+          console.log(res, '备案申报拍照/选择图片')
+          var type = 'album'
           if (res.tapIndex == 0) {
-            wx.navigateTo({
-              url: '/pages/user/camera/back?mode=' + mode,
-            })
+            type = 'camera'
+            // wx.navigateTo({
+            //   url: '/pages/user/camera/back?mode=' + mode,
+            // })
           }
-          if (res.tapIndex == 1) {
-            this.choosePhoto('album', (res) => {
-              console.log('从相册中选择图片----------')
-              console.log(res)
-              this.setData({
-                [mode + 'Src']: res.tempFilePaths[0],
-                [mode + 'Show']: false
-              })
+          this.choosePhoto(type, (res) => {
+            console.log('从相册中选择图片----------')
+            this.setData({
+              [mode + 'Src']: res.tempFilePaths[0],
+              [mode + 'Show']: false
             })
-          }
+          })
         }
       })
     },

@@ -20,6 +20,7 @@
   padding: 15px;
   box-shadow: 2px 2px 3px 2px #ccc;
   border-radius: 10px;
+  background-color: #fff;
 }
 .form-item .input-label {
   width: 85px;

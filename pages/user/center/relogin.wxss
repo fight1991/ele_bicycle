@@ -1,4 +1,13 @@
 /* pages/user/center/relogin.wxss */
 .common-btn {
-  width: 350rpx;
+  /* width: 350rpx; */
+  margin-top: 50rpx;
+}
+.success-img {
+  width: 470rpx;
+  height: 297rpx;
+  margin-top: 100rpx;
+}
+.fw {
+  padding: 50rpx 0;
 }
