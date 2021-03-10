@@ -1,6 +1,6 @@
 // pages/login/index.js
 var app = getApp()
-import { checkCode } from '../api/index'
+import { checkCode, getUserBaseInfo } from '../api/index'
 Page({
 
   /**
@@ -35,7 +35,13 @@ Page({
   async routeValid (code) {
     var token = wx.getStorageSync('token')
     if (token) {
-      this.routeTo('/pages/user/index')
+      let { result } = await getUserBaseInfo()
+      if (result) {
+        console.log(result)
+        app.saveUserInfo(result)
+        console.log(app.globalData)
+        this.routeTo('/pages/user/index')
+      }
     } else {
       // 请求后端接口进行登录凭证校验, 有身份证号, 跳转到登录页面, 无身份证号跳转到注册页面
       let { result } = await checkCode({
@@ -53,7 +59,7 @@ Page({
       desc: '头像展示',
       success: res => {
         if (res.errMsg == 'getUserProfile:ok') {
-          app.globalData.userInfo = res.userInfo
+          app.globalData.wxHeadImg = res.userInfo.avatarUrl
           if (this.data.idNO) {
             this.routeTo('/pages/login/signIn')
           } else {

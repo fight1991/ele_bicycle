@@ -45,6 +45,8 @@ App({
       batteryCarStatus: 0,
       vehicleId: null
     },
+    mobile: '',
+    wxHeadImg: null,
     jsCode: '',
   },
   saveUserInfo (userInfo) {

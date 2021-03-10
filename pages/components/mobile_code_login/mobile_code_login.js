@@ -1,7 +1,7 @@
 // pages/components/mobile_code_login/mobile_code_login.js
 const utils = require("../../../utils/util")
 var app = getApp()
-import { goLogin } from '../../api/index'
+import { goLogin, changeMobile } from '../../api/index'
 
 // 手机号验证码登录组件
 Component({
@@ -116,11 +116,20 @@ Component({
       }
     },
     // 修改手机号api
-    changeMobile () {
+    async changeMobile () {
       // 更改成功后, 重新跳转到登录页面
-      wx.reLaunch({
-        url: '/pages/user/center/relogin',
+      let { authCode, mobile } = this.data
+      let { mobile: oldMobile } = app.globalData.userInfo
+      let { result } = await changeMobile({
+        authCode,
+        new_mobile: mobile,
+        old_mobile: oldMobile
       })
+      if (result) {
+        wx.reLaunch({
+          url: '/pages/user/center/relogin',
+        })
+      }
     },
     // 确定按钮 跳转到首页
     confirmBtn () {

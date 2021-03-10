@@ -33,6 +33,10 @@ const {instance: postInstance} = new Fetch({
   baseURL: config.API,
   method: 'POST'
 })
+const {instance: deleteInstance} = new Fetch({
+  baseURL: config.API,
+  method: 'DELETE'
+})
 const {instance: putInstance} = new Fetch({
   baseURL: config.API,
   method: 'PUT'
@@ -63,6 +67,9 @@ wx.$get = ({url, data, isLoading = true}) => {
 }
 wx.$post = ({url, data, isLoading = true}) => {
   return ajaxFunc(url, data, isLoading, postInstance)
+}
+wx.$delete = ({url, data, isLoading = true}) => {
+  return ajaxFunc(url, data, isLoading, deleteInstance)
 }
 wx.$put = ({url, data, isLoading = true}) => {
   return ajaxFunc(url, data, isLoading, putInstance)

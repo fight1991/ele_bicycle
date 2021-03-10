@@ -27,9 +27,9 @@ Page({
         idNO: utils.hideText(idNO)
       })
     }
-    if (app.globalData.userInfo) {
+    if (app.globalData.wxHeadImg) {
       this.setData({
-        imgSrc: app.globalData.userInfo.avatarUrl
+        imgSrc: app.globalData.wxHeadImg
       })
     }
   },

@@ -17,5 +17,5 @@
     <view>更换手机号</view>
     <view class="arrow-r">〉</view>
   </view>
-  <view class="common-btn">退出</view>
+  <view class="common-btn" bindtap="loginOut">退出</view>
 </view>
