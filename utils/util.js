@@ -74,11 +74,16 @@ const showToast = {
     })
   }
 }
+const imgTobase64 = (path) => {
+  var base64 = wx.getFileSystemManager().readFileSync(path, 'base64')
+  return 'data:image/png;base64,' + base64
+}
 module.exports = {
   formatTime,
   checkPhone,
   checkCode,
   hideText,
   addZero,
-  showToast
+  showToast,
+  imgTobase64
 }

@@ -2,6 +2,7 @@
 @import "./style/common.wxss";
 page {
   height: 100%;
+  background-color: #fff;
 }
 .bicyle-img {
   width: 250rpx;

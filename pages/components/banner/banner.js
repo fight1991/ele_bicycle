@@ -28,7 +28,8 @@ Component({
    */
   data: {
     trueIdcard: '',
-    isShow: false
+    isShow: false,
+    bannerBg: utils.imgTobase64('/pages/image/record_banner.png')
   },
   lifetimes: {
     attached: function () {

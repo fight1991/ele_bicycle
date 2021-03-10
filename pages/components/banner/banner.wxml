@@ -1,5 +1,5 @@
 <!--pages/components/banner/banner.wxml-->
-<view class="banner" style="background-image: url('/pages/image/record_banner.png');">
+<view class="banner" style="background-image: url({{bannerBg}});">
   <view class="title1">{{headTile1}}</view>
   <view class="title2">{{headTile2}}</view>
 </view>

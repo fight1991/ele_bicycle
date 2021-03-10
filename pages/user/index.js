@@ -1,11 +1,39 @@
 // pages/user/index.js
+const utils = require('../../utils/util')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    itemList: [
+      {
+        zh: '居民个人业务',
+        en: 'Personal Business',
+        bg: utils.imgTobase64('/pages/image/bus-pers.png'),
+        permission: 1
+      },{
+        zh: '民生行业业务',
+        en: 'Specific Industries',
+        bg: utils.imgTobase64('/pages/image/bus-live.png'),
+        permission: 0
+      },{
+        zh: '单位业务',
+        en: 'Enterprises and institutions',
+        bg: utils.imgTobase64('/pages/image/bus-company.png'),
+        permission: 0
+      },{
+        zh: '销售门店业务',
+        en: 'Sales Store Business',
+        bg: utils.imgTobase64('/pages/image/bus-owner.png'),
+        permission: 0
+      },{
+        zh: '管理员业务',
+        en: 'Administrator Business',
+        bg: utils.imgTobase64('/pages/image/bus-admin.png'),
+        permission: 1
+      },
+    ]
   },
 
   /**
@@ -22,7 +50,7 @@ Page({
       wx.navigateTo({
         url: '/pages/user/personalBusiness/index',
       })
-    } else if (bustype == 2) {
+    } else if (bustype == 5) {
       wx.navigateTo({
         url: '/pages/user/adminBusiness/index',
       })
