@@ -1,5 +1,8 @@
 // pages/components/mobile_code_login/mobile_code_login.js
 const utils = require("../../../utils/util")
+var app = getApp()
+import { goLogin } from '../../api/index'
+
 // 手机号验证码登录组件
 Component({
   /**
@@ -20,7 +23,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    mobile: '18862348287',
+    mobile: '17621415143',
     authCode: '', // 验证码
     isEditCode: false, // 按钮禁用
     codeText: '获取验证码',
@@ -97,10 +100,20 @@ Component({
       this.data.timerId = timerIdTemp
     },
     // 登录api
-    goLogin () {
-      wx.reLaunch({
-        url: '/pages/user/index',
+    async loginBtn () {
+      let { mobile, authCode } = this.data
+      let { result } = await goLogin({
+        authCode,
+        jsCode: app.globalData.jsCode,
+        mobile
       })
+      if (result) {
+        result.token && wx.setStorageSync('token', result.token)
+        app.saveUserInfo(result)
+        wx.reLaunch({
+          url: '/pages/user/index',
+        })
+      }
     },
     // 修改手机号api
     changeMobile () {
@@ -116,7 +129,7 @@ Component({
         return
       }
       if (this.data.flag == 1) {
-        this.goLogin()
+        this.loginBtn()
       } else {
         this.changeMobile()
       }

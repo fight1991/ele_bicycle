@@ -39,9 +39,20 @@ App({
     // })
   },
   globalData: {
-    userInfo: null,
+    userInfo: {
+      personalIDName: '-',
+      personalIDNo: '-',
+      batteryCarStatus: 0,
+      vehicleId: null
+    },
     jsCode: '',
-    idcard: '14124141242412424',
-    name: '张三'
+  },
+  saveUserInfo (userInfo) {
+    this.globalData.userInfo.personalIDName = userInfo.personalIDName
+    this.globalData.userInfo.personalIDNo = userInfo.personalIDNo
+    this.globalData.userInfo.batteryCarStatus = userInfo.batteryCarStatus
+    this.globalData.userInfo.vehicleId = userInfo.vehicleId
+
+
   }
 })

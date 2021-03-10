@@ -1,5 +1,5 @@
 // 显示loading
-const showLoading = (text = '加载中 ...') => {
+const showLoading = (text = '') => {
   wx.showLoading({
     title: text,
     mask: true
@@ -15,6 +15,11 @@ const HandleBranch = _res => {
     case '0000': // 成功
       return { result: _res.data }
     case '0001': // 业务报错, 如查询失败等...
+      wx.showToast({
+        title: _res.message,
+        duration: 1500,
+        icon:'none'
+      })
       return { other: _res.data}
     case '0002': // token失效
       wx.showToast({

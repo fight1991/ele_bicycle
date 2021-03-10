@@ -9,13 +9,13 @@ class Fetch {
       'token': wx.getStorageSync('token') || '',
       'content-type': contentType || 'application/json',
     }
-    this.instance = (url, data) => new Promise((resolve,reject) => {
+    this.instance = (url, data = {}) => new Promise((resolve,reject) => {
       wx.request({
         url: baseURL + url,
         header: this.header,
         method,
         data: {
-          ...data,
+          data,
           accessType: accessType
         },
         success:resolve,

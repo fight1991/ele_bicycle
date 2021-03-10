@@ -15,20 +15,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.routeValid()
+    this.getWxCode((code) => {
+      this.routeValid(code)
+    })
+  },
+  getWxCode (callback) {
+    wx.login({
+      success: res => {
+        callback && callback(res.code)
+        app.globalData.jsCode = res.code
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      }
+    })
   },
   // 入口路由跳转
   // 1. 判断有无token
   // 2. 无token调取api结果, 判断是去注册还是去登录
   // 3. 有token 说明登录过 跳转到首页
-  async routeValid () {
+  async routeValid (code) {
     var token = wx.getStorageSync('token')
     if (token) {
       this.routeTo('/pages/user/index')
     } else {
       // 请求后端接口进行登录凭证校验, 有身份证号, 跳转到登录页面, 无身份证号跳转到注册页面
       let { result } = await checkCode({
-        jscode: app.globalData.jsCode
+        jscode: code
       })
       if (result) {
         this.data.idNO = result.idNO

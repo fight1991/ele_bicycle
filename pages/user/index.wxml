@@ -8,7 +8,7 @@
     headTile2="请进行备案申报">
   </banner>
   <view class="bussiness-box" bindtap="routeTo">
-    <block wx:for="{{itemList}}">
+    <block wx:for="{{itemList}}" wx:key="zh">
       <view class="bus-item bg-img-base{{item.permission==0? ' mask': ''}}" style="background-image:url({{item.bg}})" data-bustype="{{index+1}}">
         <view class="left stopTap">
           <view class="head-title fs16">{{item.zh}}</view>

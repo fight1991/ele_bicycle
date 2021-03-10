@@ -1,7 +1,7 @@
 <!--pages/components/name_idcard/name_idcard.wxml-->
 <view class="person-info">
   <view class="name">
-    <view>{{name}}</view>
+    <view>{{userInfo.personalIDName}}</view>
     <view bindtap="routeToMePage" class="routeMePage">
       <image class="image" src="/pages/image/arrow-right.png"></image>
     </view>

@@ -13,18 +13,16 @@ Component({
    * 组件的初始数据
    */
   data: {
-    trueIdcard: app.globalData.idcard,
-    idcard: app.globalData.idcard,
-    name: app.globalData.name,
-    isShow: false
+    isShow: false,
+    userInfo: {
+      ...app.globalData.userInfo
+    },
+    trueIdcard: '',
+    tempIdcard: '', // 存放显示的省份证号
   },
   lifetimes: {
     attached: function () {
-      if (!this.data.isShow) {
-        this.setData({
-          trueIdcard: utils.hideText(this.data.idcard)
-        })
-      }
+      this.trueIdcard = this.data.userInfo.personalIDNo
     }
   },
 
@@ -34,10 +32,8 @@ Component({
   methods: {
     switchIdCardStatus (e) {
       var isShow = e.detail
-      let { idcard } = this.data
-      this.setData({
-        trueIdcard: isShow ? idcard : utils.hideText(idcard)
-      })
+      if (this.tempIdcard) return
+      // 请求接口
     },
     // 跳转到个人中心
     routeToMePage () {
