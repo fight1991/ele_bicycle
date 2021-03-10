@@ -31,7 +31,7 @@ page {
   font-size: 14px;
 }
 .label {
-  width: 70px;
+  width: 80px;
 }
 .input-container {
   flex: 1;
