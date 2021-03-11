@@ -24,7 +24,7 @@ Component({
    */
   data: {
     mobile: '17621415143',
-    authCode: '', // 验证码
+    authCode: '159951', // 验证码
     isEditCode: false, // 按钮禁用
     codeText: '获取验证码',
     timerId: 0,

@@ -11,7 +11,7 @@ Page({
     name: '',
     isShowNum: false,
     idcard: '',
-    phone: 13348404848,
+    mobile: 13348404848,
     trueIdcard: '',
     truePhone: '',
     wxUserImg: null
@@ -21,11 +21,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { wxHeadImg, userInfo, mobile } = app.globalData
+    let { wxHeadImg, userInfo } = app.globalData
     this.setData({
       wxUserImg: wxHeadImg || null,
-      name: userInfo.personalIDName,
-      trueIdcard: userInfo.personalIDNo
+      name: userInfo.name,
+      trueIdcard: userInfo.idcard,
+      truePhone: userInfo.mobile
     })
 
   },

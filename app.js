@@ -40,8 +40,8 @@ App({
   },
   globalData: {
     userInfo: {
-      personalIDName: '-',
-      personalIDNo: '-',
+      name: '-',
+      idcard: '-',
       batteryCarStatus: 0,
       vehicleId: null
     },
@@ -50,8 +50,8 @@ App({
     jsCode: '',
   },
   saveUserInfo (userInfo) {
-    this.globalData.userInfo.personalIDName = userInfo.personalIDName
-    this.globalData.userInfo.personalIDNo = userInfo.personalIDNo
+    this.globalData.userInfo.name = userInfo.personalIDName || 'xxx'
+    this.globalData.userInfo.idcard = userInfo.personalIDNo || '***'
     this.globalData.userInfo.batteryCarStatus = userInfo.batteryCarStatus
     this.globalData.userInfo.vehicleId = userInfo.vehicleId
 

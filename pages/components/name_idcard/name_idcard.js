@@ -15,21 +15,21 @@ Component({
   data: {
     isShow: false,
     userInfo: {
-      personalIDNo: '',
-      personalIDName: ''
+      name: '',
+      idcard: ''
     },
     trueIdcard: '',
     tempIdcard: '', // 存放显示的省份证号
   },
   lifetimes: {
     attached: function () {
-      let { personalIDNo, personalIDName } = app.globalData.userInfo
+      let { idcard, name } = app.globalData.userInfo
       this.setData({
         userInfo: {
-          personalIDNo,
-          personalIDName
+          idcard,
+          name
         },
-        trueIdcard: personalIDNo
+        trueIdcard: idcard
       })
     }
   },
