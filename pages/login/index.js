@@ -15,17 +15,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getWxCode((code) => {
-      this.routeValid(code)
-    })
-  },
-  getWxCode (callback) {
-    wx.login({
-      success: res => {
-        callback && callback(res.code)
-        app.globalData.jsCode = res.code
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
+    app.getWechatCode().then(res => {
+      app.globalData.jsCode = res.code
+      this.routeValid(res.code)
     })
   },
   // 入口路由跳转
@@ -37,9 +29,7 @@ Page({
     if (token) {
       let { result } = await getUserBaseInfo()
       if (result) {
-        console.log(result)
         app.saveUserInfo(result)
-        console.log(app.globalData)
         this.routeTo('/pages/user/index')
       }
     } else {

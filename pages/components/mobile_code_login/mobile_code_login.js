@@ -1,7 +1,7 @@
 // pages/components/mobile_code_login/mobile_code_login.js
 const utils = require("../../../utils/util")
 var app = getApp()
-import { goLogin, changeMobile } from '../../api/index'
+import { goLogin, changeMobile, getCodeApi } from '../../api/index'
 
 // 手机号验证码登录组件
 Component({
@@ -43,8 +43,14 @@ Component({
    */
   methods: {
     // 获取验证码
-    getCode () {
+    async getCode () {
       if (this.data.timerId) return
+      let { result } = await getCodeApi({
+        mobile: this.data.mobile
+      })
+      if (result) {
+        // ...
+      }
       // 调用获取验证码api成功后, 开启倒计时
       utils.showToast.success('发送成功', () => {
         this.setData({

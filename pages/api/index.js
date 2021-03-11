@@ -31,3 +31,10 @@ export const changeMobile = (data) => {
     data
   })
 }
+// 获取手机验证码
+export const getCodeApi = (data) => {
+  return wx.$get({
+    url: '/battery-car-management/auth_code_mobile',
+    data
+  })
+}

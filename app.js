@@ -38,6 +38,14 @@ App({
     //   }
     // })
   },
+  getWechatCode () {
+    return new Promise((relove, reject) => {
+      wx.login({
+        success: relove,
+        fail: reject
+      })
+    })
+  },
   globalData: {
     userInfo: {
       name: '-',
