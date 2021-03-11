@@ -1,6 +1,7 @@
 // pages/user/record/personInfo/personInfo.js
-import WxValidate from '../../../../utils/WxValidate'
-
+var app = getApp()
+import { upload_func } from '../../../api/upload'
+import {personal_uploadImg, personal_contact, personal_search} from '../../../api/record'
 Component({
   /**
    * 组件的属性列表
@@ -24,33 +25,26 @@ Component({
 		frontSrc: '',
     backSrc: '',
 
-    // 图片源数据
-    faceImageData: null,
-    frontImageData: null,
-    backImageData: null,
+    // 图片上传到服务器之后的地址
+    faceImgUrl: null,
+    frontImgUrl: null,
+    backImgUrl: null,
 
     // 表单数据
     personData: {
-      name: '',
-      idcard: '',
-      sex: '',
-      phone: '',
-      link: '',
-      detail: ''
+      cityCode: [],
+      contactAddress: '',
+      gender: 0, // 0:男 1:女
+      idName: '',
+      idNO: '',
+      idType: 1,
+      imageHead: '',
+      imageIDCard1: '',
+      imageIDCard2: '',
+      mobile: ''
     },
     // 性别
-    sexArr: [
-      {
-        value: 1,
-        label: '男'
-      },
-      {
-        value: 2,
-        label: '女'
-      }
-    ],
-    // 性别下标
-    sexIndex: 0,
+    sexArr: ['男', '女'],
     // 省/市/区
     regionIndex: [],
     regionCode: [],
@@ -58,7 +52,7 @@ Component({
   },
   lifetimes: {
     attached: function (e) {
-      this.initValid()
+
     }
   },
   pageLifetimes: {
@@ -96,12 +90,18 @@ Component({
             //   url: '/pages/user/camera/back?mode=' + mode,
             // })
           }
-          this.choosePhoto(type, (res) => {
+          this.choosePhoto(type,  async (res) => {
             console.log('从相册中选择图片----------')
-            this.setData({
-              [mode + 'Src']: res.tempFilePaths[0],
-              [mode + 'Show']: false
-            })
+            var tempPath = res.tempFilePaths[0]
+            // 得到文件的hash值
+            let hash = await upload_func(tempPath)
+            if (hash) {
+              this.setData({
+                // [mode + 'Src']: res.tempFilePaths[0],
+                [mode + 'Show']: false,
+                [mode + 'ImgUrl']: app.hashUrl + hash
+              })
+            }
           })
         }
       })
@@ -119,46 +119,61 @@ Component({
       })
     },
     // 下一步的按钮
-    nextStep () {
+    async nextStep () {
       var isPass = this.nextIsPass()
       if (!isPass) return
-      this.setData({
-        showForm: true
+      // 保存图片
+      let { faceImgUrl, frontImgUrl, backImgUrl } = this.data
+      let { result: res1 } = await personal_uploadImg({
+        imageHead: faceImgUrl,
+        imageIDCard1: frontImgUrl,
+        imageIDCard2: backImgUrl
       })
+      // 图片保存成功, 显示表单, 并查询识别后的信息
+      if (!res1) return
+      let { result: res2 } = await personal_search()
+      if (res2) {
+        this.setData({
+          showForm: true,
+          personData: res2,
+          regionCode: res2.cityCode
+        })
+      }
     },
     // 出发父组件下一步
     commitNext () {
-      var temp = {
-        detail: {
-          value: this.data.personData
-        }
-      }
-      // 表单数据校验,checkform参数 要是form事件对象,故包装一下
-      let isPass = this.validate.checkForm(temp)
-      if (!isPass) {
-
-      }
+      // 表单数据校验
+      let isPass = this.validForm()
+      if (!isPass) return
+      // 保存表单数据
       wx.showModal({
         title: '温馨提示',
         content: '请确认联系地址是否正确?',
-        success: (res) => {
+        success: async (res) => {
           if (res.confirm) {
-            this.triggerEvent('nextStep')
+            let { personData: {contactAddress, cityCode} } = this.data
+            let { result } = await personal_contact({
+              cityCode,
+              contactAddress
+            })
+            if (result) {
+              this.triggerEvent('nextStep')
+            }
           }
         }
       })
     },
     nextIsPass () {
       var title = ''
-      let { faceSrc, frontSrc, backSrc } = this.data
-      if (!faceSrc) {
+      let { faceImgUrl, frontImgUrl, backImgUrl } = this.data
+      if (!faceImgUrl) {
         title = '请上传人脸照片'
-      } else if (!frontSrc) {
+      } else if (!frontImgUrl) {
         title = '请上传身份证正面照片'
       } else {
         title = '请上传身份证反面照片'
       }
-      let valid = faceSrc && frontSrc && backSrc
+      let valid = faceImgUrl && frontImgUrl && backImgUrl
       if (!valid){
         wx.showToast({
           title: title,
@@ -173,20 +188,31 @@ Component({
       var id = e.currentTarget.id
       this.data.personData[id] = e.detail.value
     },
-    // 初始化校验方法
-    initValid () {
-      const rules = {
-
+    // 校验表单
+    validForm () {
+      let { personData: {contactAddress, cityCode} } = this.data
+      var flag1 = Array.isArray(cityCode) && cityCode.length
+      if (!flag1) {
+        wx.showToast({
+          title: '请选择联系地址',
+          icon: 'none'
+        })
+        return false
       }
-      const messages = {
-
+      if (!contactAddress) {
+        wx.showToast({
+          title: '请填写详细地址',
+          icon: 'none'
+        })
+        return false
       }
-      this.validate = new WxValidate(rules, messages)
+      return true
     },
     // 省市区事件
     getAddressInfo (e) {
-      var { code, value} = e.detail
+      var { code, value } = e.detail
       this.data.regionCode = code
+      this.data.personData.cityCode = code
       this.setData({
         regionLabel: value.join(' ,')
       })

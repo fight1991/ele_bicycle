@@ -1,4 +1,6 @@
 // pages/components/myCamera/myCamera.js
+import { upload_func } from '../../api/upload'
+var app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -57,7 +59,7 @@ Component({
     },
 
     // 保存图片/更改主页数据(用户最终点击确定按钮√)
-    saveImg () {
+    async saveImg () {
       // 获取所有页面栈
       let pages = getCurrentPages()
       console.log(pages)
@@ -72,17 +74,20 @@ Component({
       if(prevPage) {
         // 获取当前图片路径(用户拍下的照片)
         var tempMode = this.data.imgType
-        // 更新record页面中组件personInfo的数据
-        prevPage.personInfoComponent.setData({
-          [tempMode + 'Show']: false, // 显示图片
-          [tempMode + 'Src']: this.data.src // 照片路径
-        })
-    }
-
-      // 最后返回上一页(也就是主页)
-      wx.navigateBack({
+        // 得到文件的hash值
+        let hash = await upload_func(this.data.src)
+        if (hash) {
+          // 更新record页面中组件personInfo的数据
+          prevPage.personInfoComponent.setData({
+            [tempMode + 'Show']: false, // 显示图片
+            // [tempMode + 'Src']: this.data.src, // 临时照片路径
+            [tempMode + 'ImgUrl']: app.hashUrl + hash // 图片的哈希地址
+          })
+        }
+        wx.navigateBack({
           delta: 1,
-      })
+        })
+      }
     },
   }
 })

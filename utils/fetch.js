@@ -1,8 +1,8 @@
 import config from '../config/index'
-const { showLoading, closeLoading, HandleBranch } = require('../utils/fetch_fun')
+const { showLoading, closeLoading, HandleBranch, HandleBranchFile } = require('../utils/fetch_fun')
 const accessType = 'wechat-app'
 
-// 构造函数
+// 请求构造函数get/put/delete/post等
 class Fetch {
   // 文件上传需要额外的token, 需要token作为入参的形式传入
   constructor ({contentType, method, baseURL}) {
@@ -41,17 +41,11 @@ const {instance: putInstance} = new Fetch({
   baseURL: config.API,
   method: 'PUT'
 })
-const {instance: uploadInstance} = new Fetch({
-  baseURL: config.FILE,
-  method: 'POST',
-  contentType: 'multipart/form-data'
-})
-
 // 方法统一包装
-const ajaxFunc = async ({url, data, isLoading, token, func}) => {
+const ajaxFunc = async ({url, data, isLoading, func}) => {
   try {
     if (isLoading) showLoading()
-    let res = await func(url, data, token)
+    let res = await func(url, data)
     if (isLoading) closeLoading()
     return HandleBranch(res.data)
   } catch (error) {
@@ -74,8 +68,35 @@ wx.$delete = ({url, data, isLoading = true}) => {
 wx.$put = ({url, data, isLoading = true}) => {
   return ajaxFunc({url, data, isLoading, func: putInstance})
 }
-wx.$upload = ({url, data, token, isLoading = true}) => {
-  if (!token) console.error('需附带上传的token')
-  return ajaxFunc({url, data, isLoading, token, func: uploadInstance})
+
+
+// 文件上传
+const uploadInstance = ({url, data}) => {
+  return new Promise((resolve, reject) => {
+    wx.uploadFile({
+      url: config.FILE + url,
+      name: 'file',
+      filePath: data.filePath,
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      formData: {
+        token: data.upToken
+      },
+      success: resolve,
+      fail: reject
+    })
+  })
 }
-// export default null
+wx.$upload = async ({url, data, text, isLoading = true}) => {
+  try {
+    if (isLoading) showLoading(text)
+    let res = await uploadInstance({url, data})
+    if (isLoading) closeLoading()
+    return HandleBranchFile(res)
+  } catch (error) {
+    if (isLoading) closeLoading()
+    console.log(error)
+    return { error: error}
+  }
+}

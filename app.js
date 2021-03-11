@@ -46,6 +46,7 @@ App({
       })
     })
   },
+  hashUrl: 'https://file.htjiguang.cn/',
   globalData: {
     userInfo: {
       name: '-',
