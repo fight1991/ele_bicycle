@@ -1,4 +1,6 @@
 // pages/components/upload/upload.js
+import {upload_func} from '../../api/upload'
+var app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -24,21 +26,22 @@ Component({
   methods: {
     // 上传图片到服务器, 并得到图片的url地址
     uploadBImg (e) {
-      this.chooseImg((res) => {
-        this.triggerEvent('getImgInfo', res)
+      this.chooseImg(async (res) => {
+        let tempPath = res.tempFilePaths[0]
+        let hash = await upload_func(tempPath)
+        let totalUrl = app.hashUrl + hash
         this.setData({
-          imgSrc: res.tempFilePaths[0],
-          uploadBg: false
+          imgSrc: totalUrl,
         })
+        this.triggerEvent('getImgInfo', totalUrl)
       })
     },
     // 删除已选的图片
     removeBg (e) {
       this.setData({
-        uploadBg: true,
         imgSrc: ''
       })
-      this.triggerEvent('getImgInfo', null)
+      this.triggerEvent('getImgInfo', '')
     },
     chooseImg (callback) {
       wx.chooseImage({

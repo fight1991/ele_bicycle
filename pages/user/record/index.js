@@ -1,4 +1,5 @@
 // pages/user/record/index.js
+import {record_status} from '../../api/record'
 Page({
 
   /**
@@ -6,7 +7,9 @@ Page({
    */
   data: {
     currentStep: 0, // 当前操作步骤
-    stepList: ['完善个人信息', '完善车辆信息', '等待审核']
+    stepList: ['完善个人信息', '完善车辆信息', '等待审核'],
+    checkStatus: 0,
+    failReason: '' // 审核失败原因
   },
 
   /**
@@ -75,6 +78,16 @@ Page({
       currentStep: stepNum
     })
   },
+  // 审核状态查询
+  async getCheckStatus () {
+    let { result } = await record_status()
+    if (result) {
+      this.setData({
+        checkStatus: result.status,
+        failReason: result.failReason
+      })
+    }
+  },
   routeToPage () {
     wx.reLaunch({
       url: '/pages/user/index',
@@ -82,7 +95,6 @@ Page({
   },
   // 关闭已阅读蒙层
   closeAgreeModal () {
-    console.log('哈哈')
     this.agreeModal.hide()
   },
   /**

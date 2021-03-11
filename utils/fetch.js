@@ -97,6 +97,11 @@ wx.$upload = async ({url, data, text, isLoading = true}) => {
   } catch (error) {
     if (isLoading) closeLoading()
     console.log(error)
+    wx.showToast({
+      title: '上传失败, 请稍后重试',
+      duration: 1500,
+      icon:'none'
+    })
     return { error: error}
   }
 }

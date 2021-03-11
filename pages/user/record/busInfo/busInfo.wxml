@@ -7,31 +7,31 @@
       <view class="form-item">
         <view class="input-label">整车编码/车架号</view>
         <view class="input scan-input">
-          <input type="text" disabled model:value="{{scanCode}}"/>
+          <input type="text" disabled value="{{busInfo.vin}}"/>
         </view>
         <image class="image" bindtap="scanBtn" src="/pages/image/scan.png" class="scan" bindtap="scanBtn"></image>
       </view>
       <view class="tag">*支持新国标车合格证扫码填写</view>
       <view class="form-item">
         <view class="input-label">车辆品牌</view>
-        <input type="text" model:value="{{}}"/>
+        <input type="text" id="brand" bindinput="bindData" value="{{busInfo.brand}}"/>
       </view>
       <view class="form-item">
         <view class="input-label">型号规格</view>
         <view class="input">
-          <input type="text" model:value="{{}}"/>
+          <input type="text" id="brand" bindinput="bindData" value="{{busInfo.model}}"/>
         </view>
       </view>
-      <picker model:value="{{typeIndex}}" range="{{pickerArrProp}}">
+      <picker value="{{busInfo.properties}}" bindPickerChange="bindCarPicker" range="{{pickerArrProp}}">
         <view class="form-item">
           <view class="input-label">车辆属性</view>
-          <view>{{pickerArrProp[propIndex]}}</view>
+          <view>{{pickerArrProp[busInfo.properties]}}</view>
         </view>
       </picker>
-      <picker model:value="{{typeIndex}}" range="{{pickerArrType}}">
+      <picker value="{{busInfo.installation_methods}}" bindPickerChange="bindBrandPicker" range="{{pickerArrType}}">
         <view class="form-item">
           <view class="input-label">装牌方式</view>
-          <view>{{pickerArrType[typeIndex]}}</view>
+          <view>{{pickerArrType[busInfo.installation_methods]}}</view>
         </view>
       </picker>
       <!-- 车辆合格证和购车发票上传区域 -->
@@ -39,12 +39,12 @@
         <view class="text-line">请上传车辆合格证和购车发票</view>
         <view class="upload-box">
           <view class="upload-item">
-            <upload bindgetImgInfo="getBusFile">
+            <upload id="certification" bindgetImgInfo="getBusFile">
               <text>车辆合格证</text>
             </upload>
           </view>
           <view class="upload-item">
-            <upload bindgetImgInfo="getTicketFile">
+            <upload id="invoice" bindgetImgInfo="getTicketFile">
               <text>购车发票</text>
             </upload>
           </view>

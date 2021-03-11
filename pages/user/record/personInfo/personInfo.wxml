@@ -81,7 +81,7 @@
       <view class="form-item">
         <view class="input-label">详细地址</view>
         <view class="input">
-          <input type="text" id="contactAddress" bindData="bindData" value="{{personData.contactAddress}}" placeholder-class="holder-style" placeholder="精确到小区/街道-门牌号"/>
+          <input type="text" id="contactAddress" bindinput="bindData" value="{{personData.contactAddress}}" placeholder-class="holder-style" placeholder="精确到小区/街道-门牌号"/>
         </view>
       </view>
     </form>

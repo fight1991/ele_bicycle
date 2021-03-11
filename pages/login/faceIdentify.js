@@ -43,7 +43,6 @@ Page({
         }
       }
     }
-    console.log(temp)
     // checkform参数 要是form事件对象,故包装一下
     let isPass = validate.checkForm(temp)
     if (!isPass) {

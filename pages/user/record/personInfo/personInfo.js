@@ -33,6 +33,7 @@ Component({
     // 表单数据
     personData: {
       cityCode: [],
+      cityCodeIndex: [],
       contactAddress: '',
       gender: 0, // 0:男 1:女
       idName: '',
@@ -52,7 +53,7 @@ Component({
   },
   lifetimes: {
     attached: function (e) {
-
+      this.initInfo()
     }
   },
   pageLifetimes: {
@@ -64,6 +65,25 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // 数据初始化查询
+    async initInfo () {
+      let { result } = await personal_search()
+      if (result) {
+        let { imageHead, imageIDCard1, imageIDCard2 } = result
+        if (imageHead) {
+          this.setData({
+            faceImgUrl: imageHead,
+            frontImgUrl: imageIDCard1,
+            backImgUrl: imageIDCard2,
+            faceShow: false,
+            frontShow: false,
+            backShow: false,
+          })
+          // 触发附件关闭已阅读弹窗
+          this.triggerEvent('closeAgreeDialog')
+        }
+      }
+    },
     // 点击拍摄人脸按钮
     faceBtn () {
       wx.navigateTo({
@@ -136,7 +156,7 @@ Component({
         this.setData({
           showForm: true,
           personData: res2,
-          regionCode: res2.cityCode
+          regionIndex: res2.cityCodeIndex
         })
       }
     },
@@ -151,10 +171,11 @@ Component({
         content: '请确认联系地址是否正确?',
         success: async (res) => {
           if (res.confirm) {
-            let { personData: {contactAddress, cityCode} } = this.data
+            let { personData: {contactAddress, cityCode, cityCodeIndex} } = this.data
             let { result } = await personal_contact({
               cityCode,
-              contactAddress
+              contactAddress,
+              cityCodeIndex
             })
             if (result) {
               this.triggerEvent('nextStep')
@@ -211,8 +232,9 @@ Component({
     // 省市区事件
     getAddressInfo (e) {
       var { code, value } = e.detail
-      this.data.regionCode = code
+      console.log(this.data.regionIndex)
       this.data.personData.cityCode = code
+      this.data.personData.cityCodeIndex = this.data.regionIndex
       this.setData({
         regionLabel: value.join(' ,')
       })
