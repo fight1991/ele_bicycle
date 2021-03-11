@@ -42,11 +42,25 @@ Page({
   onLoad: function (options) {
 
   },
+  // 订阅消息弹窗
+  showSubscription () {
+    console.log('调起通知')
+    wx.requestSubscribeMessage({
+      tmplIds: ['fEZWMSl8x61va4VrYFaJGkT18NOeCYENRevGHXCpyHg'],
+      success: (res) => {
+        // 订阅成功
+      },
+      fail: () => {
+
+      }
+    })
+  },
   // 路由跳转
   routeTo (e) {
     let { bustype } = e.target.dataset
     if (bustype == 1) {
       // 订阅消息弹窗, 再路由跳转
+      this.showSubscription()
       wx.navigateTo({
         url: '/pages/user/personalBusiness/index',
       })

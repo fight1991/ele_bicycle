@@ -14,18 +14,7 @@ Page({
   onLoad: function (options) {
 
   },
-  // 调起客户端小程序订阅消息界面 必须是手动点击
-  showSubscription () {
-    console.log('调起通知')
-    wx.requestSubscribeMessage({
-      tmplIds: [],
-      success: (res) => {
-        // 订阅成功
-      },
-      fail: () => {
-
-      }
-    })
+  routeTo () {
     wx.navigateTo({
       url: '/pages/user/record/index',
     })
