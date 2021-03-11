@@ -4,15 +4,15 @@ const accessType = 'wechat-app'
 
 // 构造函数
 class Fetch {
+  // 文件上传需要额外的token, 需要token作为入参的形式传入
   constructor ({contentType, method, baseURL}) {
-    this.header = {
-      'token': wx.getStorageSync('token') || '',
-      'content-type': contentType || 'application/json',
-    }
-    this.instance = (url, data = {}) => new Promise((resolve,reject) => {
+    this.instance = (url, data = {}, token = '') => new Promise((resolve,reject) => {
       wx.request({
         url: baseURL + url,
-        header: this.header,
+        header: {
+          'token': token || wx.getStorageSync('token') || '',
+          'content-type': contentType || 'application/json'
+        },
         method,
         data: {
           data,
@@ -48,10 +48,10 @@ const {instance: uploadInstance} = new Fetch({
 })
 
 // 方法统一包装
-const ajaxFunc = async (url, data, isLoading, func) => {
+const ajaxFunc = async ({url, data, isLoading, token, func}) => {
   try {
     if (isLoading) showLoading()
-    let res = await func(url, data)
+    let res = await func(url, data, token)
     if (isLoading) closeLoading()
     return HandleBranch(res.data)
   } catch (error) {
@@ -63,18 +63,19 @@ const ajaxFunc = async (url, data, isLoading, func) => {
 
 // 方法绑定
 wx.$get = ({url, data, isLoading = true}) => {
-  return ajaxFunc(url, data, isLoading, getInstance)
+  return ajaxFunc({url, data, isLoading, func: getInstance})
 }
 wx.$post = ({url, data, isLoading = true}) => {
-  return ajaxFunc(url, data, isLoading, postInstance)
+  return ajaxFunc({url, data, isLoading, func: postInstance})
 }
 wx.$delete = ({url, data, isLoading = true}) => {
-  return ajaxFunc(url, data, isLoading, deleteInstance)
+  return ajaxFunc({url, data, isLoading, func: deleteInstance})
 }
 wx.$put = ({url, data, isLoading = true}) => {
-  return ajaxFunc(url, data, isLoading, putInstance)
+  return ajaxFunc({url, data, isLoading, func: putInstance})
 }
-wx.$upload = ({url, data, isLoading = true}) => {
-  return ajaxFunc(url, data, isLoading, uploadInstance)
+wx.$upload = ({url, data, token, isLoading = true}) => {
+  if (!token) console.error('需附带上传的token')
+  return ajaxFunc({url, data, isLoading, token, func: uploadInstance})
 }
 // export default null

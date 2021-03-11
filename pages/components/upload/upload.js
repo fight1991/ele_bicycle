@@ -22,7 +22,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    // 上传图片
+    // 上传图片到服务器, 并得到图片的url地址
     uploadBImg (e) {
       this.chooseImg((res) => {
         this.triggerEvent('getImgInfo', res)

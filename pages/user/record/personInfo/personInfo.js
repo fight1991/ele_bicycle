@@ -61,6 +61,11 @@ Component({
       this.initValid()
     }
   },
+  pageLifetimes: {
+    show: function (options) {
+      
+    }
+  },
   /**
    * 组件的方法列表
    */
