@@ -63,7 +63,5 @@ App({
     this.globalData.userInfo.idcard = userInfo.personalIDNo || '***'
     this.globalData.userInfo.batteryCarStatus = userInfo.batteryCarStatus
     this.globalData.userInfo.vehicleId = userInfo.vehicleId
-
-
   }
 })

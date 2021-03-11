@@ -24,10 +24,10 @@
   <view class="license">
     <view class="title">附件</view>
     <view class="img-box">
-      <upload bindgetImgInfo="getUpladImgInfo">
+      <upload id="vin" bindgetImgInfo="getUpladImgInfo">
         <text>车架照片</text>
       </upload>
-      <upload bindgetImgInfo="getTotalImgInfo">
+      <upload id="vehicle" bindgetImgInfo="getTotalImgInfo">
         <text>整车照片</text>
       </upload>
     </view>

@@ -30,6 +30,7 @@ Page({
       let { result } = await getUserBaseInfo()
       if (result) {
         app.saveUserInfo(result)
+        app.globalData.wxHeadImg = result.avatarUrl
         this.routeTo('/pages/user/index')
       }
     } else {
@@ -39,6 +40,7 @@ Page({
       })
       if (result) {
         this.data.idNO = result.idNO
+        app.globalData.userInfo.idcard = result.idNO
       }
     }
   },

@@ -1,5 +1,6 @@
 // pages/login/faceIdentify.js
 import WxValidate from '../../utils/WxValidate'
+import { personal_add } from '../api/record'
 var app = getApp()
 Page({
 
@@ -70,10 +71,23 @@ Page({
     // })
     // if (result) {}
   },
+  // 人脸验证成功后
+  async savePersonalInfo () {
+    let { idNO, idName } = this.data
+    let { result } = await personal_add({
+      idNO,
+      idName,
+      jsCode: app.globalData.jsCode
+    })
+    if (result) {
+      app.globalData.userInfo.idcard = idNO
+      this.routeToSignIn()
+    }
+  },
   // 跳转到登录页
   routeToSignIn () {
     wx.reLaunch({
-      url: '/pages/login/signIn?idNO=' + this.data.idNO,
+      url: '/pages/login/signIn'
     })
   },
   // 人脸识别失败
@@ -84,7 +98,7 @@ Page({
       content: `人脸识别失败,${res.errMsg}`,
       success: (res) => {
         if (res.confirm) {
-          wx.navigateBack()
+          // wx.navigateBack()
         }
       }
     })

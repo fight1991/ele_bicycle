@@ -19,16 +19,16 @@
       <view class="form-item">
         <view class="input-label">型号规格</view>
         <view class="input">
-          <input type="text" id="brand" bindinput="bindData" value="{{busInfo.model}}"/>
+          <input type="text" id="model" bindinput="bindData" value="{{busInfo.model}}"/>
         </view>
       </view>
-      <picker value="{{busInfo.properties}}" bindPickerChange="bindCarPicker" range="{{pickerArrProp}}">
+      <picker value="{{busInfo.properties}}" bindchange="bindCarPicker" range="{{pickerArrProp}}">
         <view class="form-item">
           <view class="input-label">车辆属性</view>
           <view>{{pickerArrProp[busInfo.properties]}}</view>
         </view>
       </picker>
-      <picker value="{{busInfo.installation_methods}}" bindPickerChange="bindBrandPicker" range="{{pickerArrType}}">
+      <picker value="{{busInfo.installation_methods}}" bindchange="bindBrandPicker" range="{{pickerArrType}}">
         <view class="form-item">
           <view class="input-label">装牌方式</view>
           <view>{{pickerArrType[busInfo.installation_methods]}}</view>

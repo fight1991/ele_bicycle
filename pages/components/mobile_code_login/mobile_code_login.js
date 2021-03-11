@@ -111,6 +111,7 @@ Component({
       let { result } = await goLogin({
         authCode,
         jsCode: app.globalData.jsCode,
+        avatarUrl: app.globalData.wxHeadImg,
         mobile
       })
       if (result) {

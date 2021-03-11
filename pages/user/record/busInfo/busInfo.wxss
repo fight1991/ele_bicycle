@@ -61,7 +61,7 @@
   align-items: center;
 }
 .upload-item {
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 

@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    idNO: '123333333',
+    idNO: '',
     imgSrc: '',
     mobile: '18862348287',
     authCode: '', // 验证码
@@ -21,15 +21,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { idNO } = options
-    if(idNO) {
+    let { wxHeadImg, userInfo } = app.globalData
+    if (wxHeadImg) {
       this.setData({
-        idNO: utils.hideText(idNO)
+        imgSrc: wxHeadImg
       })
     }
-    if (app.globalData.wxHeadImg) {
+    if (userInfo.idcard) {
       this.setData({
-        imgSrc: app.globalData.wxHeadImg
+        idNO: utils.hideText(userInfo.idcard)
       })
     }
   },

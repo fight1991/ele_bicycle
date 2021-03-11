@@ -3,7 +3,7 @@
   padding: 20rpx;
 }
 .user-bg {
-  padding: 30rpx 20px;
+  padding: 30rpx 40rpx;
   border-radius: 10px;
   color: #fff;
   display: flex;

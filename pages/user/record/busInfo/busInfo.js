@@ -143,9 +143,8 @@ Component({
     scanBtn () {
       wx.scanCode({
         success: (res) => {
-          console.log(res, '扫码--------')
           this.setData({
-            scanCode: res.result
+            'busInfo.vin': res.result
           })
         }
       })

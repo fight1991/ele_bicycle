@@ -20,12 +20,12 @@
         <view class="form-item">
           <label for="idcard" class="label">证件号码</label>
           <view class="input-container">
-            <input type="idcard" model:value="{{idNO}}" placeholder="请输入证件号码" bindinput="bindData"></input>
+            <input type="idcard" model:value="{{idNO}}" placeholder="请输入证件号码"></input>
           </view>
         </view>
       </form>
     </view>
     <view class="common-btn" bindtap="startFaceIdentify">开始人脸识别验证</view>
   </view>
-  <button bindtap="routeToSignIn">假设人脸验证成功</button>
+  <button bindtap="savePersonalInfo">人脸验证成功</button>
 </view>
