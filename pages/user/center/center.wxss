@@ -8,7 +8,7 @@
   border-radius: 10px;
   color: #fff;
   display: flex;
-  background-color: #4370f7;
+  background: linear-gradient(45deg, #2a53e9, #4689fc);
   align-items: center;
 }
 .user-left {

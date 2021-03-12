@@ -79,7 +79,7 @@ Page({
   },
   // 跳转到人脸识别注册页面
   routeTo (url) {
-    wx.navigateTo({
+    wx.redirectTo({
       url
     })
   },
