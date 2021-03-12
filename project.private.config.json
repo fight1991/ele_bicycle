@@ -31,7 +31,7 @@
           "scene": null
         },
         {
-          "name": "个人业务首页",
+          "name": "居民个人业务首页",
           "pathName": "pages/user/personalBusiness/index",
           "query": "",
           "scene": null
@@ -87,6 +87,12 @@
         {
           "name": "备案人变更页面",
           "pathName": "pages/user/record_change/record_change",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "备案人变更其他状态-失败或其他",
+          "pathName": "pages/user/record_change/other_status",
           "query": "",
           "scene": null
         }

@@ -1,0 +1,12 @@
+.status-image {
+  width: 220rpx;
+  margin: 30rpx auto;
+}
+.status-image .img {
+  width: 100%;
+}
+.status-text {
+  text-align: center;
+  width: 500rpx;
+  margin: 0 auto;
+}

@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "step": "/pages/components/step/step"
-  }
+    "step": "/pages/components/step/step",
+    "qrcode": "/pages/components/qrcode/qrcode"
+  },
+  "navigationBarTitleText": "备案人变更"
 }

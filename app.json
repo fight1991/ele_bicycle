@@ -19,7 +19,8 @@
     "pages/user/adminBusiness/index",
     "pages/user/adminBusiness/installer",
     "pages/user/adminBusiness/details",
-    "pages/user/record_change/record_change"
+    "pages/user/record_change/record_change",
+    "pages/user/record_change/other_status"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,49 +1,36 @@
-// pages/user/record_change/record_change.js
-import { 
-  car_owner_change_status,
-  car_owner_change_scan,
-  car_owner_change_cancel
-} from '../../api/record'
+// pages/user/record_change/other_status.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentStep: 0,
-    qrcodeText: '',
-    checkStatus: 41,
-    stepList: ['变更申请', '等待审核'],
+    // 42:变更备案人审核拒绝、43:变更备案人成功、44:已知晓、2:取消、0:无变更记录生成二维码
+    checkStatus: 42,
     statusText: {
-      '41': '您的变更申请审核中，请耐心等待',
+      '42': '审核失败',
     },
     statusImg: {
-      '41': '/pages/image/check-ing.png'
+      '42': '/pages/image/check-fail.png',
+      '43': '/pages/image/check-success.png'
     }
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.createQrcodeData()
+
   },
-  // 生成二维码
-  createQrcodeData () {
-    let token = wx.getStorageSync('token')
-    this.setData({
-      qrcodeText: token
-    })
-  },
-  // 返回个人中心
-  backToCenter () {
+  // 审核失败 点击已知晓按钮跳转到
+  hasKnownBtn () {
+    // 结束备案人变更流程
+    // 跳转到个人居民业务
     wx.reLaunch({
       url: '/pages/user/index',
     })
   },
-  // 取消申请
-  cancelBtn () {
 
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

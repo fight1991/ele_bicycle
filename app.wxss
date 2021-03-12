@@ -108,3 +108,13 @@ page {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.fix-bottom-btn {
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff;
+  background-color: #516dff;
+}

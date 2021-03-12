@@ -1,5 +1,33 @@
 /* pages/user/record_change/record_change.wxss */
+@import "./style.wxss";
 .step-box {
   width: 600rpx;
   padding: 30rpx 0;
+  margin: 0 auto;
+}
+.qrcode-area {
+  margin: 0 60rpx;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30rpx;
+  text-align: center;
+}
+.tips {
+  padding: 10rpx;
+}
+.qrcode-box {
+  padding: 30rpx;
+}
+.bottom-btns {
+  display: flex;
+  padding: 0;
+  box-sizing: border-box;
+}
+.fix-left {
+  border-right: 1px solid #fff;
+}
+.fix-left,
+.fix-right {
+  padding: 10px;
+  width: 50%;
 }

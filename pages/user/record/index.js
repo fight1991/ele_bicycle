@@ -33,7 +33,6 @@ Page({
     this.busInfoComponent = this.selectComponent('#busInfo')
     this.personInfoComponent = this.selectComponent('#personInfo')
     this.agreeModal = this.selectComponent('#agreeModal')
-    this.qrcode = this.selectComponent('#qrcode')
     this.agreeModal.show()
   },
 
@@ -106,7 +105,9 @@ Page({
       })
       if (status == 15 || status == 16) {
         var vin = this.busInfoComponent.data.busInfo.vin
-        this.qrcode.drawCode(vin)
+        this.setData({
+          qrcodeInfo: vin
+        })
       }
     }
   },

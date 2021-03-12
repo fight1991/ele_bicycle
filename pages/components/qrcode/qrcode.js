@@ -20,15 +20,15 @@ Component({
   },
   lifetimes: {
     attached: function (e) {
-      this.drawCode()
+      // this.drawCode()
     }
   },
   observers: {
-    // 'text': function (txt) {
-    //   if (txt) {
-    //     this.drawCode()
-    //   }
-    // }
+    'text': function (txt) {
+      if (txt) {
+        this.drawCode()
+      }
+    }
   },
 
   /**

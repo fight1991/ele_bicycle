@@ -1,0 +1,11 @@
+<!--pages/user/record_change/other_status.wxml-->
+<view class="container">
+  <view class="status-image">
+    <image class="img" src="{{statusImg[checkStatus]}}" mode="widthFix"></image>
+  </view>
+  <view class="status-text">
+    {{statusText[checkStatus]}}
+    <view>原因:{{}}</view>
+  </view>
+</view>
+<view class="fix-bottom-btn" bindtap="hasKnownBtn">已知晓</view>
