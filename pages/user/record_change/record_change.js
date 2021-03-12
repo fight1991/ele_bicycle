@@ -1,11 +1,11 @@
-// pages/user/personalBusiness/index.js
+// pages/user/record_change/record_change.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    currentStep: 0
   },
 
   /**
@@ -13,29 +13,6 @@ Page({
    */
   onLoad: function (options) {
 
-  },
-  routeTo () {
-    wx.navigateTo({
-      url: '/pages/user/record/index',
-    })
-  },
-  // 跳转到备案人变更页面
-  routeToChange () {
-    wx.navigateTo({
-      url: '/pages/user/record_change/record_change',
-    })
-  },
-  // 扫码
-  scanCode () {
-    wx.scanCode({
-      onlyFromCamera: true,
-      success: _res => {
-        // 跳转到扫码详情页
-        wx.navigateTo({
-          url: '/pages/user/scanCode/scanCode',
-        })
-      }
-    })
   },
 
   /**

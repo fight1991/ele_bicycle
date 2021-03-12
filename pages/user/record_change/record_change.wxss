@@ -1,0 +1,5 @@
+/* pages/user/record_change/record_change.wxss */
+.step-box {
+  width: 600rpx;
+  padding: 30rpx 0;
+}

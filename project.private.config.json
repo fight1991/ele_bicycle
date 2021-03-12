@@ -83,6 +83,12 @@
           "pathName": "pages/user/adminBusiness/details",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "备案人变更页面",
+          "pathName": "pages/user/record_change/record_change",
+          "query": "",
+          "scene": null
         }
       ]
     }

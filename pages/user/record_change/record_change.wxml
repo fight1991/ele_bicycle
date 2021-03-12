@@ -1,0 +1,6 @@
+<!--pages/user/record_change/record_change.wxml-->
+<view class="outer">
+  <view class="step-box">
+    <step step="{{currentStep}}"></step>
+  </view>
+</view>

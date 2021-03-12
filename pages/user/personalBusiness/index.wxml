@@ -20,7 +20,7 @@
       </view>
       <view class="text">扫码</view>
     </view>
-    <view class="block-item mask">
+    <view class="block-item mask" bindtap="routeToChange">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/peopleChange.png" mode="cover"></image>
       </view>

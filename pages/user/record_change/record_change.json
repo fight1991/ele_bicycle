@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "step": "/pages/components/step/step"
+  }
+}

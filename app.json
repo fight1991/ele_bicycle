@@ -18,7 +18,8 @@
     "pages/user/center/relogin",
     "pages/user/adminBusiness/index",
     "pages/user/adminBusiness/installer",
-    "pages/user/adminBusiness/details"
+    "pages/user/adminBusiness/details",
+    "pages/user/record_change/record_change"
   ],
   "window": {
     "backgroundTextStyle": "light",
