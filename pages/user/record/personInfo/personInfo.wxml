@@ -70,11 +70,11 @@
         </view>
       </view>
       <!-- 省/市/地区 -->
-      <picker mode="region" model:value="{{regionIndex}}" bindchange="getAddressInfo">
+      <picker mode="region" value="{{region}}" bindchange="getAddressInfo">
         <view class="form-item">
           <view class="input-label">联系地址</view>
           <view class="input">
-            {{regionLabel}}
+           {{region}}
           </view>
         </view>
       </picker>

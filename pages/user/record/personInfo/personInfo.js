@@ -47,7 +47,7 @@ Component({
     // 性别
     sexArr: ['男', '女'],
     // 省/市/区
-    regionIndex: [],
+    region: [],
     regionCode: [],
     regionLabel: '请选择联系地址'
   },
@@ -156,7 +156,7 @@ Component({
         this.setData({
           showForm: true,
           personData: res2,
-          regionIndex: res2.cityCodeIndex
+          region: res2.cityCodeIndex
         })
       }
     },
@@ -231,12 +231,12 @@ Component({
     },
     // 省市区事件
     getAddressInfo (e) {
+      console.log(e)
       var { code, value } = e.detail
-      console.log(this.data.regionIndex)
       this.data.personData.cityCode = code
-      this.data.personData.cityCodeIndex = this.data.regionIndex
+      this.data.personData.cityCodeIndex = value
       this.setData({
-        regionLabel: value.join(' ,')
+        region: value
       })
     }
   }
