@@ -28,7 +28,7 @@ const HandleBranch = _res => {
         icon:'none',
         complete: () => {
           wx.reLaunch({
-            url: '/pages/index/index'
+            url: '/pages/login/signIn'
           })
         }
       })

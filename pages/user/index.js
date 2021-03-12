@@ -42,17 +42,22 @@ Page({
   onLoad: function (options) {
 
   },
+  // 判断有没有成功订阅一条消息
+  isOrderMessage (res, ids) {
+    return ids.some(v => res[v] === 'accept')
+  },
   // 订阅消息弹窗
-  showSubscription () {
-    console.log('调起通知')
+  showSubscription (callback) {
+    // 针对其中一条订阅成功, --> accept
+    var ids = ['fEZWMSl8x61va4VrYFaJGkT18NOeCYENRevGHXCpyHg']
     wx.requestSubscribeMessage({
-      tmplIds: ['fEZWMSl8x61va4VrYFaJGkT18NOeCYENRevGHXCpyHg'],
+      tmplIds: ids,
       success: (res) => {
-        // 订阅成功
+        if (this.isOrderMessage(res, ids)) {
+          callback && callback()
+        }
       },
-      fail: () => {
-
-      }
+      fail: () => {}
     })
   },
   // 路由跳转
@@ -60,9 +65,10 @@ Page({
     let { bustype } = e.target.dataset
     if (bustype == 1) {
       // 订阅消息弹窗, 再路由跳转
-      this.showSubscription()
-      wx.navigateTo({
-        url: '/pages/user/personalBusiness/index',
+      this.showSubscription(() => {
+        wx.navigateTo({
+          url: '/pages/user/personalBusiness/index',
+        })
       })
     } else if (bustype == 5) {
       wx.navigateTo({
