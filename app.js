@@ -40,31 +40,34 @@ App({
   },
   getWechatCode () {
     return new Promise((relove, reject) => {
+      wx.showLoading()
       wx.login({
         success: relove,
-        fail: reject
+        fail: reject,
+        complete: () => {
+          wx.hideLoading()
+        }
       })
     })
   },
   hashUrl: 'https://file.htjiguang.cn/',
   globalData: {
     userInfo: {
-      name: '-',
-      idcard: '-',
+      name: '未知',
+      idcard: '****未知****',
       batteryCarStatus: 0,
       vehicleId: null,
-      mobile: '-'
+      mobile: '****未知****'
     },
     mobile: '',
     wxHeadImg: null,
     jsCode: '',
   },
   saveUserInfo (userInfo) {
-    this.globalData.userInfo.name = userInfo.personalIDName || 'xxx'
-    this.globalData.userInfo.idcard = userInfo.personalIDNo || '***'
+    this.globalData.userInfo.name = userInfo.personalIDName || '未知'
+    this.globalData.userInfo.idcard = userInfo.personalIDNo || '****未知****'
     this.globalData.userInfo.batteryCarStatus = userInfo.batteryCarStatus
     this.globalData.userInfo.vehicleId = userInfo.vehicleId
     this.globalData.userInfo.mobile = userInfo.mobile
-
   }
 })
