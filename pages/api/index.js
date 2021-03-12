@@ -38,3 +38,10 @@ export const getCodeApi = (data) => {
     data
   })
 }
+
+// 查看身份证号
+export const show_idcard = () => {
+  return wx.$get({
+    url: '/battery-car-management/personal_info/id_no'
+  })
+}
