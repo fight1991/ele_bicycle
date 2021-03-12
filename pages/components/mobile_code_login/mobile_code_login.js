@@ -33,6 +33,12 @@ Component({
   lifetimes: {
     attached: function (e) {
       this.myDialog = this.selectComponent('#myDialog')
+      let { userInfo } = app.globalData
+      if (userInfo.mobile) {
+        this.setData({
+          mobile: userInfo.mobile
+        })
+      }
     },
     detached: function (e) {
       this.data.timerId && clearInterval(this.data.timerId)
@@ -133,6 +139,7 @@ Component({
         old_mobile: oldMobile
       })
       if (result) {
+        app.globalData.userInfo.mobile = mobile
         wx.reLaunch({
           url: '/pages/user/center/relogin',
         })

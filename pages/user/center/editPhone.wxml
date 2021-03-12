@@ -5,7 +5,7 @@
     <view class="form-item-label">
       <view class="input-label">原手机号</view>
       <view class="input">
-        <input type="text" model:value="{{oldPhone}}"/>
+        <input type="text" value="{{oldPhone}}"/>
       </view>
     </view>
     <mobileCode flag="{{2}}" btnText="提交"></mobileCode>
