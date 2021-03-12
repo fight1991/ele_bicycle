@@ -1,7 +1,7 @@
 // pages/components/name_idcard/name_idcard.js
 const utils = require("../../../utils/util")
 const app = getApp()
-import { show_idcard } from '../../api/index'
+import { show_idcard, getUserBaseInfo } from '../../api/index'
 Component({
   /**
    * 组件的属性列表
@@ -23,8 +23,12 @@ Component({
     tempIdcard: '', // 存放显示的省份证号
   },
   lifetimes: {
-    attached: function () {
+    attached: async function () {
       let { idcard, name } = app.globalData.userInfo
+      if (!idcard) { // 不存在用户信息
+        await this.getUserInfo()
+        return
+      }
       this.setData({
         userInfo: {
           idcard,
@@ -39,6 +43,25 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // 获取用户信息
+    async getUserInfo () {
+      var token = wx.getStorageSync('token')
+      if (token) {
+        let { result } = await getUserBaseInfo()
+        if (result) {
+          app.saveUserInfo(result)
+          app.globalData.wxHeadImg = result.avatarUrl
+          this.setData({
+            userInfo: {
+              idcard: result.personalIDNo,
+              name: result.personalIDName
+            },
+            trueIdcard: result.personalIDNo
+          })
+        }
+      }
+      return true
+    },
     async switchIdCardStatus (e) {
       var isShow = e.detail
       if (isShow) {

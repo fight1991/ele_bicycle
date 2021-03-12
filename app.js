@@ -53,19 +53,19 @@ App({
   hashUrl: 'https://file.htjiguang.cn/',
   globalData: {
     userInfo: {
-      name: '未知',
-      idcard: '****未知****',
+      name: '',
+      idcard: '',
       batteryCarStatus: 0,
       vehicleId: null,
-      mobile: '****未知****'
+      mobile: ''
     },
     mobile: '',
     wxHeadImg: null,
     jsCode: '',
   },
   saveUserInfo (userInfo) {
-    this.globalData.userInfo.name = userInfo.personalIDName || '未知'
-    this.globalData.userInfo.idcard = userInfo.personalIDNo || '****未知****'
+    this.globalData.userInfo.name = userInfo.personalIDName || ''
+    this.globalData.userInfo.idcard = userInfo.personalIDNo || ''
     this.globalData.userInfo.batteryCarStatus = userInfo.batteryCarStatus
     this.globalData.userInfo.vehicleId = userInfo.vehicleId
     this.globalData.userInfo.mobile = userInfo.mobile
