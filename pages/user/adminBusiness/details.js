@@ -1,14 +1,19 @@
 // pages/user/adminBusiness/details.js
+import { install_report } from '../../api/record'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    brand: '',
-    car: '',
     file1: null,
-    file2: null
+    file2: null,
+    formData: {
+      plateNo: '', // 车牌号码
+      urlVehicle: '', // 整车照片
+      urlVin: '', // 车架照片
+      vehicleNo: '' // 车架号
+    }
   },
 
   /**
@@ -23,20 +28,18 @@ Page({
       onlyFromCamera: true,
       success: res => {
         this.setData({
-          [flag]: res.result
+          ['formData.' + [flag]]: res.result
         })
       }
     })
   },
   // 获取到车架图片信息
   getUpladImgInfo (e) {
-    console.log(e)
-    this.data.file1 = e
+    this.data.formData.urlVin = e.detail
   },
   // 获取整车图片信息
   getTotalImgInfo (e) {
-    console.log(e)
-    this.data.file2 = e
+    this.data.formData.urlVehicle = e.detail
   },
   showToast (title) {
     wx.showToast({
@@ -45,31 +48,45 @@ Page({
       duration: 1500
     })
   },
-  // 提交按钮
-  submitBtn () {
-    // 1.校验信息是否填写,
-    // 2. 请求接口
-    let { brand, car, file1, file2 } = this.data
-    if (!brand) {
+  // 表单校验
+  formValid () {
+    let { plateNo, urlVehicle, urlVin, vehicleNo } = this.data.formData
+    if (!plateNo) {
       this.showToast('请扫描车牌号码')
-      return
+      return false
     }
-    if (!car) {
+    if (!vehicleNo) {
       this.showToast('请扫描整车编号')
-      return
+      return false
     }
-    if (!file1) {
+    if (!urlVin) {
       this.showToast('请上传车架照片')
-      return
+      return false
     }
-    if (!file2) {
+    if (!urlVehicle) {
       this.showToast('请上传整车照片')
-      return
+      return false
     }
-    wx.navigateBack({
-      delta: 2,
-    })
-
+    return true
+  },
+  // 提交按钮
+  async submitBtn () {
+    // 1.校验信息是否填写,
+    // 2.请求接口
+    var isPass = this.formValid()
+    if (!isPass) return
+    let { result } = await install_report(this.data.formData)
+    if (result) {
+      wx.showToast({
+        title: '提交成功',
+        duration: 2000,
+        success: _ => {
+          wx.navigateBack({
+            delta: 2,
+          })
+        }
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

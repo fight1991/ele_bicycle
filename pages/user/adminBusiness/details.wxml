@@ -1,35 +1,37 @@
 <!--pages/user/adminBusiness/details.wxml-->
 <view class="outer">
-  <view class="form-container">
-    <view class="common-form-item">
-      <view class="label">车牌号码</view>
-      <view class="input">
-        <input type="text" disabled model:value="{{brand}}"/>
+  <view class="box">
+    <view class="form-container">
+      <view class="common-form-item">
+        <view class="label">车牌号码</view>
+        <view class="input">
+          <input type="text" disabled value="{{formData.plateNo}}"/>
+        </view>
+        <view class="icon" bindtap="scanBtn" data-flag="plateNo">
+          <image src="/pages/image/scan.png"></image>
+        </view>
       </view>
-      <view class="icon" bindtap="scanBtn" data-flag="brand">
-        <image src="/pages/image/scan.png"></image>
+      <view class="common-form-item">
+        <view class="label">整车编号</view>
+        <view class="input">
+          <input type="text" disabled value="{{formData.vehicleNo}}"/>
+        </view>
+        <view class="icon" bindtap="scanBtn" data-flag="vehicleNo">
+          <image src="/pages/image/scan.png"></image>
+        </view>
       </view>
     </view>
-    <view class="common-form-item">
-      <view class="label">整车编号</view>
-      <view class="input">
-        <input type="text" disabled model:value="{{car}}"/>
+    <!-- 附件区域 -->
+    <view class="license">
+      <view class="title">附件</view>
+      <view class="img-box">
+        <upload id="vin" bindgetImgInfo="getUpladImgInfo">
+          <text>车架照片</text>
+        </upload>
+        <upload id="vehicle" bindgetImgInfo="getTotalImgInfo">
+          <text>整车照片</text>
+        </upload>
       </view>
-      <view class="icon" bindtap="scanBtn" data-flag="car">
-        <image src="/pages/image/scan.png"></image>
-      </view>
-    </view>
-  </view>
-  <!-- 附件区域 -->
-  <view class="license">
-    <view class="title">附件</view>
-    <view class="img-box">
-      <upload id="vin" bindgetImgInfo="getUpladImgInfo">
-        <text>车架照片</text>
-      </upload>
-      <upload id="vehicle" bindgetImgInfo="getTotalImgInfo">
-        <text>整车照片</text>
-      </upload>
     </view>
   </view>
   <view class="submit-btn" bindtap="submitBtn">提交</view>

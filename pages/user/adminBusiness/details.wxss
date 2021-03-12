@@ -1,10 +1,13 @@
 /* pages/user/adminBusiness/details.wxss */
 .outer {
-  padding: 10rpx;
+  padding: 20rpx;
 }
-.form-container, .license {
-  padding: 10rpx 20rpx;
+.box {
+  background-color: #fff;
+  padding: 20rpx;
+  border-radius: 8px;
 }
+
 .label {
   margin-right: 15px;
 }
@@ -19,10 +22,7 @@
 }
 .license {
   display: flex;
-  padding: 30rpx 20rpx;
-  border: 1px solid #ccc;
-  margin: 20rpx;
-  border-radius: 10px;
+  padding: 30rpx 0;
 }
 
 .img-box {
