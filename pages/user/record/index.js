@@ -6,18 +6,34 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showStep: true, // 是否显示进度条
     currentStep: 0, // 当前操作步骤
     stepList: ['完善个人信息', '完善车辆信息', '等待审核'],
-    checkStatus: 0,
-    failReason: '' // 审核失败原因
+    checkStatus: 13, // 13:等待审核、14:审核失败，重新备案、15:审核通过，邮寄车牌、16:审核通过，安装点安装车牌
+    failReason: '', // 审核失败原因
+    qrcodeInfo: '',
+    statusText: {
+      '13': '您的备案申请审核中，请耐心等待',
+      '14': '审核失败',
+      '15': '您的备案申报审核已经通过,请等待快递员送上车牌并完成安装,安装时展示如下安装码',
+      '16': '您的备案申报审核已经通过,可去以下安装点完成车牌安装,安装时向安装人员展示如下安装码'
+    },
+    statusImg: {
+      '13': '/pages/image/check-ing.png',
+      '14': '/pages/image/check-fail.png',
+      '15': '/pages/image/check-success.png',
+      '16': '/pages/image/check-success.png'
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.busInfoComponent = this.selectComponent('#busInfo')
     this.personInfoComponent = this.selectComponent('#personInfo')
     this.agreeModal = this.selectComponent('#agreeModal')
+    this.qrcode = this.selectComponent('#qrcode')
     this.agreeModal.show()
   },
 
@@ -82,11 +98,24 @@ Page({
   async getCheckStatus () {
     let { result } = await record_status()
     if (result) {
+      let { status } = result
       this.setData({
         checkStatus: result.status,
-        failReason: result.failReason
+        failReason: result.failReason,
+        showStep: status == 13
       })
+      if (status == 15 || status == 16) {
+        var vin = this.busInfoComponent.data.busInfo.vin
+        this.qrcode.drawCode(vin)
+      }
     }
+  },
+  // 去个人信息录入页面
+  goToEdit () {
+    this.setData({
+      currentStep: 0,
+      showStep: true
+    })
   },
   routeToPage () {
     wx.reLaunch({

@@ -42,7 +42,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    drawCode () {
+    drawCode (params) {
       let { width, height, text } = this.data
       // 比率换算
       let W = wx.getSystemInfoSync().windowWidth
@@ -52,7 +52,7 @@ Component({
         height: height / rate,
         canvasId: 'myQrcode',
         ctx: wx.createCanvasContext('myQrcode', this),
-        text: text,
+        text: params || text,
         // v1.0.0+版本支持在二维码上绘制图片
         // image: {
         //   imageResource: '../../images/icon.png',

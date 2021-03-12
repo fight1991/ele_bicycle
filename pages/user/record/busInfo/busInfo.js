@@ -23,7 +23,7 @@ Component({
     pickerArrProp: ['非国标车', '新国标车'],
     // 装牌方式
     pickerArrType: ['邮寄到家', '安装点安装'],
-    isChecked: false,
+    isChecked: true,
     scanCode: '',
     busInfo: {
       brand: '',
@@ -159,7 +159,6 @@ Component({
     },
     // 单选按钮
     radioBtn (e) {
-      console.log(e)
       this.setData({
         isChecked: !this.data.isChecked
       })

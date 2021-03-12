@@ -13,11 +13,18 @@ image {
 }
 
 .status-image {
-  width: 150px;
-  margin: 0 auto;
+  width: 220rpx;
+  margin: 30rpx auto;
 }
 .status-text {
   text-align: center;
+  width: 500rpx;
+  margin: 0 auto;
+}
+.status-erweima {
+  display: flex;
+  justify-content: center;
+  padding: 20rpx 0;
 }
 .backPage {
   padding: 10px;

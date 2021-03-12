@@ -2,7 +2,9 @@
 <scroll-view class="scroll-container" scroll-y="true">
   <view class="record">
     <!-- 步骤区域 -->
-    <step stepList="{{stepList}}" step="{{currentStep}}"></step>
+    <view class="step-area" hidden="{{!showStep}}">
+      <step stepList="{{stepList}}" step="{{currentStep}}"></step>
+    </view>
     <!-- 个人信息区域 -->
     <view class="person-area" wx:if="{{currentStep==0}}">
       <personInfo id="personInfo" bindcloseAgreeDialog="closeAgreeModal" bindnextStep="progressStatus"></personInfo>
@@ -14,12 +16,21 @@
     <!-- 等待审核区域 -->
     <view class="check-area" wx:if="{{currentStep==2}}">
       <view class="status-image">
-        <image src="/pages/image/check-status.png" mode="aspectFit"></image>
+        <image src="{{statusImg[checkStatus]}}" mode="widthFix"></image>
       </view>
-      <view class="status-text">备案审核中, 请耐心等待</view>
-      <view class="status-erweima"></view>
-       <!-- 返回个人中心按钮 -->
-      <view class="backPage" bindtap="routeToPage">返回个人中心</view>
+      <view class="status-text">
+        {{statusText[checkStatus]}}
+        <view wx:if="{{checkStatus==14}}">原因:{{failReason}}</view>
+      </view>
+      <view class="status-erweima" wx:if="{{checkStatus==15 ||checkStatus==16}}">
+        <qrcode id="qrcode" width="{{240}}" height="{{240}}" text="{{qrcodeInfo}}"></qrcode>
+      </view>
+
+      <!-- 查看并修改备案信息 --审核失败 -->
+      <view class="backPage" wx:if="{{checkStatus==14}}" bindtap="goToEdit">查看并修改备案信息</view>
+       <!-- 返回个人中心按钮-->
+      <view class="backPage" wx:else bindtap="routeToPage">返回个人中心</view>
+      
     </view>
   </view>
 </scroll-view>
