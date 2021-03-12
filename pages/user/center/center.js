@@ -1,6 +1,5 @@
 // pages/user/center/center.js
-const utils = require('../../../utils/util')
-import { logOut } from '../../api/index'
+import { logOut, show_idcard } from '../../api/index'
 var app = getApp()
 Page({
 
@@ -10,10 +9,12 @@ Page({
   data: {
     name: '',
     isShowNum: false,
-    idcard: '',
-    mobile: 13348404848,
+    idcard: '', // 存放隐藏的省份证信息
+    mobile: '', // 存放隐藏的手机号
     trueIdcard: '',
     truePhone: '',
+    tempIdcard: '', // 存放显示身份证信息
+    tempPhone: '', // 存放显示的手机号
     wxUserImg: null
   },
 
@@ -22,18 +23,42 @@ Page({
    */
   onLoad: function (options) {
     let { wxHeadImg, userInfo } = app.globalData
+    this.data.idcard = userInfo.idcard
+    this.data.mobile = userInfo.mobile
     this.setData({
       wxUserImg: wxHeadImg || null,
       name: userInfo.name,
       trueIdcard: userInfo.idcard,
       truePhone: userInfo.mobile
     })
-
   },
-
-  showText (e) {
-    var { idcard, phone } = this.data
-    var temp = e.detail
+  async showText (e) {
+    var { tempIdcard, tempPhone, idcard, mobile } = this.data
+    var isShow = e.detail
+    console.log(isShow)
+    if (isShow) {
+      if (tempIdcard) {
+        this.setData({
+          trueIdcard: tempIdcard,
+          truePhone: tempPhone
+        })
+        return
+      }
+      let temp = await this.getPartInfo()
+      if (temp) {
+        this.data.tempIdcard = temp.idNO
+        this.data.tempPhone = temp.mobile
+        this.setData({
+          trueIdcard: temp.idNO,
+          truePhone: temp.mobile
+        })
+      }
+    } else {
+      this.setData({
+        trueIdcard: idcard,
+        truePhone: mobile
+      })
+    }
     
   },
   // 跳转到更换手机号页面
@@ -42,6 +67,16 @@ Page({
       url: '/pages/user/center/editPhone',
     })
   },
+  // 得到显示的身份证号信息
+  async getPartInfo () {
+    let { result } = await show_idcard()
+    if (result) {
+      return { idNO: result.idNO, mobile: result.mobile }
+    } else {
+      return ''
+    }
+  },
+  // 用户退出
   loginOut () {
     wx.showModal({
       title: '温馨提示',

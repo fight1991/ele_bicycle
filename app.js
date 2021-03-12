@@ -52,7 +52,8 @@ App({
       name: '-',
       idcard: '-',
       batteryCarStatus: 0,
-      vehicleId: null
+      vehicleId: null,
+      mobile: '-'
     },
     mobile: '',
     wxHeadImg: null,
@@ -63,5 +64,7 @@ App({
     this.globalData.userInfo.idcard = userInfo.personalIDNo || '***'
     this.globalData.userInfo.batteryCarStatus = userInfo.batteryCarStatus
     this.globalData.userInfo.vehicleId = userInfo.vehicleId
+    this.globalData.userInfo.mobile = userInfo.mobile
+
   }
 })

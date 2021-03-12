@@ -6,11 +6,15 @@
     </view>
     <view class="user-middle">
       <view class="fs20">{{name}}</view>
-      <view>{{trueIdcard}}</view>
+      <view class="id-card">{{trueIdcard}}</view>
       <view>{{truePhone}}</view>
     </view>
     <view class="user-right">
-      <show-hide-icon bindswitchOp="showText"></show-hide-icon>
+      <show-hide-icon
+        hideIcon="/pages/image/hide_fff.png"
+        showIcon="/pages/image/show_fff.png"
+        bindswitchOp="showText">
+      </show-hide-icon>
     </view>
   </view>
   <view class="change-tab" bindtap="goToPage">

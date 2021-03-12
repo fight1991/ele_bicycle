@@ -1,6 +1,4 @@
 {
   "component": true,
-  "usingComponents": {
-    "switchIcon": "/pages/components/show_hide_icon/showHideIcon"
-  }
+  "usingComponents": {}
 }

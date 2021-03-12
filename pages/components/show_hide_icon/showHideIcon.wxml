@@ -1,5 +1,5 @@
 <!--pages/components/show_hide_icon/showHideIcon.wxml-->
 <view class="icon-box">
-  <image hidden="{{isShow}}" bindtap="switchBtn" class="icon" src="/pages/image/show.png"></image>
-  <image hidden="{{!isShow}}" bindtap="switchBtn" class="icon" src="/pages/image/hide.png"></image>
+  <image hidden="{{isShow}}" bindtap="switchBtn" class="icon" src="{{showIcon}}"></image>
+  <image hidden="{{!isShow}}" bindtap="switchBtn" class="icon" src="{{hideIcon}}"></image>
 </view>
