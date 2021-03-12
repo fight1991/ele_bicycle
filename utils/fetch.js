@@ -6,11 +6,11 @@ const accessType = 'wechat-app'
 class Fetch {
   // 文件上传需要额外的token, 需要token作为入参的形式传入
   constructor ({contentType, method, baseURL}) {
-    this.instance = (url, data = {}, token = '') => new Promise((resolve,reject) => {
+    this.instance = (url, data = {}) => new Promise((resolve,reject) => {
       wx.request({
         url: baseURL + url,
         header: {
-          'token': token || wx.getStorageSync('token') || '',
+          'token': wx.getStorageSync('token') || '',
           'content-type': contentType || 'application/json'
         },
         method,
@@ -42,9 +42,9 @@ const {instance: putInstance} = new Fetch({
   method: 'PUT'
 })
 // 方法统一包装
-const ajaxFunc = async ({url, data, isLoading, func}) => {
+const ajaxFunc = async ({url, data, isLoading, loadingText, func}) => {
   try {
-    if (isLoading) showLoading()
+    if (isLoading) showLoading(loadingText)
     let res = await func(url, data)
     if (isLoading) closeLoading()
     return HandleBranch(res.data)
@@ -56,17 +56,17 @@ const ajaxFunc = async ({url, data, isLoading, func}) => {
 }
 
 // 方法绑定
-wx.$get = ({url, data, isLoading = true}) => {
-  return ajaxFunc({url, data, isLoading, func: getInstance})
+wx.$get = ({url, data, isLoading = true, loadingText = '加载中...'}) => {
+  return ajaxFunc({url, data, isLoading, loadingText, func: getInstance})
 }
-wx.$post = ({url, data, isLoading = true}) => {
-  return ajaxFunc({url, data, isLoading, func: postInstance})
+wx.$post = ({url, data, isLoading = true, loadingText = ''}) => {
+  return ajaxFunc({url, data, isLoading, loadingText, func: postInstance})
 }
-wx.$delete = ({url, data, isLoading = true}) => {
-  return ajaxFunc({url, data, isLoading, func: deleteInstance})
+wx.$delete = ({url, data, isLoading = true, loadingText = ''}) => {
+  return ajaxFunc({url, data, isLoading, loadingText, func: deleteInstance})
 }
-wx.$put = ({url, data, isLoading = true}) => {
-  return ajaxFunc({url, data, isLoading, func: putInstance})
+wx.$put = ({url, data, isLoading = true, loadingText = ''}) => {
+  return ajaxFunc({url, data, isLoading, loadingText, func: putInstance})
 }
 
 
@@ -88,9 +88,9 @@ const uploadInstance = ({url, data}) => {
     })
   })
 }
-wx.$upload = async ({url, data, text, isLoading = true}) => {
+wx.$upload = async ({url, data, text, isLoading = true, loadingText = '上传中...'}) => {
   try {
-    if (isLoading) showLoading(text)
+    if (isLoading) showLoading(loadingText)
     let res = await uploadInstance({url, data})
     if (isLoading) closeLoading()
     return HandleBranchFile(res)
