@@ -50,7 +50,11 @@ App({
       })
     })
   },
+  // 图片上传地址
   hashUrl: 'https://file.htjiguang.cn/',
+  // 用户静态画像
+  static_user_logo: '/pages/image/user_static_logo.png',
+  // 全局共享数据
   globalData: {
     userInfo: {
       name: '',

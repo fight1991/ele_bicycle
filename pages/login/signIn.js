@@ -1,6 +1,7 @@
 // pages/login/signIn.js
 const utils = require('../../utils/util')
 var app = getApp()
+console.log('哈哈-登录页面')
 Page({
 
   /**
@@ -9,12 +10,6 @@ Page({
   data: {
     idNO: '',
     imgSrc: '',
-    mobile: '18862348287',
-    authCode: '', // 验证码
-    isEditCode: false, // 按钮禁用
-    codeText: '获取验证码',
-    timerId: 0,
-    codeTime: 10
   },
 
   /**
