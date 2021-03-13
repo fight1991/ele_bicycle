@@ -24,6 +24,9 @@
   padding: 10px 0;
   text-align: center;
 }
+.tips {
+  padding-top: 10px;
+}
 .tips-detail {
   padding: 0 30px;
   display: flex;
@@ -32,11 +35,16 @@
 .tag {
   color: red;
 }
+.license-tip {
+  font-size: 12px;
+  /* text-align: center; */
+  padding: 10px 30px;
+}
 .idcard {
   /* background-color: #ccc; */
   height: 140px;
   width: 600rpx;
-  margin: 20px auto;
+  margin: 0 auto;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
