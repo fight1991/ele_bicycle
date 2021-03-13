@@ -1,0 +1,54 @@
+/* pages/setting/setting.wxss */
+.outer {
+  padding: 40rpx;
+  
+}
+.title {
+  text-align: center;
+  margin-bottom: 10px;
+  color: red;
+}
+.step-box {
+  /* margin: 40rpx; */
+  padding: 40rpx 20rpx;
+  border-radius: 8px;
+  background-color: #fff;
+}
+.step-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+.other {
+  font-size: 16px;
+  flex: 1;
+}
+.head {
+  padding: 0 20rpx;
+  width: 50px;
+  align-self: flex-start;
+  color: green;
+}
+.step-one {
+  display: flex;
+  align-self: center;
+}
+.dot-box {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+.dot-box .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: black;
+  margin: 0 2px;
+}
+.dot-box .center-dot {
+  width: 6px;
+  height: 6px;
+}
+.backBtn {
+  margin-top: 50rpx;
+}

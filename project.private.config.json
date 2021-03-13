@@ -95,6 +95,12 @@
           "pathName": "pages/user/record_change/other_status",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "用户设置引导页",
+          "pathName": "pages/setting/setting",
+          "query": "",
+          "scene": null
         }
       ]
     }

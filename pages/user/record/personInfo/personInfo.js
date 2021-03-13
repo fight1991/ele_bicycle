@@ -86,9 +86,40 @@ Component({
     },
     // 点击拍摄人脸按钮
     faceBtn () {
-      wx.navigateTo({
-        url: '/pages/user/camera/front',
+      // 先查看用户是否开启了摄像头权限
+      wx.showLoading({title: '权限检测中'})
+      wx.getSetting({
+        success: res => {
+          console.log(res)
+          if (!res.authSetting['scope.camera']) {
+            // 如果用户拒绝授权后，短期内调用不会出现弹窗而是直接进入 fail 回调
+            // 手机端删除小程序后重新添加 就可以再次唤醒弹窗
+            wx.hideLoading()
+            wx.authorize({
+              scope: 'scope.camera',
+              success: () => {
+                // 用户已经同意小程序使用camera
+                wx.navigateTo({
+                  url: '/pages/user/camera/front',
+                })
+              },
+              fail: res => {
+                wx.navigateTo({
+                  url: '/pages/setting/setting',
+                })
+              }
+            })
+          } else {
+            wx.hideLoading()
+            wx.navigateTo({
+              url: '/pages/user/camera/front',
+            })
+          }
+        }
       })
+      // wx.navigateTo({
+      //   url: '/pages/user/camera/front',
+      // })
       // this.choosePhoto('camera', (res) => {
       //   const tempFilePaths = res.tempFilePaths
       //     // 存储照片信息

@@ -1,0 +1,31 @@
+<!--pages/setting/setting.wxml-->
+<view class="outer">
+  <view class="title">摄像头未授权, 请按照以下步骤操作</view>
+  <view class="step-box">
+    <view class="step-item">
+      <view class="head">第一步</view>
+      <view class="other step-one">
+        <view>点击小程序右上角</view>
+        <view class="dot-box">
+          <view class="dot"></view>
+          <view class="dot center-dot"></view>
+          <view class="dot"></view>
+        </view>
+        <view>按钮</view>
+      </view>
+    </view>
+    <view class="step-item">
+      <view class="head">第二步</view>
+      <view class="other">
+        <view>点击底部弹窗中的设置按钮, 进入到设置页面</view>
+      </view>
+    </view>
+    <view class="step-item">
+      <view class="head">第三步</view>
+      <view class="other">
+        <view>找到摄像头开关, 点击打开即可</view>
+      </view>
+    </view>
+  </view>
+  <view class="backBtn common-btn" bindtap="backBtn">返回上一步</view>
+</view>

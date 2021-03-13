@@ -6,7 +6,6 @@
     "pages/user/index",
     "pages/index/index",
     "pages/test/test",
-    "pages/logs/logs",
     "pages/user/personalBusiness/index",
     "pages/user/record/index",
     "pages/user/record/law/law",
@@ -20,7 +19,8 @@
     "pages/user/adminBusiness/installer",
     "pages/user/adminBusiness/details",
     "pages/user/record_change/record_change",
-    "pages/user/record_change/other_status"
+    "pages/user/record_change/other_status",
+    "pages/setting/setting"
   ],
   "window": {
     "backgroundTextStyle": "light",
