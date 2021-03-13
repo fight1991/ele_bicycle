@@ -1,7 +1,6 @@
 // pages/login/signIn.js
 const utils = require('../../utils/util')
 var app = getApp()
-console.log('哈哈-登录页面')
 Page({
 
   /**

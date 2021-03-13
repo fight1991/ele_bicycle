@@ -57,7 +57,6 @@ Page({
       desc: '头像展示',
       success: res => {
         if (res.errMsg == 'getUserProfile:ok') {
-          console.log('哈哈-头像授权页面')
           app.globalData.wxHeadImg = res.userInfo.avatarUrl
           if (this.data.idNO) {
             this.routeTo('/pages/login/signIn')
