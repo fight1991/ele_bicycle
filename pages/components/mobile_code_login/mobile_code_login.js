@@ -135,8 +135,8 @@ Component({
       let { mobile: oldMobile } = app.globalData.userInfo
       let { result } = await changeMobile({
         authCode,
-        new_mobile: mobile,
-        old_mobile: oldMobile
+        mobileNew: mobile,
+        mobileOld: oldMobile
       })
       if (result) {
         app.globalData.userInfo.mobile = mobile
