@@ -140,6 +140,8 @@ Component({
       })
       if (result) {
         app.globalData.userInfo.mobile = mobile
+        // 删除token
+        wx.removeStorageSync('token')
         wx.reLaunch({
           url: '/pages/user/center/relogin',
         })
