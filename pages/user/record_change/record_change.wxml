@@ -5,9 +5,10 @@
   </view>
   <view class="qrcode-area">
     <view class="tips fs16">请让新车主扫如下二维码</view>
-    <view class="qrcode-box">
+    <view class="qrcode-box" wx:if="{{!isRefresh}}">
       <qrcode text="{{qrcodeText}}"></qrcode>
     </view>
+    <button wx:else bindtap="getChangeStatus">点击刷新二维码</button>
   </view>
   <view class="check-status" wx:if="{{currentStep==1}}">
     <view class="status-image">

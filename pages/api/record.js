@@ -68,9 +68,10 @@ export const record_status = (data) => {
 }
 
 // 车辆备案人变更 - 查询状态
-export const car_owner_change_status = (data) => {
-  return wx.$get({
-    url: '/battery-car-management/battery_car_ownership_change',
+export const car_owner_change_status = (data, isLoading=true) => {
+  return wx.$post({
+    isLoading,
+    url: '/battery-car-management/battery_car_ownership_change/get_status',
     data
   })
 }
