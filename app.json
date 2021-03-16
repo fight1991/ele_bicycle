@@ -20,7 +20,8 @@
     "pages/user/adminBusiness/details",
     "pages/user/record_change/record_change",
     "pages/user/record_change/other_status",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/user/loss/loss"
   ],
   "window": {
     "backgroundTextStyle": "light",

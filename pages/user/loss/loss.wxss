@@ -1,0 +1,14 @@
+/* pages/user/loss/loss.wxss */
+.bottom-btns {
+  display: flex;
+  padding: 0;
+  box-sizing: border-box;
+}
+.fix-left {
+  border-right: 1px solid #fff;
+}
+.fix-left,
+.fix-right {
+  padding: 10px;
+  width: 50%;
+}

@@ -101,6 +101,12 @@
           "pathName": "pages/setting/setting",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "一键报失",
+          "pathName": "pages/user/loss/loss",
+          "query": "",
+          "scene": null
         }
       ]
     }

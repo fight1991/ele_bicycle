@@ -1,0 +1,8 @@
+<!--pages/user/loss/loss.wxml-->
+<view class="outer">
+
+</view>
+<view class="bottom-btns fix-bottom-btn">
+  <view class="fix-left" bindtap="hasFound">已找回</view>
+  <view class="fix-right" bindtap="reApply">重新申请</view>
+</view>
