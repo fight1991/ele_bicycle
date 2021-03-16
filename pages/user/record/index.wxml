@@ -36,6 +36,6 @@
 </scroll-view>
 
 <!-- 蒙层 -->
-<mask onClickModalClose="{{false}}" id="agreeModal">
+<mask onClickModalClose="{{false}}" id="agreeModal" initValue="{{maskIsHidden}}">
   <agree bindcloseAgreeModal="closeAgreeModal"></agree>
 </mask>

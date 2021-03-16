@@ -8,8 +8,9 @@ Page({
   data: {
     showStep: true, // 是否显示进度条
     currentStep: 0, // 当前操作步骤
+    maskIsHidden: true, // 蒙层是否隐藏
     stepList: ['完善个人信息', '完善车辆信息', '等待审核'],
-    checkStatus: 13, // 13:等待审核、14:审核失败，重新备案、15:审核通过，邮寄车牌、16:审核通过，安装点安装车牌
+    checkStatus: 13,
     failReason: '', // 审核失败原因
     qrcodeInfo: '',
     statusText: {
@@ -32,8 +33,8 @@ Page({
   onLoad: function (options) {
     this.busInfoComponent = this.selectComponent('#busInfo')
     this.personInfoComponent = this.selectComponent('#personInfo')
-    this.agreeModal = this.selectComponent('#agreeModal')
-    this.agreeModal.show()
+    // 1. 进入页面 先查看当前备案状态
+    this.getCheckStatus()
   },
 
   // 点击拍摄人脸按钮
@@ -100,15 +101,55 @@ Page({
       let { status } = result
       this.setData({
         checkStatus: result.status,
-        failReason: result.failReason,
-        showStep: status == 13
+        failReason: result.failReason
       })
-      if (status == 15 || status == 16) {
-        var vin = this.busInfoComponent.data.busInfo.vin
+      this.getCurrentStepByStatus(status)
+    }
+  },
+  // 根据状态判断信息录入到哪个步骤
+  // 11:完善个人信息 第1步、12:完善个人信息 第2步 13: 完善车辆信息 等待审核、14:审核失败，重新备案、15:审核通过，邮寄车牌、16:审核通过，安装点安装车牌
+  getCurrentStepByStatus (status) {
+    switch (status) {
+      case 0: // 填写个人信息
         this.setData({
-          qrcodeInfo: vin
+          currentStep: 0,
+          showStep: true,
+          maskIsHidden: false
         })
-      }
+        return
+      case 11: // 完善个人信息 第1步已完成 第2步显示
+        this.setData({
+          currentStep: 0,
+          showStep: true,
+          maskIsHidden: true
+        })
+        // 查询数据回显
+        this.personInfoComponent.getSomeImgInfo()
+        return
+      case 12: // 完善个人信息 第2步已完成, 车辆信息显示
+        this.setData({
+          currentStep: 1,
+          showStep: true,
+          maskIsHidden: true
+        })
+        return
+      case 13: // 完善车辆信息已完成, 等待审核显示
+        this.setData({
+          currentStep: 2,
+          showStep: true,
+          maskIsHidden: true
+        })
+        return
+      case 15: // 审核通过，邮寄车牌
+      case 16: // 审核通过，安装点安装车牌
+      var vin = this.busInfoComponent.data.busInfo.vin
+      this.setData({
+        qrcodeInfo: vin,
+        currentStep: 2,
+        showStep: false,
+        maskIsHidden: true
+      })
+      return
     }
   },
   // 去个人信息录入页面
@@ -125,7 +166,9 @@ Page({
   },
   // 关闭已阅读蒙层
   closeAgreeModal () {
-    this.agreeModal.hide()
+    this.setData({
+      maskIsHidden: true
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

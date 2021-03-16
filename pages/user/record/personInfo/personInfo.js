@@ -182,6 +182,10 @@ Component({
       })
       // 图片保存成功, 显示表单, 并查询识别后的信息
       if (!res1) return
+      this.getSomeImgInfo()
+    },
+    // 查询识别后的信息
+    async getSomeImgInfo () {
       let { result: res2 } = await personal_search()
       if (res2) {
         this.setData({
