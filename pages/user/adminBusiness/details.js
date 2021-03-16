@@ -12,7 +12,7 @@ Page({
       plateNo: '', // 车牌号码
       urlVehicle: '', // 整车照片
       urlVin: '', // 车架照片
-      vehicleNo: '' // 车架号
+      vin: '' // 车架号
     }
   },
 
@@ -28,7 +28,7 @@ Page({
       onlyFromCamera: true,
       success: res => {
         this.setData({
-          ['formData.' + [flag]]: res.result
+          ['formData.' + flag]: res.result
         })
       }
     })
@@ -50,12 +50,12 @@ Page({
   },
   // 表单校验
   formValid () {
-    let { plateNo, urlVehicle, urlVin, vehicleNo } = this.data.formData
+    let { plateNo, urlVehicle, urlVin, vin } = this.data.formData
     if (!plateNo) {
       this.showToast('请扫描车牌号码')
       return false
     }
-    if (!vehicleNo) {
+    if (!vin) {
       this.showToast('请扫描整车编号')
       return false
     }

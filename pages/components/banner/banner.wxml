@@ -2,4 +2,7 @@
 <view class="banner" style="background-image: url({{bannerBg}});">
   <view class="title1">{{headTile1}}</view>
   <view class="title2">{{headTile2}}</view>
+  <view class="qrcode-box">
+    <qrcode width="{{200}}" height="{{200}}" frontground="#f0f7ff" text="https://www.baidu.com" background="transparent"></qrcode>
+  </view>
 </view>

@@ -1,6 +1,7 @@
 /* pages/components/banner/banner.wxss */
 
 .banner {
+  position: relative;
   border-radius: 5px;
   background-position: center;
   background-size: cover;
@@ -16,4 +17,9 @@
 .title2 {
   font-size: 16px;
   padding-bottom: 15px;
+}
+.qrcode-box {
+  position: absolute;
+  right: 200rpx;
+  bottom: 0;
 }

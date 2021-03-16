@@ -132,6 +132,7 @@ export const car_loss_reput = (data) => {
 // 操作员安装车牌上报
 export const install_report = (data) => {
   return wx.$post({
-    url: '/battery-car-management/operator_installation_report'
+    url: '/battery-car-management/operator_installation_report',
+    data
   })
 }

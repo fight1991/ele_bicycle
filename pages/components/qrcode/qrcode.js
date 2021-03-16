@@ -13,6 +13,14 @@ Component({
       type: Number,
       value: 300
     },
+    background: {
+      type: String,
+      value: '#ffffff'
+    },
+    frontground: {
+      type: String,
+      value: '#000000'
+    },
     text: {
       type: String,
       value: ''
@@ -43,7 +51,7 @@ Component({
    */
   methods: {
     drawCode (params) {
-      let { width, height, text } = this.data
+      let { width, height, text, background, frontground } = this.data
       // 比率换算
       let W = wx.getSystemInfoSync().windowWidth
       let rate = 750.0 / W
@@ -51,6 +59,8 @@ Component({
         width: width / rate,
         height: height / rate,
         canvasId: 'myQrcode',
+        background: background,
+        foreground: frontground,
         ctx: wx.createCanvasContext('myQrcode', this),
         text: params || text,
         // v1.0.0+版本支持在二维码上绘制图片

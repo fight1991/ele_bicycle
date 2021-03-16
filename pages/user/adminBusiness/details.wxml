@@ -14,9 +14,9 @@
       <view class="common-form-item">
         <view class="label">整车编号</view>
         <view class="input">
-          <input type="text" disabled value="{{formData.vehicleNo}}"/>
+          <input type="text" disabled value="{{formData.vin}}"/>
         </view>
-        <view class="icon" bindtap="scanBtn" data-flag="vehicleNo">
+        <view class="icon" bindtap="scanBtn" data-flag="vin">
           <image src="/pages/image/scan.png"></image>
         </view>
       </view>
