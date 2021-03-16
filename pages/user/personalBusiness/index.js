@@ -57,6 +57,12 @@ Page({
     })
     console.log(result, '扫描备案人变更得二维码')
   },
+  // 跳转到一键报失页面
+  routeToLoss () {
+    wx.navigateTo({
+      url: '/pages/user/loss/loss',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

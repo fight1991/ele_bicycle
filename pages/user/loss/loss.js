@@ -1,5 +1,5 @@
 // pages/user/loss/loss.js
-import {car_loss_search} from '../../api/record'
+import { car_loss_search, car_loss_reput } from '../../api/record'
 Page({
 
   /**
@@ -24,8 +24,15 @@ Page({
     }
   },
   // 已找回按钮
-  hasFound () {
-
+  async hasFound () {
+    let { result } = await car_loss_reput({
+      status: 24
+    })
+    if (result) {
+      wx.reLaunch({
+        url: '/pages/user/personalBusiness/index',
+      })
+    }
   },
   // 重新申请
   reApply () {
@@ -41,9 +48,14 @@ Page({
   },
   // 自动报废api,并返回备案申报第一步
   async applyLoss () {
-    wx.redirectTo({
-      url: '/pages/user/record/index',
+    let { result } = await car_loss_reput({
+      status: 33
     })
+    if (result) {
+      wx.redirectTo({
+        url: '/pages/user/record/index',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

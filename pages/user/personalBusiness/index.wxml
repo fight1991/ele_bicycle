@@ -24,7 +24,7 @@
       </view>
       <view class="text">备案人变更</view>
     </view>
-    <view class="block-item">
+    <view class="block-item" bindtap="routeToLoss">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/baoshi.png" mode="cover"></image>
       </view>
