@@ -45,6 +45,7 @@ Component({
    */
   methods: {
     // 点击banner显示二维码图片
+    // 二维码是一个url地址
     async showQrcodeImg () {
       let { vehicleId } = app.globalData.userInfo
       if (!vehicleId) return
@@ -52,7 +53,7 @@ Component({
       console.log(result, 'banner二维码数据............')
       this.setData({
         initValue: false,
-        qrcodeText: result
+        qrcodeText: result + '?source=banner'
       })
     }
   }
