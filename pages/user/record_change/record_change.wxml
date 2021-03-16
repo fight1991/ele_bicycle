@@ -8,7 +8,9 @@
     <view class="qrcode-box" wx:if="{{!isRefresh}}">
       <qrcode text="{{qrcodeText}}"></qrcode>
     </view>
-    <button wx:else bindtap="getChangeStatus">点击刷新二维码</button>
+    <view wx:else bindtap="getChangeStatus" class="qrcode-none">
+      二维码已失效, 请点击此处重新获取
+    </view>
   </view>
   <view class="check-status" wx:if="{{currentStep==1}}">
     <view class="status-image">

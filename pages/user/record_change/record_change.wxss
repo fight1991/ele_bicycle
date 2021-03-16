@@ -15,8 +15,21 @@
 .tips {
   padding: 10rpx;
 }
-.qrcode-box {
+.qrcode-box, .qrcode-none {
   padding: 30rpx;
+}
+.qrcode-none {
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  width: 300rpx;
+  height: 300rpx;
+  color: red;
+  display: flex;
+  line-height: 26px;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: center;
 }
 .bottom-btns {
   display: flex;
