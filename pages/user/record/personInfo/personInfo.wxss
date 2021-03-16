@@ -92,3 +92,21 @@
 .fw {
   font-weight: bold;
 }
+.btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 640rpx;
+  margin: 40rpx auto 0;
+}
+
+.btn-item {
+  width: 300rpx;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00aaee;
+  height: 40px;
+  border-radius: 20px
+}

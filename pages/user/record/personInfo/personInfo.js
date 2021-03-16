@@ -169,6 +169,12 @@ Component({
         }
       })
     },
+    // 上一步按钮
+    frontStep () {
+      this.setData({
+        showForm: false
+      })
+    },
     // 下一步的按钮
     async nextStep () {
       var isPass = this.nextIsPass()

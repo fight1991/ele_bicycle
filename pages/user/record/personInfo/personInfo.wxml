@@ -89,6 +89,9 @@
     </form>
   </view>
   <view wx:if="{{!showForm}}" class="common-btn" bindtap="nextStep">下一步</view>
-  <view wx:else class="common-btn" bindtap="commitNext">下一步</view>
+  <view wx:else class="btn-box">
+    <view class="btn-item left" bindtap="frontStep">上一步</view>
+    <view class="btn-item" bindtap="commitNext">下一步</view>
+  </view>
 </view>
 
