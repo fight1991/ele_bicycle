@@ -1,19 +1,2 @@
 <!--pages/user/scanCode/scanCode.wxml-->
-<view class="box">
-  <view class="item">
-    <view class="label">车牌号码 :</view>
-    <view class="value">{{busNum}}</view>
-  </view>
-  <view class="item">
-    <view class="label">车辆品牌 :</view>
-    <view class="value">{{busBrand}}</view>
-  </view>
-  <view class="item">
-    <view class="label">车辆属性 :</view>
-    <view class="value">{{busProp}}</view>
-  </view>
-  <view class="item">
-    <view class="label">车辆状态 :</view>
-    <view class="value">{{busStatus}}</view>
-  </view>
-</view>
+<web-view src="{{url}}"></web-view>

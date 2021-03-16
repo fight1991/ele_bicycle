@@ -53,7 +53,7 @@ Component({
       console.log(result, 'banner二维码数据............')
       this.setData({
         initValue: false,
-        qrcodeText: result + '?source=banner'
+        qrcodeText: result
       })
     }
   }

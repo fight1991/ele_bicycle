@@ -52,7 +52,7 @@ Page({
       }
       if (result.status == 0) {
         this.setData({
-          qrcodeText: result.qrcodeValidityToken
+          qrcodeText: result.qrcodeValidityToken + '&change'
         })
         // 开始轮巡, 查看扫码的结果
         this.startSearch(result.qrcodeValidityToken)
