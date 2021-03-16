@@ -51,6 +51,13 @@ export const carInfo_add = (data) => {
     data
   })
 }
+// 车辆信息-公共数据查询
+export const carInfo_public = (id, data) => {
+  return wx.$get({
+    url: '/battery_car/public/' + id,
+    data
+  })
+}
 
 // 备案申报获取状态
 export const record_status = (data) => {

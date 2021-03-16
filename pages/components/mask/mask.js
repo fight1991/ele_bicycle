@@ -7,9 +7,34 @@ Component({
     onClickModalClose: { // 点击蒙层是否关闭
       type: Boolean,
       value: false
+    },
+    initValue: {
+      type: Boolean,
+      value: false
+    },
+    maskColor: {
+      type: String,
+      value: 'rgba(0, 0, 0, 0.3)'
     }
   },
-
+  observers: {
+    'initValue': function () {
+      if (this.data.initValue) {
+        this.setData({
+          isShow: false
+        })
+      } else {
+        this.setData({
+          isShow: true
+        })
+      }
+    }
+  },
+  lifetimes: {
+    attached: function (e) {
+      
+    }
+  },
   /**
    * 组件的初始数据
    */

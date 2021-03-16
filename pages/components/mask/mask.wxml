@@ -1,7 +1,7 @@
 <!--pages/components/mask/mask.wxml-->
 <!-- 蒙层组件 -->
 <view class='wx_dialog_container' hidden="{{!isShow}}">
-  <view class='wx-mask' bindtap='hideFormModal'></view>
+  <view class='wx-mask' style="background: {{maskColor}}" bindtap='hideFormModal'></view>
   <view class='wx-dialog'>
     <slot></slot>
   </view>

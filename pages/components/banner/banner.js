@@ -1,5 +1,7 @@
 // pages/components/banner/banner.js
 const utils = require('../../../utils/util')
+var app = getApp()
+import { carInfo_public } from '../../api/record'
 Component({
   /**
    * 组件的属性列表
@@ -28,16 +30,13 @@ Component({
    */
   data: {
     trueIdcard: '',
-    isShow: false,
-    bannerBg: utils.imgTobase64('/pages/image/record_banner.png')
+    initValue: true, // 设置mask初始为 隐藏, 点击banner显示
+    bannerBg: utils.imgTobase64('/pages/image/record_banner.png'),
+    qrcodeText: 'https://www.baidu.com'
   },
   lifetimes: {
     attached: function () {
-      if (!this.data.isShow) {
-        this.setData({
-          trueIdcard: utils.hideText(this.data.idcard)
-        })
-      }
+     
     }
   },
 
@@ -45,17 +44,15 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    switchIdCardStatus (e) {
-      var isShow = e.detail
-      let { idcard } = this.data
+    // 点击banner显示二维码图片
+    async showQrcodeImg () {
+      let { vehicleId } = app.globalData.userInfo
+      if (!vehicleId) return
+      let { result } = await carInfo_public(vehicleId)
+      console.log(result, 'banner二维码数据............')
       this.setData({
-        trueIdcard: isShow ? idcard : utils.hideText(idcard)
-      })
-    },
-    // 跳转到个人中心
-    routeToMePage () {
-      wx.navigateTo({
-        url: '/pages/user/center/center',
+        initValue: false,
+        qrcodeText: result
       })
     }
   }

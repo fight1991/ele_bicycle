@@ -1,8 +1,10 @@
 <!--pages/components/banner/banner.wxml-->
-<view class="banner" style="background-image: url({{bannerBg}});">
+<view class="banner" bindtap="showQrcodeImg" style="background-image: url({{bannerBg}});">
   <view class="title1">{{headTile1}}</view>
   <view class="title2">{{headTile2}}</view>
-  <view class="qrcode-box">
-    <qrcode width="{{200}}" height="{{200}}" frontground="#f0f7ff" text="https://www.baidu.com" background="transparent"></qrcode>
-  </view>
 </view>
+<mask initValue="{{initValue}}" onClickModalClose="{{true}}" maskColor="rgba(0,0,0,.9)">
+  <!-- <view class="qrcode-box"> -->
+    <qrcode width="{{500}}" height="{{500}}" text="{{qrcodeText}}" background="transparent"></qrcode>
+  <!-- </view> -->
+</mask>

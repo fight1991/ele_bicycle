@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "qrcode": "/pages/components/qrcode/qrcode"
+    "qrcode": "/pages/components/qrcode/qrcode",
+    "mask": "/pages/components/mask/mask"
   }
 }

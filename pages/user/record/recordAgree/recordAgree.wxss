@@ -1,6 +1,7 @@
 /* pages/user/record/recordAgree/recordAgree.wxss */
 .mask-container {
   height: 80vh;
+  width: 80vw;
   padding: 20rpx 0;
 }
 .scroll-container {
