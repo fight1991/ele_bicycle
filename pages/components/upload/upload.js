@@ -6,11 +6,27 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    width: {
-      type: Number,
-      value: 80
+    width: { // 宽度
+      type: String,
+      value: '160rpx'
     },
-    imgSrc: {
+    height: { // 高度 默认为auto
+      type: String,
+      value: 'auto'
+    },
+    mode: {
+      type: String,
+      value: 'widthFix'
+    },
+    staticSrc: { // 默认图片
+      type: String,
+      value: '/pages/image/upload.png'
+    },
+    closeIcon: { // 是否显示删除图标
+      type: Boolean,
+      value: true
+    },
+    imgSrc: { // 真实的图片地址
       type: String,
       value: ''
     }

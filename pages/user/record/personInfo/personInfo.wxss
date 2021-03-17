@@ -26,9 +26,9 @@
 }
 .tips {
   padding-top: 10px;
+  padding: 10px 30px 0;
 }
 .tips-detail {
-  padding: 0 30px;
   display: flex;
   font-size: 12px;
 }
@@ -38,17 +38,13 @@
 .license-tip {
   font-size: 12px;
   /* text-align: center; */
-  padding: 10px 30px;
+  padding: 10px 0;
 }
 .idcard {
   /* background-color: #ccc; */
-  height: 140px;
-  width: 600rpx;
   margin: 0 auto;
-  border-radius: 10px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .idcard-text {
   text-align: center;

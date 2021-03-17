@@ -22,20 +22,30 @@
           证件可选择居民身份证、临时居民身份证、驾驶证、公民护照。
         </view>
       </view>
-    </view>
-    <!-- 身份证正面区域 -->
-    <view class="license-tip">证件正面</view>
-    <view class="idcard idcard-front" bindtap="idcartBtn" data-mode="front">
-      <image class="image" wx:if="{{ frontShow }}" mode="aspectFit" src="/pages/image/front.png"></image>
-      <image class="image" wx:else src="{{ frontImgUrl }}" mode="aspectFit"></image>
-      <!-- <view class="icon"></view>
-      <view class="idcard-text">点击拍摄/上传证件正面</view> -->
-    </view>
-    <!-- 身份证反面区域 -->
-    <view class="license-tip">证件反面</view>
-    <view class="idcard idcard-back" bindtap="idcartBtn" data-mode="back">
-      <image class="image" wx:if="{{ backShow }}" mode="aspectFit" src="/pages/image/back.png"></image>
-      <image class="image" wx:else src="{{ backImgUrl }}" mode="aspectFit"></image>
+      <!-- 身份证正面区域 -->
+      <view class="license-tip">证件正面</view>
+      <view class="idcard idcard-front">
+        <upload 
+          closeIcon="{{false}}"
+          model:img-src="{{frontImgUrl}}"
+          staticSrc="/pages/image/front.png"
+          mode="aspectFit"
+          height="340rpx"
+          width="550rpx">
+        </upload>
+      </view>
+      <!-- 身份证反面区域 -->
+      <view class="license-tip">证件反面</view>
+      <view class="idcard idcard-back">
+        <upload 
+          closeIcon="{{false}}"
+          model:img-src="{{backImgUrl}}"
+          staticSrc="/pages/image/back.png"
+          mode="aspectFit"
+          height="340rpx"
+          width="550rpx">
+        </upload>
+      </view>
     </view>
   </view>
   <!-- 个人信息表单区域 -->

@@ -15,18 +15,13 @@ Component({
    */
   data: {
     showForm: false, // 是否显示个人表单信息
-    // 占位图片是否显示
+    // 人像占位图片是否显示
     faceShow: true,
-		frontShow: true,
-    backShow: true,
-
-    // 图片临时路径
+    // 人像图片临时路径
     faceSrc: '',
-		frontSrc: '',
-    backSrc: '',
-
     // 图片上传到服务器之后的地址
     faceImgUrl: null,
+
     frontImgUrl: null,
     backImgUrl: null,
 
@@ -76,8 +71,6 @@ Component({
             frontImgUrl: imageIDCard1,
             backImgUrl: imageIDCard2,
             faceShow: false,
-            frontShow: false,
-            backShow: false,
           })
           // 触发附件关闭已阅读弹窗
           this.triggerEvent('closeAgreeDialog')
@@ -124,50 +117,6 @@ Component({
       //   const tempFilePaths = res.tempFilePaths
       //     // 存储照片信息
       // })
-    },
-    // 点击身份证按钮
-    idcartBtn (e) {
-      // mode=front 为身份证正面, mode=back为身份证反面
-      var mode = e.currentTarget.dataset.mode
-      console.log(mode)
-      wx.showActionSheet({
-        itemList: ['拍照','从相册中选择'],
-        success: (res) => {
-          console.log(res, '备案申报拍照/选择图片')
-          var type = 'album'
-          if (res.tapIndex == 0) {
-            type = 'camera'
-            // wx.navigateTo({
-            //   url: '/pages/user/camera/back?mode=' + mode,
-            // })
-          }
-          this.choosePhoto(type,  async (res) => {
-            console.log('从相册中选择图片----------')
-            var tempPath = res.tempFilePaths[0]
-            // 得到文件的hash值
-            let hash = await upload_func(tempPath)
-            if (hash) {
-              this.setData({
-                // [mode + 'Src']: res.tempFilePaths[0],
-                [mode + 'Show']: false,
-                [mode + 'ImgUrl']: app.hashUrl + hash
-              })
-            }
-          })
-        }
-      })
-    },
-    // 打开相册或摄像头
-    choosePhoto (type, callback) {
-      wx.chooseImage({
-        count: 1,
-        sizeType: ['original', 'compressed'],
-        sourceType: [type],
-        success (res) {
-          // tempFilePath可以作为img标签的src属性显示图片
-          callback && callback(res)
-        }
-      })
     },
     // 上一步按钮
     frontStep () {

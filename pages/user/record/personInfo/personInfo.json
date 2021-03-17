@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "upload": "/pages/components/upload/upload"
+  }
 }
