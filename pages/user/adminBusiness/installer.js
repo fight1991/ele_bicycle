@@ -14,9 +14,22 @@ Page({
   onLoad: function (options) {
 
   },
+  // 扫码并跳转到上报页面
   routeTo () {
-    wx.navigateTo({
-      url: '/pages/user/adminBusiness/details',
+    wx.scanCode({
+      onlyFromCamera: true,
+      scanType: ['qrCode'],
+      success: _res => {
+        wx.navigateTo({
+          url: '/pages/user/adminBusiness/details?vin=' + _res.result,
+        })
+      },
+      fail: _ => {
+        wx.showToast({
+          title: '扫码失败, 请重试',
+          icon: 'error'
+        })
+      }
     })
   },
   /**

@@ -17,7 +17,7 @@
           <input type="text" disabled value="{{formData.vin}}"/>
         </view>
         <view class="icon" bindtap="scanBtn" data-flag="vin">
-          <image src="/pages/image/scan.png"></image>
+          <!-- <image src="/pages/image/scan.png"></image> -->
         </view>
       </view>
     </view>

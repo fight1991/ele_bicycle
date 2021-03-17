@@ -1,10 +1,12 @@
 /* pages/user/adminBusiness/installer.wxss */
 
-
 .scan-img {
   width: 192rpx;
   height: 190rpx;
-  margin: 100rpx 0 40rpx;
+  margin: 180rpx 0 40rpx;
+}
+.fs18 {
+  padding: 20rpx 0;
 }
 .scan-img image {
   width: 100%;
