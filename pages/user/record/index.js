@@ -1,5 +1,6 @@
 // pages/user/record/index.js
 import {record_status} from '../../api/record'
+var app = getApp()
 Page({
 
   /**
@@ -31,7 +32,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.busInfoComponent = this.selectComponent('#busInfo')
+    // 此时组件busInfo还没显示, 故拿不到
     this.personInfoComponent = this.selectComponent('#personInfo')
     // 1. 进入页面 先查看当前备案状态
     this.getCheckStatus()
@@ -42,48 +43,6 @@ Page({
     wx.navigateTo({
 			url: '/pages/user/camera/index?mode=face',
 		})
-    // this.choosePhoto('camera', (res) => {
-    //   const tempFilePaths = res.tempFilePaths
-    //     // 存储照片信息
-    // })
-  },
-  // 点击身份证按钮
-  idcartBtn (e) {
-    // mode=front 为身份证正面, mode=back为身份证反面
-    var mode = e.currentTarget.dataset.mode
-    wx.showActionSheet({
-      itemList: ['拍照','从相册中选择'],
-      success: (res) => {
-        console.log(res.tapIndex)
-        if (res.tapIndex == 0) {
-          wx.navigateTo({
-            url: '/pages/user/camera/index?mode=' + mode,
-          })
-        }
-        if (res.tapIndex == 1) {
-          this.choosePhoto('album', (res) => {
-            console.log('从相册中选择图片----------')
-            console.log(res)
-            this.setData({
-              [mode + 'Src']: res.tempFilePaths[0],
-              [mode + 'Show']: false
-            })
-          })
-        }
-      }
-    })
-  },
-  // 打开相册或摄像头
-  choosePhoto (type, callback) {
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: [type],
-      success (res) {
-        // tempFilePath可以作为img标签的src属性显示图片
-        callback && callback(res)
-      }
-    })
   },
   // 控制状态条进度
   progressStatus () {
@@ -142,9 +101,8 @@ Page({
         return
       case 15: // 审核通过，邮寄车牌
       case 16: // 审核通过，安装点安装车牌
-      var vin = this.busInfoComponent.data.busInfo.vin
       this.setData({
-        qrcodeInfo: vin,
+        qrcodeInfo: app.globalData.busInfo.vin,
         currentStep: 2,
         showStep: false,
         maskIsHidden: true

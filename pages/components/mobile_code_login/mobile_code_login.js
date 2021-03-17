@@ -2,6 +2,7 @@
 const utils = require("../../../utils/util")
 var app = getApp()
 import { goLogin, changeMobile, getCodeApi, getUserBaseInfo } from '../../api/index'
+import {  carInfo_public } from '../../api/index'
 
 // 手机号验证码登录组件
 Component({
@@ -123,10 +124,19 @@ Component({
       if (result) {
         result.token && wx.setStorageSync('token', result.token)
         app.saveUserInfo(result)
+        await this.saveBusInfo()
         wx.reLaunch({
           url: '/pages/user/index',
         })
       }
+    },
+    // 获取车辆信息
+    async saveBusInfo () {
+      let { result } = await carInfo_public()
+      if (result) {
+        app.saveBusInfo(result)
+      }
+      return true
     },
     // 修改手机号api
     async changeMobile () {

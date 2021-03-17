@@ -23,7 +23,7 @@
         <view wx:if="{{checkStatus==14}}">原因:{{failReason}}</view>
       </view>
       <view class="status-erweima" wx:if="{{checkStatus==15 ||checkStatus==16}}">
-        <qrcode width="{{240}}" height="{{240}}" text="{{qrcodeInfo}}"></qrcode>
+        <qrcode width="{{240}}" height="{{240}}" value="{{qrcodeInfo}}"></qrcode>
       </view>
 
       <!-- 查看并修改备案信息 --审核失败 -->

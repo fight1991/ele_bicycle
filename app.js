@@ -56,14 +56,24 @@ App({
   static_user_logo: '/pages/image/user_static_logo.png',
   // 全局共享数据
   globalData: {
-    userInfo: {
+    userInfo: { // 用户信息
       name: '',
       idcard: '',
       batteryCarStatus: 0,
       vehicleId: null,
       mobile: ''
     },
-    mobile: '',
+    busInfo: { // 车辆信息
+      brand: '',
+      installationMethods: 0,
+      model: '',
+      plateNo: '',
+      properties: 0,
+      qrCodeUrl: '',
+      vehicleId: 0,
+      vehicleStatus: 0,
+      vin: ''
+    },
     wxHeadImg: null,
     jsCode: '',
   },
@@ -73,5 +83,16 @@ App({
     this.globalData.userInfo.batteryCarStatus = userInfo.batteryCarStatus
     this.globalData.userInfo.vehicleId = userInfo.vehicleId
     this.globalData.userInfo.mobile = userInfo.mobile
+  },
+  saveBusInfo (busInfo) {
+    this.globalData.busInfo.brand = busInfo.brand
+    this.globalData.busInfo.installationMethods = busInfo.installationMethods
+    this.globalData.busInfo.model = busInfo.model
+    this.globalData.busInfo.plateNo = busInfo.plateNo
+    this.globalData.busInfo.properties = busInfo.properties
+    this.globalData.busInfo.qrCodeUrl = busInfo.qrCodeUrl
+    this.globalData.busInfo.vehicleId = busInfo.vehicleId
+    this.globalData.busInfo.vehicleStatus = busInfo.vehicleStatus
+    this.globalData.busInfo.vin = busInfo.vin
   }
 })

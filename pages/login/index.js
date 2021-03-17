@@ -1,6 +1,8 @@
 // pages/login/index.js
 var app = getApp()
 import { checkCode, getUserBaseInfo } from '../api/index'
+import { carInfo_public } from '../api/record'
+
 Page({
 
   /**
@@ -33,12 +35,10 @@ Page({
   async routeValid (code) {
     var token = wx.getStorageSync('token')
     if (token) {
-      let { result } = await getUserBaseInfo()
-      if (result) {
-        app.saveUserInfo(result)
-        app.globalData.wxHeadImg = result.avatarUrl
-        this.routeTo('/pages/user/index')
-      }
+      await this.saveUserInfo()
+      await this.saveBusInfo()
+      this.routeTo('/pages/user/index')
+
     } else {
       // 请求后端接口进行登录凭证校验, 有身份证号, 跳转到登录页面, 无身份证号跳转到注册页面
       let { result } = await checkCode({
@@ -49,6 +49,23 @@ Page({
         app.globalData.userInfo.idcard = result.idNO
       }
     }
+  },
+  // 获取并保存用户信息
+  async saveUserInfo () {
+    let { result } = await getUserBaseInfo()
+    if (result) {
+      app.saveUserInfo(result)
+      app.globalData.wxHeadImg = result.avatarUrl
+    }
+    return true
+  },
+  // 获取并保存车辆信息
+  async saveBusInfo () {
+    let { result } = await carInfo_public()
+    if (result) {
+      app.saveBusInfo(result)
+    }
+    return true
   },
   wechatPermission () {
     if (this.data.isClick) return

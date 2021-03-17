@@ -6,7 +6,7 @@
   <view class="qrcode-area">
     <view class="tips fs16">请让新车主扫如下二维码</view>
     <view class="qrcode-box" wx:if="{{!isRefresh}}">
-      <qrcode text="{{qrcodeText}}"></qrcode>
+      <qrcode value="{{qrcodeText}}"></qrcode>
     </view>
     <view wx:else bindtap="getChangeStatus" class="qrcode-none">
       二维码已失效, 请点击此处重新获取
