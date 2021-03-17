@@ -35,17 +35,23 @@ Page({
       success: _res => {
         console.log(_res, '扫码结果')
         let res = _res.result
-        if (res.indexOf('http') > -1) { // 说明是个链接
+        if (res.includes('http')) { // 说明是个链接
           // 跳转到web-view页面
           wx.navigateTo({
             url: '/pages/user/scanCode/scanCode?url=' + res,
           })
-        } else {
+        } else if (res.includes('&change')){ // 说明扫的是备案人变更的二维码
           let tempArr = res.split('&')
           let tempStr = tempArr[1]
-          if (tempStr && tempStr == 'change') { // 说明扫的是备案人变更的二维码
+          if (tempStr && tempStr == 'change') {
             this.recordChange(tempStr[0])
           }
+        } else {
+          wx.showToast({
+            title: '无效的二维码',
+            icon: 'error',
+            duration: 2000
+          })
         }
       }
     })

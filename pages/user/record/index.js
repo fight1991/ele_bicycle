@@ -99,6 +99,13 @@ Page({
           maskIsHidden: true
         })
         return
+      case 14: // 审核失败, 重新备案
+        this.setData({
+          currentStep: 2,
+          showStep: false,
+          maskIsHidden: true
+        })
+        return
       case 15: // 审核通过，邮寄车牌
       case 16: // 审核通过，安装点安装车牌
       this.setData({
