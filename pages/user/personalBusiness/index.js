@@ -63,23 +63,36 @@ Page({
     })
     console.log(result, '扫描备案人变更得二维码')
   },
+  // 跳转到一键报废
+  routeToCrapt () {
+    wx.navigateTo({
+      url: '/pages/user/scrap/scrap',
+    })
+  },
   // 跳转到一键报失页面
   async routeToLoss () {
-    let { result } = await car_loss_op()
-    if (result) {
-      let status = result.status
-      if (status == 23) {
-        wx.navigateTo({
-          url: '/pages/user/loss/loss',
-        })
-      } else {
-        wx.showToast({
-          title: '没有报失数据',
-          icon: 'none'
-        })
+    wx.showModal({
+      title: '提示',
+      content: '您确定要报失吗?',
+      success: async res => {
+        if (res.confirm) {
+          let { result } = await car_loss_op()
+          if (result) {
+            let status = result.status
+            if (status == 23) {
+              wx.navigateTo({
+                url: '/pages/user/loss/loss',
+              })
+            } else {
+              wx.showToast({
+                title: '没有报失数据',
+                icon: 'none'
+              })
+            }
+          }
+        }
       }
-    }
-    
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
