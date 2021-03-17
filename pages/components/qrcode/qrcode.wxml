@@ -1,4 +1,5 @@
 <!--pages/components/qrcode/qrcode.wxml-->
 <view class="canvas-box">
-  <canvas style="width: {{width}}rpx; height: {{height}}rpx;" canvas-id="myQrcode"></canvas>
+  <!-- <canvas style="width: {{width}}rpx; height: {{height}}rpx;" canvas-id="myQrcode"></canvas> -->
+  <image style="width: {{width}}rpx; height: {{height}}rpx;" src="{{qrcodeURL}}"></image>
 </view>

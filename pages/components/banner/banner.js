@@ -32,7 +32,7 @@ Component({
     trueIdcard: '',
     initValue: true, // 设置mask初始为 隐藏, 点击banner显示
     bannerBg: utils.imgTobase64('/pages/image/record_banner.png'),
-    qrcodeText: 'https://www.baidu.com'
+    qrcodeText: ''
   },
   lifetimes: {
     attached: function () {
@@ -47,14 +47,13 @@ Component({
     // 点击banner显示二维码图片
     // 二维码是一个url地址
     async showQrcodeImg () {
-      let { vehicleId } = app.globalData.userInfo
-      if (!vehicleId) return
-      let { result } = await carInfo_public(vehicleId)
-      console.log(result, 'banner二维码数据............')
-      this.setData({
-        initValue: false,
-        qrcodeText: result
-      })
+      let { result } = await carInfo_public()
+      if (result && result.qrCodeUrl) {
+        this.setData({
+          initValue: false,
+          qrcodeText: result.qrCodeUrl
+        })
+      }
     }
   }
 })

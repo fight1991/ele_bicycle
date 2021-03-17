@@ -110,7 +110,7 @@ Component({
         }
         if (urlinvoice) {
           this.setData({
-            urlcertification
+            urlinvoice
           })
         }
       }

@@ -5,6 +5,6 @@
 </view>
 <mask initValue="{{initValue}}" onClickModalClose="{{true}}" maskColor="rgba(0,0,0,.9)">
   <!-- <view class="qrcode-box"> -->
-    <qrcode width="{{500}}" height="{{500}}" text="{{qrcodeText}}" background="transparent"></qrcode>
+    <qrcode width="{{300}}" height="{{300}}" value="{{qrcodeText}}" background="transparent"></qrcode>
   <!-- </view> -->
 </mask>
