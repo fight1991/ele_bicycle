@@ -14,11 +14,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-    // 车辆上传的静态图片是否显示
-    busBg: true,
-    tickBg: true,
-    busSrc: '',
-    tickSrc: '',
+    // 双向绑定图片的值
+    urlcertification: '',
+    urlinvoice: '',
     // 车辆属性
     pickerArrProp: ['非国标车', '新国标车'],
     // 装牌方式
@@ -38,9 +36,6 @@ Component({
   // 页面初始化后查询车辆信息
   lifetimes: {
     attached: function (e) {
-      // 获取组件对象
-      this.uploadCert = this.selectComponent('#certification')
-      this.uploadInvoice = this.selectComponent('#invoice')
       // 数据初始化
       this.initInfo()
       this.initValid()
@@ -109,13 +104,13 @@ Component({
         })
         let { urlcertification, urlinvoice } = result
         if (urlcertification) {
-          this.uploadCert.setData({
-            imgSrc: urlcertification
+          this.setData({
+            urlcertification
           })
         }
         if (urlinvoice) {
-          this.uploadInvoice.setData({
-            imgSrc: urlinvoice
+          this.setData({
+            urlcertification
           })
         }
       }

@@ -15,11 +15,10 @@
       <view class="img-area area">
         <view class="line-title">车辆图片</view>
         <view class="line-detail upload-img">
-          <upload model:img-src="{{imgSrc}}" id="busImg" bindgetImgInfo="getBusImg"></upload>
+          <upload model:img-src="{{imgSrc}}"></upload>
         </view>
       </view>
     </view>
-    <button bindtap="changeImg">更改图片地址</button>
   </view>
 </scroll-view>
 

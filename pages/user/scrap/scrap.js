@@ -13,18 +13,13 @@ Page({
       reason: '',
       vehicleImage: '',
     },
-    imgSrc: ''
+    imgSrc: '' // 绑定组件upload中的imgSrc的值, 注意只能单层绑定
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.busImg = this.selectComponent('#busImg')
-  },
-  changeImg () {
- 
-  },
+  onLoad: function (options) {},
   // 获取图片地址
   getBusImg (res) {
     this.data.formData.vehicleImage = res.detail

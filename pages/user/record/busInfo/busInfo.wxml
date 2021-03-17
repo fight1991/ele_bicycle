@@ -39,12 +39,12 @@
         <view class="text-line">请上传车辆合格证和购车发票</view>
         <view class="upload-box">
           <view class="upload-item">
-            <upload id="certification" bindgetImgInfo="getBusFile">
+            <upload model:img-src="{{urlcertification}}">
               <text>车辆合格证</text>
             </upload>
           </view>
           <view class="upload-item">
-            <upload id="invoice" bindgetImgInfo="getTicketFile">
+            <upload model:img-src="{{urlinvoice}}">
               <text>购车发票</text>
             </upload>
           </view>
