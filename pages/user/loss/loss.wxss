@@ -12,3 +12,22 @@
   padding: 10px;
   width: 50%;
 }
+.status-image {
+  width: 220rpx;
+  margin: 180rpx auto 30rpx;
+}
+.status-image .img {
+  width: 100%;
+}
+.text-info {
+  width: 500rpx;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10rpx 0;
+}
+.text-up, .text-down {
+  padding: 10rpx 0;
+}
+.text-down {
+  color: red;
+}

@@ -102,8 +102,10 @@ Page({
   },
   // 清楚定时器
   clearTimer () {
-    clearInterval(this.data.timer)
-    this.data.timer = null
+    if (this.data.timer) {
+      clearInterval(this.data.timer)
+      this.data.timer = null
+    }
   },
   // 跳转另外几个状态的页面
   routeOtherPage (status) {
@@ -139,7 +141,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.clearTimer()
   },
 
   /**

@@ -1,5 +1,5 @@
 // pages/user/personalBusiness/index.js
-import { car_owner_change_scan } from '../../api/record'
+import { car_owner_change_scan, car_loss_op } from '../../api/record'
 Page({
 
   /**
@@ -58,10 +58,22 @@ Page({
     console.log(result, '扫描备案人变更得二维码')
   },
   // 跳转到一键报失页面
-  routeToLoss () {
-    wx.navigateTo({
-      url: '/pages/user/loss/loss',
-    })
+  async routeToLoss () {
+    let { result } = await car_loss_op()
+    if (result) {
+      let status = result.status
+      if (status == 23) {
+        wx.navigateTo({
+          url: '/pages/user/loss/loss',
+        })
+      } else {
+        wx.showToast({
+          title: '没有报失数据',
+          icon: 'none'
+        })
+      }
+    }
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -7,14 +7,14 @@ Page({
    */
   data: {
     failReason: '', // 审核失败原因
-    status: '', // 状态
+    status: '23', // 状态
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // this.getLossStatus()
   },
   // 报失状态查询 23:已报失、24:已找回、33:已报废，重新申请、0:表示没有报失数据
   async getLossStatus () {
