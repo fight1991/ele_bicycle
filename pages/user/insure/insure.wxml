@@ -1,0 +1,8 @@
+<!--pages/user/insure/insure.wxml-->
+<view class="outer">
+  <view class="no-data-box">
+    <image class="no-data" src="/pages/image/no_data.png" mode="widthFix"></image>
+    <view class="no-text">未查到数据</view>
+  </view>
+  <view class="common-btn" bindtap="purchaseBtn">购买保险</view>
+</view>

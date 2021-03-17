@@ -113,6 +113,12 @@
           "pathName": "pages/user/scrap/scrap",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "购买保险",
+          "pathName": "pages/user/insure/insure",
+          "query": "",
+          "scene": null
         }
       ]
     }

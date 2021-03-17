@@ -30,13 +30,13 @@
       </view>
       <view class="text">一键报失</view>
     </view>
-    <view class="block-item mask">
+    <view class="block-item">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/baofei.png" mode="cover"></image>
       </view>
       <view class="text">一键报废</view>
     </view>
-    <view class="block-item mask">
+    <view class="block-item">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/purchase.png" mode="cover"></image>
       </view>

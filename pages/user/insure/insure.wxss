@@ -1,0 +1,23 @@
+/* pages/user/insure/insure.wxss */
+.outer {
+  padding: 20rpx;
+}
+.no-data {
+  width: 300rpx;
+}
+.no-text {
+  padding: 80rpx 0 0;
+}
+.no-data-box {
+  margin-top: 80rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.common-btn {
+  width: 300rpx;
+  margin: 0 auto;
+  margin-top: 60rpx;
+}
