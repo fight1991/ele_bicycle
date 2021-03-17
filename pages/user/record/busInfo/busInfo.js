@@ -110,14 +110,12 @@ Component({
         let { urlcertification, urlinvoice } = result
         if (urlcertification) {
           this.uploadCert.setData({
-            imgSrc: urlcertification,
-            uploadBg: false
+            imgSrc: urlcertification
           })
         }
         if (urlinvoice) {
           this.uploadInvoice.setData({
-            imgSrc: urlinvoice,
-            uploadBg: false
+            imgSrc: urlinvoice
           })
         }
       }

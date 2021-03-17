@@ -11,8 +11,9 @@ Page({
     initNum: 140,
     formData: {
       reason: '',
-      vehicleImage: ''
-    }
+      vehicleImage: '',
+    },
+    imgSrc: ''
   },
 
   /**
@@ -21,16 +22,18 @@ Page({
   onLoad: function (options) {
     this.busImg = this.selectComponent('#busImg')
   },
+  changeImg () {
+ 
+  },
   // 获取图片地址
   getBusImg (res) {
     this.data.formData.vehicleImage = res.detail
   },
   // 初始化图片信息
   initImgInfo (url) {
-    this.busImg.setData({
-      imgSrc: url,
-      uploadBg: false
-    })
+    // this.busImg.setData({
+    //   imgSrc: url
+    // })
   },
   // 表单数据绑定
   bindData (e) {

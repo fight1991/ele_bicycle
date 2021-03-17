@@ -9,15 +9,18 @@ Component({
     width: {
       type: Number,
       value: 80
+    },
+    imgSrc: {
+      type: String,
+      value: ''
     }
   },
-
+  observers: {},
   /**
    * 组件的初始数据
    */
   data: {
-    uploadBg: true,
-    imgSrc: ''
+    trueSrc: ''
   },
 
   /**
@@ -53,8 +56,13 @@ Component({
       let tempPath = res.tempFilePaths[0]
       let hash = await upload_func(tempPath)
       let totalUrl = app.hashUrl + hash
+      // 更新父组件传递过来的imgSrc值
       this.setData({
         imgSrc: totalUrl,
+      })
+      // 更新imgSrc
+      this.setData({
+        imgSrc: totalUrl
       })
       this.triggerEvent('getImgInfo', totalUrl)
     },
