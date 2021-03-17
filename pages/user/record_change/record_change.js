@@ -110,7 +110,7 @@ Page({
   // 跳转另外几个状态的页面
   routeOtherPage (status) {
     wx.navigateTo({
-      url: '/pages/user/record_change/record_change?status=' + status,
+      url: '/pages/user/record_change/other_status?status=' + status,
     })
   },
   // 返回个人中心

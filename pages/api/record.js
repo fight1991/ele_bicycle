@@ -110,7 +110,7 @@ export const car_scrap_op = (data) => {
 
 // 车辆报废 - 取消申请
 export const car_scrap_cancel = (data) => {
-  return wx.$post({
+  return wx.$put({
     url: '/battery-car-management/battery_car_scrap',
     data
   })

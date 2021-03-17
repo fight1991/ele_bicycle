@@ -5,7 +5,7 @@
   </view>
   <view class="status-text">
     {{statusText[checkStatus]}}
-    <view>原因:{{}}</view>
+    <view wx:if="{{reason}}">原因:{{reason}}</view>
   </view>
 </view>
 <view class="fix-bottom-btn" bindtap="hasKnownBtn">已知晓</view>

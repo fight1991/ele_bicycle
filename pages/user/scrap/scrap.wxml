@@ -3,7 +3,8 @@
     <view class="step-box">
       <step stepList="{{stepList}}" step="{{currentStep}}"></step>
     </view>
-    <view class="content">
+    <!-- 报废申请第一步 -->
+    <view class="content" wx:if="{{currentStep==0}}">
       <!-- 申请原因区域 -->
       <view class="reason-area area">
         <view class="line-title">申请原因</view>
@@ -18,6 +19,25 @@
           <upload model:img-src="{{imgSrc}}"></upload>
         </view>
       </view>
+    </view>
+    <!-- 报废申请第二步 -->
+    <view wx:if="{{currentStep==1}}">
+      <view class="status-image">
+        <image class="img" src="{{imgInfo['31']}}" mode="widthFix"></image>
+      </view>
+      <view class="text-info">
+        <view class="text-up fs16">
+          您的报废申请审核中, 请耐心等待
+        </view>
+        <view class="text-down">
+          审核成功后可重新备案
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{currentStep==0}}" class="common-btn" bindtap="submitBtn">提交</view>
+    <view wx:if="{{currentStep==1}}" class="bottom-btns fix-bottom-btn">
+      <view class="fix-left" bindtap="cancelBtn">取消申请</view>
+      <view class="fix-right" bindtap="backCenter">返回个人中心</view>
     </view>
   </view>
 </scroll-view>
