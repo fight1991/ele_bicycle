@@ -107,6 +107,12 @@
           "pathName": "pages/user/loss/loss",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "一键报废",
+          "pathName": "pages/user/scrap/scrap",
+          "query": "",
+          "scene": null
         }
       ]
     }

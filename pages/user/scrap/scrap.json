@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "step": "/pages/components/step/step",
+    "upload": "/pages/components/upload/upload"
+  },
+  "navigationBarTitleText": "一键报废"
+
+}

@@ -21,7 +21,8 @@
     "pages/user/record_change/record_change",
     "pages/user/record_change/other_status",
     "pages/setting/setting",
-    "pages/user/loss/loss"
+    "pages/user/loss/loss",
+    "pages/user/scrap/scrap"
   ],
   "window": {
     "backgroundTextStyle": "light",

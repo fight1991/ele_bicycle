@@ -24,17 +24,39 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    // 上传图片到服务器, 并得到图片的url地址
-    uploadBImg (e) {
-      this.chooseImg(async (res) => {
-        let tempPath = res.tempFilePaths[0]
-        let hash = await upload_func(tempPath)
-        let totalUrl = app.hashUrl + hash
-        this.setData({
-          imgSrc: totalUrl,
-        })
-        this.triggerEvent('getImgInfo', totalUrl)
+    // 点击图片按钮
+    chooseBtn (e) {
+      wx.showActionSheet({
+        itemList: ['拍照','从相册中选择'],
+        success: (res) => {
+          var type = 'album'
+          if (res.tapIndex == 0) {
+            type = 'camera'
+          }
+          this.chooseImg(type)
+        }
       })
+    },
+    // 选取图片方式
+    chooseImg (type) {
+      wx.chooseImage({
+        count: 1,
+        sizeType: ['original', 'compressed'],
+        sourceType: [type],
+        success: (res) => {
+          this.uploadImg(res)
+        }
+      })
+    },
+    // 上传图片到服务器
+    async uploadImg (res) {
+      let tempPath = res.tempFilePaths[0]
+      let hash = await upload_func(tempPath)
+      let totalUrl = app.hashUrl + hash
+      this.setData({
+        imgSrc: totalUrl,
+      })
+      this.triggerEvent('getImgInfo', totalUrl)
     },
     // 删除已选的图片
     removeBg (e) {
@@ -42,17 +64,6 @@ Component({
         imgSrc: ''
       })
       this.triggerEvent('getImgInfo', '')
-    },
-    chooseImg (callback) {
-      wx.chooseImage({
-        count: 1,
-        sizeType: ['original', 'compressed'],
-        sourceType: ['album'],
-        success: (res) => {
-          // tempFilePath可以作为img标签的src属性显示图片
-          callback && callback(res)
-        }
-      })
-    },
+    }
   }
 })

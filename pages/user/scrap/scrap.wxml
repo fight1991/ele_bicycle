@@ -1,0 +1,24 @@
+<scroll-view class="scroll-container" scroll-y="true">
+  <view class="outer">
+    <view class="step-box">
+      <step stepList="{{stepList}}" step="{{currentStep}}"></step>
+    </view>
+    <view class="content">
+      <!-- 申请原因区域 -->
+      <view class="reason-area area">
+        <view class="line-title">申请原因</view>
+        <view class="line-detail textarea">
+          <textarea placeholder="如车辆丢失等" cols="30" rows="4" id="reason" value="{{formData.reason}}" bindinput="bindData"></textarea>
+        </view>
+        <view class="allow-text">还可以输入{{textNum}}个字</view>
+      </view>
+      <view class="img-area area">
+        <view class="line-title">车辆图片</view>
+        <view class="line-detail upload-img">
+          <upload id="busImg" bindgetImgInfo="getBusImg"></upload>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+

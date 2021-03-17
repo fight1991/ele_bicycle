@@ -1,0 +1,36 @@
+/* pages/user/scrap/scrap.wxss */
+page {
+  height: 100%;
+}
+.scroll-container {
+  height: 100%;
+}
+.outer {
+  padding: 20rpx;
+}
+.content {
+  background-color: #fff;
+  margin: 0 30rpx;
+  border-radius: 8px;
+}
+.area {
+  padding: 0 40rpx;
+}
+.line-title {
+  font-size: 16px;
+  padding: 20rpx 0;
+}
+.reason-area {
+  border-bottom: 1px solid #ccc;
+}
+.img-area {
+  padding-bottom: 20rpx;
+}
+.allow-text {
+  text-align: right;
+  color: #ccc;
+  padding: 10rpx 0;
+}
+.upload-img {
+  padding: 20rpx 0;
+}
