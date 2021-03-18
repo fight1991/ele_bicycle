@@ -115,6 +115,17 @@ Page({
         maskIsHidden: true
       })
       return
+      case 17:
+        wx.showToast({
+          title: '已经备案成功!',
+          duration: 15000,
+          success: _ => {
+            wx.navigateBack({
+              delta: 1,
+            })
+          }
+        })
+      return
     }
   },
   // 去个人信息录入页面
