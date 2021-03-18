@@ -116,15 +116,20 @@ Page({
       })
       return
       case 17:
+        this.setData({
+          currentStep: 3,
+          showStep: false,
+          maskIsHidden: true
+        })
         wx.showToast({
           title: '已经备案成功!',
-          duration: 15000,
-          success: _ => {
-            wx.navigateBack({
-              delta: 1,
-            })
-          }
+          duration: 15000
         })
+        this.delayTimer = setTimeout(() => {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 15000)
       return
     }
   },
@@ -171,7 +176,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.delayTimer && clearTimeout(this.delayTimer)
   },
 
   /**

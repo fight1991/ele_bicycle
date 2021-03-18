@@ -26,7 +26,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    this.getStatus()
+  },
   // 初始化图片信息
   initImgInfo (url) {
     this.setData({
@@ -43,6 +45,7 @@ Page({
         this.setData({
           currentStep: 0,
         })
+        this.initImgInfo(result.vehicleImage)
       } else if (status == 31) {
         this.setData({
           currentStep: 1
