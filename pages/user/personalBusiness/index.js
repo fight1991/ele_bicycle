@@ -44,7 +44,7 @@ Page({
           let tempArr = res.split('&')
           let tempStr = tempArr[1]
           if (tempStr && tempStr == 'change') {
-            this.recordChange(tempStr[0])
+            this.recordChange(tempArr[0])
           }
         } else {
           wx.showToast({
@@ -61,6 +61,11 @@ Page({
     let { result } = await car_owner_change_scan({
       qrcodeValidityToken: token
     })
+    if (result) { // 跳转到备案申报个人信息步骤
+      wx.navigateTo({
+        url: '/pages/user/record/index',
+      })
+    }
     console.log(result, '扫描备案人变更得二维码')
   },
   // 跳转到一键报废

@@ -3,7 +3,7 @@
   <view class="step-box">
     <step stepList="{{stepList}}" step="{{currentStep}}"></step>
   </view>
-  <view class="qrcode-area">
+  <view class="qrcode-area" wx:if="{{currentStep==0}}">
     <view class="tips fs16">请让新车主扫如下二维码</view>
     <view class="qrcode-box" wx:if="{{!isRefresh}}">
       <qrcode value="{{qrcodeText}}"></qrcode>

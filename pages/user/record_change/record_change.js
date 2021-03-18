@@ -44,27 +44,7 @@ Page({
         checkStatus: result.status,
         failReason: result.failReason
       })
-      if (result.status == 41) {
-        // 等待审核页面
-        this.setData({
-          currentStep: 1
-        })
-      }
-      if (result.status == 0) {
-        this.setData({
-          qrcodeText: result.qrcodeValidityToken + '&change'
-        })
-        // 开始轮巡, 查看扫码的结果
-        this.startSearch(result.qrcodeValidityToken)
-        // 开启延时器, 2分钟后结束轮询
-        // var tempTimer = setTimeout(() => {
-        //   this.setData({
-        //     isRefresh: true
-        //   })
-        //   clearTimeout(tempTimer)
-        //   this.data.timer && clearInterval(this.data.timer)
-        // }, 12000)
-      }
+      this.handleStatus(result)
     }
   },
   // 轮询开始 5s中轮询一次
@@ -77,20 +57,7 @@ Page({
         this.setData({
           checkStatus: result.status
         })
-        // 状态为-2 二维码失效
-        if (result.status == -2) {
-          this.clearTimer()
-          this.setData({
-            isRefresh: true
-          })
-        }
-        // 审核失败, 审核成功
-        if (result.status == 42 || result.status == 43) {
-          // 清除定时器
-          this.clearTimer()
-          // 跳转到另外几个状态的页面
-          this.routeOtherPage(result.status)
-        }
+        this.handleStatus(result)
       }
       // 清除定时器
       if (other || error) {
@@ -107,6 +74,38 @@ Page({
       this.data.timer = null
     }
   },
+  // 判断状态并处理逻辑分支
+  handleStatus (result) {
+    // 状态为-2 二维码失效
+    if (result.status == -2) {
+      this.clearTimer()
+      this.setData({
+        isRefresh: true
+      })
+    }
+    // 状态为0, 二维码有效
+    if (result.status == 0) {
+      this.setData({
+        qrcodeText: result.qrcodeValidityToken + '&change'
+      })
+      // 开始轮巡, 查看扫码的结果
+      this.startSearch(result.qrcodeValidityToken)
+    }
+    // 41 -等待审核页面
+    if (result.status == 41) {
+      this.setData({
+        currentStep: 1
+      })
+      this.clearTimer()
+    }
+    // 审核失败, 审核成功
+    if (result.status == 42 || result.status == 43) {
+      // 清除定时器
+      this.clearTimer()
+      // 跳转到另外几个状态的页面
+      this.routeOtherPage(result.status)
+    }
+  },
   // 跳转另外几个状态的页面
   routeOtherPage (status) {
     wx.navigateTo({
@@ -120,8 +119,16 @@ Page({
     })
   },
   // 取消申请
-  cancelBtn () {
-
+  async cancelBtn () {
+    let { result } = await car_owner_change_cancel({ status: 2 })
+    if (result) {
+      wx.showToast({
+        title: '取消成功'
+      })
+      wx.reLaunch({
+        url: '/pages/user/index',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

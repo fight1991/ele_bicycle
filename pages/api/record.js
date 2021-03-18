@@ -86,8 +86,8 @@ export const car_owner_change_scan = (data) => {
 
 // 车辆备案人变更 - 取消变更
 export const car_owner_change_cancel = (data) => {
-  return wx.$put({
-    url: '/battery-car-management/battery_car_ownership_change',
+  return wx.$post({
+    url: '/battery-car-management/battery_car_ownership_change/cancel',
     data
   })
 }
