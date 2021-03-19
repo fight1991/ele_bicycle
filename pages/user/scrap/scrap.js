@@ -109,7 +109,7 @@ Page({
     }
   },
   // 表单提交
-  submitForm () {
+  async submitForm () {
     this.data.formData.vehicleImage = this.data.imgSrc
     let { result } = await car_scrap_op(this.data.formData)
     if (result) {
