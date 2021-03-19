@@ -1,5 +1,16 @@
 // pages/user/personalBusiness/index.js
-import { car_owner_change_scan, car_loss_op } from '../../api/record'
+import {
+  record_status, // 备案申报状态查询
+  car_owner_change_status, // 备案人变更状态查询
+  car_loss_search, // 一键报失状态查询
+  car_scrap_search // 一键报废状态查询
+} from '../../api/record'
+var pageApi = {
+  record: record_status,
+  record_change: car_owner_change_status,
+  loss: car_loss_search,
+  scrap: car_scrap_search
+}
 Page({
 
   /**
@@ -15,16 +26,30 @@ Page({
   onLoad: function (options) {
 
   },
-  routeTo () {
-    wx.navigateTo({
-      url: '/pages/user/record/record',
-    })
-  },
-  // 跳转到备案人变更页面
-  routeToChange () {
-    wx.navigateTo({
-      url: '/pages/user/record_change/record_change',
-    })
+  // 跳转到相关页面
+  async routeTo (e) {
+    let { page } = e.currentTarget.dataset
+    // 查询相应的状态
+    let tempApi = pageApi[page]
+    let route = `/pages/user/${page}/${page}`
+    if (!tempApi) {
+      wx.navigateTo({
+        url: route
+      })
+      return
+    }
+    let { result } = await tempApi()
+    if (result) {
+      let { failReason, status, invoiceAuditingNum = 0, qrcodeValidityToken = '', vehicleImage = '' } = result
+      let paramsStr = `?failReason=${failReason}&status=${status}&invoiceAuditingNum=${invoiceAuditingNum}&qrcodeValidityToken=${qrcodeValidityToken}&vehicleImage=${vehicleImage}`
+      if (page == 'loss') {
+        this.routeToLoss(paramsStr)
+      } else {
+        wx.navigateTo({
+          url: route + paramsStr
+        })
+      }
+    }
   },
   // 扫码
   scanCode () {
@@ -66,41 +91,18 @@ Page({
       })
     }
   },
-  // 跳转到一键报废
-  routeToCrapt () {
-    wx.navigateTo({
-      url: '/pages/user/scrap/scrap',
-    })
-  },
   // 跳转到一键报失页面
-  async routeToLoss () {
+  async routeToLoss (paramsStr) {
     wx.showModal({
       title: '提示',
       content: '您确定要报失吗?',
       success: async res => {
         if (res.confirm) {
-          let { result } = await car_loss_op()
-          if (result) {
-            let status = result.status
-            if (status == 23) {
-              wx.navigateTo({
-                url: '/pages/user/loss/loss',
-              })
-            } else {
-              wx.showToast({
-                title: '没有报失数据',
-                icon: 'none'
-              })
-            }
-          }
+          wx.navigateTo({
+            url: '/pages/user/loss/loss' + paramsStr,
+          })
         }
-      }
-    })
-  },
-  // 跳转到购买保险查询页面
-  async routeToInsure () {
-    wx.navigateTo({
-      url: '/pages/user/insure/insure',
+      } 
     })
   },
   /**

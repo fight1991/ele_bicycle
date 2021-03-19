@@ -59,7 +59,7 @@ export const carInfo_public = (data) => {
   })
 }
 
-// 备案申报获取状态
+// 备案申报状态
 export const record_status = (data) => {
   return wx.$get({
     url: '/battery-car-management/battery_car_record_filing',

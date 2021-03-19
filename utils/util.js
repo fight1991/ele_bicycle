@@ -78,6 +78,24 @@ const imgTobase64 = (path) => {
   var base64 = wx.getFileSystemManager().readFileSync(path, 'base64')
   return 'data:image/png;base64,' + base64
 }
+ // 打开确认框
+const openConfirm = ({content, confirm, cancel}) => {
+  wx.showModal({
+    title: '提示',
+    content: content,
+    success: res => {
+      if (res.confirm) {
+        confirm && confirm()
+      } else {
+        cancel && cancel()
+      }
+    } 
+  })
+}
+// 是否为空指针或undefined
+const isNull = (x) => {
+  return (x == undefined || x == null)
+}
 module.exports = {
   formatTime,
   checkPhone,
@@ -85,5 +103,7 @@ module.exports = {
   hideText,
   addZero,
   showToast,
-  imgTobase64
+  imgTobase64,
+  openConfirm,
+  isNull
 }

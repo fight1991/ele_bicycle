@@ -4,6 +4,7 @@ import {
   car_owner_change_scan,
   car_owner_change_cancel
 } from '../../api/record'
+const utils = require('../../../utils/util')
 Page({
 
   /**
@@ -13,6 +14,8 @@ Page({
     currentStep: 0,
     qrcodeText: '',
     timer: null,
+    failReason: '',
+    invoiceAuditingNum: 0, // 存在多少审核单据
     timeGap: 1000,
     initToken: '', // 生成二维码的初始值
     checkStatus: 41,
@@ -29,7 +32,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getChangeStatus()
+    // status有值, 说明是点击备案人变更按钮跳转过来的
+    let { status } = options
+    if (!utils.isNull(status)) {
+      // 处理状态分支
+      this.handleStatus(options)
+    } else {
+      this.getChangeStatus()
+    }
+  },
+  // 打开确认框
+  openModal (num) {
+    utils.openConfirm({
+      content: `当前已有${num}个审核单，本次审核通过后会自动结束其他审核单，是否继续？`,
+      confirm: () => { // 用户点击确认 显示二维码
+        this.setData({
+          qrcodeText: this.data.initToken + '&change'
+        })
+        // 开始轮询
+        this.startSearch(this.data.initToken)
+      },
+      cancel: () => { // 点击取消, 返回上一个页面
+        wx.navigateBack({
+          delta: 1,
+        })
+      }
+    })
   },
   // 查询变更状态
   async getChangeStatus () {
@@ -78,12 +106,17 @@ Page({
       checkStatus: result.status,
       failReason: result.failReason
     })
+    this.data.invoiceAuditingNum = result.invoiceAuditingNum
     // 状态为0, 显示并存储二维码初始值
     if (result.status == 0) {
-      this.setData({
-        qrcodeText: result.qrcodeValidityToken + '&change'
-      })
       this.data.initToken = result.qrcodeValidityToken
+      if (result.invoiceAuditingNum > 0) {
+        this.openModal(result.invoiceAuditingNum)
+      } else {
+        this.setData({
+          qrcodeText: result.qrcodeValidityToken + '&change'
+        })
+      }
     }
     // 状态为 0 或-1 二维码尚未被扫码或还在有效, 继续1s后开启轮询
     if (result.status == -1 || result.status ==0) {

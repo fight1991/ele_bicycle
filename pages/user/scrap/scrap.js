@@ -1,5 +1,6 @@
 // pages/user/scrap/scrap.js
 import { car_scrap_search, car_scrap_op, car_scrap_cancel } from '../../api/record'
+var utils = require('../../../utils/util')
 Page({
 
   /**
@@ -8,6 +9,7 @@ Page({
   data: {
     stepList: ['报废申请', '等待审核'],
     currentStep: 0,
+    invoiceAuditingNum: 0,
     textNum: 140,
     initNum: 140,
     formData: {
@@ -27,7 +29,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getStatus()
+    // 点击一键报废按钮带过来的
+    let { status } = options
+    if (!utils.isNull(status)) {
+      this.handleStatus(options)
+    } else {
+      this.getStatus()
+    }
   },
   // 初始化图片信息
   initImgInfo (url) {
@@ -38,6 +46,10 @@ Page({
   // 车辆状态查询
   async getStatus () {
     let { result } = await car_scrap_search()
+    this.handleStatus(result)
+  },
+  // 处理状态分支
+  handleStatus (result) {
     if (result) {
       let status = result.status
       this.setData(result)
@@ -56,7 +68,6 @@ Page({
           url: `/pages/user/record_change/other_status?pageTitle=一键报废&status=${status}&reason=${result.reason}`,
         })
       }
-      
     }
   },
   // 取消申请
@@ -79,10 +90,26 @@ Page({
       url: '/pages/user/index',
     })
   },
-  // 表单提交
+  // 表单按钮
   async submitBtn () {
+    // 表单内容校验
     let isPass = this.formValid()
     if (!isPass) return
+    // 判断审核单数量是否>0, 则提示
+    var tempNum = this.data.invoiceAuditingNum
+    if (tempNum > 0) {
+      utils.openConfirm({
+        content: `当前已有${tempNum}个审核单，本次审核通过后会自动结束其他审核单，是否继续？`,
+        confirm: () => {
+          this.submitForm()
+        }
+      })
+    } else {
+      this.submitForm()
+    }
+  },
+  // 表单提交
+  submitForm () {
     this.data.formData.vehicleImage = this.data.imgSrc
     let { result } = await car_scrap_op(this.data.formData)
     if (result) {

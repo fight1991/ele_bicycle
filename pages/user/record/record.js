@@ -1,5 +1,5 @@
 // pages/user/record/record.js
-import {record_status} from '../../api/record'
+import { record_status } from '../../api/record'
 var app = getApp()
 Page({
 

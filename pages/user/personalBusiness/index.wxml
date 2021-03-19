@@ -6,7 +6,7 @@
     headTile2="请进行备案申报">
   </banner>
   <view class="grid-box">
-    <view class="block-item" bindtap="routeTo">
+    <view class="block-item" bindtap="routeTo" data-page="record">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/record.png" mode="cover"></image>
       </view>
@@ -18,25 +18,25 @@
       </view>
       <view class="text">扫码</view>
     </view>
-    <view class="block-item" bindtap="routeToChange">
+    <view class="block-item" bindtap="routeTo" data-page="record_change">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/peopleChange.png" mode="cover"></image>
       </view>
       <view class="text">备案人变更</view>
     </view>
-    <view class="block-item" bindtap="routeToLoss">
+    <view class="block-item" bindtap="routeTo" data-page="loss">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/baoshi.png" mode="cover"></image>
       </view>
       <view class="text">一键报失</view>
     </view>
-    <view class="block-item" bindtap="routeToCrapt">
+    <view class="block-item" bindtap="routeTo" data-page="scrap">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/baofei.png" mode="cover"></image>
       </view>
       <view class="text">一键报废</view>
     </view>
-    <view class="block-item" bindtap="routeToInsure">
+    <view class="block-item" bindtap="routeTo" data-page="insure">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/purchase.png" mode="cover"></image>
       </view>
