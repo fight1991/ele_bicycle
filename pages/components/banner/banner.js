@@ -18,10 +18,6 @@ Component({
     headTile1: {
       type: String,
       value: '-'
-    },
-    headTile2: {
-      type: String,
-      value: '-'
     }
   },
 
@@ -32,18 +28,37 @@ Component({
     trueIdcard: '',
     initValue: true, // 设置mask初始为 隐藏, 点击banner显示
     bannerBg: utils.imgTobase64('/pages/image/record_banner.png'),
-    qrcodeText: ''
+    qrcodeText: '',
+    vehicleStatus: 0, // 车辆状态, 1 为正常
+    plateNo: '', // 车牌号
+    vin: '', // 车架号
   },
   lifetimes: {
     attached: function () {
-      
+
     }
   },
-
+  pageLifetimes: {
+    show: function() {
+      this.getCarStatus()
+    }
+  },
   /**
    * 组件的方法列表
    */
   methods: {
+    // 车辆信息查询
+    async getCarStatus () {
+      let { result } = await carInfo_public()
+      if (result) {
+        let { vehicleStatus, plateNo, vin } = result
+        this.setData({
+          vehicleStatus,
+          plateNo,
+          vin
+        })
+      }
+    },
     // 点击banner显示二维码图片
     // 二维码是一个url地址
     async showQrcodeImg () {

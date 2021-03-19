@@ -17,3 +17,6 @@
   font-size: 16px;
   padding-bottom: 15px;
 }
+.bus-info .item {
+  padding: 5px 0;
+}

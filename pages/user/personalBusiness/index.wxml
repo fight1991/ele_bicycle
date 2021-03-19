@@ -2,8 +2,7 @@
 <view class="box">
   <name-idcard></name-idcard>
   <banner 
-    headTile1="电动二轮车居民个人电子备案证"
-    headTile2="请进行备案申报">
+    headTile1="电动二轮车居民个人电子备案证">
   </banner>
   <view class="grid-box">
     <view class="block-item" bindtap="routeTo" data-page="record">
