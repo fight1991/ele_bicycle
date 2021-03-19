@@ -1,4 +1,4 @@
-/* pages/user/record/index.wxss */
+/* pages/user/record/record.wxss */
 page {
   height: 100%;
 }

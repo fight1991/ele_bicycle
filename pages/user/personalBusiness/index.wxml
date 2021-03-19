@@ -36,7 +36,7 @@
       </view>
       <view class="text">一键报废</view>
     </view>
-    <view class="block-item">
+    <view class="block-item" bindtap="routeToInsure">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/purchase.png" mode="cover"></image>
       </view>

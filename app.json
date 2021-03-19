@@ -7,7 +7,7 @@
     "pages/index/index",
     "pages/test/test",
     "pages/user/personalBusiness/index",
-    "pages/user/record/index",
+    "pages/user/record/record",
     "pages/user/record/law/law",
     "pages/user/scanCode/scanCode",
     "pages/user/camera/front",

@@ -1,4 +1,4 @@
-<!--pages/user/record/index.wxml-->
+<!--pages/user/record/record.wxml-->
 <scroll-view class="scroll-container" scroll-y="true">
   <view class="record">
     <!-- 步骤区域 -->

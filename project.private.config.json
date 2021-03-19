@@ -38,7 +38,7 @@
         },
         {
           "name": "备案申报页面",
-          "pathName": "pages/user/record/index",
+          "pathName": "pages/user/record/record",
           "query": "",
           "scene": null
         },

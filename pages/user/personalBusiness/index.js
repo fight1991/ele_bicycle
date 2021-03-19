@@ -17,7 +17,7 @@ Page({
   },
   routeTo () {
     wx.navigateTo({
-      url: '/pages/user/record/index',
+      url: '/pages/user/record/record',
     })
   },
   // 跳转到备案人变更页面
@@ -26,7 +26,6 @@ Page({
       url: '/pages/user/record_change/record_change',
     })
   },
-  // 
   // 扫码
   scanCode () {
     wx.scanCode({
@@ -63,10 +62,9 @@ Page({
     })
     if (result) { // 跳转到备案申报个人信息步骤
       wx.navigateTo({
-        url: '/pages/user/record/index',
+        url: '/pages/user/record/record',
       })
     }
-    console.log(result, '扫描备案人变更得二维码')
   },
   // 跳转到一键报废
   routeToCrapt () {
@@ -97,6 +95,12 @@ Page({
           }
         }
       }
+    })
+  },
+  // 跳转到购买保险查询页面
+  async routeToInsure () {
+    wx.navigateTo({
+      url: '/pages/user/insure/insure',
     })
   },
   /**

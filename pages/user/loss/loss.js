@@ -53,7 +53,7 @@ Page({
     })
     if (result) {
       wx.redirectTo({
-        url: '/pages/user/record/index',
+        url: '/pages/user/record/record',
       })
     }
   },

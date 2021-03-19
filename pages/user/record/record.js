@@ -1,4 +1,4 @@
-// pages/user/record/index.js
+// pages/user/record/record.js
 import {record_status} from '../../api/record'
 var app = getApp()
 Page({
