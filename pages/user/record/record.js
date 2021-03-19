@@ -35,7 +35,12 @@ Page({
     // 此时组件busInfo还没显示, 故拿不到
     this.personInfoComponent = this.selectComponent('#personInfo')
     // 1. 进入页面 先查看当前备案状态
-    this.getCheckStatus()
+    let { status } = options
+    if (!app.utils.isNull(status)) {
+      this.getCurrentStepByStatus(options)
+    } else {
+      this.getCheckStatus()
+    }
   },
 
   // 点击拍摄人脸按钮
@@ -57,18 +62,17 @@ Page({
   async getCheckStatus () {
     let { result } = await record_status()
     if (result) {
-      let { status } = result
-      this.setData({
-        checkStatus: result.status,
-        failReason: result.failReason
-      })
       this.getCurrentStepByStatus(status)
     }
   },
   // 根据状态判断信息录入到哪个步骤
   // 11:完善个人信息 第1步、12:完善个人信息 第2步 13: 完善车辆信息 等待审核、14:审核失败，重新备案、15:审核通过，邮寄车牌、16:审核通过，安装点安装车牌
-  getCurrentStepByStatus (status) {
-    switch (status) {
+  getCurrentStepByStatus (result) {
+    this.setData({
+      checkStatus: result.status,
+      failReason: result.failReason
+    })
+    switch (result.status) {
       case 0: // 填写个人信息
         this.setData({
           currentStep: 0,

@@ -1,6 +1,6 @@
 // app.js
 import './utils/fetch'
-
+const utils = require('./utils/util')
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -38,6 +38,8 @@ App({
     //   }
     // })
   },
+  // 绑定公共方法
+  utils: utils,
   getWechatCode () {
     return new Promise((relove, reject) => {
       wx.showLoading()

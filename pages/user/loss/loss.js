@@ -1,5 +1,6 @@
 // pages/user/loss/loss.js
 import { car_loss_search, car_loss_reput } from '../../api/record'
+var app = getApp()
 Page({
 
   /**
@@ -14,7 +15,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.getLossStatus()
+    let { status, failReason} = options
+    if (!app.utils.isNull(status)) {
+      this.setData({
+        failReason,
+        status
+      })
+    } else {
+      this.getLossStatus()
+    }
   },
   // 报失状态查询 23:已报失、24:已找回、33:已报废，重新申请、0:表示没有报失数据
   async getLossStatus () {
