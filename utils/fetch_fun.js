@@ -10,16 +10,18 @@ const closeLoading = () => {
   wx.hideLoading()
 }
 // 处理业务分支
-const HandleBranch = _res => {
+const HandleBranch = (_res, other) => {
   switch (_res.code) {
     case '0000': // 成功
       return { result: _res.data || true }
     case '0001': // 业务报错, 如查询失败等...
-      wx.showToast({
-        title: _res.message,
-        duration: 1500,
-        icon:'none'
-      })
+      if (other) {
+        wx.showToast({
+          title: _res.message,
+          duration: 1500,
+          icon:'none'
+        })
+      }
       return { other: _res.data}
     case '0002': // token失效
       wx.showToast({

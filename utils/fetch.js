@@ -42,12 +42,12 @@ const {instance: putInstance} = new Fetch({
   method: 'PUT'
 })
 // 方法统一包装
-const ajaxFunc = async ({url, data, isLoading, loadingText, func}) => {
+const ajaxFunc = async ({url, data, isLoading, other, loadingText, func}) => {
   try {
     if (isLoading) showLoading(loadingText)
     let res = await func(url, data)
     if (isLoading) closeLoading()
-    return HandleBranch(res.data)
+    return HandleBranch(res.data, other)
   } catch (error) {
     if (isLoading) closeLoading()
     console.log(error)
@@ -56,17 +56,24 @@ const ajaxFunc = async ({url, data, isLoading, loadingText, func}) => {
 }
 
 // 方法绑定
-wx.$get = ({url, data, isLoading = true, loadingText = '加载中...'}) => {
-  return ajaxFunc({url, data, isLoading, loadingText, func: getInstance})
+/**
+ * url --> api地址
+ * data --> 入参
+ * isLoading --> 是否显示loading
+ * loadingText --> loading 文字
+ * other --> 是否显示业务报错弹框
+ */
+wx.$get = ({url, data, isLoading = true, other = true, loadingText = 'loading...'}) => {
+  return ajaxFunc({url, data, isLoading, other, loadingText, func: getInstance})
 }
-wx.$post = ({url, data, isLoading = true, loadingText = ''}) => {
-  return ajaxFunc({url, data, isLoading, loadingText, func: postInstance})
+wx.$post = ({url, data, isLoading = true, other = true, loadingText = 'loading...'}) => {
+  return ajaxFunc({url, data, isLoading, other, loadingText, func: postInstance})
 }
-wx.$delete = ({url, data, isLoading = true, loadingText = ''}) => {
-  return ajaxFunc({url, data, isLoading, loadingText, func: deleteInstance})
+wx.$delete = ({url, data, isLoading = true, other = true, loadingText = 'loading...'}) => {
+  return ajaxFunc({url, data, isLoading, other, loadingText, func: deleteInstance})
 }
-wx.$put = ({url, data, isLoading = true, loadingText = ''}) => {
-  return ajaxFunc({url, data, isLoading, loadingText, func: putInstance})
+wx.$put = ({url, data, isLoading = true, other = true, loadingText = 'loading...'}) => {
+  return ajaxFunc({url, data, isLoading, other, loadingText, func: putInstance})
 }
 
 

@@ -49,13 +49,18 @@ Component({
   methods: {
     // 车辆信息查询
     async getCarStatus () {
-      let { result } = await carInfo_public()
+      let { result, other } = await carInfo_public(false)
       if (result) {
         let { vehicleStatus, plateNo, vin } = result
         this.setData({
           vehicleStatus,
           plateNo,
           vin
+        })
+      }
+      if (other) {
+        this.setData({
+          vehicleStatus: 0
         })
       }
     },

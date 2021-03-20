@@ -52,10 +52,11 @@ export const carInfo_add = (data) => {
   })
 }
 // 车辆详细信息
-export const carInfo_public = (data) => {
+export const carInfo_public = (other) => {
   return wx.$post({
     url: '/battery-car-management/battery_car/detail',
-    data
+    data: {},
+    other
   })
 }
 
