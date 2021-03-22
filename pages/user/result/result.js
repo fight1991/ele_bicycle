@@ -7,7 +7,8 @@ Page({
   data: {
     checkStatus: 'success',
     reason: '',
-    // 审核结果 共用页面
+    from: 'inside', // 记录从哪个地方跳转过来, 默认为内部页面, server为服务通知跳转进来
+    // 审核结果 共用页面, 备案申报服务通知,点击进来页面
     statusText: {
       'fail': '审核失败',
       'success': '审核成功'
@@ -22,7 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { status, reason = '', pageTitle } = options
+    let { status, reason = '', pageTitle, from = 'inside' } = options
     this.setData({
       checkStatus: status,
       reason
@@ -35,9 +36,16 @@ Page({
   },
   // 返回上一步
   hasKnownBtn () {
-    wx.navigateBack({
-      delta: 1
-    })
+    if (this.data.from = 'inside') {
+      wx.navigateBack({
+        delta: 1
+      })
+    } else {
+      wx.reLaunch({
+        url: '/pages/user/index',
+      })
+    }
+    
   },
 
   /**

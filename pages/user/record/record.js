@@ -121,6 +121,11 @@ Page({
       })
       return
       case 17:
+        this.setData({
+          currentStep: 3,
+          showStep: false,
+          maskIsHidden: true
+        })
         wx.redirectTo({
           url: `/pages/user/result/result?pageTitle=备案申报&status=${'success'}`,
         })
