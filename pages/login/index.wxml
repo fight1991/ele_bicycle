@@ -8,7 +8,7 @@
       <view class="fs20 fc-444">您好, 欢迎使用注册系统</view>
       <view class="fs12 fc-ccc">登录后可查询、办理电动自行车相关业务</view>
     </view>
-    <view class="common-btn" bindtap="wechatPermission">账号登录/注册</view>
+    <view class="common-btn auth-btn" bindtap="wechatPermission">微信授权</view>
   </view>
   <view class="bottom fs12">中国交警</view>
 </view>

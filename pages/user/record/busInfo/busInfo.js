@@ -77,14 +77,14 @@ Component({
         brand: {
           required: '请输入品牌'
         },
-        installation_methods: {
-          required: '请选择装牌方式'
-        },
         model: {
           required: '请输入型号规格'
         },
         properties: {
           required: '请输入车辆属性'
+        },
+        installation_methods: {
+          required: '请选择装牌方式'
         },
         urlcertification: {
           required: '请上传车辆合格证'
@@ -177,7 +177,6 @@ Component({
           value: this.data.busInfo
         }
       }
-      console.log(this.data.busInfo)
       // 校验表单
       let isPass = this.validate.checkForm(temp)
       if (!isPass) {

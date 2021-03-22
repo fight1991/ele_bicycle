@@ -34,3 +34,6 @@ page {
 .common-btn {
   margin-top: 80rpx;
 }
+.auth-btn {
+  background-color: #07c160;
+}
