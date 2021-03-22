@@ -19,7 +19,7 @@
     </view>
   </view>
   <!-- 无报失数据状态码为0 -->
-  <!-- <view class="no-data">
+  <view class="no-data" wx:if="{{status==0}}">
     <view class="status-image">
       <image class="img" src="/pages/image/no_data.png" mode="widthFix"></image>
     </view>
@@ -28,5 +28,5 @@
         没有报失数据
       </view>
     </view>
-  </view> -->
+  </view>
 </view>

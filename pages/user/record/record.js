@@ -129,13 +129,13 @@ Page({
         })
         wx.showToast({
           title: '已经备案成功!',
-          duration: 15000
+          duration: 1500
         })
         this.delayTimer = setTimeout(() => {
           wx.navigateBack({
             delta: 1,
           })
-        }, 15000)
+        }, 1500)
       return
     }
   },

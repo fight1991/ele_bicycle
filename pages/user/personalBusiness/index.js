@@ -1,6 +1,7 @@
 // pages/user/personalBusiness/index.js
 import {
   record_status, // 备案申报状态查询
+  car_loss_op, // 车辆挂失
   car_owner_change_status, // 备案人变更状态查询
   car_loss_search, // 一键报失状态查询
   car_scrap_search // 一键报废状态查询
@@ -43,7 +44,12 @@ Page({
       let { failReason, status, invoiceAuditingNum = 0, qrcodeValidityToken = '', vehicleImage = '' } = result
       let paramsStr = `?failReason=${failReason}&status=${status}&invoiceAuditingNum=${invoiceAuditingNum}&qrcodeValidityToken=${qrcodeValidityToken}&vehicleImage=${vehicleImage}`
       if (page == 'loss') {
-        this.routeToLoss(paramsStr)
+        // 一键报失操作逻辑, 如果状态为0, 说明没有报失,弹框, 则调用报失的接口, 否则直接进入页面
+        if (status == 0) {
+          this.openLossConfirmMmodal(paramsStr)
+        } else {
+          this.routeToLoss(paramsStr)
+        }
       } else {
         wx.navigateTo({
           url: route + paramsStr
@@ -91,16 +97,27 @@ Page({
       })
     }
   },
+  // 车辆挂失api
+  async carLossApi (paramsStr) {
+    let { result } = await car_loss_op()
+    if (result) {
+      this.routeToLoss(paramsStr)
+    }
+  },
   // 跳转到一键报失页面
-  async routeToLoss (paramsStr) {
+  routeToLoss (paramsStr) {
+    wx.navigateTo({
+      url: '/pages/user/loss/loss' + paramsStr,
+    })
+  },
+  // 打开一键报失弹框
+  async openLossConfirmMmodal (paramsStr) {
     wx.showModal({
       title: '提示',
       content: '您确定要报失吗?',
       success: async res => {
         if (res.confirm) {
-          wx.navigateTo({
-            url: '/pages/user/loss/loss' + paramsStr,
-          })
+          this.carLossApi(paramsStr)
         }
       } 
     })

@@ -8,7 +8,7 @@ Page({
    */
   data: {
     failReason: '', // 审核失败原因
-    status: '23', // 状态
+    status: '23', // 状态 状态为0, 调用报失接口
   },
 
   /**
