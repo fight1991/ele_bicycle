@@ -61,7 +61,7 @@ Page({
   },
   // 获取并保存车辆信息
   async saveBusInfo () {
-    let { result } = await carInfo_public()
+    let { result } = await carInfo_public(false)
     if (result) {
       app.saveBusInfo(result)
     }

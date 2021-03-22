@@ -23,7 +23,8 @@
     "pages/setting/setting",
     "pages/user/loss/loss",
     "pages/user/scrap/scrap",
-    "pages/user/insure/insure"
+    "pages/user/insure/insure",
+    "pages/user/result/result"
   ],
   "window": {
     "backgroundTextStyle": "light",

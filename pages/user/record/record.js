@@ -37,7 +37,6 @@ Page({
     // 1. 进入页面 先查看当前备案状态
     let { status } = options
     if (!app.utils.isNull(status)) {
-      console.log(options)
       this.getCurrentStepByStatus(options)
     } else {
       this.getCheckStatus()
@@ -63,7 +62,7 @@ Page({
   async getCheckStatus () {
     let { result } = await record_status()
     if (result) {
-      this.getCurrentStepByStatus(status)
+      this.getCurrentStepByStatus(result)
     }
   },
   // 根据状态判断信息录入到哪个步骤
@@ -122,20 +121,9 @@ Page({
       })
       return
       case 17:
-        this.setData({
-          currentStep: 3,
-          showStep: false,
-          maskIsHidden: true
+        wx.navigateTo({
+          url: `/pages/user/result/result?pageTitle=备案申报&status=${'success'}`,
         })
-        wx.showToast({
-          title: '已经备案成功!',
-          duration: 1500
-        })
-        this.delayTimer = setTimeout(() => {
-          wx.navigateBack({
-            delta: 1,
-          })
-        }, 1500)
       return
     }
   },

@@ -46,7 +46,7 @@ Page({
       if (page == 'loss') {
         // 一键报失操作逻辑, 如果状态为0, 说明没有报失,弹框, 则调用报失的接口, 否则直接进入页面
         if (status == 0) {
-          this.openLossConfirmMmodal(paramsStr)
+          this.openLossConfirmMmodal()
         } else {
           this.routeToLoss(paramsStr)
         }
@@ -105,19 +105,19 @@ Page({
     }
   },
   // 跳转到一键报失页面
-  routeToLoss (paramsStr) {
+  routeToLoss (paramsStr = '') {
     wx.navigateTo({
       url: '/pages/user/loss/loss' + paramsStr,
     })
   },
   // 打开一键报失弹框
-  async openLossConfirmMmodal (paramsStr) {
+  async openLossConfirmMmodal () {
     wx.showModal({
       title: '提示',
       content: '您确定要报失吗?',
       success: async res => {
         if (res.confirm) {
-          this.carLossApi(paramsStr)
+          this.carLossApi()
         }
       } 
     })
