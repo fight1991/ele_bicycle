@@ -4,6 +4,6 @@
   height: 18rpx;
 }
 .icon-box {
-  /* padding: 0 5px; */
+  padding: 5rpx;
   display: inline-block;
 }

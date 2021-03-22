@@ -170,6 +170,8 @@ Component({
     },
     // 提交按钮
     async submitBtn () {
+      this.data.busInfo.urlcertification = this.data.urlcertification || ''
+      this.data.busInfo.urlinvoice = this.data.urlinvoice || ''
       var temp = {
         detail: {
           value: this.data.busInfo
