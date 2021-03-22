@@ -41,8 +41,9 @@ Page({
         delta: 1
       })
     } else {
+      // 从服务通知跳转过来
       wx.reLaunch({
-        url: '/pages/user/index',
+        url: '/pages/user/index?from=server',
       })
     }
     

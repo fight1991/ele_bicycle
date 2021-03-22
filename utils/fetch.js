@@ -54,7 +54,6 @@ const ajaxFunc = async ({url, data, isLoading, other, loadingText, func}) => {
     return { error: error}
   }
 }
-
 // 方法绑定
 /**
  * url --> api地址
@@ -75,7 +74,18 @@ wx.$delete = ({url, data, isLoading = true, other = true, loadingText = 'loading
 wx.$put = ({url, data, isLoading = true, other = true, loadingText = 'loading...'}) => {
   return ajaxFunc({url, data, isLoading, other, loadingText, func: putInstance})
 }
-
+wx.$all = ({list, isLoading, other, loadingText}) => {
+  try {
+    if (isLoading) showLoading(loadingText)
+    let res = await Promise.all[list]
+    if (isLoading) closeLoading()
+    return HandleBranch(res.data, other)
+  } catch (error) {
+    if (isLoading) closeLoading()
+    console.log(error)
+    return { error: error}
+  }
+}
 
 // 文件上传
 const uploadInstance = ({url, data}) => {

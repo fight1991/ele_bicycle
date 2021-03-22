@@ -22,7 +22,7 @@ const HandleBranch = (_res, other) => {
           icon:'none'
         })
       }
-      return { other: _res.data}
+      return { other: _res.data || true}
     case '0002': // token失效
       wx.showToast({
         title: _res.message,

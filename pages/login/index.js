@@ -38,7 +38,6 @@ Page({
       await this.saveUserInfo()
       await this.saveBusInfo()
       this.routeTo('/pages/user/index')
-
     } else {
       // 请求后端接口进行登录凭证校验, 有身份证号, 跳转到登录页面, 无身份证号跳转到注册页面
       let { result } = await checkCode({

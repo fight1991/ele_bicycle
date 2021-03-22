@@ -1,5 +1,6 @@
 // pages/user/personalBusiness/index.js
 import {
+  car_owner_change_scan, // 扫码
   record_status, // 备案申报状态查询
   car_loss_op, // 车辆挂失
   car_owner_change_status, // 备案人变更状态查询
@@ -91,9 +92,14 @@ Page({
     let { result } = await car_owner_change_scan({
       qrcodeValidityToken: token
     })
-    if (result) { // 跳转到备案申报个人信息步骤
-      wx.navigateTo({
-        url: '/pages/user/record/record',
+    if (result) {
+      wx.showToast({
+        title: '操作成功!',
+      })
+    } else {
+      wx.showToast({
+        title: '操作失败!',
+        icon: 'error'
       })
     }
   },

@@ -162,7 +162,7 @@ Page({
     let { result } = await car_owner_change_cancel({ status: 2 })
     if (result) {
       wx.showToast({
-        title: '取消成功'
+        title: '取消成功!'
       })
       wx.reLaunch({
         url: '/pages/user/index',

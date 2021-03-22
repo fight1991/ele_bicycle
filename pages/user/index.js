@@ -1,5 +1,8 @@
 // pages/user/index.js
 const utils = require('../../utils/util')
+import { checkCode, getUserBaseInfo } from '../api/index'
+import { carInfo_public } from '../api/record'
+var app = getApp()
 Page({
 
   /**
@@ -40,7 +43,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let { from } = options
+    if (from == 'server') { // 从服务通知中跳转, 需要初始化用户信息
+      app.getWechatCode().then(res => {
+        app.globalData.jsCode = res.code
+        this.routeValid(res.code)
+      })
+    }
   },
   // 判断有没有成功订阅一条消息
   isOrderMessage (res, ids) {
@@ -81,6 +90,47 @@ Page({
         duration: 1500
       })
     }
+  },
+  async routeValid (code) {
+    var token = wx.getStorageSync('token')
+    if (token) {
+      await this.saveUserInfo()
+      await this.saveBusInfo()
+    } else {
+      // 请求后端接口进行登录凭证校验, 有身份证号, 跳转到登录页面, 无身份证号跳转到注册页面
+      let { result } = await checkCode({
+        jscode: code
+      })
+      if (result) {
+        if (result.idNO) {
+          app.globalData.userInfo.idcard = result.idNO
+          wx.reLaunch({
+            url: '/pages/login/signIn',
+          })
+        } else {
+          wx.reLaunch({
+            url: '/pages/login/faceIdentify'
+          })
+        }
+      }
+    }
+  },
+  // 获取并保存用户信息
+  async saveUserInfo () {
+    let { result } = await getUserBaseInfo()
+    if (result) {
+      app.saveUserInfo(result)
+      app.globalData.wxHeadImg = result.avatarUrl
+    }
+    return true
+  },
+  // 获取并保存车辆信息
+  async saveBusInfo () {
+    let { result } = await carInfo_public(false)
+    if (result) {
+      app.saveBusInfo(result)
+    }
+    return true
   },
   // 防止冒泡
   stopTapEvent () {},
