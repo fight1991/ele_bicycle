@@ -37,6 +37,7 @@ Page({
     // 1. 进入页面 先查看当前备案状态
     let { status } = options
     if (!app.utils.isNull(status)) {
+      console.log(options)
       this.getCurrentStepByStatus(options)
     } else {
       this.getCheckStatus()
@@ -70,9 +71,10 @@ Page({
   getCurrentStepByStatus (result) {
     this.setData({
       checkStatus: result.status,
-      failReason: result.failReason
+      failReason: result.failReason || ''
     })
-    switch (result.status) {
+    var status = +result.status
+    switch (status) {
       case 0: // 填写个人信息
         this.setData({
           currentStep: 0,
