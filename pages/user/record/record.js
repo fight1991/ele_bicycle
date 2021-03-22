@@ -121,7 +121,7 @@ Page({
       })
       return
       case 17:
-        wx.navigateTo({
+        wx.redirectTo({
           url: `/pages/user/result/result?pageTitle=备案申报&status=${'success'}`,
         })
       return
