@@ -148,7 +148,7 @@ Page({
   // 跳转另外几个状态的页面
   routeOtherPage (res) {
     let { status, failReason } = res
-    wx.navigateTo({
+    wx.redirectTo({
       url: `/pages/user/record_change/other_status?status=${status}&reason=${failReason}`,
     })
   },

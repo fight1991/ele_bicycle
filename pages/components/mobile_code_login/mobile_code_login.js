@@ -24,7 +24,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    mobile: '17621415143',
+    mobile: '',
     authCode: '159951', // 验证码
     isEditCode: false, // 按钮禁用
     codeText: '获取验证码',
@@ -35,9 +35,13 @@ Component({
     attached: function (e) {
       this.myDialog = this.selectComponent('#myDialog')
       let { userInfo } = app.globalData
-      if (userInfo.mobile) {
+      let tempMobile = userInfo.mobile
+      if (!tempMobile) { // 读取本地的手机号
+        tempMobile = wx.getStorageSync('mobile')
+      }
+      if (tempMobile) {
         this.setData({
-          mobile: userInfo.mobile
+          mobile: tempMobile
         })
       }
     },
@@ -125,6 +129,11 @@ Component({
         result.token && wx.setStorageSync('token', result.token)
         app.saveUserInfo(result)
         await this.saveBusInfo()
+        // 本地缓存手机号
+        wx.setStorage({
+          data: mobile,
+          key: 'mobile',
+        })
         wx.reLaunch({
           url: '/pages/user/index',
         })

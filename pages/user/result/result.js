@@ -36,17 +36,16 @@ Page({
   },
   // 返回上一步
   hasKnownBtn () {
-    if (this.data.from = 'inside') {
-      wx.navigateBack({
-        delta: 1
-      })
-    } else {
+    if (this.data.from = 'server') {
       // 从服务通知跳转过来
       wx.reLaunch({
         url: '/pages/user/index?from=server',
       })
+    } else {
+      wx.navigateBack({
+        delta: 1
+      })
     }
-    
   },
 
   /**
