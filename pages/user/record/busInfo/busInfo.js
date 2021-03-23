@@ -1,7 +1,7 @@
 // pages/user/record/busInfo/busInfo.js
 import { carInfo_search, carInfo_add } from '../../../api/record'
 import WxValidate from '../../../../utils/WxValidate'
-
+var app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -191,6 +191,8 @@ Component({
       // 发送请求
       let { result } = await carInfo_add(this.data.busInfo)
       if (result) {
+        // 更新车架号
+        app.globalData.busInfo.vin = this.data.busInfo.vin
         this.triggerEvent('nextStep')
         // 审核状态查询
         this.triggerEvent('checkStatus')

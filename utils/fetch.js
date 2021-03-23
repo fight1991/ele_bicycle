@@ -74,7 +74,7 @@ wx.$delete = ({url, data, isLoading = true, other = true, loadingText = 'loading
 wx.$put = ({url, data, isLoading = true, other = true, loadingText = 'loading...'}) => {
   return ajaxFunc({url, data, isLoading, other, loadingText, func: putInstance})
 }
-wx.$all = ({list, isLoading, other, loadingText}) => {
+wx.$all = async ({list, isLoading, other, loadingText}) => {
   try {
     if (isLoading) showLoading(loadingText)
     let res = await Promise.all[list]

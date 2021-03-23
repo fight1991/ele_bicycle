@@ -142,13 +142,14 @@ Page({
     if (result.status == 42 || result.status == 43) {
       this.clearTimer()
       // 跳转到另外几个状态的页面
-      this.routeOtherPage(result.status)
+      this.routeOtherPage(result)
     }
   },
   // 跳转另外几个状态的页面
-  routeOtherPage (status) {
+  routeOtherPage (res) {
+    let { status, failReason } = res
     wx.navigateTo({
-      url: '/pages/user/record_change/other_status?status=' + status,
+      url: `/pages/user/record_change/other_status?status=${status}&reason=${failReason}`,
     })
   },
   // 返回个人中心
