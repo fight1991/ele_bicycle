@@ -2,11 +2,14 @@
 <!-- 公共结果页面 -->
 <view class="container">
   <view class="status-image">
-    <image class="img" src="{{statusImg[checkStatus]}}" mode="widthFix"></image>
+    <image class="img" src="{{statusImg[status]}}" mode="widthFix"></image>
   </view>
   <view class="status-text">
-    {{statusText[checkStatus]}}
+    {{statusText[status]}}
     <view wx:if="{{reason}}">原因:{{reason}}</view>
   </view>
 </view>
-<view class="fix-bottom-btn" bindtap="hasKnownBtn">已知晓</view>
+<!-- 备案申报审核失败按钮  点击去个人信息录入页面-->
+<view wx:if="{{pageFlag=='record' && status=='fail'}}" class="fix-bottom-btn" bindtap="goToEdit">查看并修改备案信息</view>
+<!-- 备案人变更审核, 一键报废审核, 失败和成功状态的按钮 -->
+<view wx:else class="fix-bottom-btn" bindtap="hasKnownBtn">已知晓</view>

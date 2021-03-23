@@ -106,9 +106,12 @@ Page({
         return
       case 14: // 审核失败, 重新备案
         this.setData({
-          currentStep: 2,
+          currentStep: 3,
           showStep: false,
           maskIsHidden: true
+        })
+        wx.redirectTo({
+          url: `/pages/user/result/result?pageFlag=record&pageTitle=备案申报&reason=${result.failReason}&status=${'fail'}`,
         })
         return
       case 15: // 审核通过，邮寄车牌
@@ -127,17 +130,10 @@ Page({
           maskIsHidden: true
         })
         wx.redirectTo({
-          url: `/pages/user/result/result?pageTitle=备案申报&status=${'success'}`,
+          url: `/pages/user/result/result?pageFlag=record&pageTitle=备案申报&status=success`,
         })
       return
     }
-  },
-  // 去个人信息录入页面
-  goToEdit () {
-    this.setData({
-      currentStep: 0,
-      showStep: true
-    })
   },
   routeToPage () {
     wx.reLaunch({

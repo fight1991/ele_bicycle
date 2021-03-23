@@ -64,8 +64,9 @@ Page({
         })
       } else {
         // 32 或 33 失败/成功
-        wx.navigateTo({
-          url: `/pages/user/record_change/other_status?pageTitle=一键报废&status=${status}&reason=${result.failReason}`,
+        let type = status == 32 ? 'fail' : 'success'
+        wx.redirectTo({
+          url: `/pages/user/result/result?pageFlag=scrap&pageTitle=一键报废&status=${type}&reason=${result.failReason}`,
         })
       }
     }

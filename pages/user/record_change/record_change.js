@@ -138,18 +138,24 @@ Page({
       })
       this.clearTimer()
     }
-    // 审核失败, 审核成功
-    if (result.status == 42 || result.status == 43) {
+    // 审核失败
+    if (result.status == 42) {
       this.clearTimer()
-      // 跳转到另外几个状态的页面
-      this.routeOtherPage(result)
+      // 跳转到公共状态的页面
+      this.routeOtherPage('fail', result)
+    }
+    // 审核成功
+    if (result.status == 43) {
+      this.clearTimer()
+      // 跳转到公共状态的页面
+      this.routeOtherPage('success', result)
     }
   },
   // 跳转另外几个状态的页面
-  routeOtherPage (res) {
-    let { status, failReason } = res
+  routeOtherPage (type, res) {
+    let { failReason } = res
     wx.redirectTo({
-      url: `/pages/user/record_change/other_status?status=${status}&reason=${failReason}`,
+      url: `/pages/user/result/result?pageFlag=change&pageTitle=备案人变更&status=${type}&reason=${failReason}`,
     })
   },
   // 返回个人中心
