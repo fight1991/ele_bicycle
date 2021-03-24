@@ -96,11 +96,6 @@ Page({
       wx.showToast({
         title: '操作成功!',
       })
-    } else {
-      wx.showToast({
-        title: '操作失败!',
-        icon: 'error'
-      })
     }
   },
   // 车辆挂失api

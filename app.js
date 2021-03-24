@@ -42,7 +42,7 @@ App({
   utils: utils,
   getWechatCode () {
     return new Promise((relove, reject) => {
-      wx.showLoading()
+      wx.showLoading('微信授权...')
       wx.login({
         success: relove,
         fail: reject,

@@ -74,16 +74,16 @@ Page({
   },
   // 轮询开始
   async startSearch (qrcodeToken) {
-      let { result, other, error } = await car_owner_change_status({
-        qrcodeValidityToken: qrcodeToken
-      }, false)
-      this.handleStatus(result)
-      if (other || error) {
-        this.setData({
-          isRefresh: true
-        })
-        this.clearTimer()
-      }
+    let { result, other, error } = await car_owner_change_status({
+      qrcodeValidityToken: qrcodeToken
+    }, false)
+    this.handleStatus(result)
+    if (other || error) {
+      this.setData({
+        isRefresh: true
+      })
+      this.clearTimer()
+    }
   },
   // 清楚定时器
   clearTimer () {

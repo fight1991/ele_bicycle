@@ -8,7 +8,7 @@ Page({
    */
   data: {
     idNO: '',
-    imgSrc: '',
+    imgSrc: '/pages/image/user_static_logo.png',
   },
 
   /**
@@ -52,8 +52,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    clearInterval(this.data.timerId)
-    this.data.timerId = 0
+
   },
 
   /**

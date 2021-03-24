@@ -116,12 +116,18 @@ Component({
       }, 1000)
       this.data.timerId = timerIdTemp
     },
+    // 去登录
+    async goLogin () {
+      app.getWechatCode().then(res => {
+        this.loginApi(res.code)
+      })
+    },
     // 登录api
-    async loginBtn () {
+    async loginApi (code) {
       let { mobile, authCode } = this.data
       let { result } = await goLogin({
         authCode,
-        jsCode: app.globalData.jsCode,
+        jsCode: code,
         avatarUrl: app.globalData.wxHeadImg,
         mobile
       })
@@ -173,7 +179,7 @@ Component({
         return
       }
       if (this.data.flag == 1) {
-        this.loginBtn()
+        this.goLogin()
       } else {
         this.changeMobile()
       }
