@@ -1,7 +1,7 @@
 // pages/components/mobile_code_login/mobile_code_login.js
 const utils = require("../../../utils/util")
 var app = getApp()
-import { goLogin, changeMobile, getCodeApi, getUserBaseInfo } from '../../api/index'
+import { goLogin, changeMobile, getCodeApi } from '../../api/index'
 import {  carInfo_public } from '../../api/record'
 
 // 手机号验证码登录组件

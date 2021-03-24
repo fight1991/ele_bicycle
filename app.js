@@ -1,5 +1,10 @@
-// app.js
+// 一般请求方法注册
 import './utils/fetch'
+// 上传请求注册
+import './utils/fetch_upload'
+// 批量请求注册
+import './utils/fetch_all'
+// 工具类注册
 const utils = require('./utils/util')
 App({
   onLaunch() {

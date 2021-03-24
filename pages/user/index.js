@@ -1,7 +1,8 @@
 // pages/user/index.js
 const utils = require('../../utils/util')
-import { checkCode, getUserBaseInfo } from '../api/index'
-import { carInfo_public } from '../api/record'
+import { checkCode } from '../api/index'
+import { getUserAndBusInfo } from '../api/all'
+
 var app = getApp()
 Page({
 
@@ -42,7 +43,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
     let { from } = options
     if (from == 'server') { // 从服务通知中跳转, 需要初始化用户信息
       app.getWechatCode().then(res => {
@@ -94,8 +95,7 @@ Page({
   async routeValid (code) {
     var token = wx.getStorageSync('token')
     if (token) {
-      await this.saveUserInfo()
-      await this.saveBusInfo()
+      await this.saveInfo()
     } else {
       // 请求后端接口进行登录凭证校验, 有身份证号, 跳转到登录页面, 无身份证号跳转到注册页面
       let { result } = await checkCode({
@@ -115,20 +115,19 @@ Page({
       }
     }
   },
-  // 获取并保存用户信息
-  async saveUserInfo () {
-    let { result } = await getUserBaseInfo()
-    if (result) {
-      app.saveUserInfo(result)
-      app.globalData.wxHeadImg = result.avatarUrl
-    }
-    return true
-  },
-  // 获取并保存车辆信息
-  async saveBusInfo () {
-    let { result } = await carInfo_public(false)
-    if (result) {
-      app.saveBusInfo(result)
+  // 获取并保存用户信息和车辆信息
+  async saveInfo () {
+    let res = await getUserAndBusInfo()
+    if (res && res.length == 2) {
+      let userInfo = res[0]
+      let busInfo = res[1]
+      if (userInfo) {
+        app.saveUserInfo(userInfo)
+        app.globalData.wxHeadImg = userInfo.avatarUrl
+      }
+      if (busInfo) {
+        app.saveBusInfo(busInfo)
+      }
     }
     return true
   },

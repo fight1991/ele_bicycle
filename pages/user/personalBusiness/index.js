@@ -89,10 +89,13 @@ Page({
   },
   // 车辆备案人变更扫码
   async recordChange (token) {
-    let { result } = await car_owner_change_scan({
+    let { result, other } = await car_owner_change_scan({
       qrcodeValidityToken: token
     })
+    console.log(other, '业务报错.....')
+    console.log(result, '扫码完成..............')
     if (result) {
+      console.log('弹框进来了, 888888888888888888888')
       wx.showToast({
         title: '操作成功!',
       })
