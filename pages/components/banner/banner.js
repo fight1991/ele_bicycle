@@ -30,7 +30,8 @@ Component({
     bannerBg: utils.imgTobase64('/pages/image/record_banner.png'),
     qrcodeText: '',
     qrCodeUrl: '',
-    vehicleStatus: 0, // 车辆状态, 1 为正常
+    vehicleStatus: 0, // 车辆状态, 1 为正常, 3为报失
+    isShowCarInfo: false, // 是否显示车辆信息, 状态为1或3时显示
     plateNo: '', // 车牌号
     vin: '', // 车架号
   },
@@ -54,28 +55,32 @@ Component({
       if (result) {
         let { vehicleStatus, plateNo, vin, qrCodeUrl } = result
         this.setData({
-          vehicleStatus
+          plateNo,
+          vin,
+          qrCodeUrl
         })
-        // 车辆状态正常 显示车架号等信息
-        if (vehicleStatus == 1) {
+        // 车辆状态为1正常 或3报失, 显示车架号等信息
+        if (vehicleStatus == 1 || vehicleStatus == 3) {
           this.setData({
-            plateNo,
-            vin,
-            qrCodeUrl
+            isShowCarInfo: true
+          })
+        } else {
+          this.setData({
+            isShowCarInfo: false
           })
         }
       }
       if (other) {
         this.setData({
-          vehicleStatus: 0
+          isShowCarInfo: false
         })
       }
     },
     // 点击banner显示二维码图片
     // 二维码是一个url地址
     async showQrcodeImg () {
-      let {vehicleStatus, qrCodeUrl} = this.data
-      if (vehicleStatus == 1) {
+      let { isShowCarInfo, qrCodeUrl } = this.data
+      if (isShowCarInfo) {
         this.setData({
           initValue: false,
           qrcodeText: qrCodeUrl

@@ -1,8 +1,8 @@
 <!--pages/components/banner/banner.wxml-->
 <view class="banner" bindtap="showQrcodeImg" style="background-image: url({{bannerBg}});">
   <view class="title1">{{headTile1}}</view>
-  <view class="title2" hidden="{{vehicleStatus==1}}">请进行备案申报</view>
-  <view class="bus-info" hidden="{{vehicleStatus!=1}}">
+  <view class="title2" hidden="{{isShowCarInfo}}">请进行备案申报</view>
+  <view class="bus-info" hidden="{{!isShowCarInfo}}">
     <view class="plateNo item">车牌号 : {{plateNo}}</view>
     <view class="vin item">车架号 : {{vin}}</view>
   </view>

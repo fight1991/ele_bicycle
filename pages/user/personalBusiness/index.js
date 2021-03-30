@@ -64,7 +64,6 @@ Page({
       onlyFromCamera: true,
       scanType: ['qrCode'],
       success: _res => {
-        console.log(_res, '扫码结果')
         let res = _res.result
         if (res.includes('http')) { // 说明是个链接
           // 跳转到web-view页面
@@ -97,7 +96,7 @@ Page({
     if (result) {
       console.log('弹框进来了, 888888888888888888888')
       wx.showToast({
-        title: '操作成功!',
+        title: '操作成功!'
       })
     }
   },
