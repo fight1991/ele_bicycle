@@ -30,8 +30,8 @@ Component({
     bannerBg: utils.imgTobase64('/pages/image/record_banner.png'),
     qrcodeText: '',
     qrCodeUrl: '',
-    vehicleStatus: 0, // 车辆状态, 1 为正常, 3为报失
-    isShowCarInfo: false, // 是否显示车辆信息, 状态为1或3时显示
+    vehicleStatus: 0, // 车辆状态, 1 为正常, 23为报失
+    isShowCarInfo: false, // 是否显示车辆信息, 状态为1或23时显示
     plateNo: '', // 车牌号
     vin: '', // 车架号
   },
@@ -60,7 +60,7 @@ Component({
           qrCodeUrl
         })
         // 车辆状态为1正常 或3报失, 显示车架号等信息
-        if (vehicleStatus == 1 || vehicleStatus == 3) {
+        if (vehicleStatus == 1 || vehicleStatus == 23) {
           this.setData({
             isShowCarInfo: true
           })
