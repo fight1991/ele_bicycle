@@ -116,8 +116,9 @@ Page({
         return
       case 15: // 审核通过，邮寄车牌
       case 16: // 审核通过，安装点安装车牌
+      let { vin, vehicleId } = app.globalData.busInfo
       this.setData({
-        qrcodeInfo: app.globalData.busInfo.vin,
+        qrcodeInfo: `?vin=${vin}&vehicleId=${vehicleId}`,
         currentStep: 2,
         showStep: false,
         maskIsHidden: true

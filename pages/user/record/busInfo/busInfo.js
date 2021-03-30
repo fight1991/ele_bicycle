@@ -193,6 +193,7 @@ Component({
       if (result) {
         // 更新车架号
         app.globalData.busInfo.vin = this.data.busInfo.vin
+        app.globalData.busInfo.vehicleId = this.data.busInfo.vehicleId
         this.triggerEvent('nextStep')
         // 审核状态查询
         this.triggerEvent('checkStatus')

@@ -12,7 +12,8 @@ Page({
       plateNo: '', // 车牌号码
       urlVehicle: '', // 整车照片
       urlVin: '', // 车架照片
-      vin: '' // 车架号
+      vin: '', // 车架号
+      vehicleId: '' // 车辆id
     }
   },
 
@@ -20,9 +21,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { vin } = options
+    let { vin, vehicleId } = options
     this.setData({
-      'formData.vin': vin
+      'formData.vin': vin,
+      'formData.vehicleId': vehicleId
     })
   },
   scanBtn (e) {
