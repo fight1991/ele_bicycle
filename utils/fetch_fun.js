@@ -29,6 +29,8 @@ const HandleBranch = (_res, other) => {
         duration: 1500,
         icon:'none',
         complete: () => {
+          var token = wx.getStorageSync('token')
+          token && wx.removeStorageSync('token')
           wx.reLaunch({
             url: '/pages/login/signIn'
           })
