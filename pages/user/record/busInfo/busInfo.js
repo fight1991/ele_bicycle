@@ -192,8 +192,8 @@ Component({
       let { result } = await carInfo_add(this.data.busInfo)
       if (result) {
         // 更新车架号
-        app.globalData.busInfo.vin = this.data.busInfo.vin
-        app.globalData.busInfo.vehicleId = this.data.busInfo.vehicleId
+        app.globalData.busInfo.vin = result.vin
+        app.globalData.busInfo.vehicleId = result.vehicleId
         this.triggerEvent('nextStep')
         // 审核状态查询
         this.triggerEvent('checkStatus')
