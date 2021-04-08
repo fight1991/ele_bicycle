@@ -1,0 +1,4 @@
+<!--pages/components/button/commonBtn.wxml-->
+<view class="btn-box" bindtap="tapBtn">
+  <slot></slot>
+</view>

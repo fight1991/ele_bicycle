@@ -24,6 +24,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    confirmDialogVisible: false,
     mobile: '',
     authCode: '159951', // 验证码
     isEditCode: false, // 按钮禁用
@@ -184,5 +185,10 @@ Component({
         this.changeMobile()
       }
     },
+    openConfirm () {
+      this.setData({
+        confirmDialogVisible: true
+      })
+    }
   }
 })

@@ -1,0 +1,37 @@
+/* pages/components/confirmDialog/confirmDialog.wxss */
+.box {
+  background-color: #fff;
+  width: 70vw;
+  text-align: center;
+  padding: 40rpx 30rpx;
+}
+.btns {
+  display: flex;
+  justify-content: space-between;
+  line-height: 80rpx;
+  font-size: 32rpx;
+}
+.common {
+  border-radius: 8rpx;
+  height: 80rpx;
+  width: 48%;
+}
+.cancel {
+  margin-right: 10px;
+  background-color: #f5f5f5;
+  color: #666;
+  
+}
+.confirm {
+  margin-left: 10px;
+  background-color: #3E77FF;
+  color: #fff;
+}
+.title {
+  font-size: 34rpx;
+  color: black;
+}
+.content {
+  padding: 40rpx 0 70rpx;
+  color: #3F77E8;
+}

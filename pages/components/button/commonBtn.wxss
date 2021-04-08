@@ -1,0 +1,13 @@
+/* pages/components/button/commonBtn.wxss */
+.btn-box {
+  border-radius: 10rpx;
+  text-align: center;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3E78FD;
+  color: #fff;
+  font-size: 32rpx;
+  margin: 40rpx 0;
+}

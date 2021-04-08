@@ -28,9 +28,14 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#3E77FF",
+    "navigationBarTitleText": "吉光出行",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "fixBtn": "/pages/components/button/fixBtn",
+    "commonBtn": "/pages/components/button/commonBtn",
+    "confirmDialog": "/pages/components/confirmDialog/confirmDialog"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
