@@ -1,1 +1,4 @@
 /* pages/message/messageList.wxss */
+.outer {
+  padding: 30rpx 25rpx;
+}

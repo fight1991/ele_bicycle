@@ -1,8 +1,54 @@
 /* pages/components/messageCard/messageCard.wxss */
 .box {
-  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  color: #999;
+  margin-bottom: 25rpx;
 }
 .top {
   display: flex;
   align-items: center;
+  position: relative;
+  padding: 20rpx;
+  border-bottom: 1px solid #f5f5f5;
+}
+.dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: #FD7E39;
+  position: absolute;
+  right: 25rpx;
+  top: 25rpx;
+}
+.main-title {
+  font-weight: bold;
+  color: black;
+  padding: 10rpx 0;
+
+}
+.sub-title {
+  padding: 10rpx 0;
+}
+.head-icon {
+  width: 98rpx;
+  height: 98rpx;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.text-line {
+  padding-left: 20rpx;
+}
+.head-icon .img {
+  width: 100%;
+  height: 100%;
+}
+.bottom {
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.date {
+  padding-left: 118rpx;
 }

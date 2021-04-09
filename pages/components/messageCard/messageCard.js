@@ -4,7 +4,22 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    mainTitle: {
+      type: String,
+      value: ''
+    },
+    subTitle: {
+      type: String,
+      value: ''
+    },
+    time: {
+      type: String,
+      value: ''
+    },
+    type: {
+      type: String,
+      value: 'check'
+    }
   },
 
   /**

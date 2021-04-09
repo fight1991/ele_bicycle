@@ -1,4 +1,11 @@
 <!--pages/message/messageList.wxml-->
 <view class="outer">
-  <messageCard></messageCard>
+  <block wx:for="{{9}}">
+    <messageCard
+      mainTitle="审核通过"
+      subTitle="登记备案审核通知"
+      time="2012-05-23 09:12:33">
+    </messageCard>
+
+  </block>
 </view>
