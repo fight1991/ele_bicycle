@@ -131,6 +131,12 @@ Page({
     }
     return true
   },
+  // 跳转到消息页面
+  goToMessagePage () {
+    wx.navigateTo({
+      url: '/pages/message/messageList',
+    })
+  },
   // 防止冒泡
   stopTapEvent () {},
   /**

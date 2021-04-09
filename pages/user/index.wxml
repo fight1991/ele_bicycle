@@ -2,7 +2,7 @@
 <view class="box">
   <view class="center-row">
     <name-idcard></name-idcard>
-    <view class="iconfont-box">
+    <view class="iconfont-box" bindtap="goToMessagePage">
       <iconfont icon="message"></iconfont>
       <iconfont class="dot-icon" icon="dot" color="#FF7D3C"></iconfont>
     </view>

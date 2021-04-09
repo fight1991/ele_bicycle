@@ -1,0 +1,24 @@
+/* pages/message/messageDetail.wxss */
+.box {
+  padding: 40rpx 30rpx;
+}
+.detail {
+  padding: 30rpx 20rpx 200rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.title {
+  font-size: 32rpx;
+  padding: 10rpx 0;
+  font-weight: bold;
+}
+.time {
+  color: #999;
+  padding: 10rpx 0;
+}
+.content {
+  padding: 20rpx 0;
+}
+.prefText {
+  padding-right: 20rpx;
+}

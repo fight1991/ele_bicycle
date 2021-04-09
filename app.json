@@ -24,7 +24,8 @@
     "pages/user/scrap/scrap",
     "pages/user/insure/insure",
     "pages/user/result/result",
-    "pages/message/messageList"
+    "pages/message/messageList",
+    "pages/message/messageDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

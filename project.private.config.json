@@ -125,6 +125,11 @@
           "pathName": "pages/message/messageList",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "消息等值详情",
+          "pathName": "pages/message/messageDetail",
+          "scene": null
         }
       ]
     }
