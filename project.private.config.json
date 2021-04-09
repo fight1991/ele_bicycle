@@ -119,6 +119,12 @@
           "pathName": "pages/user/insure/insure",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "消息通知页面",
+          "pathName": "pages/message/messageList",
+          "query": "",
+          "scene": null
         }
       ]
     }

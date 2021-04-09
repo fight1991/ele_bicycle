@@ -1,0 +1,2 @@
+/* pages/components/iconfont/iconfont.wxss */
+@import '/pages/style/iconfont.wxss';

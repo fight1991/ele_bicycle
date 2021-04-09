@@ -5,7 +5,6 @@
     "pages/login/signIn",
     "pages/user/index",
     "pages/index/index",
-    "pages/test/test",
     "pages/user/personalBusiness/index",
     "pages/user/record/record",
     "pages/user/record/law/law",
@@ -24,7 +23,8 @@
     "pages/user/loss/loss",
     "pages/user/scrap/scrap",
     "pages/user/insure/insure",
-    "pages/user/result/result"
+    "pages/user/result/result",
+    "pages/message/messageList"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,7 +35,8 @@
   "usingComponents": {
     "fixBtn": "/pages/components/button/fixBtn",
     "commonBtn": "/pages/components/button/commonBtn",
-    "confirmDialog": "/pages/components/confirmDialog/confirmDialog"
+    "confirmDialog": "/pages/components/confirmDialog/confirmDialog",
+    "iconfont": "/pages/components/iconfont/iconfont"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

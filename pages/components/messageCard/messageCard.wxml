@@ -1,0 +1,11 @@
+<!--pages/components/messageCard/messageCard.wxml-->
+<view class="box">
+  <view class="top">
+    <view class="head-icon"></view>
+    <view class="text-line">
+      <view class="main-title"></view>
+      <view class="sub-title"></view>
+    </view>
+  </view>
+  <view class="bottom"></view>
+</view>

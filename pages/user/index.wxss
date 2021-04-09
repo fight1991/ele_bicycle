@@ -2,6 +2,20 @@
 .box {
   padding: 15px;
 }
+.center-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 15px;
+}
+.iconfont-box {
+  position: relative;
+}
+.dot-icon {
+  position: absolute;
+  right: -20rpx;
+  top: -20rpx;
+}
 .bussiness-box {
   margin-top: 15px;
 }

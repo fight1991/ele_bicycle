@@ -1,0 +1,4 @@
+<!--pages/message/messageList.wxml-->
+<view class="outer">
+  <messageCard></messageCard>
+</view>

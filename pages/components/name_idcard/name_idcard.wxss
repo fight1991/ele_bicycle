@@ -1,18 +1,11 @@
 /* pages/components/name_idcard/name_idcard.wxss */
-.person-info {
-  padding-bottom: 15px;
-  height: 45px;
-}
+
 .name {
   font-size: 20px;
   display: flex;
   align-items: center;
 }
-.idcard {
-  padding: 2px 0;
-  font-size: 12px;
-  color: #ccc;
-}
+
 .routeMePage {
   margin: 0 8px;
   width: 34rpx;
