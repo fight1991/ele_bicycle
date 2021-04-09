@@ -16,9 +16,9 @@
       </view>
     </view>
   </form>
-  <button bindtap="confirmBtn" class="confirm-btn">{{btnText}}</button>
-  <confirmDialog visible="{{confirmDialogVisible}}"></confirmDialog>
-  <commonBtn bindtap="openConfirm">打开</commonBtn>
+  <view class="btn-area">
+    <commonBtn bindtap="confirmBtn">{{btnText}}</commonBtn>
+  </view>
 </view>
 <!-- dialog组件 -->
 <dialog 

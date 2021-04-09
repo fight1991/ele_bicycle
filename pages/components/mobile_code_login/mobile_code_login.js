@@ -12,7 +12,7 @@ Component({
   properties: {
     btnText: {
       type: String,
-      value: '确定'
+      value: '登录'
     },
     flag: {
       type: Number,

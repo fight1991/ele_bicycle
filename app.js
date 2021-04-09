@@ -6,6 +6,10 @@ import './utils/fetch_upload'
 import './utils/fetch_all'
 // 工具类注册
 const utils = require('./utils/util')
+// 用户相关api注册
+import * as usersApi from './pages/api/index'
+// 申报相关api注册
+import * as recordsApi from './pages/api/record'
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -45,6 +49,11 @@ App({
   },
   // 绑定公共方法
   utils: utils,
+  // 绑定api
+  api: {
+    ...usersApi, // 用户相关
+    ...recordsApi // 申报相关
+  },
   getWechatCode () {
     return new Promise((relove, reject) => {
       wx.showLoading('微信授权...')

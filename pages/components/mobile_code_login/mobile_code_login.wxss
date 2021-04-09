@@ -3,17 +3,24 @@
   border-bottom: 1px solid #ccc;
   padding: 20px 0;
 }
+.btn-area {
+  margin-top: 120rpx;
+}
 .form-item-code {
   display: flex;
   align-items: center;
+  padding-bottom: 10px;
 }
 .input-code {
   flex: 1;
 }
 .btn-code {
+  border-radius: 6rpx;
+  padding: 8rpx;
+  border: 1px solid #00aaee;
   width: 80px;
   color: #00aaee;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
 }
 .confirm-btn {

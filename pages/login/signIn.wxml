@@ -1,15 +1,9 @@
 <!--pages/login/signIn.wxml-->
-<view class="container">
-  <view class="top">
-    <view class="user-img">
-      <image wx:if="{{imgSrc}}" src="{{imgSrc}}" mode="cover" alt=""></image>
-    </view>
-    <view class="form-container">
-      <view class="idcard-item">
-        <label class="fs12 label">证件号码</label>
-        <view class="idcard-container fw">{{idNO}}</view>
-      </view>
-      <mobileCodeLogin></mobileCodeLogin>
-    </view>
+<view class="outer">
+  <view class="user-img">
+    <image src="/pages/image/bicycle.png" mode="cover"></image>
+  </view>
+  <view class="form-container">
+    <mobileCodeLogin></mobileCodeLogin>
   </view>
 </view>
