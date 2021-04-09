@@ -5,7 +5,7 @@
       {{title}}
       <slot name="title"></slot>
     </view>
-    <view class="content">
+    <view class="content"> 
       {{content}}
       <slot name="content"></slot>
     </view>
