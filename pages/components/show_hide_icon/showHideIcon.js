@@ -4,13 +4,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    showIcon: {
+    iconColor: {
       type: String,
-      value: '/pages/image/show.png'
-    },
-    hideIcon: {
-      type: String,
-      value: '/pages/image/hide.png'
+      value: '#fff'
     }
   },
 

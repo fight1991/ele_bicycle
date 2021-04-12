@@ -1,6 +1,6 @@
 <!--pages/user/center/relogin.wxml-->
 <view class="container">
   <image class="success-img" src="/pages/image/edit_success.png"></image>
-  <view class="fs18 fw">修改成功!</view>
-  <view class="common-btn" bindtap="reloginBtn">请重新登录</view>
+  <view>修改成功!</view>
+  <fixBtn bindtap="reloginBtn">请重新登录</fixBtn>
 </view>

@@ -1,4 +1,9 @@
 /* pages/message/messageList.wxss */
+.has-more {
+  text-align: center;
+  font-size: 24rpx;
+  color: #ccc;
+}
 .outer {
   padding: 30rpx 25rpx;
 }

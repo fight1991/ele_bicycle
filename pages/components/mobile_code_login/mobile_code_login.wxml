@@ -16,9 +16,10 @@
       </view>
     </view>
   </form>
-  <view class="btn-area">
+  <view class="btn-area" wx:if="{{flag==1}}">
     <commonBtn bindtap="confirmBtn">{{btnText}}</commonBtn>
   </view>
+  <fixBtn wx:else bindtap="confirmBtn">{{btnText}}</fixBtn>
 </view>
 <!-- dialog组件 -->
 <dialog 

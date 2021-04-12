@@ -80,16 +80,7 @@ page {
 .fw {
   font-weight: bold;
 }
-.common-btn {
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #516dff;
-  height: 40px;
-  border-radius: 20px;
-  padding: 0 40px;
-}
+
 .common-form-item {
   padding: 15px 0;
   border-bottom: 1px solid #ccc;

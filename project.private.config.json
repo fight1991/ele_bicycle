@@ -121,14 +121,15 @@
           "scene": null
         },
         {
-          "name": "消息通知页面",
+          "name": "消息通知列表页面",
           "pathName": "pages/message/messageList",
           "query": "",
           "scene": null
         },
         {
-          "name": "消息等值详情",
+          "name": "消息通知详情",
           "pathName": "pages/message/messageDetail",
+          "query": "",
           "scene": null
         }
       ]

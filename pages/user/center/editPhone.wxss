@@ -3,7 +3,7 @@
   margin: 40rpx 20rpx;
   background-color: #fff;
   padding: 30rpx;
-  border-radius: 10px;
+  border-radius: 8rpx;
 }
 .form-item-label {
   display: flex;

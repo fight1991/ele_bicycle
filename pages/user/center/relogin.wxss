@@ -6,7 +6,7 @@
 .success-img {
   width: 470rpx;
   height: 297rpx;
-  margin-top: 100rpx;
+  margin-top: 150rpx;
 }
 .fw {
   padding: 50rpx 0;
