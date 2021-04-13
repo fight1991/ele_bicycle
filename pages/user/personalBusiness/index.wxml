@@ -1,9 +1,9 @@
 <!--pages/user/personalBusiness/index.wxml-->
 <view class="box">
-  <name-idcard></name-idcard>
-  <banner 
-    headTile1="电动二轮车居民个人电子备案证">
-  </banner>
+  <view class="name-area">
+    <name-idcard></name-idcard>
+  </view>
+  <!-- 轮播区域 -->
   <view class="grid-box">
     <view class="block-item" bindtap="routeTo" data-page="record">
       <view class="img-box">

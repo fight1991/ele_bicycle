@@ -1,14 +1,11 @@
 <!--pages/components/banner/banner.wxml-->
 <view class="banner" bindtap="showQrcodeImg" style="background-image: url({{bannerBg}});">
-  <view class="title1">{{headTile1}}</view>
-  <view class="title2" hidden="{{isShowCarInfo}}">请进行备案申报</view>
-  <view class="bus-info" hidden="{{!isShowCarInfo}}">
-    <view class="plateNo item">车牌号 : {{plateNo}}</view>
-    <view class="vin item">车架号 : {{vin}}</view>
+  <view class="title1">自用车数量 · {{3}}辆</view>
+  <view class="title2">
+    <view class="title2-content">行业车数量 · {{98989}}辆</view>
   </view>
+  <view class="title3">所属企业 · {{'中国航天'}}</view>
 </view>
-<mask initValue="{{initValue}}" onClickModalClose="{{true}}" maskColor="rgba(0,0,0,.9)">
-  <!-- <view class="qrcode-box"> -->
-    <qrcode width="{{300}}" height="{{300}}" value="{{qrcodeText}}" background="transparent"></qrcode>
-  <!-- </view> -->
-</mask>
+<!-- <mask initValue="{{initValue}}" onClickModalClose="{{true}}" maskColor="rgba(0,0,0,.9)">
+  <qrcode width="{{300}}" height="{{300}}" value="{{qrcodeText}}" background="transparent"></qrcode>
+</mask> -->

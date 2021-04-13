@@ -1,5 +1,9 @@
 /* pages/user/personalBusiness/index.wxss */
 @import "../style/common.wxss";
+.name-area {
+  padding: 0 10px;
+  margin-bottom: 15px;
+}
 .box {
   padding: 30rpx;
 }

@@ -1,6 +1,7 @@
 /* pages/components/banner/banner.wxss */
 
 .banner {
+  font-size: 24rpx;
   border-radius: 5px;
   background-position: center;
   background-size: cover;
@@ -12,11 +13,20 @@
   flex-direction: column;
   justify-content: space-between;
   color: #fff;
+  letter-spacing: 2px;
 }
-.title2 {
-  font-size: 16px;
-  padding-bottom: 15px;
+.title1 {
+  font-size: 28rpx;
 }
-.bus-info .item {
-  padding: 5px 0;
+.title1,.title3 {
+  padding: 0 12rpx;
 }
+.title2-content {
+  padding: 2rpx 12rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  border-radius: 18rpx;
+  border: 1px solid #fff;
+  display: inline-block;
+}
+
