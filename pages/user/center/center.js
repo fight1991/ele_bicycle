@@ -15,7 +15,7 @@ Page({
     truePhone: '',
     tempIdcard: '', // 存放显示身份证信息
     tempPhone: '', // 存放显示的手机号
-    wxUserImg: null
+    wxUserImg: app.static_user_logo
   },
 
   /**
@@ -25,8 +25,12 @@ Page({
     let { wxHeadImg, userInfo } = app.globalData
     this.data.idcard = userInfo.idcard
     this.data.mobile = userInfo.mobile
+    if (wxHeadImg) {
+      this.setData({
+        wxUserImg: wxHeadImg
+      })
+    }
     this.setData({
-      wxUserImg: wxHeadImg || null,
       name: userInfo.name,
       trueIdcard: userInfo.idcard,
       truePhone: userInfo.mobile
