@@ -5,5 +5,5 @@
   color: #ccc;
 }
 .outer {
-  padding: 30rpx 25rpx;
+  padding: 30rpx 30rpx;
 }

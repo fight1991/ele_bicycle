@@ -1,4 +1,4 @@
 @import "../style/common.wxss";
 .box {
-  padding: 15px;
+  padding: 30rpx;
 }

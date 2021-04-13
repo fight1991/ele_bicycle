@@ -1,6 +1,6 @@
 /* pages/user/insure/insure.wxss */
 .outer {
-  padding: 20rpx;
+  padding: 30rpx;
 }
 .no-data {
   width: 300rpx;

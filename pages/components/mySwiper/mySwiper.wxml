@@ -1,0 +1,57 @@
+<!--pages/components/swiper/swiper.wxml-->
+<view class="swiper-box">
+  <swiper
+    class="swiper"
+    style="height:300rpx"
+    bindchange="swiperChange">
+    <block wx:for="{{list}}" wx:key="vin">
+      <swiper-item>
+        <view class="swiper-item-box">
+          <!-- 电动车静态图片 -->
+          <view class="head-img">
+            <view class="img-box">
+              <image class="img" src="/pages/image/vechicel.png"/>
+            </view>
+            <view class="head-img-text">{{item.status}}</view>
+          </view>
+          <!-- 电动车基本信息 -->
+          <view class="text-lines">
+            <view class="text-line-item">
+              <view class="line-left">车牌号:</view>
+              <view class="line-right">{{item.plateNo}}</view>
+            </view>
+            <view class="text-line-item">
+              <view class="line-left">车辆品牌:</view>
+              <view class="line-right">{{item.brand}}</view>
+            </view>
+            <view class="text-line-item">
+              <view class="line-left">型号规格:</view>
+              <view class="line-right">{{item.model}}</view>
+            </view>
+            <view class="text-line-item">
+              <view class="line-left">整车编号:</view>
+              <view class="line-right">{{item.vin}}</view>
+            </view>
+            <view class="text-line-item">
+              <view class="line-left">电动机编号:</view>
+              <view class="line-right">{{item.num}}</view>
+            </view>
+          </view>
+          <!-- 电动车操作按钮 -->
+          <view class="op-btns">
+            <!-- <iconfont icon="erweima" size="140rpx" color="#fff"></iconfont> -->
+            <iconfont class="op-btn-item" icon="delete" color="#fff"></iconfont>
+            <iconfont class="op-btn-item" icon="edit" color="#FF7E37"></iconfont>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+    
+  </swiper>
+  <div class="dot">
+    <block wx:for="{{list}}" wx:key="vin">
+      <view class="{{currentIndex==index? 'dot-item active': 'dot-item'}}"></view>
+    </block>
+  </div>
+</view>
+

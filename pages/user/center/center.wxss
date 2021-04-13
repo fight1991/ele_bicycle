@@ -1,6 +1,6 @@
 /* pages/user/center/center.wxss */
 .outer {
-  padding: 20rpx;
+  padding: 30rpx;
 }
 .user-bg {
   height: 200rpx;

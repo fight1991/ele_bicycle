@@ -1,6 +1,6 @@
 /* pages/user/adminBusiness/details.wxss */
 .outer {
-  padding: 20rpx;
+  padding: 30rpx;
 }
 .box {
   background-color: #fff;

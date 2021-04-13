@@ -4,6 +4,7 @@
     <name-idcard></name-idcard>
   </view>
   <!-- 轮播区域 -->
+  <my-swiper></my-swiper>
   <view class="grid-box">
     <view class="block-item" bindtap="routeTo" data-page="record">
       <view class="img-box">

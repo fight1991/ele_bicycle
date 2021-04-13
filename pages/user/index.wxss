@@ -1,6 +1,6 @@
 /* pages/user/index.wxss */
 .box {
-  padding: 15px;
+  padding: 30rpx;
 }
 .center-row {
   display: flex;
