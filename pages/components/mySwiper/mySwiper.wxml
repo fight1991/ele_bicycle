@@ -39,9 +39,9 @@
           </view>
           <!-- 电动车操作按钮 -->
           <view class="op-btns">
-            <!-- <iconfont icon="erweima" size="140rpx" color="#fff"></iconfont> -->
-            <iconfont class="op-btn-item" icon="delete" color="#fff"></iconfont>
-            <iconfont class="op-btn-item" icon="edit" color="#FF7E37"></iconfont>
+            <!-- <iconfont icon="erweima" size="140rpx" color="#fff" bindtap="showErweima"></iconfont> -->
+            <iconfont class="op-btn-item" icon="delete" color="#fff" bindtap="deleteBtn"></iconfont>
+            <iconfont class="op-btn-item" icon="edit" color="#FF7E37" bindtap="editBtn"></iconfont>
           </view>
         </view>
       </swiper-item>
@@ -54,4 +54,9 @@
     </block>
   </div>
 </view>
-
+<!-- 二维码弹窗 -->
+<mask initValue="{{maskHidden}}" contentPadding="20rpx">
+  <qrcode width="{{300}}" height="{{300}}" value="{{codeValue}}" background="transparent"></qrcode>
+</mask>
+<!-- 确认弹框 -->
+<confirmDialog visible="{{confirmDialogVisible}}" content="您确定要删除吗?" bindclose="deleteCarInfo"></confirmDialog>

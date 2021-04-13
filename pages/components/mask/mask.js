@@ -15,6 +15,14 @@ Component({
     maskColor: {
       type: String,
       value: 'rgba(0, 0, 0, 0.3)'
+    },
+    showCloseBtn: { // 是否显示关闭按钮
+      type: Boolean,
+      value: true
+    },
+    contentPadding: {
+      type: String,
+      value: '0rpx'
     }
   },
   observers: {

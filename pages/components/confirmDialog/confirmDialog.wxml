@@ -1,5 +1,5 @@
 <!--pages/components/confirmDialog/confirmDialog.wxml-->
-<mask model:initValue="{{!visible}}">
+<mask model:initValue="{{!visible}}" showCloseBtn="{{false}}">
   <view class="box">
     <view class="title">
       {{title}}
@@ -11,7 +11,7 @@
     </view>
     <view class="btns">
       <view class="cancel common" bindtap="cancelBtn">取消</view>
-      <view class="confirm common">确定</view>
+      <view class="confirm common" bindtap="confirmBtn">确定</view>
     </view>
   </view>
 </mask>

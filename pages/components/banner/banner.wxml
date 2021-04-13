@@ -6,6 +6,3 @@
   </view>
   <view class="title3">所属企业 · {{'中国航天'}}</view>
 </view>
-<!-- <mask initValue="{{initValue}}" onClickModalClose="{{true}}" maskColor="rgba(0,0,0,.9)">
-  <qrcode width="{{300}}" height="{{300}}" value="{{qrcodeText}}" background="transparent"></qrcode>
-</mask> -->

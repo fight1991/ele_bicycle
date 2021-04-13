@@ -6,7 +6,7 @@ Component({
   properties: {
     title: {
       type: String,
-      value: ''
+      value: '提示'
     },
     content: {
       type: String,

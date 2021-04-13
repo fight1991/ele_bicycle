@@ -37,7 +37,8 @@
     "fixBtn": "/pages/components/button/fixBtn",
     "commonBtn": "/pages/components/button/commonBtn",
     "confirmDialog": "/pages/components/confirmDialog/confirmDialog",
-    "iconfont": "/pages/components/iconfont/iconfont"
+    "iconfont": "/pages/components/iconfont/iconfont",
+    "mask": "/pages/components/mask/mask"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
