@@ -1,0 +1,6 @@
+<!--pages/components/commonSuccess/commonSuccess.wxml-->
+<view class="container">
+  <image class="success-img" src="/pages/image/edit_success.png"></image>
+  <view>{{title}}</view>
+  <slot></slot>
+</view>

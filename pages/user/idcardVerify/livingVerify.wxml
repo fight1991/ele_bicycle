@@ -1,0 +1,55 @@
+<!--pages/user/idcardVerify/livingVerify.wxml-->
+<view class="outer">
+  <view class="form-area">
+    <form>
+      <view class="form-item">
+        <view class="input-label">姓名</view>
+        <view class="input">
+          <input class="common-input" type="text" disabled value="{{personData.idName}}"/>
+        </view>
+      </view>
+      <view class="form-item idcard-type">
+        <view class="input-label">证件类型</view>
+        <view class="input">
+          居民身份证
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="input-label">证件号码</view>
+        <view class="input">
+          <input class="common-input" type="text" disabled value="{{personData.idNO}}"/>
+        </view>
+      </view>
+      <picker bindchange="sexChange" disabled value="{{personData.gender}}" range-key="label" range="{{sexArr}}">
+        <view class="form-item">
+          <view class="input-label">性别</view>
+          <view class="input">{{sexArr[personData.gender]}}</view>
+        </view>
+      </picker>
+      <view class="form-item">
+        <view class="input-label">手机号</view>
+        <view class="input">
+          <input class="common-input" type="text" disabled value="{{personData.mobile}}"/>
+        </view>
+      </view>
+      <!-- 省/市/地区 -->
+      <picker mode="region" value="{{region}}" bindchange="getAddressInfo">
+        <view class="form-item">
+          <view class="input-label">联系地址</view>
+          <view class="input">
+           <view wx:if="{{region && region.length>0}}">{{region}}</view>
+           <view wx:else class="holder-style">请选择联系地址</view>
+          </view>
+          <iconfont class="arrow-area" icon="arrow-right" size="16px" color="#a8a8a8"></iconfont>
+        </view>
+      </picker>
+      <view class="form-item border-bottom-none">
+        <view class="input-label">详细地址</view>
+        <view class="input">
+          <input class="common-input" type="text" id="contactAddress" bindinput="bindData" value="{{personData.contactAddress}}" placeholder-class="holder-style" placeholder="精确到小区/街道-门牌号"/>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>
+<fixBtn bindtap="livingBtn">活体认证</fixBtn>

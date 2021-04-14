@@ -1,0 +1,5 @@
+<successPage title="身份认证成功!">
+  <navigator url="/pages/user/record/record" open-type="redirect">
+    <fixBtn>开始备案</fixBtn>
+  </navigator>
+</successPage>

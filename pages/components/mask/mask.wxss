@@ -6,6 +6,8 @@
   right: 0;
   left: 0;
   bottom: 0;
+  /* filter: blur(11px); */
+  backdrop-filter: blur(5px);
   /* background: rgba(0, 0, 0, 0.3); */
 }
 .wx-dialog {

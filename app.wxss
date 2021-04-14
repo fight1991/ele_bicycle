@@ -110,3 +110,6 @@ page {
   color: #fff;
   background-color: #516dff;
 }
+.border-bottom-none {
+  border-bottom: none!important;
+}

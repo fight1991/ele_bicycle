@@ -1,7 +1,7 @@
 /* pages/components/swiper/swiper.wxss */
 .swiper-box {
   position: relative;
-  padding-bottom: 20rpx;
+  padding-bottom: 30rpx;
 }
 .op-btns {
   position: absolute;
@@ -32,7 +32,7 @@
 .swiper-item-box {
   width: 100%;
   height: 100%;
-  border-radius: 10rpx;
+  border-radius: 14rpx;
   background: linear-gradient(45deg, #2a53e9, #4689fc);
   box-sizing: border-box;
   position: relative;

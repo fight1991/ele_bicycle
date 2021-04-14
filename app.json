@@ -25,7 +25,9 @@
     "pages/user/result/result",
     "pages/message/messageList",
     "pages/message/messageDetail",
-    "pages/user/idcardVerify/idcardVerify"
+    "pages/user/idcardVerify/idcardVerify",
+    "pages/user/idcardVerify/livingVerify",
+    "pages/user/idcardVerify/livingResult"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -39,7 +41,8 @@
     "confirmDialog": "/pages/components/confirmDialog/confirmDialog",
     "iconfont": "/pages/components/iconfont/iconfont",
     "mask": "/pages/components/mask/mask",
-    "upload": "/pages/components/upload/upload"
+    "upload": "/pages/components/upload/upload",
+    "successPage": "/pages/components/commonSuccess/commonSuccess"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

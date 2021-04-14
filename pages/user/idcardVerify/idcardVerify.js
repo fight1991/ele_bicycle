@@ -17,28 +17,7 @@ Page({
     faceImgUrl: null,
 
     frontImgUrl: null,
-    backImgUrl: null,
-
-    // 表单数据
-    personData: {
-      cityCode: [],
-      cityCodeIndex: [],
-      contactAddress: '',
-      gender: 0, // 0:男 1:女
-      idName: '',
-      idNO: '',
-      idType: 1,
-      imageHead: '',
-      imageIDCard1: '',
-      imageIDCard2: '',
-      mobile: ''
-    },
-    // 性别
-    sexArr: ['男', '女'],
-    // 省/市/区
-    region: [],
-    regionCode: [],
-    regionLabel: '请选择联系地址'
+    backImgUrl: null
   },
 
   /**

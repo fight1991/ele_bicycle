@@ -13,12 +13,6 @@
     "miniprogram": {
       "list": [
         {
-          "name": "人脸认证",
-          "pathName": "pages/login/faceIdentify",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "登录",
           "pathName": "pages/login/signIn",
           "query": "idcard=320982199009840845",
@@ -135,6 +129,12 @@
         {
           "name": "实名认证页面",
           "pathName": "pages/user/idcardVerify/idcardVerify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "活体认证页面",
+          "pathName": "pages/user/idcardVerify/livingVerify",
           "query": "",
           "scene": null
         }

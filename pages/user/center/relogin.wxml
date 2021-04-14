@@ -1,6 +1,4 @@
 <!--pages/user/center/relogin.wxml-->
-<view class="container">
-  <image class="success-img" src="/pages/image/edit_success.png"></image>
-  <view>修改成功!</view>
+<successPage title="修改成功!">
   <fixBtn bindtap="reloginBtn">请重新登录</fixBtn>
-</view>
+</successPage>
