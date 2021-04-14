@@ -108,9 +108,7 @@ Page({
             url: '/pages/login/signIn',
           })
         } else {
-          wx.reLaunch({
-            url: '/pages/login/faceIdentify'
-          })
+
         }
       }
     }

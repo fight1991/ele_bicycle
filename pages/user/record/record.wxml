@@ -5,16 +5,12 @@
     <view class="step-area" hidden="{{!showStep}}">
       <step stepList="{{stepList}}" step="{{currentStep}}"></step>
     </view>
-    <!-- 个人信息区域 -->
-    <view class="person-area" wx:if="{{currentStep==0}}">
-      <personInfo id="personInfo" bindcloseAgreeDialog="closeAgreeModal" bindnextStep="progressStatus"></personInfo>
-    </view>
     <!-- 完善车辆信息区域 -->
-    <view class="bus-area" wx:if="{{currentStep==1}}">
+    <view class="bus-area" wx:if="{{currentStep==0}}">
       <busInfo id="busInfo" bindcheckStatus="getCheckStatus" bindnextStep="progressStatus"></busInfo>
     </view>
     <!-- 等待审核区域 -->
-    <view class="check-area" wx:if="{{currentStep==2}}">
+    <view class="check-area" wx:if="{{currentStep==1}}">
       <view class="status-image">
         <image src="{{statusImg[checkStatus]}}" mode="widthFix"></image>
       </view>

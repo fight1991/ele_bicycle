@@ -10,7 +10,7 @@ Page({
     showStep: true, // 是否显示进度条
     currentStep: 0, // 当前操作步骤
     maskIsHidden: true, // 蒙层是否隐藏
-    stepList: ['完善个人信息', '完善车辆信息', '等待审核'],
+    stepList: ['完善车辆信息', '等待审核'],
     checkStatus: 13,
     failReason: '', // 审核失败原因
     qrcodeInfo: '',
@@ -53,7 +53,7 @@ Page({
   progressStatus () {
     var stepNum = this.data.currentStep
     stepNum++
-    if (stepNum > 2) return
+    if (stepNum > 1) return
     this.setData({
       currentStep: stepNum
     })

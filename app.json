@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/login/index",
-    "pages/login/faceIdentify",
     "pages/login/signIn",
     "pages/user/index",
     "pages/index/index",
@@ -25,7 +24,8 @@
     "pages/user/insure/insure",
     "pages/user/result/result",
     "pages/message/messageList",
-    "pages/message/messageDetail"
+    "pages/message/messageDetail",
+    "pages/user/idcardVerify/idcardVerify"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,7 +38,8 @@
     "commonBtn": "/pages/components/button/commonBtn",
     "confirmDialog": "/pages/components/confirmDialog/confirmDialog",
     "iconfont": "/pages/components/iconfont/iconfont",
-    "mask": "/pages/components/mask/mask"
+    "mask": "/pages/components/mask/mask",
+    "upload": "/pages/components/upload/upload"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

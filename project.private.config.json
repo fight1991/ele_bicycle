@@ -131,6 +131,12 @@
           "pathName": "pages/message/messageDetail",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "实名认证页面",
+          "pathName": "pages/user/idcardVerify/idcardVerify",
+          "query": "",
+          "scene": null
         }
       ]
     }

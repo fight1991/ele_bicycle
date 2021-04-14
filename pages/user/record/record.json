@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "personInfo": "./personInfo/personInfo",
     "busInfo": "./busInfo/busInfo",
     "mask": "/pages/components/mask/mask",
     "agree": "./recordAgree/recordAgree",

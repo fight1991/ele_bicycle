@@ -74,7 +74,7 @@ Page({
           if (this.data.idNO) {
             this.routeTo('/pages/login/signIn')
           } else {
-            this.routeTo('/pages/login/faceIdentify')
+            // this.routeTo('/pages/login/faceIdentify')
           }
         }
       },
