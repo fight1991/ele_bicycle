@@ -36,11 +36,11 @@ Page({
     this.personInfoComponent = this.selectComponent('#personInfo')
     // 1. 进入页面 先查看当前备案状态
     let { status } = options
-    if (!app.utils.isNull(status)) {
-      this.getCurrentStepByStatus(options)
-    } else {
-      this.getCheckStatus()
-    }
+    // if (!app.utils.isNull(status)) {
+    //   this.getCurrentStepByStatus(options)
+    // } else {
+    //   this.getCheckStatus()
+    // }
   },
 
   // 点击拍摄人脸按钮
