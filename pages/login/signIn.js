@@ -7,25 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    idNO: '',
-    imgSrc: '/pages/image/user_static_logo.png',
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { wxHeadImg, userInfo } = app.globalData
-    if (wxHeadImg) {
-      this.setData({
-        imgSrc: wxHeadImg
-      })
-    }
-    if (userInfo.idcard) {
-      this.setData({
-        idNO: utils.hideText(userInfo.idcard)
-      })
-    }
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

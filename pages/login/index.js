@@ -1,7 +1,6 @@
 // pages/login/index.js
 var app = getApp()
-import { checkCode } from '../api/index'
-import { getUserAndBusInfo } from '../api/all'
+const { getUserTotalInfo } = app.api
 Page({
 
   /**
@@ -34,27 +33,11 @@ Page({
   async routeValid (code) {
     var token = wx.getStorageSync('token')
     if (token) {
-      await this.saveInfo()
+      await app.saveUserInfo(false)
       this.routeTo('/pages/user/index')
     } else {
       this.routeTo('/pages/login/signIn')
     }
-  },
-  // 获取并保存用户信息和车辆信息
-  async saveInfo () {
-    let res = await getUserAndBusInfo()
-    if (res && res.length == 2) {
-      let userInfo = res[0]
-      let busInfo = res[1]
-      if (userInfo) {
-        app.saveUserInfo(userInfo)
-        app.globalData.wxHeadImg = userInfo.avatarUrl
-      }
-      if (busInfo) {
-        app.saveBusInfo(busInfo)
-      }
-    }
-    return true
   },
   // 跳转到相关页面
   routeTo (url) {

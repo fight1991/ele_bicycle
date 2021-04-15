@@ -3,7 +3,7 @@
   padding: 30rpx;
 }
 .user-bg {
-  height: 200rpx;
+  height: 220rpx;
   margin-top: 20rpx;
   padding: 10rpx 20rpx;
   border-radius: 10px;

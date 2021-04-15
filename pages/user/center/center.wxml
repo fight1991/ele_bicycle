@@ -6,8 +6,8 @@
     </view>
     <view class="user-middle">
       <view class="fs20">{{name}}</view>
-      <view class="id-card">{{trueIdcard}}</view>
-      <view>{{truePhone}}</view>
+      <view class="id-card">{{userInfo[currentMode]['idNO']}}</view>
+      <view>{{userInfo[currentMode]['mobile']}}</view>
     </view>
     <view class="user-right">
       <show-hide-icon

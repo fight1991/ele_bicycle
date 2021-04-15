@@ -1,9 +1,6 @@
 // pages/user/index.js
-const utils = require('../../utils/util')
-import { checkCode } from '../api/index'
-import { getUserAndBusInfo } from '../api/all'
-
 var app = getApp()
+const utils = app.utils
 Page({
 
   /**
@@ -95,22 +92,11 @@ Page({
   async routeValid (code) {
     var token = wx.getStorageSync('token')
     if (token) {
-      await this.saveInfo()
+      await app.saveUserInfo()
     } else {
-      // 请求后端接口进行登录凭证校验, 有身份证号, 跳转到登录页面, 无身份证号跳转到注册页面
-      let { result } = await checkCode({
-        jscode: code
+      wx.reLaunch({
+        url: '/pages/login/signIn',
       })
-      if (result) {
-        if (result.idNO) {
-          app.globalData.userInfo.idcard = result.idNO
-          wx.reLaunch({
-            url: '/pages/login/signIn',
-          })
-        } else {
-
-        }
-      }
     }
   },
   // 获取并保存用户信息和车辆信息

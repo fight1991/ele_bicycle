@@ -56,13 +56,9 @@ App({
   },
   getWechatCode () {
     return new Promise((relove, reject) => {
-      wx.showLoading('微信授权...')
       wx.login({
         success: relove,
-        fail: reject,
-        complete: () => {
-          wx.hideLoading()
-        }
+        fail: reject
       })
     })
   },
@@ -72,13 +68,7 @@ App({
   static_user_logo: '/pages/image/user_static_logo.png',
   // 全局共享数据
   globalData: {
-    userInfo: { // 用户信息
-      name: '',
-      idcard: '',
-      batteryCarStatus: 0,
-      vehicleId: null,
-      mobile: ''
-    },
+    userInfo: {},
     busInfo: { // 车辆信息
       brand: '',
       installationMethods: 0,
@@ -93,13 +83,6 @@ App({
     wxHeadImg: null,
     jsCode: '',
   },
-  saveUserInfo (userInfo) {
-    this.globalData.userInfo.name = userInfo.personalIDName || ''
-    this.globalData.userInfo.idcard = userInfo.personalIDNo || ''
-    this.globalData.userInfo.batteryCarStatus = userInfo.batteryCarStatus
-    this.globalData.userInfo.vehicleId = userInfo.vehicleId
-    this.globalData.userInfo.mobile = userInfo.mobile
-  },
   saveBusInfo (busInfo) {
     this.globalData.busInfo.brand = busInfo.brand
     this.globalData.busInfo.installationMethods = busInfo.installationMethods
@@ -110,5 +93,11 @@ App({
     this.globalData.busInfo.vehicleId = busInfo.vehicleId
     this.globalData.busInfo.vehicleStatus = busInfo.vehicleStatus
     this.globalData.busInfo.vin = busInfo.vin
-  }
+  },
+  // 获取并保存用户信息和
+  async saveUserInfo (isLoad) {
+    let { result } = await this.api.getUserTotalInfo({}, isLoad)
+    this.globalData.userInfo = result
+    return true
+  },
 })

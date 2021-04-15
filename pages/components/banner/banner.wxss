@@ -7,8 +7,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   /* background-color: #00aaee; */
-  padding: 15px;
-  height: 180rpx;
+  padding: 30rpx;
+  height: 220rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

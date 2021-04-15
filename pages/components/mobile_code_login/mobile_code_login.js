@@ -1,7 +1,7 @@
 // pages/components/mobile_code_login/mobile_code_login.js
 var app = getApp()
 const utils = app.utils
-const { goLogin, changeMobile, getCodeApi, carInfo_public } = app.api
+const { goLogin, changeMobile, getCodeApi, getUserTotalInfo } = app.api
 // 手机号验证码登录组件
 Component({
   /**
@@ -34,16 +34,15 @@ Component({
   lifetimes: {
     attached: function (e) {
       this.myDialog = this.selectComponent('#myDialog')
-      let { userInfo } = app.globalData
-      let tempMobile = userInfo.mobile
-      if (!tempMobile) { // 读取本地的手机号
-        tempMobile = wx.getStorageSync('mobile')
+      if (this.data.flag == 1) {
+        var localPhone = wx.getStorageSync('mobile')
+        if (localPhone) {
+          this.setData({
+            mobile: localPhone
+          })
+        }
       }
-      if (tempMobile) {
-        this.setData({
-          mobile: tempMobile
-        })
-      }
+      
     },
     detached: function (e) {
       this.data.timerId && clearInterval(this.data.timerId)
@@ -60,15 +59,14 @@ Component({
         mobile: this.data.mobile
       })
       if (result) {
-        // ...
-      }
-      // 调用获取验证码api成功后, 开启倒计时
-      utils.showToast.success('发送成功', () => {
-        this.setData({
-          isEditCode: true
+        // 调用获取验证码api成功后, 开启倒计时
+        utils.showToast.success('发送成功', () => {
+          this.setData({
+            isEditCode: true
+          })
+          this.computedTime()
         })
-        this.computedTime()
-      })
+      }
     },
     // 显示dialog
     showDialog () {
@@ -128,13 +126,11 @@ Component({
       let { result } = await goLogin({
         authCode,
         jsCode: code,
-        avatarUrl: app.globalData.wxHeadImg,
         mobile
       })
       if (result) {
         result.token && wx.setStorageSync('token', result.token)
-        app.saveUserInfo(result)
-        await this.saveBusInfo()
+        await this.getUserInfo()
         // 本地缓存手机号
         wx.setStorage({
           data: mobile,
@@ -145,19 +141,18 @@ Component({
         })
       }
     },
-    // 获取车辆信息
-    async saveBusInfo () {
-      let { result } = await carInfo_public()
+    // 获取用户信息
+    async getUserInfo () {
+      let { result } = await getUserTotalInfo()
       if (result) {
-        app.saveBusInfo(result)
+        app.saveUserInfo(result)
       }
       return true
     },
     // 修改手机号api
     async changeMobile () {
       // 更改成功后, 重新跳转到登录页面
-      let { authCode, mobile } = this.data
-      let { mobile: oldMobile } = app.globalData.userInfo
+      let { authCode, mobile, oldMobile } = this.data
       let { result } = await changeMobile({
         authCode,
         mobileNew: mobile,
@@ -195,17 +190,22 @@ Component({
         }
       })
     },
-    // 确定按钮 跳转到首页
-    confirmBtn () {
+    // 登录按钮
+    goLoginBtn () {
       let { mobile, authCode } = this.data
       if (!utils.checkPhone(mobile) || !utils.checkCode(authCode)) {
         return
       }
-      if (this.data.flag == 1) {
-        this.goLogin()
-      } else {
-        this.changeMobile()
-      }
+      this.goLogin()
+    },
+    // 修改手机号按钮
+    editPhoneBtn () {
+      let { mobile, authCode, oldMobile} = this.data
+      if (!utils.checkPhone(oldMobile)) return
+      if (!utils.checkCode(mobile)) return
+      if (!utils.checkCode(authCode)) return
+      if (utils.checkPhoneIsSame(mobile, oldMobile)) return
+      this.changeMobile()
     },
     openConfirm () {
       this.setData({

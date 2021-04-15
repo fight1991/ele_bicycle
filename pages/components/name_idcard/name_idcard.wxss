@@ -1,7 +1,7 @@
 /* pages/components/name_idcard/name_idcard.wxss */
 
 .name {
-  font-size: 20px;
+  font-size: 30rpx;
   display: flex;
   align-items: center;
 }

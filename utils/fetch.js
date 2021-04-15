@@ -22,15 +22,15 @@ const ajaxFunc = async ({url, data, isLoading, other, loadingText, func}) => {
  * loadingText --> loading 文字
  * other --> 是否显示业务报错弹框
  */
-wx.$get = ({url, data, isLoading = true, other = true, loadingText = 'loading...'}) => {
+wx.$get = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
   return ajaxFunc({url, data, isLoading, other, loadingText, func: getInstance})
 }
-wx.$post = ({url, data, isLoading = true, other = true, loadingText = 'loading...'}) => {
+wx.$post = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
   return ajaxFunc({url, data, isLoading, other, loadingText, func: postInstance})
 }
-wx.$delete = ({url, data, isLoading = true, other = true, loadingText = 'loading...'}) => {
+wx.$delete = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
   return ajaxFunc({url, data, isLoading, other, loadingText, func: deleteInstance})
 }
-wx.$put = ({url, data, isLoading = true, other = true, loadingText = 'loading...'}) => {
+wx.$put = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
   return ajaxFunc({url, data, isLoading, other, loadingText, func: putInstance})
 }

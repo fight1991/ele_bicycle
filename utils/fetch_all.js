@@ -24,7 +24,7 @@ function handleResult(resultList) {
   })
 }
 // 方法包装
-wx.$all = async ({ isLoading = true, loadingText = 'loading...', data }) => {
+wx.$all = async ({ isLoading = true, loadingText = '加载中...', data }) => {
   try {
     if (isLoading) showLoading(loadingText)
     let res = await allInstance(data)

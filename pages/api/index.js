@@ -1,14 +1,15 @@
 // 用户登录
 export const goLogin = (data) => {
   return wx.$post({
-    url: '​/user-center​/loginMobile',
+    url: '​/user-center/loginMobile',
     data
   })
 }
 // 用户完整信息查询
-export const getUserTotalInfo = (data) => {
+export const getUserTotalInfo = (data, isLoading) => {
   return wx.$post({
     url: '/user-center/personal/getInfo',
+    isLoading,
     data
   })
 }

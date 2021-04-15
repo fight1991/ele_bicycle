@@ -27,6 +27,18 @@ const checkPhone = (num) => {
   }
   return true
 }
+// 校验原收号和新手机号是否相同
+const checkPhoneIsSame = (newP, oldP) => {
+  if (newP == oldP) {
+    wx.showToast({
+      title: '原手机号和新手机号不能相同!',
+      icon: 'none',
+      duration: 1500
+    })
+    return true
+  }
+  return false
+}
 // 校验验证码
 const checkCode = (num) => {
   if (!num) {
@@ -100,6 +112,7 @@ module.exports = {
   formatTime,
   checkPhone,
   checkCode,
+  checkPhoneIsSame,
   hideText,
   addZero,
   showToast,

@@ -1,20 +1,23 @@
 // pages/user/center/center.js
-import { logOut, show_idcard } from '../../api/index'
 var app = getApp()
+const { logOut, show_idcard } = app.api
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     name: '',
-    isShowNum: false,
-    idcard: '', // 存放隐藏的省份证信息
-    mobile: '', // 存放隐藏的手机号
-    trueIdcard: '',
-    truePhone: '',
-    tempIdcard: '', // 存放显示身份证信息
-    tempPhone: '', // 存放显示的手机号
+    currentMode: 'hide',
+    userInfo: {
+      show: { // 显示的信息
+        idNO: '',
+        mobile: ''
+      },
+      hide: { // 隐藏的信息
+        idNO: '',
+        mobile: ''
+      }
+    },
     wxUserImg: app.static_user_logo
   },
 
@@ -22,48 +25,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { wxHeadImg, userInfo } = app.globalData
-    this.data.idcard = userInfo.idcard
-    this.data.mobile = userInfo.mobile
-    if (wxHeadImg) {
-      this.setData({
-        wxUserImg: wxHeadImg
-      })
-    }
+    var { idNO, mobile, idName } = app.globalData.userInfo
     this.setData({
-      name: userInfo.name,
-      trueIdcard: userInfo.idcard,
-      truePhone: userInfo.mobile
+      'userInfo.show': {
+        idNO: idNO || '',
+        mobile: mobile || ''
+      },
+      name: idName || ''
     })
+    this.getPartInfo()
   },
   async showText (e) {
-    var { tempIdcard, tempPhone, idcard, mobile } = this.data
-    var isShow = e.detail
-    console.log(isShow)
-    if (isShow) {
-      if (tempIdcard) {
-        this.setData({
-          trueIdcard: tempIdcard,
-          truePhone: tempPhone
-        })
-        return
-      }
-      let temp = await this.getPartInfo()
-      if (temp) {
-        this.data.tempIdcard = temp.idNO
-        this.data.tempPhone = temp.mobile
-        this.setData({
-          trueIdcard: temp.idNO,
-          truePhone: temp.mobile
-        })
-      }
-    } else {
-      this.setData({
-        trueIdcard: idcard,
-        truePhone: mobile
-      })
-    }
-    
+    var mode = this.data.currentMode
+    this.setData({
+      currentMode: mode == 'hide' ? 'show' : 'hide'
+    })
   },
   // 跳转到更换手机号页面
   goToPage () {
@@ -75,9 +51,12 @@ Page({
   async getPartInfo () {
     let { result } = await show_idcard()
     if (result) {
-      return { idNO: result.idNO, mobile: result.mobile }
-    } else {
-      return ''
+      this.setData({
+        'userInfo.hide': {
+          idNO: result.idNO || '',
+          mobile: result.mobile || ''
+        }
+      })
     }
   },
   // 用户退出
