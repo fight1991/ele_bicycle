@@ -16,7 +16,7 @@
     </view>
   </view>
   <view class="change-tab">
-    <navigator url="/pages/user/record/personInfo/personInfo">
+    <navigator url="/pages/user/idcardVerify/idcardVerify">
       <view class="tab-item">
         <view>实名认证</view>
         <view class="arrow-r">

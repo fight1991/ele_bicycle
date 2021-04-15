@@ -11,15 +11,14 @@
 
 /* 表单样式区域 */
 .outer {
-  padding: 0px 15px;
+  padding: 0px 30rpx 130rpx;
 }
 .form-area {
   font-size: 14px;
   /* width: 580rpx;
   margin: 0 auto; */
-  padding: 15px;
-  box-shadow: 2px 2px 3px 2px #ccc;
-  border-radius: 10px;
+  padding: 30rpx;
+  border-radius: 10rpx;
   background-color: #fff;
 }
 .form-item .input-label {
@@ -39,19 +38,13 @@
   width: 38rpx;
   height: 38rpx;
 }
-.holder-style {
-  font-size: 12px;
+
+.input-element {
+  text-align: right;
+  flex: 1;
 }
-.fw {
-  font-weight: bold;
-}
-.common-btn {
-  color: #fff;
-  background-color: #00aaee;
-  margin: 10px;
-  padding: 10px 0;
-  border-radius: 20px;
-  text-align: center;
+.input {
+  flex: 1;
 }
 .text-line {
   padding: 10px 0 20px;
@@ -74,5 +67,8 @@
   align-items: center;
 }
 .declare {
-  color: #00aaee;
+  color: #3C79FF;
+}
+.upload-icon-btn {
+
 }

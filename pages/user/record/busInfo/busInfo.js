@@ -31,6 +31,26 @@ Component({
       urlcertification: '', // 车辆合格证
       urlinvoice: '', // 车辆发票
       vin: ''
+    },
+    hiddenCase: true,
+    currentCase: 'cert',
+    caseImgObj: {
+      cert: {
+        img: '/pages/image/case/cert.jpg',
+        subTitle: '车辆合格证照片'
+      },
+      invoice: {
+        img: '/pages/image/case/invoice.jpg',
+        subTitle: '购车发票照片'
+      },
+      vin: {
+        img: '/pages/image/case/vin.jpg',
+        subTitle: '车架号照片'
+      },
+      elec: {
+        img: '/pages/image/case/elec.jpg',
+        subTitle: '电动机编码照片'
+      }
     }
   },
   // 页面初始化后查询车辆信息
@@ -198,6 +218,14 @@ Component({
         // 审核状态查询
         this.triggerEvent('checkStatus')
       }
+    },
+    // 打开案例
+    openCase (e) {
+      var temp = e.currentTarget.dataset.case
+      this.setData({
+        currentCase: temp,
+        hiddenCase: false
+      })
     }
   }
 })

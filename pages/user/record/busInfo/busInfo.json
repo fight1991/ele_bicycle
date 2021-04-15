@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "upload": "../../../components/upload/upload"
+    "upload-case": "/pages/components/uploadCase/uploadCase"
   }
 }

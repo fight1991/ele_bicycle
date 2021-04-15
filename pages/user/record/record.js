@@ -33,7 +33,6 @@ Page({
    */
   onLoad: function (options) {
     // 此时组件busInfo还没显示, 故拿不到
-    this.personInfoComponent = this.selectComponent('#personInfo')
     // 1. 进入页面 先查看当前备案状态
     let { status } = options
     // if (!app.utils.isNull(status)) {
@@ -88,7 +87,7 @@ Page({
           maskIsHidden: true
         })
         // 查询数据回显
-        this.personInfoComponent.getSomeImgInfo()
+        // this.personInfoComponent.getSomeImgInfo()
         return
       case 12: // 完善个人信息 第2步已完成, 车辆信息显示
         this.setData({

@@ -1,7 +1,14 @@
 <!--pages/components/upload/upload.wxml-->
-<view class="btn-box" style="width:{{width}};height:{{height}}" bindtap="chooseBtn">
+<view class="btn-box" style="width:{{width}};height:{{height}}">
   <icon wx:if="{{closeIcon}}" class="remove-icon" hidden="{{!imgSrc}}" type="cancel" catchtap="removeBg"></icon>
-  <image hidden="{{imgSrc}}" mode="{{mode}}" class="upload-bg" src="{{staticSrc}}"></image>
-  <image hidden="{{!imgSrc}}" mode="{{mode}}" class="upload-bg" src="{{imgSrc}}"></image>
-  <slot></slot>
+  <view bindtap="chooseBtn">
+    <image hidden="{{imgSrc}}" mode="{{mode}}" class="upload-bg" src="{{staticSrc}}"></image>
+    <image hidden="{{!imgSrc}}" mode="{{mode}}" class="upload-bg" src="{{imgSrc}}"></image>
+  </view>
+  <view class="load-text">
+    <slot></slot>
+  </view> 
+  <view class="load-icon">
+    <slot name="icon"></slot>
+  </view>
 </view>

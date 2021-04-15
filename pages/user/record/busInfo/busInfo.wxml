@@ -3,63 +3,96 @@
 <view class="outer">
   <!-- 个人信息表单区域 -->
   <view class="form-area">
+    <view class="text-line">请先上传车辆合格证</view>
+    <view class="upload-box">
+      <view class="upload-item">
+        <upload width="120rpx"
+          model:img-src="{{urlcertification}}">
+          <text>车辆合格证</text>
+          <view class="upload-icon-btn" slot="icon" bindtap="openCase" data-case="cert">
+            <iconfont icon="wenhao" size="36rpx" color="#3C79FF"></iconfont>
+          </view>
+        </upload>
+      </view>
+    </view>
     <form>
       <view class="form-item">
-        <view class="input-label">整车编码/车架号</view>
+        <view class="input-label">整车编号</view>
         <view class="input scan-input">
           <input type="text" disabled value="{{busInfo.vin}}"/>
         </view>
         <image class="image" bindtap="scanBtn" src="/pages/image/scan.png" class="scan" bindtap="scanBtn"></image>
       </view>
-      <view class="tag">*支持新国标车合格证扫码填写</view>
       <view class="form-item">
         <view class="input-label">车辆品牌</view>
-        <input type="text" id="brand" bindinput="bindData" value="{{busInfo.brand}}"/>
+        <input class="input-element" type="text" id="brand" bindinput="bindData" value="{{busInfo.brand}}"/>
       </view>
       <view class="form-item">
         <view class="input-label">型号规格</view>
         <view class="input">
-          <input type="text" id="model" bindinput="bindData" value="{{busInfo.model}}"/>
+          <input class="input-element" type="text" id="model" bindinput="bindData" value="{{busInfo.model}}"/>
         </view>
       </view>
       <picker value="{{busInfo.properties}}" bindchange="bindCarPicker" range="{{pickerArrProp}}">
         <view class="form-item">
           <view class="input-label">车辆属性</view>
-          <view>{{pickerArrProp[busInfo.properties]}}</view>
+          <view class="input-element">{{pickerArrProp[busInfo.properties]}}</view>
         </view>
       </picker>
       <picker value="{{busInfo.installation_methods}}" bindchange="bindBrandPicker" range="{{pickerArrType}}">
         <view class="form-item">
           <view class="input-label">装牌方式</view>
-          <view>{{pickerArrType[busInfo.installation_methods]}}</view>
+          <view class="input-element">{{pickerArrType[busInfo.installation_methods]}}</view>
         </view>
       </picker>
       <!-- 车辆合格证和购车发票上传区域 -->
       <view class="upload-area">
-        <view class="text-line">请上传车辆合格证和购车发票</view>
+        <view class="text-line">请上传下列图片</view>
         <view class="upload-box">
           <view class="upload-item">
-            <upload model:img-src="{{urlcertification}}">
-              <text>车辆合格证</text>
+            <upload model:img-src="{{urlinvoice}}">
+              <text>购车发票</text>
+              <view class="upload-icon-btn" slot="icon" bindtap="openCase" data-case="invoice">
+                <iconfont icon="wenhao" size="36rpx" color="#3C79FF"></iconfont>
+              </view>
             </upload>
           </view>
           <view class="upload-item">
             <upload model:img-src="{{urlinvoice}}">
-              <text>购车发票</text>
+              <text>车架号</text>
+              <view class="upload-icon-btn" slot="icon" bindtap="openCase" data-case="vin">
+                <iconfont icon="wenhao" size="36rpx" color="#3C79FF"></iconfont>
+              </view>
+            </upload>
+          </view>
+          <view class="upload-item">
+            <upload model:img-src="{{urlinvoice}}">
+              <text>电动机编码</text>
+              <view class="upload-icon-btn" slot="icon" bindtap="openCase" data-case="elec">
+                <iconfont icon="wenhao" size="36rpx" color="#3C79FF"></iconfont>
+              </view>
             </upload>
           </view>
         </view>
       </view>
     </form>
   </view>
-  <view class="agree-content">
+  <!-- <view class="agree-content">
     <radio class="radioBtn" checked="{{isChecked}}"></radio>
     <view>
       <text>阅读并同意以下内容</text>
       <text class="declare" bindtap="routeTo">《车辆来源合法声明》</text>
     </view>
-  </view>
-  <view class="common-btn" bindtap="submitBtn">提交</view>
+  </view> -->
+  <fixBtn bindtap="submitBtn">提交审核</fixBtn>
 </view>
+<!-- 上传示列弹框 -->
+<mask model:initValue="{{hiddenCase}}">
+  <upload-case 
+    title="车辆信息上传实例"
+    subTitle="{{caseImgObj[currentCase]['subTitle']}}"
+    img="{{caseImgObj[currentCase]['img']}}">
+  </upload-case>
+</mask>
 
 

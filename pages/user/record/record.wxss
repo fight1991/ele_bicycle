@@ -8,9 +8,7 @@ image {
 .scroll-container {
   height: 100%;
 }
-.record {
-  padding: 10px;
-}
+
 
 .status-image {
   width: 220rpx;

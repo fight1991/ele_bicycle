@@ -1,6 +1,6 @@
 /* pages/components/step/step.wxss */
 .step-box {
-  padding: 10px 15px 20px;
+  padding: 40rpx 30rpx;
   display: flex;
   justify-content: space-between;
 }

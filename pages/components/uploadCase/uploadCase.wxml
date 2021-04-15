@@ -1,0 +1,14 @@
+<!--pages/components/uploadCase/uploadCase.wxml-->
+<view class="case-box">
+  <view class="title">{{title}}</view>
+  <view class="subTitle">{{subTitle}}</view>
+  <view class="content">
+    <view>
+      <image class="content-img" src="{{img}}" mode="aspectFit"></image>
+    </view>
+    <view class="content-item">
+      <view class="content-item-text">亮度均匀</view>
+      <view class="content-item-text">照片清晰</view>
+    </view>
+  </view>
+</view>
