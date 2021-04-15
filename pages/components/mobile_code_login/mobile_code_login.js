@@ -23,6 +23,7 @@ Component({
    */
   data: {
     confirmDialogVisible: false,
+    oldMobile: '',
     mobile: '',
     authCode: '159951', // 验证码
     isEditCode: false, // 按钮禁用
@@ -34,15 +35,18 @@ Component({
   lifetimes: {
     attached: function (e) {
       this.myDialog = this.selectComponent('#myDialog')
-      if (this.data.flag == 1) {
-        var localPhone = wx.getStorageSync('mobile')
-        if (localPhone) {
+      var localPhone = wx.getStorageSync('mobile')
+      if (localPhone) {
+        if (this.data.flag == 1) {
           this.setData({
             mobile: localPhone
           })
+        } else {
+          this.setData({
+            oldMobile: localPhone
+          })
         }
       }
-      
     },
     detached: function (e) {
       this.data.timerId && clearInterval(this.data.timerId)
@@ -162,6 +166,7 @@ Component({
         app.globalData.userInfo.mobile = mobile
         // 删除token
         wx.removeStorageSync('token')
+        wx.setStorageSync('mobile', mobile)
         wx.reLaunch({
           url: '/pages/user/center/relogin',
         })
@@ -200,9 +205,9 @@ Component({
     },
     // 修改手机号按钮
     editPhoneBtn () {
-      let { mobile, authCode, oldMobile} = this.data
-      if (!utils.checkPhone(oldMobile)) return
-      if (!utils.checkCode(mobile)) return
+      let { mobile, authCode, oldMobile } = this.data
+      if (!utils.checkPhone(oldMobile, '原手机号')) return
+      if (!utils.checkPhone(mobile, '新手机号')) return
       if (!utils.checkCode(authCode)) return
       if (utils.checkPhoneIsSame(mobile, oldMobile)) return
       this.changeMobile()

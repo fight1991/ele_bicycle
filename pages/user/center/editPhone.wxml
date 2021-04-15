@@ -1,13 +1,6 @@
 <!--pages/user/center/editPhone.wxml-->
 <view>
   <view class="form-container">
-
-    <view class="form-item-label">
-      <view class="input-label">原手机号</view>
-      <view class="input">
-        <input type="text" value="{{oldPhone}}"/>
-      </view>
-    </view>
     <mobileCode flag="{{2}}" btnText="确认提交"></mobileCode>
   </view>
 </view>

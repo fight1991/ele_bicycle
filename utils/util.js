@@ -14,12 +14,20 @@ const formatNumber = n => {
   return n[1] ? n : `0${n}`
 }
 // 校验手机号
-const checkPhone = (num) => {
+const checkPhone = (num, text = '手机号') => {
+  if (!num) {
+    wx.showToast({
+      title: text + '不能为空',
+      icon: 'none',
+      duration: 1500
+    })
+    return false
+  }
   var reg = /^1[3456789]\d{9}$/
   var isPass = reg.test(num)
   if (!isPass) {
     wx.showToast({
-      title: '请输入正确格式的11位手机号码',
+      title: '请输入11位的' + text,
       icon: 'none',
       duration: 1500
     })
