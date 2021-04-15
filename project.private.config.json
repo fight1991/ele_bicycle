@@ -137,6 +137,11 @@
           "pathName": "pages/user/idcardVerify/livingVerify",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "默认启动页",
+          "pathName": "pages/login/index",
+          "scene": null
         }
       ]
     }

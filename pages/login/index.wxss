@@ -1,39 +1,74 @@
 /* pages/login/index.wxss */
-@import "./style/common.wxss";
 page {
   height: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.container {
-  padding: 10rpx 0;
+.loadEffect{
+  width: 200rpx;
+  height: 200rpx;
+  position: relative;
 }
-.top {
-  flex: 1;
-  margin-top: 200rpx;
+.loadEffect text{
+  display: inline-block;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background: #3E77FF;
+  position: absolute;
+  animation: load 1.04s ease infinite;
 }
-.bottom {
-  color: #286491;
-  font-weight: bold;
+@keyframes load{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0.2;
+  }
 }
-
-.welcome-txt {
-  margin: 40rpx 0;
-  text-align: center;
+.loadEffect text:nth-child(1){
+  left: 0;
+  top: 50%;
+  margin-top:-16rpx;
+  animation-delay:0.13s;
 }
-.user-img {
-  width: 286rpx;
-  height: 151rpx;
-  border-radius: 6rpx;
-  /* background-color: #00aaee; */
-  margin-bottom: 40px;
-  color: #fff;
+.loadEffect text:nth-child(2){
+  left: 28rpx;
+  top: 28rpx;
+  animation-delay:0.26s;
 }
-.user-img image {
-  width: 100%;
-  height: 100%;
+.loadEffect text:nth-child(3){
+  left: 50%;
+  top: 0;
+  margin-left: -16rpx;
+  animation-delay:0.39s;
 }
-.common-btn {
-  margin-top: 80rpx;
+.loadEffect text:nth-child(4){
+  top: 28rpx;
+  right:28rpx;
+  animation-delay:0.52s;
 }
-.auth-btn {
-  background-color: #07c160;
+.loadEffect text:nth-child(5){
+  right: 0;
+  top: 50%;
+  margin-top:-16rpx;
+  animation-delay:0.65s;
+}
+.loadEffect text:nth-child(6){
+  right: 28rpx;
+  bottom:28rpx;
+  animation-delay:0.78s;
+}
+.loadEffect text:nth-child(7){
+  bottom: 0;
+  left: 50%;
+  margin-left: -16rpx;
+  animation-delay:0.91s;
+}
+.loadEffect text:nth-child(8){
+  bottom: 28rpx;
+  left: 28rpx;
+  animation-delay:1.04s;
 }

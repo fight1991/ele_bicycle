@@ -37,14 +37,7 @@ Page({
       await this.saveInfo()
       this.routeTo('/pages/user/index')
     } else {
-      // 请求后端接口进行登录凭证校验, 有身份证号, 跳转到登录页面, 无身份证号跳转到注册页面
-      let { result } = await checkCode({
-        jscode: code
-      })
-      if (result) {
-        this.data.idNO = result.idNO
-        app.globalData.userInfo.idcard = result.idNO
-      }
+      this.routeTo('/pages/login/signIn')
     }
   },
   // 获取并保存用户信息和车辆信息
@@ -63,34 +56,7 @@ Page({
     }
     return true
   },
-  wechatPermission () {
-    if (this.data.isClick) return
-    this.data.isClick = true
-    wx.getUserProfile({
-      desc: '头像展示',
-      success: res => {
-        if (res.errMsg == 'getUserProfile:ok') {
-          app.globalData.wxHeadImg = res.userInfo.avatarUrl
-          if (this.data.idNO) {
-            this.routeTo('/pages/login/signIn')
-          } else {
-            // this.routeTo('/pages/login/faceIdentify')
-          }
-        }
-      },
-      fail: res => {
-        wx.showToast({
-          title: '头像获取失败',
-          icon: 'none'
-        })
-        console.log(res, '头像获取失败')
-      },
-      complete: res => {
-        this.data.isClick = false
-      }
-    })
-  },
-  // 跳转到人脸识别注册页面
+  // 跳转到相关页面
   routeTo (url) {
     wx.redirectTo({
       url

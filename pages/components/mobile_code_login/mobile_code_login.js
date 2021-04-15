@@ -1,9 +1,7 @@
 // pages/components/mobile_code_login/mobile_code_login.js
-const utils = require("../../../utils/util")
 var app = getApp()
-import { goLogin, changeMobile, getCodeApi } from '../../api/index'
-import {  carInfo_public } from '../../api/record'
-
+const utils = app.utils
+const { goLogin, changeMobile, getCodeApi, carInfo_public } = app.api
 // 手机号验证码登录组件
 Component({
   /**
@@ -30,7 +28,8 @@ Component({
     isEditCode: false, // 按钮禁用
     codeText: '获取验证码',
     timerId: 0,
-    codeTime: 60
+    codeTime: 60,
+    isClick: false
   },
   lifetimes: {
     attached: function (e) {
@@ -172,6 +171,29 @@ Component({
           url: '/pages/user/center/relogin',
         })
       }
+    },
+    // 是否需要获取头像
+    wechatPermission () {
+      if (this.data.isClick) return
+      this.data.isClick = true
+      wx.getUserProfile({
+        desc: '头像展示',
+        success: res => {
+          if (res.errMsg == 'getUserProfile:ok') {
+            app.globalData.wxHeadImg = res.userInfo.avatarUrl
+            this.goLogin()
+          }
+        },
+        fail: res => {
+          wx.showToast({
+            title: '头像获取失败',
+            icon: 'none'
+          })
+        },
+        complete: res => {
+          this.data.isClick = false
+        }
+      })
     },
     // 确定按钮 跳转到首页
     confirmBtn () {
