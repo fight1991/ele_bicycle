@@ -1,7 +1,7 @@
 // 用户登录
 export const loginApi = (data) => {
   return wx.$post({
-    url: '​/user-center/loginMobile',
+    url: '/user-center/loginMobile',
     data
   })
 }
