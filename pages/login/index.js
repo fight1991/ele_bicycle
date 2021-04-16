@@ -1,6 +1,5 @@
 // pages/login/index.js
 var app = getApp()
-const { getUserTotalInfo } = app.api
 Page({
 
   /**

@@ -1,7 +1,7 @@
 // pages/components/mobile_code_login/mobile_code_login.js
 var app = getApp()
 const utils = app.utils
-const { goLogin, changeMobile, getCodeApi, getUserTotalInfo } = app.api
+const { goLogin, changeMobile, getCodeApi } = app.api
 // 手机号验证码登录组件
 Component({
   /**
@@ -134,7 +134,7 @@ Component({
       })
       if (result) {
         result.token && wx.setStorageSync('token', result.token)
-        await this.getUserInfo()
+        await app.saveUserInfo()
         // 本地缓存手机号
         wx.setStorage({
           data: mobile,
@@ -144,14 +144,6 @@ Component({
           url: '/pages/user/index',
         })
       }
-    },
-    // 获取用户信息
-    async getUserInfo () {
-      let { result } = await getUserTotalInfo()
-      if (result) {
-        app.saveUserInfo(result)
-      }
-      return true
     },
     // 修改手机号api
     async changeMobile () {
