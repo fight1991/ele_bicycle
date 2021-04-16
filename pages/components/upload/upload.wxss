@@ -1,7 +1,7 @@
 /* pages/components/upload/upload.wxss */
 .btn-box {
   /* margin-right: 40px; */
-  font-size: 12px;
+  font-size: 24rpx;
   position: relative;
 }
 

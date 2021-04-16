@@ -1,7 +1,7 @@
 // pages/components/mobile_code_login/mobile_code_login.js
 var app = getApp()
 const utils = app.utils
-const { goLogin, changeMobile, getCodeApi } = app.api
+const { loginApi, changeMobile, getCodeApi } = app.api
 // 手机号验证码登录组件
 Component({
   /**
@@ -59,6 +59,7 @@ Component({
     // 获取验证码
     async getCode () {
       if (this.data.timerId) return
+      if (!utils.checkPhone(this.data.mobile)) return
       let { result } = await getCodeApi({
         mobile: this.data.mobile
       })
@@ -118,16 +119,16 @@ Component({
       }, 1000)
       this.data.timerId = timerIdTemp
     },
-    // 去登录
+    // 去登录按钮
     async goLogin () {
       app.getWechatCode().then(res => {
-        this.loginApi(res.code)
+        this.loginFunc(res.code)
       })
     },
     // 登录api
-    async loginApi (code) {
+    async loginFunc (code) {
       let { mobile, authCode } = this.data
-      let { result } = await goLogin({
+      let { result } = await loginApi({
         authCode,
         jsCode: code,
         mobile

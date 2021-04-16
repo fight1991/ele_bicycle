@@ -1,7 +1,7 @@
 <!--pages/components/upload/upload.wxml-->
-<view class="btn-box" style="width:{{width}};height:{{height}}">
+<view class="btn-box">
   <icon wx:if="{{closeIcon}}" class="remove-icon" hidden="{{!imgSrc}}" type="cancel" catchtap="removeBg"></icon>
-  <view bindtap="chooseBtn">
+  <view bindtap="chooseBtn" style="width:{{width}};height:{{height}}">
     <image hidden="{{imgSrc}}" mode="{{mode}}" class="upload-bg" src="{{staticSrc}}"></image>
     <image hidden="{{!imgSrc}}" mode="{{mode}}" class="upload-bg" src="{{imgSrc}}"></image>
   </view>

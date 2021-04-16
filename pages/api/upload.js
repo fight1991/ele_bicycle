@@ -2,13 +2,13 @@
 // 每次上传之前都要获取上传的凭证
 export const upload_token = () => {
   return wx.$post({
-    url: '/battery-car-management/file',
+    url: '/user-center/file/getUpToken',
     loadingText: '请求上传...'
   })
 }
 export const upload_common = (upToken, filePath, text) => {
   return wx.$upload({
-    url: '/battery-car-management/file',
+    url: '/user-center/file/upload',
     text,
     data: {
       upToken,

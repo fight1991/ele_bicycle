@@ -1,5 +1,5 @@
 // 用户登录
-export const goLogin = (data) => {
+export const loginApi = (data) => {
   return wx.$post({
     url: '​/user-center/loginMobile',
     data
