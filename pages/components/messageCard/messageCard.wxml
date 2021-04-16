@@ -2,14 +2,14 @@
 <view class="box">
   <view class="top">
     <view class="head-icon">
-      <image wx:if="type=='check'" class="img" src="/pages/image/icon_record.png"></image>
-      <image wx:else class="img" src="/pages/image/icon_info.png.png"></image>
+      <image wx:if="{{type=='notice'}}" class="img" src="/pages/image/icon_record.png"></image>
+      <image wx:else class="img" src="/pages/image/icon_info.png"></image>
     </view>
     <view class="text-line">
       <view class="main-title">{{mainTitle}}</view>
       <view class="sub-title">{{subTitle}}</view>
     </view>
-    <view class="dot"></view>
+    <view class="dot" hidden="{{hasRead}}"></view>
   </view>
   <view class="bottom">
     <view class="date">{{time}}</view>

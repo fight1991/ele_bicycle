@@ -97,7 +97,9 @@ App({
   // 获取并保存用户信息和
   async saveUserInfo (isLoad) {
     let { result } = await this.api.getUserTotalInfo({}, isLoad)
-    this.globalData.userInfo = result
+    if (result) {
+      this.globalData.userInfo = result
+    }
     return true
   },
 })

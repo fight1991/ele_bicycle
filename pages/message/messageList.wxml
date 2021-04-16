@@ -8,16 +8,21 @@
   bindscrolltolower="scrolltolower"
   lower-threshold="{{50}}">
   <view class="outer">
-    <block wx:for="{{resultList}}" wx:key="this">
-      <navigator url="/pages/message/messageDetail">
+    <block wx:for="{{resultList}}" wx:key="id">
+      <navigator url="/pages/message/messageDetail?id={{item.id}}">
         <messageCard
-          mainTitle="审核通过"
-          subTitle="登记备案审核通知"
-          time="2012-05-23 09:12:33">
+          type="{{item.msgType}}"
+          hasRead="{{item.readStatus}}"
+          mainTitle="{{item.msgTitle}}"
+          subTitle="{{item.msgDesc}}"
+          time="{{item.createTime}}">
         </messageCard>
       </navigator>
     </block>
-    <view class="has-more">{{hasMore ? '正在加载...' : '到底啦'}}</view>
+    <view class="has-more" wx:if="{{resultList.length > 0}}">{{hasMore ? '上拉加载更多' : '~到底啦~'}}</view>
+    <view wx:else>
+      <nodata>暂无数据</nodata>
+    </view>
   </view>
 </scroll-view>
 

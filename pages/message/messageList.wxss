@@ -7,3 +7,13 @@
 .outer {
   padding: 30rpx 30rpx;
 }
+.no-data {
+  width: 300rpx;
+  margin: 0 auto;
+}
+.has-more {
+  font-size: 22rpx;
+  text-align: center;
+  padding: 10rpx 0;
+  color: #ccc;
+}

@@ -1,18 +1,26 @@
 // pages/message/messageDetail.js
+var app = getApp()
+const { getMessageDetailApi } = app.api
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    messageInfo: {}, // 查看消息详情
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
+  },
+  async getMessageDetail (id) {
+    let { result } = await getMessageDetailApi(id)
+    this.setData({
+      messageInfo: result
+    })
   },
 
   /**

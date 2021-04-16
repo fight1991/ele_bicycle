@@ -1,4 +1,6 @@
 // pages/message/messageList.js
+var app = getApp()
+const { getMessageListApi } = app.api
 Page({
 
   /**
@@ -11,16 +13,46 @@ Page({
     currPage: 0, // 当前页
     pageSize: 10, // 每页请求数量
     count: 0, // 条目数
-    resultList: [1, 1, 1, 1, 1]
+    resultList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.onRefresh()
   },
-
+  // 获取消息列表
+  async getMessageList (currPage, callback) {
+    if (this._freshing) return
+    this._freshing = true
+    let { pageSize, resultList } = this.data
+    let createTime = ''
+    let id = ''
+    currPage ++
+    if (currPage > 1 && resultList.length > 0) {
+      var lastData = resultList[resultList.length - 1]
+      createTime = lastData.createTime
+      id = lastData.id
+    }
+    let { result } = await getMessageListApi({
+      params: {
+        createTime,
+        id
+      },
+      pagination: {
+        currPage,
+        pageSize
+      }
+    })
+    if (result) {
+      callback && callback(result.list || [], result.pagination)
+    }
+    this._freshing = false
+    this.setData({
+      triggered: false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -31,7 +63,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // wx.$post({
+    //   url: '/user-center/notification/createNotice',
+    //   data: {
+    //     "msgContent": "你好aaaa" + Date.now(),
+    //     "msgDesc": "这是个好豪情" + Date.now(),
+    //     "msgTitle": "title" + Date.now(),
+    //     "msgType": "system",
+    //     "targetAccountId": '3026861168552657839'
+    //   }
+    // })
   },
 
   /**
@@ -59,30 +100,30 @@ Page({
     //   wx.stopPullDownRefresh() //结束刷新
     // }, 1000); //设置执行时间
   },
-  getList (type) {
-    if (this._freshing) return
-    this._freshing = true
-    var pageIndex = this.data.currPage
-    pageIndex++
-    // 请求成功之后
-    this.setData({
-      triggered: false,
-      resultList: type == 'down' ? [...result] : [...this.data.resultList, ...result],
-      currPage: pageIndex
-      // hasMore: pageSize * currPage < total
-    })
-    this._freshing = false
-  },
   onRefresh() {
-    this.data.currPage = 1
-    this.getList('down')
+    this.getMessageList(0, (list, pagination) => {
+      var { currPage, count, pageSize } = pagination
+      this.setData({
+        currPage,
+        resultList: list,
+        hasMore: currPage * pageSize >= count ? false : true
+      })
+    })
   },
   /**
    * 页面上拉触底事件的处理函数
    */
   scrolltolower () {
     if (!this.data.hasMore) return
-    this.getList('up')
+    let { currPage, resultList } = this.data
+    this.getMessageList(currPage, (list, pagination) => {
+      var { currPage, count, pageSize } = pagination
+      this.setData({
+        currPage,
+        resultList: [...resultList, ...list],
+        hasMore: currPage * pageSize >= count ? false : true
+      })
+    })
   },
   onReachBottom: function (e) {
     console.log(e)

@@ -18,7 +18,11 @@ Component({
     },
     type: {
       type: String,
-      value: 'check'
+      value: 'notice'
+    },
+    hasRead: { // 是否已读
+      type: Boolean,
+      value: false
     }
   },
 

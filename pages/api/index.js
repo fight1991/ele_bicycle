@@ -57,3 +57,25 @@ export const sumitPersonInfoApi = (data) => {
     data
   })
 }
+// 获取新消息数量
+export const getMessageNumApi = (data) => {
+  return wx.$post({
+    url: '/user-center/notification/getNoticeCount',
+    data,
+    isLoading: false
+  })
+}
+// 获取消息列表
+export const getMessageListApi = (data) => {
+  return wx.$post({
+    url: '/user-center/notification/getNoticeList',
+    data
+  })
+}
+// 获取消息详情
+export const getMessageDetailApi = (data) => {
+  return wx.$post({
+    url: '/user-center/notification/getNoticeDetail',
+    data
+  })
+}

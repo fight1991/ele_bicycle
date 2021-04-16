@@ -1,0 +1,15 @@
+/* pages/components/nodata/nodata.wxss */
+.image-box {
+  padding-top: 200rpx;
+}
+.img {
+  display: block;
+  width: 300rpx;
+  margin: 0 auto;
+}
+.text {
+  color: #ccc;
+  font-size: 22rpx;
+  text-align:center;
+  padding-top: 40rpx;
+}

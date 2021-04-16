@@ -1,12 +1,14 @@
 // pages/user/index.js
 var app = getApp()
 const utils = app.utils
+const { getMessageNumApi } = app.api
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    messageNum: 0, // 消息数量
     itemList: [
       {
         zh: '居民个人业务',
@@ -121,6 +123,15 @@ Page({
       url: '/pages/message/messageList',
     })
   },
+  // 获取新消息条数
+  async getNewMessageNum () {
+    let { result } = await getMessageNumApi(false)
+    if (typeof result == 'number') {
+      this.setData({
+        messageNum: result
+      })
+    }
+  },
   // 防止冒泡
   stopTapEvent () {},
   /**
@@ -135,6 +146,7 @@ Page({
    */
   onShow: function () {
     wx.hideHomeButton()
+    this.getNewMessageNum()
   },
 
   /**

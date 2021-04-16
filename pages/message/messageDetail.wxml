@@ -1,8 +1,8 @@
 <!--pages/message/messageDetail.wxml-->
 <view class="box">
   <view class="detail">
-    <view class="title">{{}}</view>
-    <view class="time"><text class="prefText">通知时间</text>{{}}</view>
-    <view class="content">{{}}</view>
+    <view class="title">{{messageInfo.msgTitle}}</view>
+    <view class="time"><text class="prefText">通知时间</text>{{messageInfo.createTime}}</view>
+    <view class="content">{{messageInfo.msgContent}}</view>
   </view>
 </view>

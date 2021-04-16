@@ -42,7 +42,8 @@
     "iconfont": "/pages/components/iconfont/iconfont",
     "mask": "/pages/components/mask/mask",
     "upload": "/pages/components/upload/upload",
-    "successPage": "/pages/components/commonSuccess/commonSuccess"
+    "successPage": "/pages/components/commonSuccess/commonSuccess",
+    "nodata": "/pages/components/nodata/nodata"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
