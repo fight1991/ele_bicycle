@@ -11,7 +11,7 @@ Page({
     triggered: false, // 设置当前下拉刷新状态
     hasMore: true, // 是否还有更多数据
     currPage: 0, // 当前页
-    pageSize: 10, // 每页请求数量
+    pageSize: 5, // 每页请求数量
     count: 0, // 条目数
     resultList: []
   },

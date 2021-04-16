@@ -14,15 +14,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    let id = options.id
+    let isRead = options.readStatus
+    this.getMessageDetail(id)
+    if (!isRead) {
+      this.changeReadStatus(id)
+    }
   },
   async getMessageDetail (id) {
     let { result } = await getMessageDetailApi(id)
-    this.setData({
-      messageInfo: result
+    if (result) {
+      this.setData({
+        messageInfo: result
+      })
+    }
+  },
+  // 修改上一页的数据, 使其状态为已读
+  changeReadStatus (id) {
+    let pages = getCurrentPages()
+    var prevPage = pages[pages.length - 2]
+    var tempData = JSON.parse(JSON.stringify(prevPage.data.resultList))
+    tempData.some(v => {
+      if (v.id == id) {
+        v.readStatus = true
+        return true
+      }
+    })
+    prevPage.setData({
+      resultList: tempData
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
