@@ -16,9 +16,13 @@ Page({
   onLoad: function (options) {
     let id = options.id
     let isRead = options.readStatus
-    this.getMessageDetail(id)
-    if (!isRead) {
-      this.changeReadStatus(id)
+    // 有可能是从服务通知点进来
+    let fromTag = options.from
+    if (!fromTag) {
+      this.getMessageDetail(id)
+      if (!isRead) {
+        this.changeReadStatus(id)
+      }
     }
   },
   async getMessageDetail (id) {
