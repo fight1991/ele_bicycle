@@ -46,19 +46,19 @@ const HandleBranch = (_res, other) => {
       return {result: null}
   }
 }
-// 处理文件上传的业务分支
-const HandleBranchFile = _res => {
-  switch (_res.statusCode) {
-    case 200: // 成功
-      var temp = JSON.parse(_res.data) // data:"{"hash":"111","key": "113"}"
-      return { result: temp.hash }
-    default:
-      wx.showToast({
-        title: '上传失败, 请稍后重试',
-        duration: 1500,
-        icon:'none'
-      })
-      return {result: null}
-  }
-}
-export { showLoading, closeLoading, HandleBranch, HandleBranchFile }
+// 处理文件上传的业务分支(废弃)
+// const HandleBranchFile = _res => {
+//   switch (_res.statusCode) {
+//     case 200: // 成功
+//       var temp = JSON.parse(_res.data) // data:"{"hash":"111","key": "113"}"
+//       return { result: temp.hash }
+//     default:
+//       wx.showToast({
+//         title: '上传失败, 请稍后重试',
+//         duration: 1500,
+//         icon:'none'
+//       })
+//       return {result: null}
+//   }
+// }
+export { showLoading, closeLoading, HandleBranch }

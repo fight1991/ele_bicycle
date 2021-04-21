@@ -1,14 +1,14 @@
 // 用户登录
 export const loginApi = (data) => {
-  return wx.$post({
-    url: '/user-center/loginMobile',
+  return wx.$post_user({
+    url: '/data-user/loginMobile',
     data
   })
 }
 // 用户完整信息查询
 export const getUserTotalInfo = (data, isLoading) => {
-  return wx.$post({
-    url: '/user-center/personal/getInfo',
+  return wx.$post_user({
+    url: '/data-user/personal/getInfo',
     isLoading,
     data
   })
@@ -16,43 +16,43 @@ export const getUserTotalInfo = (data, isLoading) => {
 
 // 注销登录
 export const logOut = (data) => {
-  return wx.$post({
-    url: '/user-center/logout',
+  return wx.$post_user({
+    url: '/data-user/logout',
     data
   })
 }
 // 更换手机号
 export const changeMobile = (data) => {
-  return wx.$post({
-    url: '/user-center/user_center/changeMobile',
+  return wx.$post_user({
+    url: '/data-user/user_center/changeMobile',
     data
   })
 }
 // 获取手机验证码
 export const getCodeApi = (data) => {
-  return wx.$post({
-    url: '/user-center/getMobileAuthCode',
+  return wx.$post_user({
+    url: '/data-user/getMobileAuthCode',
     data
   })
 }
 
 // 查看带掩码个人信息
 export const show_idcard = (data) => {
-  return wx.$post({
-    url: '/user-center/personal/getMaskInfo',
+  return wx.$post_user({
+    url: '/data-user/personal/getMaskInfo',
     data
   })
 }
 // 身份认证-上传头像 身份证正反面
 export const verifyPersonApi = (data) => {
-  return wx.$post({
-    url: '/user-center/personal/uploadImages',
+  return wx.$post_business({
+    url: '/data-user/personal/uploadImages',
     data
   })
 }
 // 提交身份认证后的信息
 export const sumitPersonInfoApi = (data) => {
-  return wx.$post({
+  return wx.$post_business({
     url: '/user-center​/personal​/uploadInfos',
     data
   })
@@ -60,7 +60,7 @@ export const sumitPersonInfoApi = (data) => {
 // 获取新消息数量
 export const getMessageNumApi = (data) => {
   return wx.$post({
-    url: '/user-center/notification/getNoticeCount',
+    url: '/data-user/notification/getNoticeCount',
     data,
     isLoading: false
   })
@@ -68,14 +68,14 @@ export const getMessageNumApi = (data) => {
 // 获取消息列表
 export const getMessageListApi = (data) => {
   return wx.$post({
-    url: '/user-center/notification/getNoticeList',
+    url: '/data-user/notification/getNoticeList',
     data
   })
 }
 // 获取消息详情
 export const getMessageDetailApi = (data) => {
   return wx.$post({
-    url: '/user-center/notification/getNoticeDetail',
+    url: '/data-user/notification/getNoticeDetail',
     data
   })
 }

@@ -3,7 +3,6 @@
     "pages/login/index",
     "pages/login/signIn",
     "pages/user/index",
-    "pages/index/index",
     "pages/user/personalBusiness/index",
     "pages/user/record/record",
     "pages/user/record/law/law",
@@ -18,16 +17,29 @@
     "pages/user/adminBusiness/details",
     "pages/user/record_change/record_change",
     "pages/user/record_change/other_status",
-    "pages/setting/setting",
     "pages/user/loss/loss",
     "pages/user/scrap/scrap",
     "pages/user/insure/insure",
     "pages/user/result/result",
-    "pages/message/messageList",
-    "pages/message/messageDetail",
     "pages/user/idcardVerify/idcardVerify",
     "pages/user/idcardVerify/livingVerify",
     "pages/user/idcardVerify/livingResult"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/message",
+      "name": "message",
+      "pages": [
+        "messageDetail",
+        "messageList"
+      ]
+    }, {
+      "root": "pages/setting",
+      "name": "setting",
+      "pages": [
+        "setting"
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",

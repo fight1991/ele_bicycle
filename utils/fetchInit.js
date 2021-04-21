@@ -24,19 +24,28 @@ class Fetch {
   }
 }
 // 生成实例
-export const {instance: getInstance} = new Fetch({
-  baseURL: config.API,
-  method: 'GET'
-})
-export const {instance: postInstance} = new Fetch({
-  baseURL: config.API,
+// export const {instance: getInstance} = new Fetch({
+//   baseURL: config.API,
+//   method: 'GET'
+// })
+// export const {instance: deleteInstance} = new Fetch({
+//   baseURL: config.API,
+//   method: 'DELETE'
+// })
+// export const {instance: putInstance} = new Fetch({
+//   baseURL: config.API,
+//   method: 'PUT'
+// })
+export const {instance: userInstance} = new Fetch({
+  baseURL: config.USRE_API,
   method: 'POST'
 })
-export const {instance: deleteInstance} = new Fetch({
-  baseURL: config.API,
-  method: 'DELETE'
+export const {instance: businessInstance} = new Fetch({
+  baseURL: config.businessInstance,
+  method: 'POST'
 })
-export const {instance: putInstance} = new Fetch({
-  baseURL: config.API,
-  method: 'PUT'
+export const {instance: uploadInstance} = new Fetch({
+  baseURL: config.FILE,
+  method: 'POST',
+  contentType: 'multipart/form-data'
 })

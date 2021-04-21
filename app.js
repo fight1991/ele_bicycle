@@ -1,14 +1,12 @@
 // 一般请求方法注册
 import './utils/fetch'
-// 上传请求注册
-import './utils/fetch_upload'
 // 批量请求注册
 import './utils/fetch_all'
 // 工具类注册
 const utils = require('./utils/util')
 // 用户相关api注册
-import * as usersApi from './pages/api/index'
-// 申报相关api注册
+import * as usersApi from './pages/api/user'
+// 车辆申报相关api注册
 import * as recordsApi from './pages/api/record'
 App({
   onLaunch() {
@@ -52,7 +50,7 @@ App({
   // 绑定api
   api: {
     ...usersApi, // 用户相关
-    ...recordsApi // 申报相关
+    ...recordsApi // 车辆申报相关
   },
   getWechatCode () {
     return new Promise((relove, reject) => {

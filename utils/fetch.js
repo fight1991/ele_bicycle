@@ -1,5 +1,5 @@
-const { showLoading, closeLoading, HandleBranch, HandleBranchFile } = require('../utils/fetch_fun')
-import { getInstance, postInstance, deleteInstance, putInstance } from './fetchInit'
+const { showLoading, closeLoading, HandleBranch } = require('../utils/fetch_fun')
+import { userInstance, businessInstance, uploadInstance } from './fetchInit'
 
 // 方法统一包装
 const ajaxFunc = async ({url, data, isLoading, other, loadingText, func}) => {
@@ -22,15 +22,22 @@ const ajaxFunc = async ({url, data, isLoading, other, loadingText, func}) => {
  * loadingText --> loading 文字
  * other --> 是否显示业务报错弹框
  */
-wx.$get = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
-  return ajaxFunc({url, data, isLoading, other, loadingText, func: getInstance})
+// wx.$get = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
+//   return ajaxFunc({url, data, isLoading, other, loadingText, func: getInstance})
+// }
+// wx.$delete = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
+//   return ajaxFunc({url, data, isLoading, other, loadingText, func: deleteInstance})
+// }
+// wx.$put = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
+//   return ajaxFunc({url, data, isLoading, other, loadingText, func: putInstance})
+// }
+wx.$post_user = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
+  return ajaxFunc({url, data, isLoading, other, loadingText, func: userInstance})
 }
-wx.$post = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
-  return ajaxFunc({url, data, isLoading, other, loadingText, func: postInstance})
+wx.$post_business = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
+  return ajaxFunc({url, data, isLoading, other, loadingText, func: businessInstance})
 }
-wx.$delete = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
-  return ajaxFunc({url, data, isLoading, other, loadingText, func: deleteInstance})
+wx.$upload = ({url, data, isLoading = true, other = true, loadingText = '上传中...'}) => {
+  return ajaxFunc({url, data, isLoading, other, loadingText, func: uploadInstance})
 }
-wx.$put = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
-  return ajaxFunc({url, data, isLoading, other, loadingText, func: putInstance})
-}
+ 

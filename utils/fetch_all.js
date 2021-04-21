@@ -1,15 +1,13 @@
-import { getInstance, postInstance, putInstance, deleteInstance } from './fetchInit'
+import { userInstance, businessInstance } from './fetchInit'
 const { showLoading, closeLoading } = require('../utils/fetch_fun')
 
 let instanceObj = {
-  get: getInstance,
-  post: postInstance,
-  put: putInstance,
-  delete: deleteInstance
+  user: userInstance,
+  business: businessInstance
 }
-// list泛型为 List<Map> Map --> {method: 'post', url: '', data: {}}
+// list泛型为 List<Map> Map --> {source: 'user', url: '', data: {}}
 const allInstance = (list) => {
-  let promiseList = list.map(v => instanceObj[v.method || 'post'](v.url, v.data))
+  let promiseList = list.map(v => instanceObj[v.source](v.url, v.data))
   return Promise.all(promiseList)
 }
 // 过滤结果
