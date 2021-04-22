@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    opType: 'add', // 页面操作类型
     showStep: true, // 是否显示进度条
     currentStep: 0, // 当前操作步骤
     maskIsHidden: true, // 蒙层是否隐藏
@@ -32,7 +33,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 此时组件busInfo还没显示, 故拿不到
+    let { opType } = options
+    this.busInfoComponent = this.selectComponent('#busInfo')
+    if (opType == 'edit') {
+      // 车辆信息初始化
+      this.busInfoComponent.initInfo()
+    }
     // 1. 进入页面 先查看当前备案状态
     let { status } = options
     // if (!app.utils.isNull(status)) {
@@ -40,13 +46,6 @@ Page({
     // } else {
     //   this.getCheckStatus()
     // }
-  },
-
-  // 点击拍摄人脸按钮
-  faceBtn () {
-    wx.navigateTo({
-			url: '/pages/user/camera/index?mode=face',
-		})
   },
   // 控制状态条进度
   progressStatus () {

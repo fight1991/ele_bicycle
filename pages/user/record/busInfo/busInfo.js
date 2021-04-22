@@ -1,5 +1,5 @@
 // pages/user/record/busInfo/busInfo.js
-import { carInfo_search, carInfo_add } from '../../../api/record'
+import { carInfo_read, carInfo_add } from '../../../api/record'
 import WxValidate from '../../../../utils/WxValidate'
 var app = getApp()
 Component({
@@ -17,10 +17,23 @@ Component({
     // 双向绑定图片的值
     urlcertification: '',
     urlinvoice: '',
+    urlMotor: '',
+    urlVin: '',
     // 车辆属性
     pickerArrProp: ['非国标车', '新国标车'],
+    pickerArrPropValue: ['NON_STANDARD', 'STANDARD'],
+    pickerArrPropObj: {
+      NON_STANDARD: '非国标车',
+      STANDARD: '新国标车'
+    },
     // 装牌方式
     pickerArrType: ['邮寄到家', '安装点安装'],
+    pickerArrTypeValue: ['MAIL', 'INSTALLATION'],
+    pickerArrTypeObj: {
+      MAIL: '邮寄到家',
+      INSTALLATION: '安装点安装'
+    },
+
     isChecked: true,
     scanCode: '',
     busInfo: {
@@ -30,6 +43,8 @@ Component({
       properties: '', // 车辆属性
       urlcertification: '', // 车辆合格证
       urlinvoice: '', // 车辆发票
+      urlMotor: '', // 电动机编号
+      urlVin: '', // 车架号图片地址
       vin: ''
     },
     hiddenCase: true,
@@ -56,8 +71,6 @@ Component({
   // 页面初始化后查询车辆信息
   lifetimes: {
     attached: function (e) {
-      // 数据初始化
-      this.initInfo()
       this.initValid()
     }
   },
@@ -88,9 +101,18 @@ Component({
         },
         urlinvoice: {
           required: true
+        },
+        urlMotor: {
+          required: true
+        },
+        urlVin: {
+          required: true
         }
       }
       let messages = {
+        urlcertification: {
+          required: '请上传车辆合格证'
+        },
         vin: {
           required: '请扫车架号'
         },
@@ -106,26 +128,39 @@ Component({
         installation_methods: {
           required: '请选择装牌方式'
         },
-        urlcertification: {
-          required: '请上传车辆合格证'
-        },
         urlinvoice: {
           required: '请上传购车发票'
+        },
+        urlMotor: {
+          required: '请上发动机编号'
+        },
+        urlVin: {
+          required: '请上传车架号'
         }
       }
       this.validate = new WxValidate(rules, messages)
     },
     // 初始化信息
     async initInfo () {
-      let { result } = await carInfo_search()
+      let { result } = await carInfo_read()
       if (result) {
         this.setData({
           busInfo: result
         })
-        let { urlcertification, urlinvoice } = result
+        let { urlcertification, urlinvoice, urlVin, urlMotor } = result
         if (urlcertification) {
           this.setData({
             urlcertification
+          })
+        }
+        if (urlVin) {
+          this.setData({
+            urlVin
+          })
+        }
+        if (urlMotor) {
+          this.setData({
+            urlMotor
           })
         }
         if (urlinvoice) {
@@ -143,13 +178,13 @@ Component({
     // 车辆属性
     bindCarPicker (e) {
       this.setData({
-        'busInfo.properties': e.detail.value
+        'busInfo.properties': this.data.pickerArrPropValue[e.detail.value]
       })
     },
     // 装牌方式
     bindBrandPicker (e) {
       this.setData({
-        'busInfo.installation_methods': e.detail.value
+        'busInfo.installation_methods': this.data.pickerArrTypeValue[e.detail.value]
       })
     },
     // 扫码
@@ -161,14 +196,6 @@ Component({
           })
         }
       })
-    },
-    // 获取车辆合格证信息
-    getBusFile (res) {
-      this.data.busInfo.urlcertification = res.detail
-    },
-    // 获取购车发票信息
-    getTicketFile (res) {
-      this.data.busInfo.urlinvoice = res.detail
     },
     // 单选按钮
     radioBtn (e) {
@@ -192,6 +219,8 @@ Component({
     async submitBtn () {
       this.data.busInfo.urlcertification = this.data.urlcertification || ''
       this.data.busInfo.urlinvoice = this.data.urlinvoice || ''
+      this.data.busInfo.urlMotor = this.data.urlMotor || ''
+      this.data.busInfo.urlVin = this.data.urlVin || ''
       var temp = {
         detail: {
           value: this.data.busInfo

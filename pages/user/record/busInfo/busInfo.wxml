@@ -18,10 +18,17 @@
     <form>
       <view class="form-item">
         <view class="input-label">整车编号</view>
+        <input class="input-element" type="text" id="vin" bindinput="bindData" value="{{busInfo.vin}}"/>
+        <!-- <view class="input scan-input">
+          <input type="text" id="motorNo" bindinput="bindData" value="{{busInfo.vin}}"/>
+        </view> -->
+        <!-- <image class="image" bindtap="scanBtn" src="/pages/image/scan.png" class="scan" bindtap="scanBtn"></image> -->
+      </view>
+      <view class="form-item">
+        <view class="input-label">电动机编码</view>
         <view class="input scan-input">
-          <input type="text" disabled value="{{busInfo.vin}}"/>
+          <input type="text" disabled id="motorNo" bindinput="bindData" value="{{busInfo.motorNo}}"/>
         </view>
-        <image class="image" bindtap="scanBtn" src="/pages/image/scan.png" class="scan" bindtap="scanBtn"></image>
       </view>
       <view class="form-item">
         <view class="input-label">车辆品牌</view>
@@ -33,16 +40,16 @@
           <input class="input-element" type="text" id="model" bindinput="bindData" value="{{busInfo.model}}"/>
         </view>
       </view>
-      <picker value="{{busInfo.properties}}" bindchange="bindCarPicker" range="{{pickerArrProp}}">
+      <picker bindchange="bindCarPicker" range="{{pickerArrProp}}">
         <view class="form-item">
           <view class="input-label">车辆属性</view>
-          <view class="input-element">{{pickerArrProp[busInfo.properties]}}</view>
+          <view class="input-element">{{pickerArrPropObj[busInfo.properties]}}</view>
         </view>
       </picker>
-      <picker value="{{busInfo.installation_methods}}" bindchange="bindBrandPicker" range="{{pickerArrType}}">
+      <picker bindchange="bindBrandPicker" range="{{pickerArrType}}">
         <view class="form-item">
           <view class="input-label">装牌方式</view>
-          <view class="input-element">{{pickerArrType[busInfo.installation_methods]}}</view>
+          <view class="input-element">{{pickerArrType[pickerArrTypeIndex]}}</view>
         </view>
       </picker>
       <!-- 车辆合格证和购车发票上传区域 -->
@@ -58,7 +65,7 @@
             </upload>
           </view>
           <view class="upload-item">
-            <upload model:img-src="{{urlinvoice}}">
+            <upload model:img-src="{{urlVin}}">
               <text>车架号</text>
               <view class="upload-icon-btn" slot="icon" bindtap="openCase" data-case="vin">
                 <iconfont icon="wenhao" size="36rpx" color="#3C79FF"></iconfont>
@@ -66,7 +73,7 @@
             </upload>
           </view>
           <view class="upload-item">
-            <upload model:img-src="{{urlinvoice}}">
+            <upload model:img-src="{{urlMotor}}">
               <text>电动机编码</text>
               <view class="upload-icon-btn" slot="icon" bindtap="openCase" data-case="elec">
                 <iconfont icon="wenhao" size="36rpx" color="#3C79FF"></iconfont>

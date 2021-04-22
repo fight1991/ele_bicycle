@@ -6,7 +6,7 @@
   <!-- 轮播区域 -->
   <my-swiper></my-swiper>
   <view class="grid-box">
-    <view class="block-item" bindtap="routeTo" data-page="record">
+    <view class="block-item" bindtap="goToRecord">
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/record.png" mode="cover"></image>
       </view>

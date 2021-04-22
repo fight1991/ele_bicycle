@@ -28,6 +28,12 @@ Page({
   onLoad: function (options) {
 
   },
+  // 跳转到备案申报新增页面
+  goToRecord () {
+    wx.navigateTo({
+      url: '/pages/user/record/record?op=add',
+    })
+  },
   // 跳转到相关页面
   async routeTo (e) {
     let { page } = e.currentTarget.dataset

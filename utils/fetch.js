@@ -37,7 +37,5 @@ wx.$post_user = ({url, data, isLoading = true, other = true, loadingText = '加�
 wx.$post_business = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
   return ajaxFunc({url, data, isLoading, other, loadingText, func: businessInstance})
 }
-wx.$upload = ({url, data, isLoading = true, other = true, loadingText = '上传中...'}) => {
-  return ajaxFunc({url, data, isLoading, other, loadingText, func: uploadInstance})
-}
+
  

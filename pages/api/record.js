@@ -36,30 +36,37 @@ export const personal_add = (data) => {
   })
 }
 
-// 备案申报-车辆信息获取
-export const carInfo_search = (data) => {
-  return wx.$post_business({
-    url: '/battery-car-management/battery_car',
-    data
-  })
-}
-
+// 车辆信息相关api >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 备案申报-车辆信息创建
 export const carInfo_add = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car',
+    url: '/ebike-management/ebike/create',
     data
   })
 }
-// 车辆详细信息
-export const carInfo_public = (other) => {
+// 车辆信息列表
+export const carInfo_List = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car/detail',
-    data: {},
-    other
+    url: '/ebike-management/ebike/list',
+    data
   })
 }
-
+// 删除车辆备案登记
+export const carInfo_delete = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/ebike/delete',
+    data
+  })
+}
+// 查询车辆信息
+export const carInfo_read = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/ebike/read',
+    data
+  })
+}
+// 车辆信息相关api结束 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+// 备案申报查询
 // 备案申报状态
 export const record_status = (data) => {
   return wx.$post_business({

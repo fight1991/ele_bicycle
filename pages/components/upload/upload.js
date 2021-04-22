@@ -1,5 +1,10 @@
 // pages/components/upload/upload.js
-import {upload_func} from '../../api/upload'
+var app = getApp()
+const {upload_func_private, upload_func_public} = app.api
+const uploadApi = {
+  private: upload_func_private,
+  public: upload_func_public
+}
 var app = getApp()
 Component({
   /**
@@ -9,6 +14,10 @@ Component({
     width: { // 宽度
       type: String,
       value: '160rpx'
+    },
+    uploadType: {
+      type: String,
+      value: 'private'
     },
     height: { // 高度 默认为auto
       type: String,
@@ -70,7 +79,9 @@ Component({
     // 上传图片到服务器
     async uploadImg (res) {
       let tempPath = res.tempFilePaths[0]
-      let hash = await upload_func(tempPath)
+      let hash = await uploadApi[this.data.uploadType]({
+        filePath: tempPath
+      })
       let totalUrl = app.hashUrl + hash
       // 更新父组件传递过来的imgSrc值
       this.setData({
