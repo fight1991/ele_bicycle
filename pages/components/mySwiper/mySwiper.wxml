@@ -1,7 +1,8 @@
 <!--pages/components/swiper/swiper.wxml-->
 <view class="swiper-box">
-  <view class="swiper-item-box" style="height:300rpx">
-    请进行备案申报
+  <view class="swiper-box-static" style="background-image: url({{bannerBg}});">
+    <view class="title1">{{headTile1}}</view>
+    <view class="title2">请进行备案申报</view>
   </view>
   <swiper
     class="swiper"

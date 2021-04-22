@@ -13,6 +13,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    bannerBg: '',
     currentIndex: 0,
     confirmDialogVisible: false,
     maskHidden: true, // 设置mask初始为 隐藏, 点击二维码按钮显示
