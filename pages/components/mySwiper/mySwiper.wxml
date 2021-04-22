@@ -1,7 +1,7 @@
 <!--pages/components/swiper/swiper.wxml-->
 <view class="swiper-box">
-  <view class="swiper-item-box">
-
+  <view class="swiper-item-box" style="height:300rpx">
+    请进行备案申报
   </view>
   <swiper
     class="swiper"
