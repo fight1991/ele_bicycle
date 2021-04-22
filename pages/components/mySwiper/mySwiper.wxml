@@ -1,5 +1,8 @@
 <!--pages/components/swiper/swiper.wxml-->
 <view class="swiper-box">
+  <view class="swiper-item-box">
+
+  </view>
   <swiper
     class="swiper"
     style="height:300rpx"
@@ -46,7 +49,6 @@
         </view>
       </swiper-item>
     </block>
-    
   </swiper>
   <div class="dot">
     <block wx:for="{{list}}" wx:key="vin">
