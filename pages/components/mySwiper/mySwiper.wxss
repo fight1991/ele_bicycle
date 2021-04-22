@@ -3,21 +3,20 @@
   position: relative;
   padding-bottom: 30rpx;
 }
-.swiper-box-static {
-  border-radius: 5px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 15px;
-  height:300rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #fff;
-}
-swiper-box-static .title2{
-  font-size: 16px;
-  padding-bottom: 15px;
+.banner {
+  font-size: 28rpx;
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-color: #00aaee; */
+  padding: 30rpx;
+  height: 220rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #fff;
+  letter-spacing: 2px;
 }
 .op-btns {
   position: absolute;

@@ -13,7 +13,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    bannerBg: '',
+    bannerBg: app.utils.imgTobase64('/pages/image/record_banner.jpg'),
     currentIndex: 0,
     confirmDialogVisible: false,
     maskHidden: true, // 设置mask初始为 隐藏, 点击二维码按钮显示
