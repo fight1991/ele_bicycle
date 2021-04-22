@@ -58,6 +58,13 @@ export const carInfo_delete = (data) => {
     data
   })
 }
+// 车辆信息详情, 轮播图区域用
+export const carInfo_detail = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/ebike/detail',
+    data
+  })
+}
 // 查询车辆信息
 export const carInfo_read = (data) => {
   return wx.$post_business({

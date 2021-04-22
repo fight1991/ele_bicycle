@@ -33,11 +33,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { opType } = options
+    let { opType, id } = options
     this.busInfoComponent = this.selectComponent('#busInfo')
     if (opType == 'edit') {
       // 车辆信息初始化
-      this.busInfoComponent.initInfo()
+      this.busInfoComponent.initInfo(id)
     }
     // 1. 进入页面 先查看当前备案状态
     let { status } = options

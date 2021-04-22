@@ -141,8 +141,8 @@ Component({
       this.validate = new WxValidate(rules, messages)
     },
     // 初始化信息
-    async initInfo () {
-      let { result } = await carInfo_read()
+    async initInfo (id) {
+      let { result } = await carInfo_read(id)
       if (result) {
         this.setData({
           busInfo: result
