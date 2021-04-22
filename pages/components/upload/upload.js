@@ -45,7 +45,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    trueSrc: ''
+    tempSrc: '', // 临时地址
   },
 
   /**
@@ -79,6 +79,9 @@ Component({
     // 上传图片到服务器
     async uploadImg (res) {
       let tempPath = res.tempFilePaths[0]
+      this.setData({
+        tempSrc: tempPath
+      })
       let hash = await uploadApi[this.data.uploadType]({
         filePath: tempPath
       })
@@ -96,7 +99,8 @@ Component({
     // 删除已选的图片
     removeBg (e) {
       this.setData({
-        imgSrc: ''
+        imgSrc: '',
+        tempSrc: ''
       })
       this.triggerEvent('getImgInfo', '')
     }

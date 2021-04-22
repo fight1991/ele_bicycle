@@ -3,7 +3,7 @@
   <icon wx:if="{{closeIcon}}" class="remove-icon" hidden="{{!imgSrc}}" type="cancel" catchtap="removeBg"></icon>
   <view bindtap="chooseBtn" style="width:{{width}};height:{{height}}">
     <image hidden="{{imgSrc}}" mode="{{mode}}" class="upload-bg" src="{{staticSrc}}"></image>
-    <image hidden="{{!imgSrc}}" mode="{{mode}}" class="upload-bg" src="{{imgSrc}}"></image>
+    <image hidden="{{!imgSrc}}" mode="{{mode}}" class="upload-bg" src="{{tempSrc || imgSrc}}"></image>
   </view>
   <view class="load-text">
     <slot></slot>
