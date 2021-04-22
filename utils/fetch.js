@@ -1,5 +1,6 @@
 const { showLoading, closeLoading, HandleBranch } = require('../utils/fetch_fun')
-import { userInstance, businessInstance, uploadInstance } from './fetchInit'
+import { userInstance, businessInstance } from './fetchInit'
+import { uploadInstance } from './fetch_upload'
 
 // 方法统一包装
 const ajaxFunc = async ({url, data, isLoading, other, loadingText, func}) => {
@@ -36,6 +37,9 @@ wx.$post_user = ({url, data, isLoading = true, other = true, loadingText = '加�
 }
 wx.$post_business = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
   return ajaxFunc({url, data, isLoading, other, loadingText, func: businessInstance})
+}
+wx.$upload = async ({url, data, isLoading = true, loadingText = '上传中...'}) => {
+  return ajaxFunc({url, data, isLoading, other, loadingText, func: uploadInstance})
 }
 
  

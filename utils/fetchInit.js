@@ -23,25 +23,6 @@ class Fetch {
     })
   }
 }
-class Upload {
-  // 文件上传需要额外的token, 需要token作为入参的形式传入
-  constructor () {
-    this.instance = (url, data = {}, filePath, name = 'file') => new Promise((resolve,reject) => {
-      wx.request({
-        url: config.FILE + url,
-        name,
-        filePath,
-        header: {
-          'Content-Type': 'multipart/form-data',
-          'token':  wx.getStorageSync('token') || '',
-        },
-        formData: data,
-        success:resolve,
-        fail:reject
-      })
-    })
-  }
-}
 // 生成实例
 // export const {instance: getInstance} = new Fetch({
 //   baseURL: config.API,
@@ -63,4 +44,3 @@ export const {instance: businessInstance} = new Fetch({
   baseURL: config.BUSINESS_API,
   method: 'POST'
 })
-export const {instance: uploadInstance} = new Upload()

@@ -2,8 +2,7 @@
 import './utils/fetch'
 // 批量请求注册
 import './utils/fetch_all'
-// 文件上传请求注册
-import './utils/fetch_upload'
+
 // 工具类注册
 const utils = require('./utils/util')
 // 用户相关api注册
