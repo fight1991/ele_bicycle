@@ -41,7 +41,7 @@ export const {instance: userInstance} = new Fetch({
   method: 'POST'
 })
 export const {instance: businessInstance} = new Fetch({
-  baseURL: config.businessInstance,
+  baseURL: config.BUSINESS_API,
   method: 'POST'
 })
 export const {instance: uploadInstance} = new Fetch({

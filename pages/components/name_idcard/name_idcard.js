@@ -16,9 +16,9 @@ Component({
   },
   lifetimes: {
     attached: function () {
-      let { idName, mobile } = app.globalData.userInfo
+      let { userName, mobile } = app.globalData.basicUserInfo
       this.setData({
-        idName: idName || mobile
+        idName: userName || mobile
       })
     }
   },

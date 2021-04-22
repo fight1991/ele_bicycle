@@ -135,7 +135,7 @@ Component({
       })
       if (result) {
         result.token && wx.setStorageSync('token', result.token)
-        await app.saveUserInfo()
+        await app.initUserInfo()
         // 本地缓存手机号
         wx.setStorage({
           data: mobile,
@@ -156,7 +156,7 @@ Component({
         mobileOld: oldMobile
       })
       if (result) {
-        app.globalData.userInfo.mobile = mobile
+        app.globalData.businessUserInfo.mobile = mobile
         // 删除token
         wx.removeStorageSync('token')
         wx.setStorageSync('mobile', mobile)

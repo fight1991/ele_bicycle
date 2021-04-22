@@ -32,7 +32,7 @@ App({
     //         success: res => {
     //           console.log(res)
     //           // 可以将 res 发送给后台解码出 unionId
-    //           this.globalData.userInfo = res.userInfo
+    //           this.globalData.businessUserInfo = res.userInfo
 
     //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
     //           // 所以此处加入 callback 以防止这种情况
@@ -66,38 +66,44 @@ App({
   static_user_logo: '/pages/image/user_static_logo.png',
   // 全局共享数据
   globalData: {
-    userInfo: {},
-    busInfo: { // 车辆信息
-      brand: '',
-      installationMethods: 0,
-      model: '',
-      plateNo: '',
-      properties: 0,
-      qrCodeUrl: '',
-      vehicleId: 0,
-      vehicleStatus: 0,
-      vin: ''
-    },
+    businessUserInfo: {}, // 存储用户业务信息
+    basicUserInfo: {}, // 存储用户基本信息
+    userPermisson: [], // 用户权限
     wxHeadImg: null,
     jsCode: '',
   },
-  saveBusInfo (busInfo) {
-    this.globalData.busInfo.brand = busInfo.brand
-    this.globalData.busInfo.installationMethods = busInfo.installationMethods
-    this.globalData.busInfo.model = busInfo.model
-    this.globalData.busInfo.plateNo = busInfo.plateNo
-    this.globalData.busInfo.properties = busInfo.properties
-    this.globalData.busInfo.qrCodeUrl = busInfo.qrCodeUrl
-    this.globalData.busInfo.vehicleId = busInfo.vehicleId
-    this.globalData.busInfo.vehicleStatus = busInfo.vehicleStatus
-    this.globalData.busInfo.vin = busInfo.vin
-  },
-  // 获取并保存用户信息和
-  async saveUserInfo (isLoad) {
-    let { result } = await this.api.getUserTotalInfo({}, isLoad)
+  // 获取并保存用户业务信息和
+  async saveUserBusinessInfo (isLoad) {
+    let { result } = await this.api.getUserTotalInfo(isLoad)
     if (result) {
-      this.globalData.userInfo = result
+      this.globalData.businessUserInfo = result
     }
     return true
   },
+  // 获取并保存用户基本信息, accountid, orgId等
+  async saveUserBasicInfo (isLoad) {
+    let { result } = await this.api.getBasicUserInfo(isLoad)
+    if (result) {
+      this.globalData.basicUserInfo = result
+    }
+    return true
+  },
+  // 获取并保存用户权限信息
+  async saveUserPermissionInfo (data, isLoad) {
+    let { result } = await this.api.getUserPermission(data, isLoad)
+    if (result) {
+      this.globalData.userPermisson = result
+    }
+    return true
+  },
+  // 初始化所有用户信息
+  async initUserInfo (isLoad) {
+    await this.saveUserBasicInfo(isLoad)
+    await this.saveUserBusinessInfo(isLoad)
+    await this.saveUserPermissionInfo({
+      accountId: this.globalData.basicUserInfo.accountId,
+      orgId: this.globalData.basicUserInfo.orgId
+    }, isLoad)
+    return true
+  }
 })

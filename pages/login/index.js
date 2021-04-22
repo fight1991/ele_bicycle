@@ -32,7 +32,7 @@ Page({
   async routeValid (code) {
     var token = wx.getStorageSync('token')
     if (token) {
-      await app.saveUserInfo(false)
+      await app.initUserInfo(false)
       this.routeTo('/pages/user/index')
     } else {
       this.routeTo('/pages/login/signIn')

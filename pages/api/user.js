@@ -1,52 +1,75 @@
+import config from '../../config/index'
+// 公共平台api开始>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 用户登录
 export const loginApi = (data) => {
   return wx.$post_user({
-    url: '/data-user/loginMobile',
+    url: '/data-user/loginByMobile',
     data
   })
 }
-// 用户完整信息查询
-export const getUserTotalInfo = (data, isLoading) => {
+// 根据token查询 用户基本信息
+export const getBasicUserInfo = (isLoading) => {
   return wx.$post_user({
-    url: '/data-user/personal/getInfo',
-    isLoading,
-    data
+    url: '/data-user/user/getUserByToken',
+    data: wx.getStorageSync('token'),
+    isLoading
+  })
+}
+// 查询权限编码
+export const getUserPermission = (data = {}, isLoading) => {
+  return wx.$post_user({
+    url: '/data-user/user/getUserViews',
+    data: {
+      appId: config.APPID,
+      ...data
+    },
+    isLoading
+  })
+}
+// 公共平台api结束>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// 业务平台接口开始>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 用户完整信息查询
+export const getUserTotalInfo = (isLoading) => {
+  return wx.$post_business({
+    url: '/user-center/personal/getInfo',
+    isLoading
   })
 }
 
 // 注销登录
 export const logOut = (data) => {
-  return wx.$post_user({
-    url: '/data-user/logout',
+  return wx.$post_business({
+    url: '/user-center/logout',
     data
   })
 }
 // 更换手机号
 export const changeMobile = (data) => {
-  return wx.$post_user({
-    url: '/data-user/user_center/changeMobile',
+  return wx.$post_business({
+    url: '/user-center/user_center/changeMobile',
     data
   })
 }
 // 获取手机验证码
 export const getCodeApi = (data) => {
-  return wx.$post_user({
-    url: '/data-user/getMobileAuthCode',
+  return wx.$post_business({
+    url: '/user-center/getMobileAuthCode',
     data
   })
 }
 
 // 查看带掩码个人信息
 export const show_idcard = (data) => {
-  return wx.$post_user({
-    url: '/data-user/personal/getMaskInfo',
+  return wx.$post_business({
+    url: '/user-center/personal/getMaskInfo',
     data
   })
 }
 // 身份认证-上传头像 身份证正反面
 export const verifyPersonApi = (data) => {
   return wx.$post_business({
-    url: '/data-user/personal/uploadImages',
+    url: '/user-center/personal/uploadImages',
     data
   })
 }
@@ -59,23 +82,23 @@ export const sumitPersonInfoApi = (data) => {
 }
 // 获取新消息数量
 export const getMessageNumApi = (data) => {
-  return wx.$post({
-    url: '/data-user/notification/getNoticeCount',
+  return wx.$post_business({
+    url: '/user-center/notification/getNoticeCount',
     data,
     isLoading: false
   })
 }
 // 获取消息列表
 export const getMessageListApi = (data) => {
-  return wx.$post({
-    url: '/data-user/notification/getNoticeList',
+  return wx.$post_business({
+    url: '/user-center/notification/getNoticeList',
     data
   })
 }
 // 获取消息详情
 export const getMessageDetailApi = (data) => {
-  return wx.$post({
-    url: '/data-user/notification/getNoticeDetail',
+  return wx.$post_business({
+    url: '/user-center/notification/getNoticeDetail',
     data
   })
 }

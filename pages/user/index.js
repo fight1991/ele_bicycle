@@ -94,28 +94,12 @@ Page({
   async routeValid (code) {
     var token = wx.getStorageSync('token')
     if (token) {
-      await app.saveUserInfo()
+      app.initUserInfo()
     } else {
       wx.reLaunch({
         url: '/pages/login/signIn',
       })
     }
-  },
-  // 获取并保存用户信息和车辆信息
-  async saveInfo () {
-    let res = await getUserAndBusInfo()
-    if (res && res.length == 2) {
-      let userInfo = res[0]
-      let busInfo = res[1]
-      if (userInfo) {
-        app.saveUserInfo(userInfo)
-        app.globalData.wxHeadImg = userInfo.avatarUrl
-      }
-      if (busInfo) {
-        app.saveBusInfo(busInfo)
-      }
-    }
-    return true
   },
   // 跳转到消息页面
   goToMessagePage () {
@@ -125,7 +109,7 @@ Page({
   },
   // 获取新消息条数
   async getNewMessageNum () {
-    let { result } = await getMessageNumApi(false)
+    let { result } = await getMessageNumApi()
     if (typeof result == 'number') {
       this.setData({
         messageNum: result
