@@ -5,12 +5,12 @@ const accessType = 'wechat-app'
 class Fetch {
   // 文件上传需要额外的token, 需要token作为入参的形式传入
   constructor ({contentType, method, baseURL}) {
-    this.instance = (url, data = {}, headerToken = '') => new Promise((resolve,reject) => {
+    this.instance = (url, data = {}) => new Promise((resolve,reject) => {
       wx.request({
         url: baseURL + url,
         header: {
-          'token': headerToken || wx.getStorageSync('token') || '',
-          'content-type': contentType || 'application/json'
+          'token':  wx.getStorageSync('token') || '',
+          'content-type': 'application/json'
         },
         method,
         data: {
@@ -26,14 +26,14 @@ class Fetch {
 class Upload {
   // 文件上传需要额外的token, 需要token作为入参的形式传入
   constructor () {
-    this.instance = (url, data = {}, filePath, name = 'file', headerToken = '') => new Promise((resolve,reject) => {
+    this.instance = (url, data = {}, filePath, name = 'file') => new Promise((resolve,reject) => {
       wx.request({
         url: config.FILE + url,
         name,
         filePath,
         header: {
           'Content-Type': 'multipart/form-data',
-          'token': headerToken,
+          'token':  wx.getStorageSync('token') || '',
         },
         formData: data,
         success:resolve,
