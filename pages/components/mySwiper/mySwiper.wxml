@@ -13,17 +13,19 @@
       <swiper-item>
         <view class="swiper-item-box">
           <!-- 电动车静态图片 -->
-          <view class="head-img">
-            <view class="img-box">
-              <image class="img" src="/pages/image/vechicel.png"/>
+          <navigator url="/pages/user/record/record?opType=look&id={{item.vehicleId}}">
+            <view class="head-img">
+              <view class="img-box">
+                <image class="img" src="/pages/image/vechicel.png"/>
+              </view>
+              <view class="head-img-text">{{item.vehicleStatus}}</view>
             </view>
-            <view class="head-img-text">{{item.status}}</view>
-          </view>
+          </navigator>
           <!-- 电动车基本信息 -->
-          <view class="text-lines">
+          <view class="text-lines" bindtap="openDetailDialog">
             <view class="text-line-item">
               <view class="line-left">车牌号:</view>
-              <view class="line-right">{{item.plateNo}}</view>
+              <view class="line-right">{{item.plateNo || '-'}}</view>
             </view>
             <view class="text-line-item">
               <view class="line-left">车辆品牌:</view>
@@ -44,9 +46,9 @@
           </view>
           <!-- 电动车操作按钮 -->
           <view class="op-btns">
-            <!-- <iconfont icon="erweima" size="140rpx" color="#fff" bindtap="showErweima"></iconfont> -->
-            <iconfont class="op-btn-item" icon="delete" color="#fff" bindtap="deleteBtn" data-id="{{item.vehicleId}}"></iconfont>
-            <iconfont class="op-btn-item" icon="edit" color="#FF7E37" bindtap="editBtn" data-id="{{item.vehicleId}}"></iconfont>
+            <iconfont wx:if="{{item.vehicleStatus=='registered'}}" icon="erweima" size="140rpx" color="#fff" bindtap="showErweima"></iconfont>
+            <iconfont wx:if="{{item.vehicleStatus=='filingReview'}}" class="op-btn-item" icon="delete" color="#fff" bindtap="deleteBtn" data-id="{{item.vehicleId}}"></iconfont>
+            <iconfont wx:if="{{item.vehicleStatus=='auditFailure'}}" class="op-btn-item" icon="edit" color="#FF7E37" bindtap="editBtn" data-id="{{item.vehicleId}}"></iconfont>
           </view>
         </view>
       </swiper-item>
@@ -64,3 +66,28 @@
 </mask>
 <!-- 确认弹框 -->
 <confirmDialog visible="{{confirmDialogVisible}}" content="您确定要删除吗?" bindclose="deleteCarInfo"></confirmDialog>
+<!-- 详情弹窗 -->
+<mask initValue="{{detailMaskHidden}}">
+  <view class="text-lines-box">
+    <view class="text-line-item">
+      <view class="line-left">车牌号:</view>
+      <view class="line-right">{{list[currentIndex].plateNo || '-'}}</view>
+    </view>
+    <view class="text-line-item">
+      <view class="line-left">车辆品牌:</view>
+      <view class="line-right">{{list[currentIndex].brand}}</view>
+    </view>
+    <view class="text-line-item">
+      <view class="line-left">型号规格:</view>
+      <view class="line-right">{{list[currentIndex].model}}</view>
+    </view>
+    <view class="text-line-item">
+      <view class="line-left">整车编号:</view>
+      <view class="line-right">{{list[currentIndex].vin}}</view>
+    </view>
+    <view class="text-line-item">
+      <view class="line-left">电动机编号:</view>
+      <view class="line-right">{{list[currentIndex].motorNo}}</view>
+    </view>
+  </view>
+</mask>

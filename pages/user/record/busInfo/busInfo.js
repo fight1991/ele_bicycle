@@ -1,7 +1,7 @@
 // pages/user/record/busInfo/busInfo.js
-import { carInfo_read, carInfo_add } from '../../../api/record'
-import WxValidate from '../../../../utils/WxValidate'
 var app = getApp()
+const { carInfo_read, carInfo_add } = app.api
+import WxValidate from '../../../../utils/WxValidate'
 Component({
   /**
    * 组件的属性列表
@@ -38,7 +38,7 @@ Component({
     scanCode: '',
     busInfo: {
       brand: '',
-      installation_methods: '', // 安装方式
+      installationMethods: '', // 安装方式
       model: '',
       properties: '', // 车辆属性
       urlCertification: '', // 车辆合格证
@@ -87,7 +87,7 @@ Component({
         brand: {
           required: true
         },
-        installation_methods: {
+        installationMethods: {
           required: true
         },
         model: {
@@ -125,7 +125,7 @@ Component({
         properties: {
           required: '请输入车辆属性'
         },
-        installation_methods: {
+        installationMethods: {
           required: '请选择装牌方式'
         },
         urlInvoice: {
@@ -184,7 +184,7 @@ Component({
     // 装牌方式
     bindBrandPicker (e) {
       this.setData({
-        'busInfo.installation_methods': this.data.pickerArrTypeValue[e.detail.value]
+        'busInfo.installationMethods': this.data.pickerArrTypeValue[e.detail.value]
       })
     },
     // 扫码
@@ -240,7 +240,7 @@ Component({
       // 发送请求
       let { result } = await carInfo_add(this.data.busInfo)
       if (result) {
-        this.triggerEvent('nextStep')
+        this.triggerEvent('nextStep', result)
         // 审核状态查询
         this.triggerEvent('checkStatus')
       }

@@ -64,7 +64,7 @@
 .img-box {
   width: 126rpx;
   height: 126rpx;
-  margin: 20rpx 0;
+  margin: 20rpx auto;
 }
 .img-box .img {
   width: 100%;
@@ -74,7 +74,18 @@
   text-align: center;
   color: #4DFF5A;
 }
-.text-lines {
+.text-lines-box {
+  width: 680rpx;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 20rpx 40rpx;
+  border-radius: 10rpx;
+  background: linear-gradient(45deg, #2a53e9, #4689fc);
+}
+.text-lines-box .text-line-item {
+  padding: 10rpx;
+}
+.text-lines, .text-lines-box {
   font-size: 24rpx;
   display: flex;
   flex-direction: column;

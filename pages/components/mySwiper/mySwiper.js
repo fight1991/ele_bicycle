@@ -17,35 +17,11 @@ Component({
     currentIndex: 0,
     confirmDialogVisible: false,
     maskHidden: true, // 设置mask初始为 隐藏, 点击二维码按钮显示
+    detailMaskHidden: true, // 详情弹窗
     codeValue: '', // 二维码字符串
     qrCodeUrl: '', // 车辆信息查询获得
     currentId: '', // 当前车辆id
-    list: [
-      {
-        status: '已登记',
-        plateNo: '苏B11313',
-        brand: '新日',
-        model: '1313143444',
-        vin: '1211244124',
-        num: '123413141351531'
-      },
-      {
-        status: '未登记',
-        plateNo: '苏B11313',
-        brand: '宝马',
-        model: '1313143444',
-        vin: '1211244124',
-        num: '123413141351531'
-      },
-      {
-        status: '未登记',
-        plateNo: '苏E 9x11313',
-        brand: '宝马13',
-        model: '1313143444',
-        vin: '1211244124',
-        num: '123413141351531'
-      }
-    ]
+    list: []
   },
   pageLifetimes: {
     show () {
@@ -68,17 +44,23 @@ Component({
     },
     // 切换轮播图事件
     swiperChange (e) {
-      console.log(e.detail)
+      let currIndex = e.detail.current
       this.setData({
-        currentIndex: e.detail.current
+        currentIndex: currIndex
+      })
+    },
+    // 点击文字区域, 显示详情
+    openDetailDialog () {
+      this.setData({
+        detailMaskHidden: false
       })
     },
     // 点击二维码按钮显示二维码
     showErweima () {
-      let { qrCodeUrl } = this.data
+      let { list, currentIndex } = this.data
       this.setData({
         maskHidden: false,
-        codeValue: qrCodeUrl
+        codeValue: list[currentIndex]['qrCodeUrl']
       })
     },
     // 删除按钮

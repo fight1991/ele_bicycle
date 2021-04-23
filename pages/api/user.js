@@ -47,7 +47,7 @@ export const logOut = (data) => {
 // 更换手机号
 export const changeMobile = (data) => {
   return wx.$post_business({
-    url: '/user-center/user_center/changeMobile',
+    url: '/user-center/user/changeMobile',
     data
   })
 }

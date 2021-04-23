@@ -77,7 +77,7 @@ export const carInfo_read = (data) => {
 // 备案申报状态
 export const record_status = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car_record_filing',
+    url: '/ebike-management/recordFiling/getStatus',
     data
   })
 }

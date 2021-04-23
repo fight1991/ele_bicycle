@@ -18,7 +18,7 @@
     <form>
       <view class="form-item">
         <view class="input-label">整车编号</view>
-        <input class="input-element" type="text" id="vin" bindinput="bindData" value="{{busInfo.vin}}"/>
+        <input class="input-element" type="text" maxlength="20" id="vin" bindinput="bindData" value="{{busInfo.vin}}"/>
         <!-- <view class="input scan-input">
           <input type="text" id="motorNo" bindinput="bindData" value="{{busInfo.vin}}"/>
         </view> -->
@@ -27,17 +27,17 @@
       <view class="form-item">
         <view class="input-label">电动机编码</view>
         <view class="input scan-input">
-          <input class="input-element" type="text" id="motorNo" bindinput="bindData" value="{{busInfo.motorNo}}"/>
+          <input class="input-element" type="text" maxlength="20" id="motorNo" bindinput="bindData" value="{{busInfo.motorNo}}"/>
         </view>
       </view>
       <view class="form-item">
         <view class="input-label">车辆品牌</view>
-        <input class="input-element" type="text" id="brand" bindinput="bindData" value="{{busInfo.brand}}"/>
+        <input class="input-element" type="text" maxlength="10" id="brand" bindinput="bindData" value="{{busInfo.brand}}"/>
       </view>
       <view class="form-item">
         <view class="input-label">型号规格</view>
         <view class="input">
-          <input class="input-element" type="text" id="model" bindinput="bindData" value="{{busInfo.model}}"/>
+          <input class="input-element" type="text" maxlength="20" id="model" bindinput="bindData" value="{{busInfo.model}}"/>
         </view>
       </view>
       <picker bindchange="bindCarPicker" range="{{pickerArrProp}}">
@@ -49,7 +49,7 @@
       <picker bindchange="bindBrandPicker" range="{{pickerArrType}}">
         <view class="form-item">
           <view class="input-label">装牌方式</view>
-          <view class="input-element">{{pickerArrTypeObj[busInfo.installation_methods]}}</view>
+          <view class="input-element">{{pickerArrTypeObj[busInfo.installationMethods]}}</view>
         </view>
       </picker>
       <!-- 车辆合格证和购车发票上传区域 -->

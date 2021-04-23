@@ -1,14 +1,23 @@
-let baseUserInfoParams = {
-  method: 'get',
-  url: '/battery-car-management/token'
-}
-let baseBusInfoParams = {
-  method: 'post',
-  url: '/battery-car-management/battery_car/detail'
-}
-// 用户基本信息和车辆信息请求
-export const getUserAndBusInfo = () => {
+
+// 用户基本信息, 业务信息, 权限信息
+export const getAllUserInfo = () => {
   return wx.$all({
-    data: [baseUserInfoParams, baseBusInfoParams]
+    data: [
+      {
+        url: '/data-user/user/getUserByToken',
+        source: 'user'
+      }, {
+        url: '/data-user/user/getUserViews',
+        source: 'user',
+        data: {
+          appId: '',
+          accountId: '',
+          orgId: ''
+        }
+      }, {
+        url: '/user-center/personal/getInfo',
+        source: 'business'
+      }
+    ]
   })
 }
