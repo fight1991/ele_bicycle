@@ -7,7 +7,7 @@
     <view class="upload-box">
       <view class="upload-item">
         <upload width="120rpx"
-          model:img-src="{{urlcertification}}">
+          model:img-src="{{urlCertification}}">
           <text>车辆合格证</text>
           <view class="upload-icon-btn" slot="icon" bindtap="openCase" data-case="cert">
             <iconfont icon="wenhao" size="36rpx" color="#3C79FF"></iconfont>
@@ -27,7 +27,7 @@
       <view class="form-item">
         <view class="input-label">电动机编码</view>
         <view class="input scan-input">
-          <input type="text" disabled id="motorNo" bindinput="bindData" value="{{busInfo.motorNo}}"/>
+          <input class="input-element" type="text" id="motorNo" bindinput="bindData" value="{{busInfo.motorNo}}"/>
         </view>
       </view>
       <view class="form-item">
@@ -49,7 +49,7 @@
       <picker bindchange="bindBrandPicker" range="{{pickerArrType}}">
         <view class="form-item">
           <view class="input-label">装牌方式</view>
-          <view class="input-element">{{pickerArrType[pickerArrTypeIndex]}}</view>
+          <view class="input-element">{{pickerArrTypeObj[busInfo.installation_methods]}}</view>
         </view>
       </picker>
       <!-- 车辆合格证和购车发票上传区域 -->
@@ -57,7 +57,7 @@
         <view class="text-line">请上传下列图片</view>
         <view class="upload-box">
           <view class="upload-item">
-            <upload model:img-src="{{urlinvoice}}">
+            <upload model:img-src="{{urlInvoice}}">
               <text>购车发票</text>
               <view class="upload-icon-btn" slot="icon" bindtap="openCase" data-case="invoice">
                 <iconfont icon="wenhao" size="36rpx" color="#3C79FF"></iconfont>

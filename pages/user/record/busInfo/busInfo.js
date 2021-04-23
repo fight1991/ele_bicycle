@@ -15,8 +15,8 @@ Component({
    */
   data: {
     // 双向绑定图片的值
-    urlcertification: '',
-    urlinvoice: '',
+    urlCertification: '',
+    urlInvoice: '',
     urlMotor: '',
     urlVin: '',
     // 车辆属性
@@ -41,8 +41,8 @@ Component({
       installation_methods: '', // 安装方式
       model: '',
       properties: '', // 车辆属性
-      urlcertification: '', // 车辆合格证
-      urlinvoice: '', // 车辆发票
+      urlCertification: '', // 车辆合格证
+      urlInvoice: '', // 车辆发票
       urlMotor: '', // 电动机编号
       urlVin: '', // 车架号图片地址
       vin: ''
@@ -96,10 +96,10 @@ Component({
         properties: {
           required: true
         },
-        urlcertification: {
+        urlCertification: {
           required: true
         },
-        urlinvoice: {
+        urlInvoice: {
           required: true
         },
         urlMotor: {
@@ -110,7 +110,7 @@ Component({
         }
       }
       let messages = {
-        urlcertification: {
+        urlCertification: {
           required: '请上传车辆合格证'
         },
         vin: {
@@ -128,7 +128,7 @@ Component({
         installation_methods: {
           required: '请选择装牌方式'
         },
-        urlinvoice: {
+        urlInvoice: {
           required: '请上传购车发票'
         },
         urlMotor: {
@@ -147,10 +147,10 @@ Component({
         this.setData({
           busInfo: result
         })
-        let { urlcertification, urlinvoice, urlVin, urlMotor } = result
-        if (urlcertification) {
+        let { urlCertification, urlInvoice, urlVin, urlMotor } = result
+        if (urlCertification) {
           this.setData({
-            urlcertification
+            urlCertification
           })
         }
         if (urlVin) {
@@ -163,9 +163,9 @@ Component({
             urlMotor
           })
         }
-        if (urlinvoice) {
+        if (urlInvoice) {
           this.setData({
-            urlinvoice
+            urlInvoice
           })
         }
       }
@@ -217,8 +217,8 @@ Component({
     },
     // 提交按钮
     async submitBtn () {
-      this.data.busInfo.urlcertification = this.data.urlcertification || ''
-      this.data.busInfo.urlinvoice = this.data.urlinvoice || ''
+      this.data.busInfo.urlCertification = this.data.urlCertification || ''
+      this.data.busInfo.urlInvoice = this.data.urlInvoice || ''
       this.data.busInfo.urlMotor = this.data.urlMotor || ''
       this.data.busInfo.urlVin = this.data.urlVin || ''
       var temp = {
@@ -240,9 +240,6 @@ Component({
       // 发送请求
       let { result } = await carInfo_add(this.data.busInfo)
       if (result) {
-        // 更新车架号
-        app.globalData.busInfo.vin = result.vin
-        app.globalData.busInfo.vehicleId = result.vehicleId
         this.triggerEvent('nextStep')
         // 审核状态查询
         this.triggerEvent('checkStatus')

@@ -79,20 +79,15 @@ Component({
     // 上传图片到服务器
     async uploadImg (res) {
       let tempPath = res.tempFilePaths[0]
-      this.setData({
-        tempSrc: tempPath
-      })
-      let hash = await uploadApi[this.data.uploadType](tempPath)
-      let totalUrl = app.hashUrl + hash
+      let url = await uploadApi[this.data.uploadType](tempPath)
       // 更新父组件传递过来的imgSrc值
-      this.setData({
-        imgSrc: totalUrl,
-      })
-      // 更新imgSrc
-      this.setData({
-        imgSrc: totalUrl
-      })
-      this.triggerEvent('getImgInfo', totalUrl)
+      if (url) {
+        this.setData({
+          tempSrc: tempPath, // 用来显示
+          imgSrc: url // 后端所需的真实值
+        })
+      }
+      this.triggerEvent('getImgInfo', url)
     },
     // 删除已选的图片
     removeBg (e) {
