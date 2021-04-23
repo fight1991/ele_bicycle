@@ -13,7 +13,7 @@ const closeLoading = () => {
 const HandleBranch = (_res, other) => {
   switch (_res.code) {
     case '0000': // 成功
-      return { result: _res.data || true }
+      return { result: _res.data || true, page: _res.page }
     case '0001': // 业务报错, 如查询失败等...
       if (other) {
         wx.showToast({

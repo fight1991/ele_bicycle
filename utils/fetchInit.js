@@ -5,7 +5,7 @@ const accessType = 'wechat-app'
 class Fetch {
   // 文件上传需要额外的token, 需要token作为入参的形式传入
   constructor ({method, baseURL}) {
-    this.instance = (url, data = {}) => new Promise((resolve,reject) => {
+    this.instance = (url, data = {}, page = {}) => new Promise((resolve,reject) => {
       wx.request({
         url: baseURL + url,
         header: {
@@ -15,6 +15,7 @@ class Fetch {
         method,
         data: {
           data,
+          page,
           accessType: accessType
         },
         success:resolve,
