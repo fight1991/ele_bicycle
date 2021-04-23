@@ -1,6 +1,6 @@
 // pages/components/upload/upload.js
 var app = getApp()
-const {upload_func_private, upload_func_public} = app.api
+import {upload_func_private, upload_func_public} from '../../api/upload'
 const uploadApi = {
   private: upload_func_private,
   public: upload_func_public
@@ -82,9 +82,7 @@ Component({
       this.setData({
         tempSrc: tempPath
       })
-      let hash = await uploadApi[this.data.uploadType]({
-        filePath: tempPath
-      })
+      let hash = await uploadApi[this.data.uploadType](tempPath)
       let totalUrl = app.hashUrl + hash
       // 更新父组件传递过来的imgSrc值
       this.setData({

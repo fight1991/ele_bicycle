@@ -3,12 +3,17 @@ import { userInstance, businessInstance } from './fetchInit'
 import { uploadInstance } from './fetch_upload'
 
 // 方法统一包装
-const ajaxFunc = async ({url, data, isLoading, other, loadingText, func}) => {
+const ajaxFunc = async ({url, data, isLoading, other, loadingText, func, isUpload = false}) => {
   try {
     if (isLoading) showLoading(loadingText)
     let res = await func(url, data)
     if (isLoading) closeLoading()
-    return HandleBranch(res.data, other)
+    // 上传文件得到的数据res.data是json字符串
+    let tempResponse = res.data
+    if (isUpload) {
+      tempResponse = JSON.parse(tempResponse)
+    }
+    return HandleBranch(tempResponse, other)
   } catch (error) {
     if (isLoading) closeLoading()
     console.log(error)
@@ -38,8 +43,8 @@ wx.$post_user = ({url, data, isLoading = true, other = true, loadingText = '加�
 wx.$post_business = ({url, data, isLoading = true, other = true, loadingText = '加载中...'}) => {
   return ajaxFunc({url, data, isLoading, other, loadingText, func: businessInstance})
 }
-wx.$upload = async ({url, data, isLoading = true, loadingText = '上传中...'}) => {
-  return ajaxFunc({url, data, isLoading, other, loadingText, func: uploadInstance})
+wx.$upload = ({url, data, isLoading = true, other = true, loadingText = '上传中...'}) => {
+  return ajaxFunc({url, data, isLoading, other, loadingText, func: uploadInstance, isUpload: true})
 }
 
  

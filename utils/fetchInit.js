@@ -4,7 +4,7 @@ const accessType = 'wechat-app'
 // 请求构造函数get/put/delete/post等
 class Fetch {
   // 文件上传需要额外的token, 需要token作为入参的形式传入
-  constructor ({contentType, method, baseURL}) {
+  constructor ({method, baseURL}) {
     this.instance = (url, data = {}) => new Promise((resolve,reject) => {
       wx.request({
         url: baseURL + url,

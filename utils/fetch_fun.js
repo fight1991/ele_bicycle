@@ -48,10 +48,9 @@ const HandleBranch = (_res, other) => {
 }
 // 处理文件上传的业务分支(废弃)
 // const HandleBranchFile = _res => {
-//   switch (_res.statusCode) {
-//     case 200: // 成功
-//       var temp = JSON.parse(_res.data) // data:"{"hash":"111","key": "113"}"
-//       return { result: temp.hash }
+//   switch (_res.code) {
+//     case '0000': // 成功
+//       return { result: _res.data || true }
 //     default:
 //       wx.showToast({
 //         title: '上传失败, 请稍后重试',
