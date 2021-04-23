@@ -16,14 +16,12 @@
     </view>
   </view>
   <view class="change-tab">
-    <navigator url="/pages/user/idcardVerify/idcardVerify">
-      <view class="tab-item">
-        <view>实名认证</view>
-        <view class="arrow-r">
-          <iconfont icon="arrow-right" color="#ccc"></iconfont>
-        </view>
+    <view class="tab-item" bindtap="goToVerify">
+      <view>实名认证</view>
+      <view class="arrow-r">
+        <iconfont icon="arrow-right" color="#ccc"></iconfont>
       </view>
-    </navigator>
+    </view>
     <navigator url="/pages/user/center/editPhone">
       <view class="tab-item boderNone">
         <view>更换手机号</view>

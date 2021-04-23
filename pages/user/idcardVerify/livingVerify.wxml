@@ -20,12 +20,18 @@
           <input class="common-input" type="text" disabled value="{{personData.idNO}}"/>
         </view>
       </view>
-      <picker bindchange="sexChange" disabled value="{{personData.gender}}" range-key="label" range="{{sexArr}}">
+      <view class="form-item">
+        <view class="input-label">性别</view>
+        <view class="input">
+          <input class="common-input" type="text" disabled value="{{personData.gender}}"/>
+        </view>
+      </view>
+      <!-- <picker bindchange="sexChange" disabled value="{{personData.gender}}" range-key="label" range="{{sexArr}}">
         <view class="form-item">
           <view class="input-label">性别</view>
           <view class="input">{{sexArr[personData.gender]}}</view>
         </view>
-      </picker>
+      </picker> -->
       <view class="form-item">
         <view class="input-label">手机号</view>
         <view class="input">

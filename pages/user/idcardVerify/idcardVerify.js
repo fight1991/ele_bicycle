@@ -99,31 +99,7 @@ Page({
       url: './livingVerify',
     })
   },
-
-  // 出发父组件下一步
-  commitNext () {
-    // 表单数据校验
-    let isPass = this.validForm()
-    if (!isPass) return
-    // 保存表单数据
-    wx.showModal({
-      title: '温馨提示',
-      content: '请确认联系地址是否正确?',
-      success: async (res) => {
-        if (res.confirm) {
-          let { personData: {contactAddress, cityCode, cityCodeIndex} } = this.data
-          let { result } = await personal_contact({
-            cityCode,
-            contactAddress,
-            cityCodeIndex
-          })
-          if (result) {
-            this.triggerEvent('nextStep')
-          }
-        }
-      }
-    })
-  },
+  // 表单校验
   nextIsPass () {
     var title = ''
     let { faceImgUrl, frontImgUrl, backImgUrl } = this.data

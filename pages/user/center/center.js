@@ -42,9 +42,17 @@ Page({
     })
   },
   // 跳转到更换手机号页面
-  goToPage () {
+  goToVerify () {
+    var idCard = app.globalData.businessUserInfo.idNO
+    if (idCard) {
+      wx.showToast({
+        title: '已经实名认证了',
+        icon: 'none'
+      })
+      return
+    }
     wx.navigateTo({
-      url: '/pages/user/center/editPhone',
+      url: '/pages/user/idcardVerify/idcardVerify',
     })
   },
   // 得到显示的身份证号信息

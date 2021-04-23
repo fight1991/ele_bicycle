@@ -1,10 +1,10 @@
 // pages/user/record_change/record_change.js
-import { 
+var app = getApp()
+const { 
   car_owner_change_status,
   car_owner_change_scan,
   car_owner_change_cancel
-} from '../../api/record'
-const utils = require('../../../utils/util')
+} = app.api
 Page({
 
   /**
@@ -34,7 +34,7 @@ Page({
   onLoad: function (options) {
     // status有值, 说明是点击备案人变更按钮跳转过来的
     let { status } = options
-    if (!utils.isNull(status)) {
+    if (!app.utils.isNull(status)) {
       // 处理状态分支
       this.handleStatus(options)
     } else {
@@ -43,7 +43,7 @@ Page({
   },
   // 打开确认框
   openModal (num) {
-    utils.openConfirm({
+    app.utils.openConfirm({
       content: `当前已有${num}个审核单，本次审核通过后会自动结束其他审核单，是否继续？`,
       confirm: () => { // 用户点击确认 显示二维码
         this.setData({

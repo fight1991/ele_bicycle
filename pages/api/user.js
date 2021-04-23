@@ -76,7 +76,7 @@ export const verifyPersonApi = (data) => {
 // 提交身份认证后的信息
 export const sumitPersonInfoApi = (data) => {
   return wx.$post_business({
-    url: '/user-center​/personal​/uploadInfos',
+    url: '/user-center/personal/uploadInfos',
     data
   })
 }

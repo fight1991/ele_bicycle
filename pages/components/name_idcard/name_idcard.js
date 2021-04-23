@@ -16,9 +16,14 @@ Component({
   },
   lifetimes: {
     attached: function () {
-      let { userName, mobile } = app.globalData.basicUserInfo
+      
+    }
+  },
+  pageLifetimes: {
+    show () {
+      let { idName, mobile } = app.globalData.businessUserInfo
       this.setData({
-        idName: userName || mobile
+        idName: idName || mobile
       })
     }
   },

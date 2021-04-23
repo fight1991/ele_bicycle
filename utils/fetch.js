@@ -17,6 +17,10 @@ const ajaxFunc = async ({url, data, page, isLoading, other, loadingText, func, i
   } catch (error) {
     if (isLoading) closeLoading()
     console.log(error)
+    wx.showToast({
+      title: error.errMsg,
+      icon: 'error'
+    })
     return { error: error}
   }
 }

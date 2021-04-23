@@ -1,19 +1,5 @@
 // 备案申报相关api
 
-// 备案申报个人信息--上传图片
-/**
- * params {cityCode, contactAddress, imageHead, imageIDCard1, imageIDCard2}
- */
-
-
-// 备案申报个人信息创建
-export const personal_add = (data) => {
-  return wx.$post_business({
-    url: '/battery-car-management/personal_info',
-    data
-  })
-}
-
 // 车辆信息相关api >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 备案申报-车辆信息创建
 export const carInfo_add = (data) => {
@@ -70,7 +56,7 @@ export const record_status_update = (data) => {
 export const car_owner_change_status = (data, isLoading=true) => {
   return wx.$post_business({
     isLoading,
-    url: '/battery-car-management/battery_car_ownership_change/get_status',
+    url: '/ebike-management/ownershipChange/getStatus',
     data
   })
 }
@@ -78,7 +64,7 @@ export const car_owner_change_status = (data, isLoading=true) => {
 // 车辆备案人变更 - 扫码
 export const car_owner_change_scan = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car_ownership_change',
+    url: '/ebike-management/ownershipChange/scanOcr',
     data
   })
 }
@@ -86,7 +72,7 @@ export const car_owner_change_scan = (data) => {
 // 车辆备案人变更 - 取消变更
 export const car_owner_change_cancel = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car_ownership_change/cancel',
+    url: '/ebike-management/ownershipChange/cancel',
     data
   })
 }
@@ -94,7 +80,7 @@ export const car_owner_change_cancel = (data) => {
 // 车辆报废 -状态查询
 export const car_scrap_search = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car_scrap',
+    url: '/ebike-management/scrap/getStatus',
     data
   })
 }
@@ -102,7 +88,7 @@ export const car_scrap_search = (data) => {
 // 车辆报废
 export const car_scrap_op = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car_scrap',
+    url: '/ebike-management/scrap/create',
     data
   })
 }
@@ -110,7 +96,7 @@ export const car_scrap_op = (data) => {
 // 车辆报废 - 取消申请
 export const car_scrap_cancel = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car_scrap',
+    url: '/ebike-management/scrap/updateStatus',
     data
   })
 }
@@ -118,28 +104,28 @@ export const car_scrap_cancel = (data) => {
 // 车辆挂失-状态查询
 export const car_loss_search = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car_report_loss',
+    url: '/ebike-management/reportLoss/getStatus',
     data
   })
 }
 // 车辆挂失-
 export const car_loss_op = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car_report_loss',
+    url: '/ebike-management/reportLoss/create',
     data
   })
 }
 // 车辆挂失-已找回、重新申请
 export const car_loss_reput = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/battery_car_report_loss',
+    url: '/ebike-management/reportLoss/delete',
     data
   })
 }
 // 操作员安装车牌上报
 export const install_report = (data) => {
   return wx.$post_business({
-    url: '/battery-car-management/operator_installation_report',
+    url: '/ebike-management/operatorInstallationReport',
     data
   })
 }
