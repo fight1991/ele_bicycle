@@ -50,3 +50,5 @@
     </view>
   </view>
 </view>
+<!-- 实名认证提示弹框 -->
+<confirmDialog visible="{{verifyDialogVisible}}" title="身份认证" content="您还未进行身份认证,请先核实认证" bindclose="goToIdcardVerify"></confirmDialog>

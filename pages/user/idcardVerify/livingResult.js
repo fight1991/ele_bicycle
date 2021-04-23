@@ -1,4 +1,5 @@
 // pages/user/idcardVerify/livingResult.js
+var app = getApp()
 Page({
 
   /**
@@ -12,7 +13,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 更细globalData中的用户业务数据
+    app.saveUserBusinessInfo()
   },
 
   /**

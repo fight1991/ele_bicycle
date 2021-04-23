@@ -42,8 +42,6 @@
       </view>
     </view>
   </view>
-  <navigator url="/pages/user/idcardVerify/livingVerify">
-    <fixBtn bindtap="nextStep">下一步</fixBtn>
-  </navigator>
+  <fixBtn bindtap="nextStep">下一步</fixBtn>
 </view>
 

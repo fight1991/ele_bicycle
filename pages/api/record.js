@@ -4,29 +4,7 @@
 /**
  * params {cityCode, contactAddress, imageHead, imageIDCard1, imageIDCard2}
  */
-export const personal_uploadImg = (data) => {
-  return wx.$post_business({
-    url: '/battery-car-management/personal_info/images',
-    data
-  })
-}
 
-// 备案申报-个人信息-填写联系地址
-/** params  {cityCode, contactAddress}*/
-export const personal_contact = (data) => {
-  return wx.$post_business({
-    url: '/battery-car-management/personal_info/contact',
-    data
-  })
-}
-
-// 备案申报个人信息获取
-export const personal_search = (data) => {
-  return wx.$post_business({
-    url: '/battery-car-management/personal_info',
-    data
-  })
-}
 
 // 备案申报个人信息创建
 export const personal_add = (data) => {

@@ -80,6 +80,13 @@ export const sumitPersonInfoApi = (data) => {
     data
   })
 }
+// 获取上传身份证信息后的个人数据
+export const getIdcardInfo = (data) => {
+  return wx.$post_business({
+    url: '/user-center/personal/getInfo',
+    data
+  })
+}
 // 获取新消息数量
 export const getMessageNumApi = (data) => {
   return wx.$post_business({

@@ -1,6 +1,6 @@
 // pages/user/idcardVerify/idcardVerify.js
 var app = getApp()
-const { personal_uploadImg, personal_contact, personal_search } = app.api
+const { verifyPersonApi } = app.api
 
 Page({
 
@@ -14,7 +14,7 @@ Page({
     // 人像图片临时路径
     faceSrc: '',
     // 图片上传到服务器之后的地址
-    faceImgUrl: null,
+    faceImgUrl: 'http://192.168.1.70:9000/file/private/3044755342337599500/2021042322eee96ed12a442c83c1cd3a317ef115.png',
 
     frontImgUrl: null,
     backImgUrl: null
@@ -82,38 +82,24 @@ Page({
     //     // 存储照片信息
     // })
   },
-  // 上一步按钮
-  frontStep () {
-    this.setData({
-      showForm: false
-    })
-  },
   // 下一步的按钮
   async nextStep () {
     var isPass = this.nextIsPass()
     if (!isPass) return
     // 保存图片
     let { faceImgUrl, frontImgUrl, backImgUrl } = this.data
-    let { result: res1 } = await personal_uploadImg({
+    let { result } = await verifyPersonApi({
       imageHead: faceImgUrl,
       imageIDCard1: frontImgUrl,
       imageIDCard2: backImgUrl
     })
     // 图片保存成功, 显示表单, 并查询识别后的信息
-    if (!res1) return
-    this.getSomeImgInfo()
+    if (!result) return
+    wx.navigateTo({
+      url: './livingVerify',
+    })
   },
-  // 查询识别后的信息
-  async getSomeImgInfo () {
-    let { result: res2 } = await personal_search()
-    if (res2) {
-      this.setData({
-        showForm: true,
-        personData: res2,
-        region: res2.cityCodeIndex
-      })
-    }
-  },
+
   // 出发父组件下一步
   commitNext () {
     // 表单数据校验

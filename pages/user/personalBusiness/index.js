@@ -1,25 +1,27 @@
 // pages/user/personalBusiness/index.js
-import {
+var app = getApp()
+const {
   car_owner_change_scan, // 扫码
   record_status, // 备案申报状态查询
   car_loss_op, // 车辆挂失
   car_owner_change_status, // 备案人变更状态查询
   car_loss_search, // 一键报失状态查询
   car_scrap_search // 一键报废状态查询
-} from '../../api/record'
+} = app.api
 var pageApi = {
   record: record_status,
   record_change: car_owner_change_status,
   loss: car_loss_search,
   scrap: car_scrap_search
 }
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    verifyDialogVisible: false
   },
 
   /**
@@ -28,8 +30,22 @@ Page({
   onLoad: function (options) {
 
   },
+  // 跳转到身份认证
+  goToIdcardVerify () {
+    wx.navigateTo({
+      url: '/pages/user/idcardVerify/idcardVerify',
+    })
+  },
   // 跳转到备案申报新增页面
   goToRecord () {
+    // 查询是否身份已经认证
+    var idNO = app.globalData.businessUserInfo.idNO
+    if (!idNO) {
+      this.setData({
+        verifyDialogVisible: true
+      })
+      return
+    }
     wx.navigateTo({
       url: '/pages/user/record/record?op=add',
     })

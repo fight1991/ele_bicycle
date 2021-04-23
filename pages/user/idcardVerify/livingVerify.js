@@ -1,6 +1,6 @@
 // pages/user/idcardVerify/idcardVerify.js
 var app = getApp()
-const { personal_search } = app.api
+const { getIdcardInfo, sumitPersonInfoApi} = app.api
 
 Page({
 
@@ -40,12 +40,11 @@ Page({
 
   // 查询识别后的信息
   async getSomeImgInfo () {
-    let { result: res2 } = await personal_search()
-    if (res2) {
+    let { result } = await getIdcardInfo()
+    if (result) {
       this.setData({
-        showForm: true,
-        personData: res2,
-        region: res2.cityCodeIndex
+        personData: result,
+        region: result.cityCodeIndex
       })
     }
   },
@@ -84,15 +83,27 @@ Page({
       region: value
     })
   },
-  // 活体认证按钮
-  livingBtn () {
-    // var isPass = this.validForm()
-    // if(!isPass) return
-    // 认证成功
-    wx.reLaunch({
-      url: './livingResult',
+  // 提交表单信息
+  async submitForm () {
+    var isPass = this.validForm()
+    if(!isPass) return
+    let { personData: {contactAddress, cityCode, cityCodeIndex} } = this.data
+    let { result } = await sumitPersonInfoApi({
+      cityCode,
+      contactAddress,
+      cityCodeIndex
     })
-    
+    return result
+  },
+  // 活体认证按钮
+  async livingBtn () {
+    let res = await this.submitForm()
+    if (res) {
+      // 假设认证成功
+      wx.reLaunch({
+        url: './livingResult',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
