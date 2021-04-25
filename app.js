@@ -67,11 +67,16 @@ App({
   static_user_logo: '/pages/image/user_static_logo.png',
   // 全局共享数据
   globalData: {
+    currentVehicleId: '', // 当前车辆信息id
     businessUserInfo: {}, // 存储用户业务信息
     basicUserInfo: {}, // 存储用户基本信息
     userPermisson: [], // 用户权限
     wxHeadImg: null,
     jsCode: '',
+  },
+  // 保存车辆信息
+  saveCurrentVehicleId (id) {
+    this.globalData.currentVehicleId = id
   },
   // 获取并保存用户业务信息和
   async saveUserBusinessInfo (isLoad) {

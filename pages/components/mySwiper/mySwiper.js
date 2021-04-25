@@ -36,18 +36,32 @@ Component({
     // 查询列表
     async getList () {
       let { result } = await carInfo_List()
-      if (result) {
+      if (result && result.length > 0) {
+        var vehicleId = wx.getStorageSync('currentVehicleId')
         this.setData({
           list: result
         })
+        if (vehicleId) {
+          app.saveCurrentVehicleId(vehicleId)
+          let index = result.findIndex(v => v.vehicleId == vehicleId)
+          this.setData({
+            currentIndex: index
+          })
+        } else {
+          app.saveCurrentVehicleId(result[0]['vehicleId'])
+          wx.setStorageSync('currentVehicleId', result[0]['vehicleId'])
+        }
       }
     },
     // 切换轮播图事件
     swiperChange (e) {
       let currIndex = e.detail.current
+      let { list } = this.data
       this.setData({
         currentIndex: currIndex
       })
+      wx.setStorageSync('currentVehicleId', list[currIndex]['vehicleId'])
+      app.saveCurrentVehicleId(list[currIndex]['vehicleId'])
     },
     // 点击文字区域, 显示详情
     openDetailDialog () {
