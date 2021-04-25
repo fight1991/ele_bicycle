@@ -1,7 +1,7 @@
 <!--pages/user/loss/loss.wxml-->
 <view class="outer">
   <!-- 如果是已报失状态 状态码为23 -->
-  <view class="has-record" wx:if="{{status==23}}">
+  <view class="has-record" wx:if="{{status=='reportSuccess'}}">
     <view class="status-image">
       <image class="img" src="/pages/image/check-success.png" mode="widthFix"></image>
     </view>
@@ -10,23 +10,9 @@
         您的报失申请审核已经通过
       </view>
       <view class="text-down">
-        如需重新备案, 请选择重新申请
+        如无法找回车辆, 请一键报废
       </view>
     </view>
-    <view class="bottom-btns fix-bottom-btn">
-      <view class="fix-left" bindtap="hasFound">已找回</view>
-      <view class="fix-right" bindtap="reApply">重新申请</view>
-    </view>
-  </view>
-  <!-- 无报失数据状态码为0 -->
-  <view class="no-data" wx:if="{{status==0}}">
-    <view class="status-image">
-      <image class="img" src="/pages/image/no_data.png" mode="widthFix"></image>
-    </view>
-    <view class="text-info">
-      <view class="text-up fs16">
-        没有报失数据
-      </view>
-    </view>
+    <fixBtn bindtap="hasFound">已找回</fixBtn>
   </view>
 </view>

@@ -8,12 +8,6 @@ const {
   car_loss_search, // 一键报失状态查询
   car_scrap_search // 一键报废状态查询
 } = app.api
-var pageApi = {
-  record: record_status,
-  record_change: car_owner_change_status,
-  loss: car_loss_search,
-  scrap: car_scrap_search
-}
 
 Page({
 
@@ -53,31 +47,14 @@ Page({
   // 跳转到相关页面
   async routeTo (e) {
     let { page } = e.currentTarget.dataset
-    // 查询相应的状态
-    let tempApi = pageApi[page]
     let route = `/pages/user/${page}/${page}`
-    if (!tempApi) {
+    if (page == 'loss') {
+      // 弹框提醒
+      this.openLossConfirmMmodal()
+    } else {
       wx.navigateTo({
         url: route
       })
-      return
-    }
-    let { result } = await tempApi()
-    if (result) {
-      let { failReason, status, invoiceAuditingNum = 0, qrcodeValidityToken = '', vehicleImage = '' } = result
-      let paramsStr = `?failReason=${failReason}&status=${status}&invoiceAuditingNum=${invoiceAuditingNum}&qrcodeValidityToken=${qrcodeValidityToken}&vehicleImage=${vehicleImage}`
-      if (page == 'loss') {
-        // 一键报失操作逻辑, 如果状态为unreported, 说明没有报失,弹框, 则调用报失的接口, 否则直接进入页面
-        if (status == 'unreported') {
-          this.openLossConfirmMmodal()
-        } else {
-          this.routeToLoss(paramsStr)
-        }
-      } else {
-        wx.navigateTo({
-          url: route + paramsStr
-        })
-      }
     }
   },
   // 扫码
@@ -127,12 +104,6 @@ Page({
     if (result) {
       this.routeToLoss(paramsStr)
     }
-  },
-  // 跳转到一键报失页面
-  routeToLoss (paramsStr = '') {
-    wx.navigateTo({
-      url: '/pages/user/loss/loss' + paramsStr,
-    })
   },
   // 打开一键报失弹框
   async openLossConfirmMmodal () {

@@ -32,9 +32,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // status有值, 说明是点击备案人变更按钮跳转过来的
-    let { status } = options
-    if (!app.utils.isNull(status)) {
+    let { opType } = options
+    if (opType == 'look') { // 点击轮播图跳转过来
       // 处理状态分支
       this.handleStatus(options)
     } else {

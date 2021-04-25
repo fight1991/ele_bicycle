@@ -1,6 +1,7 @@
 // pages/user/loss/loss.js
-import { car_loss_search, car_loss_reput } from '../../api/record'
 var app = getApp()
+const { car_loss_search, car_loss_reput } = app.api
+
 Page({
 
   /**
@@ -8,61 +9,33 @@ Page({
    */
   data: {
     failReason: '', // 审核失败原因
-    status: '23', // 状态 状态为0, 调用报失接口
+    status: 'reporting', // 状态 unreported:未报失 reporting:报失中 reportSuccess:报失成功
+    id: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { status, failReason} = options
-    if (!app.utils.isNull(status)) {
-      this.setData({
-        failReason,
-        status
-      })
-    } else {
+    let { opType } = options
+    this.data.id = app.globalData.vehicleId
+    if (opType == 'look') {
       this.getLossStatus()
     }
   },
   // 报失状态查询 23:已报失、24:已找回、33:已报废，重新申请、0:表示没有报失数据
   async getLossStatus () {
-    let { result } = await car_loss_search()
+    let { result } = await car_loss_search(this.data.id)
     if (result) {
       this.setData(result)
     }
   },
   // 已找回按钮
   async hasFound () {
-    let { result } = await car_loss_reput({
-      status: 24
-    })
+    let { result } = await car_loss_reput(this.data.id)
     if (result) {
       wx.reLaunch({
         url: '/pages/user/personalBusiness/index',
-      })
-    }
-  },
-  // 重新申请
-  reApply () {
-    wx.showModal({
-      title: '温馨提示',
-      content: '您确定要重新申请吗?',
-      success: async (res) => {
-        if (res.confirm) {
-          this.applyLoss()
-        }
-      }
-    })
-  },
-  // 自动报废api,并返回备案申报第一步
-  async applyLoss () {
-    let { result } = await car_loss_reput({
-      status: 33
-    })
-    if (result) {
-      wx.redirectTo({
-        url: '/pages/user/record/record',
       })
     }
   },
