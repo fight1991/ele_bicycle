@@ -16,45 +16,44 @@ Page({
    */
   data: {
     verifyDialogVisible: false,
-    currentStatus: '',
-    permissions: ['filingReview', 'auditFailure', 'waitInstall', 'auditSuccess'],
+    currentStatus: '', // filingReview:审核中、auditFailure:审核失败、waitInstall:待安装 registered:已登记、reportedLost:已报失、scrapped:已报废
     opList: [
       {
         label: '备案申报',
         icon: '/pages/image/record.png',
         clickEvent: 'goToRecord',
         pageFlag: 'record',
-        permission: ['filingReview', 'auditFailure', 'waitInstall', 'auditSuccess']
+        permission: ['filingReview', 'auditFailure', 'waitInstall', 'registered', 'reportedLost']
       }, {
         label: '扫码',
         icon: '/pages/image/scan_big1.png',
-        clickEvent: 'routeTo',
+        clickEvent: 'scanCode',
         pageFlag: 'scan',
-        permission: ['filingReview', 'auditFailure', 'waitInstall', 'auditSuccess']
+        permission: ['filingReview', 'auditFailure', 'waitInstall', 'registered', 'reportedLost']
       }, {
         label: '备案人变更',
         icon: '/pages/image/peopleChange.png',
         clickEvent: 'routeTo',
         pageFlag: 'record_change',
-        permission: [ 'auditSuccess']
+        permission: [ 'registered']
       }, {
         label: '一键报失',
         icon: '/pages/image/baoshi.png',
         clickEvent: 'routeTo',
         pageFlag: 'loss',
-        permission: ['auditSuccess']
+        permission: ['registered']
       }, {
         label: '一键报废',
         icon: '/pages/image/baofei.png',
         clickEvent: 'routeTo',
         pageFlag: 'scrap',
-        permission: ['auditSuccess']
+        permission: ['registered']
       }, {
         label: '购买保险查询',
         icon: '/pages/image/purchase.png',
         clickEvent: 'routeTo',
         pageFlag: 'insure',
-        permission: ['filingReview', 'auditFailure', 'waitInstall', 'auditSuccess']
+        permission: ['filingReview', 'auditFailure', 'waitInstall', 'registered', 'reportedLost']
       }, {
         label: '安全学习',
         icon: '/pages/image/scan_big1.png',
@@ -69,7 +68,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.mySwiper = this.selectComponent('#mySwiper')
   },
   // 切换swiper
   swiperChange (e) {
@@ -154,9 +153,9 @@ Page({
   },
   // 车辆挂失api
   async carLossApi (paramsStr) {
-    let { result } = await car_loss_op()
+    let { result } = await car_loss_op(app.globalData.currentVehicleId)
     if (result) {
-      this.routeToLoss(paramsStr)
+      this.mySwiper.getList()
     }
   },
   // 打开一键报失弹框

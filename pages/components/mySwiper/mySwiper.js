@@ -21,7 +21,13 @@ Component({
     codeValue: '', // 二维码字符串
     qrCodeUrl: '', // 车辆信息查询获得
     currentId: '', // 当前车辆id
-    list: []
+    list: [],
+    pageInfo: {
+      'filingReview': '/pages/user/record/record',
+      'waitInstall': '/pages/user/record/record',
+      'reportedLost': '/pages/user/loss/loss',
+      'auditFailure': '/pages/user/record/record'
+    }
   },
   pageLifetimes: {
     show () {
@@ -42,14 +48,18 @@ Component({
           list: result
         })
         if (vehicleId) {
-          app.saveCurrentVehicleId(vehicleId)
           let index = result.findIndex(v => v.vehicleId == vehicleId)
-          this.setData({
-            currentIndex: index > 0 ? index : 0
-          })
+          if (index >= 0) {
+            app.saveCurrentVehicleId(vehicleId)
+            this.setData({
+              currentIndex: index
+            })
+            this.triggerEvent('switchSwiper', result[index])
+          }
         } else {
           app.saveCurrentVehicleId(result[0]['vehicleId'])
           wx.setStorageSync('currentVehicleId', result[0]['vehicleId'])
+          this.triggerEvent('switchSwiper', result[0])
         }
       }
     },
@@ -63,6 +73,18 @@ Component({
       wx.setStorageSync('currentVehicleId', list[currIndex]['vehicleId'])
       app.saveCurrentVehicleId(list[currIndex]['vehicleId'])
       this.triggerEvent('switchSwiper', list[currIndex])
+    },
+    // 跳转到相关页面
+    routeToPage () {
+      
+      let { list, currentIndex, pageInfo } = this.data
+      let status = list[currentIndex]['vehicleStatus']
+      let id = list[currentIndex]['vehicleId']
+      let page = pageInfo[status]
+      if (!page) return
+      wx.navigateTo({
+        url: page + '?opType=look&id=' + id
+      })
     },
     // 点击文字区域, 显示详情
     openDetailDialog () {

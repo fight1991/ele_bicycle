@@ -23,7 +23,7 @@
     <!-- 报废申请第二步 -->
     <view wx:if="{{currentStep==1}}">
       <view class="status-image">
-        <image class="img" src="{{imgInfo['31']}}" mode="widthFix"></image>
+        <image class="img" src="{{imgInfo['scrapAuditing']}}" mode="widthFix"></image>
       </view>
       <view class="text-info">
         <view class="text-up fs16">
@@ -34,10 +34,10 @@
         </view>
       </view>
     </view>
-    <view wx:if="{{currentStep==0}}" class="common-btn" bindtap="submitBtn">提交</view>
-    <view wx:if="{{currentStep==1}}" class="bottom-btns fix-bottom-btn">
-      <view class="fix-left" bindtap="cancelBtn">取消申请</view>
-      <view class="fix-right" bindtap="backCenter">返回个人中心</view>
+    <fixBtn wx:if="{{currentStep==0}}" bindtap="submitBtn">提交审核</fixBtn>
+    <view wx:if="{{currentStep==1}}">
+      <fixBtn type="light" width="50vw">取消申请</fixBtn>
+      <fixBtn align="right" width="50vw">返回个人中心</fixBtn>
     </view>
   </view>
 </scroll-view>

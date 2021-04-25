@@ -1,0 +1,8 @@
+  var isIncludes = function (arr, prams) {
+    return arr.indexOf(prams) >= 0
+  }
+
+// 导出
+module.exports = {
+  isIncludes: isIncludes
+}

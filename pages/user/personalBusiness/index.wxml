@@ -1,53 +1,24 @@
 <!--pages/user/personalBusiness/index.wxml-->
+<wxs src="/pages/wxs/index.wxs" module="tools"/>
 <view class="box">
   <view class="name-area">
     <name-idcard></name-idcard>
   </view>
   <!-- 轮播区域 -->
-  <my-swiper bindswitchSwiper="swiperChange"></my-swiper>
+  <my-swiper id="mySwiper" bindswitchSwiper="swiperChange"></my-swiper>
   <view class="grid-box">
-    <view class="block-item" bindtap="goToRecord">
-      <view class="img-box">
-        <image class="img-box-item" src="/pages/image/record.png" mode="cover"></image>
+    <block wx:for="{{opList}}" wx:key="pageFlag">
+      <view
+        class="block-item"
+        hidden="{{!tools.isIncludes(item.permission, currentStatus)}}"
+        data-page="{{item.pageFlag}}"
+        bindtap="{{item.clickEvent}}">
+        <view class="img-box">
+          <image class="img-box-item" src="{{item.icon}}" mode="cover"></image>
+        </view>
+        <view class="text">{{item.label}}</view>
       </view>
-      <view class="text">备案申报</view>
-    </view>
-    <view class="block-item" bindtap="scanCode">
-      <view class="img-box">
-        <image class="img-box-item" src="/pages/image/scan_big1.png" mode="cover"></image>
-      </view>
-      <view class="text">扫码</view>
-    </view>
-    <view class="block-item" bindtap="routeTo" data-page="record_change">
-      <view class="img-box">
-        <image class="img-box-item" src="/pages/image/peopleChange.png" mode="cover"></image>
-      </view>
-      <view class="text">备案人变更</view>
-    </view>
-    <view class="block-item" bindtap="routeTo" data-page="loss">
-      <view class="img-box">
-        <image class="img-box-item" src="/pages/image/baoshi.png" mode="cover"></image>
-      </view>
-      <view class="text">一键报失</view>
-    </view>
-    <view class="block-item" bindtap="routeTo" data-page="scrap">
-      <view class="img-box">
-        <image class="img-box-item" src="/pages/image/baofei.png" mode="cover"></image>
-      </view>
-      <view class="text">一键报废</view>
-    </view>
-    <view class="block-item" bindtap="routeTo" data-page="insure">
-      <view class="img-box">
-        <image class="img-box-item" src="/pages/image/purchase.png" mode="cover"></image>
-      </view>
-      <view class="text">购买保险查询</view>
-    </view>
-    <view class="block-item mask">
-      <view class="img-box">
-        <image class="img-box-item" src="/pages/image/safe_study.png" mode="cover"></image>
-      </view>
-      <view class="text">安全学习</view>
-    </view>
+    </block>
   </view>
 </view>
 <!-- 实名认证提示弹框 -->

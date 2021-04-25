@@ -1,6 +1,7 @@
 // pages/user/scrap/scrap.js
-import { car_scrap_search, car_scrap_op, car_scrap_cancel } from '../../api/record'
-var utils = require('../../../utils/util')
+var app = getApp()
+const { car_scrap_search, car_scrap_op, car_scrap_cancel } = app.api
+
 Page({
 
   /**
@@ -15,14 +16,14 @@ Page({
     formData: {
       reason: '',
       vehicleImage: '',
+      vehicleId: ''
     },
     id: '', // 当前车辆id
     imgInfo: {
-      'scrapSuccess': '/pages/image/check-ing.png',
-      'scrapFailure': '/pages/image/check-fail.png'
+      'scrapAuditing': '/pages/image/check-ing.png'
     },
     failReason: '',
-    status: 'unScrap', // unScrap:未报废 scrapAuditing:审核中 termination:终止报废 scrapSuccess:报废成功 scrapFailure:报废失败
+    status: 'scrapAuditing', // unScrap:未报废 scrapAuditing:审核中 termination:终止报废 scrapSuccess:报废成功 scrapFailure:报废失败
     imgSrc: '' // 绑定组件upload中的imgSrc的值, 注意只能单层绑定
   },
 
@@ -97,7 +98,7 @@ Page({
     // 判断审核单数量是否>0, 则提示
     var tempNum = this.data.invoiceAuditingNum
     if (tempNum > 0) {
-      utils.openConfirm({
+      app.utils.openConfirm({
         content: `当前已有${tempNum}个审核单，本次审核通过后会自动结束其他审核单，是否继续？`,
         confirm: () => {
           this.submitForm()
@@ -110,6 +111,7 @@ Page({
   // 表单提交
   async submitForm () {
     this.data.formData.vehicleImage = this.data.imgSrc
+    this.data.formData.vehicleId = app.globalData.currentVehicleId
     let { result } = await car_scrap_op(this.data.formData)
     if (result) {
       this.setData({

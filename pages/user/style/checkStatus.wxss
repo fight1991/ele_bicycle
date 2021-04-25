@@ -28,5 +28,5 @@
   padding: 10rpx 0;
 }
 .text-down {
-  color: red;
+  color: #3E78FD;
 }

@@ -14,14 +14,12 @@
       <swiper-item>
         <view class="swiper-item-box">
           <!-- 电动车静态图片 -->
-          <navigator url="/pages/user/record/record?opType=look&id={{item.vehicleId}}">
-            <view class="head-img">
-              <view class="img-box">
-                <image class="img" src="/pages/image/vechicel.png"/>
-              </view>
-              <view class="head-img-text">{{item.vehicleStatus}}</view>
+          <view class="head-img" bindtap="routeToPage">
+            <view class="img-box">
+              <image class="img" src="/pages/image/vechicel.png"/>
             </view>
-          </navigator>
+            <view class="head-img-text">{{item.vehicleStatus}}</view>
+          </view>
           <!-- 电动车基本信息 -->
           <view class="text-lines" bindtap="openDetailDialog">
             <view class="text-line-item">
@@ -62,7 +60,7 @@
   </div>
 </view>
 <!-- 二维码弹窗 -->
-<mask initValue="{{maskHidden}}" contentPadding="20rpx">
+<mask initValue="{{maskHidden}}" contentPadding="10rpx">
   <qrcode width="{{300}}" height="{{300}}" value="{{codeValue}}" background="transparent"></qrcode>
 </mask>
 <!-- 确认弹框 -->
