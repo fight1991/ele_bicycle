@@ -45,7 +45,7 @@ Component({
           app.saveCurrentVehicleId(vehicleId)
           let index = result.findIndex(v => v.vehicleId == vehicleId)
           this.setData({
-            currentIndex: index
+            currentIndex: index > 0 ? index : 0
           })
         } else {
           app.saveCurrentVehicleId(result[0]['vehicleId'])
@@ -62,6 +62,7 @@ Component({
       })
       wx.setStorageSync('currentVehicleId', list[currIndex]['vehicleId'])
       app.saveCurrentVehicleId(list[currIndex]['vehicleId'])
+      this.triggerEvent('switchSwiper', list[currIndex])
     },
     // 点击文字区域, 显示详情
     openDetailDialog () {

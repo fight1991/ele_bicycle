@@ -4,7 +4,7 @@
     <name-idcard></name-idcard>
   </view>
   <!-- 轮播区域 -->
-  <my-swiper></my-swiper>
+  <my-swiper bindswitchSwiper="swiperChange"></my-swiper>
   <view class="grid-box">
     <view class="block-item" bindtap="goToRecord">
       <view class="img-box">

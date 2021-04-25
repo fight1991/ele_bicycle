@@ -15,7 +15,54 @@ Page({
    * 页面的初始数据
    */
   data: {
-    verifyDialogVisible: false
+    verifyDialogVisible: false,
+    currentStatus: '',
+    permissions: ['filingReview', 'auditFailure', 'waitInstall', 'auditSuccess'],
+    opList: [
+      {
+        label: '备案申报',
+        icon: '/pages/image/record.png',
+        clickEvent: 'goToRecord',
+        pageFlag: 'record',
+        permission: ['filingReview', 'auditFailure', 'waitInstall', 'auditSuccess']
+      }, {
+        label: '扫码',
+        icon: '/pages/image/scan_big1.png',
+        clickEvent: 'routeTo',
+        pageFlag: 'scan',
+        permission: ['filingReview', 'auditFailure', 'waitInstall', 'auditSuccess']
+      }, {
+        label: '备案人变更',
+        icon: '/pages/image/peopleChange.png',
+        clickEvent: 'routeTo',
+        pageFlag: 'record_change',
+        permission: [ 'auditSuccess']
+      }, {
+        label: '一键报失',
+        icon: '/pages/image/baoshi.png',
+        clickEvent: 'routeTo',
+        pageFlag: 'loss',
+        permission: ['auditSuccess']
+      }, {
+        label: '一键报废',
+        icon: '/pages/image/baofei.png',
+        clickEvent: 'routeTo',
+        pageFlag: 'scrap',
+        permission: ['auditSuccess']
+      }, {
+        label: '购买保险查询',
+        icon: '/pages/image/purchase.png',
+        clickEvent: 'routeTo',
+        pageFlag: 'insure',
+        permission: ['filingReview', 'auditFailure', 'waitInstall', 'auditSuccess']
+      }, {
+        label: '安全学习',
+        icon: '/pages/image/scan_big1.png',
+        clickEvent: 'routeTo',
+        pageFlag: 'study',
+        permission: ['other']
+      }
+    ]
   },
 
   /**
@@ -23,6 +70,13 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  // 切换swiper
+  swiperChange (e) {
+    console.log(e.detail)
+    this.setData({
+      currentStatus: e.detail.vehicleStatus
+    })
   },
   // 跳转到身份认证
   goToIdcardVerify () {
