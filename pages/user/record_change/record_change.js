@@ -14,18 +14,18 @@ Page({
     currentStep: 0,
     qrcodeText: '',
     timer: null,
+    timeGap: 1000,
     failReason: '',
     invoiceAuditingNum: 0, // 存在多少审核单据
-    timeGap: 1000,
     initToken: '', // 生成二维码的初始值
-    checkStatus: 41,
+    status: 'changeAuditing', // changeAuditing:审核中 changeSuccess:变更成功中 changeFailure:变更失败
     isRefresh: false, // 是否刷新二维码
     stepList: ['变更申请', '等待审核'],
     statusText: {
-      '41': '您的变更申请审核中，请耐心等待',
+      'changeAuditing': '您的变更申请审核中，请耐心等待',
     },
     statusImg: {
-      '41': '/pages/image/check-ing.png'
+      'changeAuditing': '/pages/image/check-ing.png'
     }
   },
   /**
@@ -66,7 +66,8 @@ Page({
         isRefresh: false
       })
     }
-    let { result } = await car_owner_change_status({qrcodeValidityToken: ''})
+    let id = app.globalData.currentVehicleId
+    let { result } = await car_owner_change_status({qrcodeValidityToken: '', vehicleId: id})
     if (result) {
       // 处理状态分支
       this.handleStatus(result)
@@ -98,17 +99,18 @@ Page({
    * -1：二维码已生成
    * -2:二维码已失效
    * 41:变更备案人审核中
-   * 42:变更备案人审核拒绝、
+   * 42:变更备案人审核拒绝
    * 43:变更备案人成功、2:取消
+   * valid 二维码是否有效
    * */ 
   handleStatus (result) {
     this.setData({
-      checkStatus: result.status,
+      status: result.status,
       failReason: result.failReason
     })
     this.data.invoiceAuditingNum = result.invoiceAuditingNum
-    // 状态为0, 显示并存储二维码初始值
-    if (result.status == 0) {
+    // 显示并存储二维码初始值
+    if (result.valid) {
       this.data.initToken = result.qrcodeValidityToken
       if (result.invoiceAuditingNum > 0) {
         this.openModal(result.invoiceAuditingNum)
@@ -118,34 +120,32 @@ Page({
         })
       }
     }
-    // 状态为 0 或-1 二维码尚未被扫码或还在有效, 继续1s后开启轮询
-    if (result.status == -1 || result.status ==0) {
+    // valid为true 二维码尚未被扫码或还在有效, 继续1s后开启轮询
+    if (result.valid) {
       this.data.timer = setTimeout(() => {
         this.startSearch(result.qrcodeValidityToken)
       }, this.data.timeGap)
-    }
-    // 状态为-2 二维码失效
-    if (result.status == -2) {
+    } else { // 否则失效
       this.setData({
         isRefresh: true
       })
       this.clearTimer()
     }
     // 41 -等待审核页面
-    if (result.status == 41) {
+    if (result.status == 'changeAuditing') {
       this.setData({
         currentStep: 1
       })
       this.clearTimer()
     }
     // 审核失败
-    if (result.status == 42) {
+    if (result.status == 'changeFailure') {
       this.clearTimer()
       // 跳转到公共状态的页面
       this.routeOtherPage('fail', result)
     }
     // 审核成功
-    if (result.status == 43) {
+    if (result.status == 'changeSuccess') {
       this.clearTimer()
       // 跳转到公共状态的页面
       this.routeOtherPage('success', result)

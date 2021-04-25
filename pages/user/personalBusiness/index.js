@@ -67,8 +67,8 @@ Page({
       let { failReason, status, invoiceAuditingNum = 0, qrcodeValidityToken = '', vehicleImage = '' } = result
       let paramsStr = `?failReason=${failReason}&status=${status}&invoiceAuditingNum=${invoiceAuditingNum}&qrcodeValidityToken=${qrcodeValidityToken}&vehicleImage=${vehicleImage}`
       if (page == 'loss') {
-        // 一键报失操作逻辑, 如果状态为0, 说明没有报失,弹框, 则调用报失的接口, 否则直接进入页面
-        if (status == 0) {
+        // 一键报失操作逻辑, 如果状态为unreported, 说明没有报失,弹框, 则调用报失的接口, 否则直接进入页面
+        if (status == 'unreported') {
           this.openLossConfirmMmodal()
         } else {
           this.routeToLoss(paramsStr)
