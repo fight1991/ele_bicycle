@@ -72,7 +72,6 @@ Page({
   },
   // 切换swiper
   swiperChange (e) {
-    console.log(e.detail)
     this.setData({
       currentStatus: e.detail.vehicleStatus
     })
