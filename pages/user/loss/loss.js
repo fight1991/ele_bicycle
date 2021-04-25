@@ -17,13 +17,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { opType } = options
-    this.data.id = app.globalData.vehicleId
+    let { opType, id } = options
     if (opType == 'look') {
+      this.data.id = id
       this.getLossStatus()
     }
   },
-  // 报失状态查询 23:已报失、24:已找回、33:已报废，重新申请、0:表示没有报失数据
   async getLossStatus () {
     let { result } = await car_loss_search(this.data.id)
     if (result) {

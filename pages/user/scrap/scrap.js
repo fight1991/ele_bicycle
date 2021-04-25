@@ -16,12 +16,13 @@ Page({
       reason: '',
       vehicleImage: '',
     },
+    id: '', // 当前车辆id
     imgInfo: {
-      '31': '/pages/image/check-ing.png',
-      '32': '/pages/image/check-fail.png'
+      'scrapSuccess': '/pages/image/check-ing.png',
+      'scrapFailure': '/pages/image/check-fail.png'
     },
     failReason: '',
-    status: 0, // 2:取消、31:报废(审核中)、32:报废审核拒绝、33:报废成功
+    status: 'unScrap', // unScrap:未报废 scrapAuditing:审核中 termination:终止报废 scrapSuccess:报废成功 scrapFailure:报废失败
     imgSrc: '' // 绑定组件upload中的imgSrc的值, 注意只能单层绑定
   },
 
@@ -29,11 +30,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 点击一键报废按钮带过来的
-    let { status } = options
-    if (!utils.isNull(status)) {
-      this.handleStatus(options)
-    } else {
+    // 点击轮播图
+    let { opType, id } = options
+    if (opType == 'look') {
+      this.data.id = id
       this.getStatus()
     }
   },
@@ -45,7 +45,7 @@ Page({
   },
   // 车辆状态查询
   async getStatus () {
-    let { result } = await car_scrap_search()
+    let { result } = await car_scrap_search(this.data.id)
     this.handleStatus(result)
   },
   // 处理状态分支
@@ -53,18 +53,18 @@ Page({
     if (result) {
       let status = result.status
       this.setData(result)
-      if (status == 0) {
+      if (status == 'unScrap') {
         this.setData({
           currentStep: 0,
         })
-        this.initImgInfo(result.vehicleImage)
-      } else if (status == 31) {
+        result.vehicleImage && this.initImgInfo(result.vehicleImage)
+      } else if (status == 'scrapAuditing') {
         this.setData({
           currentStep: 1
         })
       } else {
-        // 32 或 33 失败/成功
-        let type = status == 32 ? 'fail' : 'success'
+        // 失败/成功
+        let type = status == scrapFailure ? 'fail' : 'success'
         wx.redirectTo({
           url: `/pages/user/result/result?pageFlag=scrap&pageTitle=一键报废&status=${type}&reason=${result.failReason}`,
         })
@@ -73,9 +73,7 @@ Page({
   },
   // 取消申请
   async cancelBtn () {
-    let { result } = await car_scrap_cancel({
-      status: 2
-    })
+    let { result } = await car_scrap_cancel(this.data.id)
     if (result) {
       wx.showToast({
         title: '取消成功',
@@ -125,13 +123,6 @@ Page({
     if (!reason.trim()) {
       wx.showToast({
         title: '请填写原因',
-        icon: 'none'
-      })
-      return false
-    }
-    if (!this.data.imgSrc) {
-      wx.showToast({
-        title: '请上传车辆图片',
         icon: 'none'
       })
       return false

@@ -45,13 +45,7 @@ export const record_status = (data) => {
     data
   })
 }
-// 改变状态
-export const record_status_update = (data) => {
-  return wx.$post_business({
-    url: '/battery-car-management/battery_car_record_filing/update_status',
-    data
-  })
-}
+
 // 车辆备案人变更 - 查询状态
 export const car_owner_change_status = (data, isLoading=true) => {
   return wx.$post_business({

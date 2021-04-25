@@ -44,10 +44,9 @@ Page({
 
   // 备案申报审核失败, 点击改变状态后, 跳转到个人信息录入页面
   async goToEdit () {
-    let { result } = await record_status_update({status: 4})
     if (result) {
       wx.redirectTo({
-        url: '/pages/user/record/record',
+        url: '/pages/user/record/record?opType=edit',
       })
     }
   },
