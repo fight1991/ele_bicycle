@@ -26,19 +26,17 @@ Page({
     },
     statusImg: {
       'changeAuditing': '/pages/image/check-ing.png'
-    }
+    },
+    id: ''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let { opType } = options
-    if (opType == 'look') { // 点击轮播图跳转过来
-      // 处理状态分支
-      this.handleStatus(options)
-    } else {
-      this.getChangeStatus()
-    }
+    // 点击轮播图状态或轮播图下方备案人变更按钮跳转过来,
+    this.data.id = app.globalData.currentVehicleId
+    this.getChangeStatus()
   },
   // 打开确认框
   openModal (num) {
@@ -65,8 +63,7 @@ Page({
         isRefresh: false
       })
     }
-    let id = app.globalData.currentVehicleId
-    let { result } = await car_owner_change_status({qrcodeValidityToken: '', vehicleId: id})
+    let { result } = await car_owner_change_status({qrcodeValidityToken: '', vehicleId: this.data.id})
     if (result) {
       // 处理状态分支
       this.handleStatus(result)
@@ -75,7 +72,8 @@ Page({
   // 轮询开始
   async startSearch (qrcodeToken) {
     let { result, other, error } = await car_owner_change_status({
-      qrcodeValidityToken: qrcodeToken
+      qrcodeValidityToken: qrcodeToken,
+      vehicleId: this.data.id
     }, false)
     this.handleStatus(result)
     if (other || error) {

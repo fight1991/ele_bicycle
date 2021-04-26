@@ -58,7 +58,7 @@ export const car_owner_change_status = (data, isLoading=true) => {
 // 车辆备案人变更 - 扫码
 export const car_owner_change_scan = (data) => {
   return wx.$post_business({
-    url: '/ebike-management/ownershipChange/scanOcr',
+    url: '/ebike-management/ownershipChange/scanQrcode',
     data
   })
 }

@@ -140,7 +140,8 @@ Page({
   // 车辆备案人变更扫码
   async recordChange (token) {
     let { result, other } = await car_owner_change_scan({
-      qrcodeValidityToken: token
+      qrcodeValidityToken: token,
+      vehicleId: app.globalData.currentVehicleId
     })
     if (result) {
       // 解决在ios中弹框不显示问题
