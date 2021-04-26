@@ -90,7 +90,7 @@ export const car_scrap_op = (data) => {
 // 车辆报废 - 取消申请
 export const car_scrap_cancel = (data) => {
   return wx.$post_business({
-    url: '/ebike-management/scrap/updateStatus',
+    url: '/ebike-management/scrap/delete',
     data
   })
 }

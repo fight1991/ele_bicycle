@@ -15,7 +15,7 @@
 }
 
 .light {
-  color: #3E78FD;
+  color: #666;
   background: #fff;
-  border: 1px solid #3E78FD;
+  /* border: 1px solid #3E78FD; */
 }

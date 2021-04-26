@@ -30,14 +30,14 @@
           您的报废申请审核中, 请耐心等待
         </view>
         <view class="text-down">
-          审核成功后可重新备案
+          审核通过后, 可重新备案
         </view>
       </view>
     </view>
     <fixBtn wx:if="{{currentStep==0}}" bindtap="submitBtn">提交审核</fixBtn>
     <view wx:if="{{currentStep==1}}">
-      <fixBtn type="light" width="50vw">取消申请</fixBtn>
-      <fixBtn align="right" width="50vw">返回个人中心</fixBtn>
+      <fixBtn type="light" width="50vw" bindtap="cancelBtn">取消申请</fixBtn>
+      <fixBtn align="right" width="50vw" bindtap="backCenter">返回个人中心</fixBtn>
     </view>
   </view>
 </scroll-view>

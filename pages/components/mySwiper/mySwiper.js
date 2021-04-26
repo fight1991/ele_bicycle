@@ -76,7 +76,6 @@ Component({
     },
     // 跳转到相关页面
     routeToPage () {
-      
       let { list, currentIndex, pageInfo } = this.data
       let status = list[currentIndex]['vehicleStatus']
       let id = list[currentIndex]['vehicleId']

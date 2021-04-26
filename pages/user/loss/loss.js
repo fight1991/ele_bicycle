@@ -18,10 +18,9 @@ Page({
    */
   onLoad: function (options) {
     let { opType, id } = options
-    if (opType == 'look') {
-      this.data.id = id
-      this.getLossStatus()
-    }
+    // 进入页面先查询状态
+    this.data.id = app.globalData.currentVehicleId
+    this.getLossStatus()
   },
   async getLossStatus () {
     let { result } = await car_loss_search(this.data.id)

@@ -31,12 +31,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 点击轮播图
+    // 点击轮播图进来
     let { opType, id } = options
-    if (opType == 'look') {
-      this.data.id = id
-      this.getStatus()
-    }
+    // 点击一键报废进来
+    this.data.id = app.globalData.currentVehicleId
+    this.getStatus()
   },
   // 初始化图片信息
   initImgInfo (url) {
