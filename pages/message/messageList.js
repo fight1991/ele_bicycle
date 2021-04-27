@@ -10,9 +10,9 @@ Page({
     // 上拉刷新下拉加载数据
     triggered: false, // 设置当前下拉刷新状态
     hasMore: true, // 是否还有更多数据
-    currPage: 0, // 当前页
+    pageIndex: 0, // 当前页
     pageSize: 5, // 每页请求数量
-    count: 0, // 条目数
+    total: 0, // 条目数
     resultList: []
   },
 
@@ -23,30 +23,30 @@ Page({
     this.onRefresh()
   },
   // 获取消息列表
-  async getMessageList (currPage, callback) {
+  async getMessageList (pageIndex, callback) {
     if (this._freshing) return
     this._freshing = true
     let { pageSize, resultList } = this.data
     let createTime = ''
     let id = ''
-    currPage ++
-    if (currPage > 1 && resultList.length > 0) {
+    pageIndex ++
+    if (pageIndex > 1 && resultList.length > 0) {
       var lastData = resultList[resultList.length - 1]
       createTime = lastData.createTime
       id = lastData.id
     }
-    let { result } = await getMessageListApi({
-      params: {
+    let { result, page } = await getMessageListApi({
+      data: {
         createTime,
         id
       },
-      pagination: {
-        currPage,
+      page: {
+        pageIndex,
         pageSize
       }
     })
     if (result) {
-      callback && callback(result.list || [], result.pagination)
+      callback && callback(result || [], page)
     }
     this._freshing = false
     this.setData({
@@ -102,11 +102,11 @@ Page({
   },
   onRefresh() {
     this.getMessageList(0, (list, pagination) => {
-      var { currPage, count, pageSize } = pagination
+      var { pageIndex, total, pageSize } = pagination
       this.setData({
-        currPage,
+        pageIndex,
         resultList: list,
-        hasMore: currPage * pageSize >= count ? false : true
+        hasMore: pageIndex * pageSize >= total ? false : true
       })
     })
   },
@@ -115,13 +115,13 @@ Page({
    */
   scrolltolower () {
     if (!this.data.hasMore) return
-    let { currPage, resultList } = this.data
-    this.getMessageList(currPage, (list, pagination) => {
-      var { currPage, count, pageSize } = pagination
+    let { pageIndex, resultList } = this.data
+    this.getMessageList(pageIndex, (list, pagination) => {
+      var { pageIndex, total, pageSize } = pagination
       this.setData({
-        currPage,
+        pageIndex,
         resultList: [...resultList, ...list],
-        hasMore: currPage * pageSize >= count ? false : true
+        hasMore: pageIndex * pageSize >= total ? false : true
       })
     })
   },

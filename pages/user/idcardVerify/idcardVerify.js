@@ -14,7 +14,7 @@ Page({
     // 人像图片临时路径
     faceSrc: '',
     // 图片上传到服务器之后的地址
-    faceImgUrl: 'http://192.168.1.70:9000/file/private/3044755342337599500/2021042322eee96ed12a442c83c1cd3a317ef115.png',
+    faceImgUrl: '',
 
     frontImgUrl: null,
     backImgUrl: null

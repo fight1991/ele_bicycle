@@ -96,10 +96,11 @@ export const getMessageNumApi = (data) => {
   })
 }
 // 获取消息列表
-export const getMessageListApi = (data) => {
+export const getMessageListApi = ({data, page}) => {
   return wx.$post_business({
     url: '/user-center/notification/getNoticeList',
-    data
+    data,
+    page
   })
 }
 // 获取消息详情
