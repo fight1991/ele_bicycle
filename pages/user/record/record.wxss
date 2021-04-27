@@ -2,27 +2,42 @@
 page {
   height: 100%;
 }
-image {
+.img {
   width: 100%;
 }
 .scroll-container {
   height: 100%;
+  padding: 40rpx 30rpx 80rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-
+.record {
+  background-color: #fff;
+  padding: 60rpx 0;
+  border-radius: 8rpx;
+}
 .status-image {
   width: 220rpx;
-  margin: 30rpx auto;
-}
-.status-text {
-  text-align: center;
-  width: 500rpx;
   margin: 0 auto;
 }
-.status-erweima {
-  display: flex;
-  justify-content: center;
+.image-text {
+  text-align: center;
+  padding-top: 30rpx;
+  color: #6F6F6F;
+}
+.erweima-box-txt {
+  color: #6F6F6F;
   padding: 20rpx 0;
+}
+.erweima-box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.erweima-text {
+  padding: 30rpx 0;
+  color: #516dff;
 }
 .backPage {
   padding: 10px;

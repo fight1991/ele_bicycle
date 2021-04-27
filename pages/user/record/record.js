@@ -1,6 +1,6 @@
 // pages/user/record/record.js
-import { record_status } from '../../api/record'
 var app = getApp()
+const { carInfo_detail, record_status } = app.api
 Page({
 
   /**
@@ -18,25 +18,34 @@ Page({
     statusText: {
       'auditing': '您的备案申请审核中，请耐心等待',
       'failure': '审核失败',
-      'waitInstall': '您的备案申报审核已经通过,请等待快递员送上车牌并完成安装,安装时展示如下安装码',
-      'waitInstall': '您的备案申报审核已经通过,可去以下安装点完成车牌安装,安装时向安装人员展示如下安装码',
+      'waitInstall': '您的备案申报审核已经通过',
       'success': '审核成功'
     },
+    // INSTALLATION MAIL
     statusImg: {
       'auditing': '/pages/image/check-ing.png',
       'failure': '/pages/image/check-fail.png',
       'waitInstall': '/pages/image/check-success.png',
       'success': '/pages/image/check-success.png'
     },
-    currentCarInfo: {}, // 当前的车辆信息
+    id: '', // 车辆id
+    installType: 'MAIL', // 安装方式
+    vin: '' // 编号
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { opType, id } = options
+    let { opType, id, installType, vin } = options
     this.busInfoComponent = this.selectComponent('#busInfo')
+    if (opType == 'edit' || opType == 'look') {
+      this.data.id = id
+      this.data.vin = vin
+      this.setData({
+        installType
+      })
+    }
     // 备案编辑
     if (opType == 'edit') {
       this.busInfoComponent.initInfo(id)
@@ -51,11 +60,10 @@ Page({
     this.setData({
       currentStep: 1
     })
-    this.data.currentCarInfo = e.detail
   },
   // 审核状态查询
   async getCheckStatus (id) {
-    let { result } = await record_status(this.data.currentCarInfo.vehicleId || id)
+    let { result } = await record_status(id)
     if (result) {
       this.getCurrentStepByStatus(result)
     }
@@ -86,9 +94,10 @@ Page({
         })
         return
       case 'waitInstall': // 审核通过，邮寄车牌, 安装点安装车牌
-      let { vin, vehicleId } = this.data.currentCarInfo
+      let { vin, id } = this.data
       this.setData({
-        qrcodeInfo: `?vin=${vin}&vehicleId=${vehicleId}`,
+        currentStep: 1,
+        qrcodeInfo: `?vin=${vin}&vehicleId=${id}`,
         showStep: false,
         maskIsHidden: true
       })

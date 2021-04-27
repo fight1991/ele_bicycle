@@ -82,12 +82,11 @@ Component({
     // 跳转到相关页面
     routeToPage () {
       let { list, currentIndex, pageInfo } = this.data
-      let status = list[currentIndex]['vehicleStatus']
-      let id = list[currentIndex]['vehicleId']
-      let page = pageInfo[status]
+      let { vehicleStatus, vehicleId, vin, installationMethods} = list[currentIndex]
+      let page = pageInfo[vehicleStatus]
       if (!page) return
       wx.navigateTo({
-        url: page + '?opType=look&id=' + id
+        url: `${page}?opType=look&id=${vehicleId}&installType=${installationMethods}&vin=${vin}`
       })
     },
     // 点击文字区域, 显示详情
