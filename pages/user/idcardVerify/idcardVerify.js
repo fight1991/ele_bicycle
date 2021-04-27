@@ -8,7 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showForm: false, // 是否显示个人表单信息
     // 人像占位图片是否显示
     faceShow: true,
     // 人像图片临时路径

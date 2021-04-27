@@ -1,5 +1,5 @@
 // pages/components/myCamera/myCamera.js
-import { upload_func } from '../../api/upload'
+import { upload_func_private } from '../../api/upload'
 var app = getApp()
 Component({
   /**
@@ -75,13 +75,12 @@ Component({
         // 获取当前图片路径(用户拍下的照片)
         var tempMode = this.data.imgType
         // 得到文件的hash值
-        let hash = await upload_func(this.data.src)
-        if (hash) {
-          // 更新record页面中组件personInfo的数据
-          prevPage.personInfoComponent.setData({
+        let url = await upload_func_private(this.data.src)
+        if (url) {
+          prevPage.setData({
             [tempMode + 'Show']: false, // 显示图片
-            // [tempMode + 'Src']: this.data.src, // 临时照片路径
-            [tempMode + 'ImgUrl']: app.hashUrl + hash // 图片的哈希地址
+            [tempMode + 'Src']: this.data.src, // 临时照片路径
+            [tempMode + 'ImgUrl']: url // 图片的哈希地址
           })
         }
         wx.navigateBack({
