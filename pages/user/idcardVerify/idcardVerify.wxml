@@ -9,7 +9,7 @@
         <!-- 初始未上传图片= -->
         <image class="image" wx:if="{{ faceShow }}" mode="aspectFit" src="/pages/image/face.png"></image>
         <!-- 用户拍照完显示预览的图片 -->
-        <image class="image" wx:else mode="aspectFit" src="{{ faceImgUrl }}"></image>
+        <image class="image" wx:else mode="aspectFit" src="{{ faceSrc }}"></image>
       </view>
       
     </view>
