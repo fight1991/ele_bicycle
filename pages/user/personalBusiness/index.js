@@ -122,10 +122,11 @@ Page({
             url: '/pages/user/scanCode/scanCode?url=' + res,
           })
         } else if (res.includes('&change')){ // 说明扫的是备案人变更的二维码
-          let tempArr = res.split('&')
-          let tempStr = tempArr[1]
-          if (tempStr && tempStr == 'change') {
-            this.recordChange(tempArr[0])
+          let tempArr = res.split('&change')
+          let tokenStr = tempArr[0]
+          let idStr = tempArr[1]
+          if (tokenStr && idStr) {
+            this.recordChange(tokenStr, idStr)
           }
         } else {
           wx.showToast({
@@ -138,10 +139,10 @@ Page({
     })
   },
   // 车辆备案人变更扫码
-  async recordChange (token) {
+  async recordChange (token, id) {
     let { result, other } = await car_owner_change_scan({
       qrcodeValidityToken: token,
-      vehicleId: app.globalData.currentVehicleId
+      vehicleId: id
     })
     if (result) {
       // 解决在ios中弹框不显示问题

@@ -6,18 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name: '张三',
-    idcard: '121224241444',
-    trueIdcard: '',
-    hideStatus: true
-  },
-  switchIdCardStatus () {
-    let { hideStatus, idcard } = this.data
-    var tempStatus = !hideStatus
-    this.setData({
-      hideStatus: !hideStatus,
-      trueIdcard: tempStatus ? utils.hideText(idcard) : idcard
-    })
+
   },
   routeTo () {
     wx.navigateTo({
@@ -28,9 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      trueIdcard: utils.hideText(this.data.idcard)
-    })
+
   },
 
   /**

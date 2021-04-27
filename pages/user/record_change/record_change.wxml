@@ -17,9 +17,9 @@
       <image class="img" src="{{statusImg[status]}}" mode="widthFix"></image>
     </view>
     <view class="status-text">{{statusText[status]}}</view>
-    <view class="bottom-btns fix-bottom-btn">
-      <view class="fix-left" bindtap="cancelBtn">取消申请</view>
-      <view class="fix-right" bindtap="backToCenter">返回个人中心</view>
+    <view>
+      <fixBtn type="light" width="50vw" bindtap="cancelBtn">取消申请</fixBtn>
+      <fixBtn align="right" width="50vw" bindtap="backToCenter">返回个人中心</fixBtn>
     </view>
   </view>
 </view>

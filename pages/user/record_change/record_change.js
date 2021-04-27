@@ -106,46 +106,50 @@ Page({
       failReason: result.failReason
     })
     this.data.invoiceAuditingNum = result.invoiceAuditingNum
-    // 显示并存储二维码初始值
-    if (result.valid) {
-      this.data.initToken = result.qrcodeValidityToken
-      if (result.invoiceAuditingNum > 0) {
-        this.openModal(result.invoiceAuditingNum)
-      } else {
+    // 如果status有值说明二维码已经扫描
+    if (result.status) {
+      // 审核中
+      if (result.status == 'auditing') {
         this.setData({
-          qrcodeText: result.qrcodeValidityToken + '&change'
+          currentStep: 1
         })
+        this.clearTimer()
       }
-    }
-    // valid为true 二维码尚未被扫码或还在有效, 继续1s后开启轮询
-    if (result.valid) {
-      this.data.timer = setTimeout(() => {
-        this.startSearch(result.qrcodeValidityToken)
-      }, this.data.timeGap)
-    } else { // 否则失效
-      this.setData({
-        isRefresh: true
-      })
-      this.clearTimer()
-    }
-    // 41 -等待审核页面
-    if (result.status == 'auditing') {
-      this.setData({
-        currentStep: 1
-      })
-      this.clearTimer()
-    }
-    // 审核失败
-    if (result.status == 'failure') {
-      this.clearTimer()
-      // 跳转到公共状态的页面
-      this.routeOtherPage('fail', result)
-    }
-    // 审核成功
-    if (result.status == 'success') {
-      this.clearTimer()
-      // 跳转到公共状态的页面
-      this.routeOtherPage('success', result)
+      // 审核失败
+      if (result.status == 'failure') {
+        this.clearTimer()
+        // 跳转到公共状态的页面
+        this.routeOtherPage('fail', result)
+      }
+      // 审核成功
+      if (result.status == 'success') {
+        this.clearTimer()
+        // 跳转到公共状态的页面
+        this.routeOtherPage('success', result)
+      }
+    } else {
+      // 说明没有扫码, 判断二维码是否有效
+      // 显示并存储二维码初始值
+      if (result.valid) {
+        this.data.initToken = result.qrcodeValidityToken
+        if (result.invoiceAuditingNum > 0) {
+          this.openModal(result.invoiceAuditingNum)
+        } else {
+          this.setData({
+            qrcodeText: `${result.qrcodeValidityToken}&change${this.data.id}`
+          })
+          // 开启轮询
+          this.data.timer = setTimeout(() => {
+            this.startSearch(result.qrcodeValidityToken)
+          }, this.data.timeGap)
+        }
+      } else {
+        // 二维码失效
+        this.setData({
+          isRefresh: true
+        })
+        this.clearTimer()
+      }
     }
   },
   // 跳转另外几个状态的页面
