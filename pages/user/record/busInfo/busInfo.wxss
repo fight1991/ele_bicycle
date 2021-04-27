@@ -11,7 +11,7 @@
 
 /* 表单样式区域 */
 .outer {
-  padding: 0px 30rpx 130rpx;
+  /* padding: 0px 30rpx 130rpx; */
 }
 .form-area {
   font-size: 14px;

@@ -1,10 +1,10 @@
 <!--pages/user/record/record.wxml-->
 <scroll-view class="scroll-container" scroll-y="true">
+  <!-- 步骤区域 -->
+  <view class="step-area" hidden="{{!showStep}}">
+    <step stepList="{{stepList}}" step="{{currentStep}}"></step>
+  </view>
   <view class="record">
-    <!-- 步骤区域 -->
-    <view class="step-area" hidden="{{!showStep}}">
-      <step stepList="{{stepList}}" step="{{currentStep}}"></step>
-    </view>
     <!-- 完善车辆信息区域 -->
     <view class="bus-area" wx:if="{{currentStep==0}}">
       <busInfo id="busInfo" bindcheckStatus="getCheckStatus" bindnextStep="progressStatus"></busInfo>

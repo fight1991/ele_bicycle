@@ -6,7 +6,7 @@
     <view class="text-line">请先上传车辆合格证</view>
     <view class="upload-box">
       <view class="upload-item">
-        <upload width="120rpx"
+        <upload
           bindgetImgInfo="certOcr"
           model:img-src="{{urlCertification}}">
           <text>车辆合格证</text>

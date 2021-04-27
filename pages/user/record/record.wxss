@@ -7,12 +7,12 @@ page {
 }
 .scroll-container {
   height: 100%;
-  padding: 40rpx 30rpx 80rpx;
-  width: 100%;
-  box-sizing: border-box;
+}
+.record {
+  padding: 0px 30rpx 130rpx;
 }
 
-.record {
+.check-area {
   background-color: #fff;
   padding: 60rpx 0;
   border-radius: 8rpx;

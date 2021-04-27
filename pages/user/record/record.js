@@ -9,7 +9,7 @@ Page({
   data: {
     opType: 'add', // 页面操作类型
     showStep: true, // 是否显示进度条
-    currentStep: 0, // 当前操作步骤
+    currentStep: 1, // 当前操作步骤
     maskIsHidden: true, // 蒙层是否隐藏
     stepList: ['完善车辆信息', '等待审核'],
     checkStatus: 'auditing', // auditing:备案审查 failure:备案审核失败 waitInstall:待安装 success:审核成功
