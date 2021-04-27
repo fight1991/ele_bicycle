@@ -18,14 +18,14 @@ Page({
     failReason: '',
     invoiceAuditingNum: 0, // 存在多少审核单据
     initToken: '', // 生成二维码的初始值
-    status: 'changeAuditing', // changeAuditing:审核中 changeSuccess:变更成功中 changeFailure:变更失败
+    status: 'auditing', // auditing:审核中 success:变更成功中 failure:变更失败
     isRefresh: false, // 是否刷新二维码
     stepList: ['变更申请', '等待审核'],
     statusText: {
-      'changeAuditing': '您的变更申请审核中，请耐心等待',
+      'auditing': '您的变更申请审核中，请耐心等待',
     },
     statusImg: {
-      'changeAuditing': '/pages/image/check-ing.png'
+      'auditing': '/pages/image/check-ing.png'
     },
     id: ''
   },
@@ -129,20 +129,20 @@ Page({
       this.clearTimer()
     }
     // 41 -等待审核页面
-    if (result.status == 'changeAuditing') {
+    if (result.status == 'auditing') {
       this.setData({
         currentStep: 1
       })
       this.clearTimer()
     }
     // 审核失败
-    if (result.status == 'changeFailure') {
+    if (result.status == 'failure') {
       this.clearTimer()
       // 跳转到公共状态的页面
       this.routeOtherPage('fail', result)
     }
     // 审核成功
-    if (result.status == 'changeSuccess') {
+    if (result.status == 'success') {
       this.clearTimer()
       // 跳转到公共状态的页面
       this.routeOtherPage('success', result)
@@ -163,7 +163,7 @@ Page({
   },
   // 取消申请
   async cancelBtn () {
-    let { result } = await car_owner_change_cancel({ status: 2 })
+    let { result } = await car_owner_change_cancel(this.data.id)
     if (result) {
       wx.showToast({
         title: '取消成功!'

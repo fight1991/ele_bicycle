@@ -1,6 +1,6 @@
 <!--pages/user/loss/loss.wxml-->
 <view class="outer">
-  <view class="has-record" wx:if="{{status=='reportSuccess'}}">
+  <view class="has-record" wx:if="{{status=='success'}}">
     <view class="status-image">
       <image class="img" src="/pages/image/check-success.png" mode="widthFix"></image>
     </view>

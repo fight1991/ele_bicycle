@@ -9,7 +9,7 @@ Page({
    */
   data: {
     failReason: '', // 审核失败原因
-    status: 'reporting', // 状态 unreported:未报失 reporting:报失中 reportSuccess:报失成功
+    status: 'reporting', // 状态 unreported:未报失 auditing:报失中 success:报失成功
     id: ''
   },
 

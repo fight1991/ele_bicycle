@@ -1,6 +1,6 @@
 // pages/user/record/busInfo/busInfo.js
 var app = getApp()
-const { carInfo_read, carInfo_add } = app.api
+const { carInfo_read, carInfo_add, licenseOcr } = app.api
 import WxValidate from '../../../../utils/WxValidate'
 Component({
   /**
@@ -243,6 +243,22 @@ Component({
         this.triggerEvent('nextStep', result)
         // 审核状态查询
         this.triggerEvent('checkStatus')
+      }
+    },
+    // 车辆合格证ocr识别
+    async certOcr (e) {
+      let url = e.detail
+      if (!url) return
+      let { result } = await licenseOcr({
+        imageUrl: url
+      })
+      if (result) {
+        let { brand = '', motorNo = '', vin = '' } = result
+        this.setData({
+          'busInfo.brand': brand,
+          'busInfo.motorNo': motorNo,
+          'busInfo.vin': vin
+        })
       }
     },
     // 打开案例

@@ -12,21 +12,21 @@ Page({
     currentStep: 0, // 当前操作步骤
     maskIsHidden: true, // 蒙层是否隐藏
     stepList: ['完善车辆信息', '等待审核'],
-    checkStatus: 'filingReview', // filingReview:备案审查 auditFailure:备案审核失败 waitInstall:待安装 auditSuccess:审核成功
+    checkStatus: 'auditing', // auditing:备案审查 failure:备案审核失败 waitInstall:待安装 success:审核成功
     failReason: '', // 审核失败原因
     qrcodeInfo: '',
     statusText: {
-      'filingReview': '您的备案申请审核中，请耐心等待',
-      'auditFailure': '审核失败',
+      'auditing': '您的备案申请审核中，请耐心等待',
+      'failure': '审核失败',
       'waitInstall': '您的备案申报审核已经通过,请等待快递员送上车牌并完成安装,安装时展示如下安装码',
       'waitInstall': '您的备案申报审核已经通过,可去以下安装点完成车牌安装,安装时向安装人员展示如下安装码',
-      'auditSuccess': '审核成功'
+      'success': '审核成功'
     },
     statusImg: {
-      'filingReview': '/pages/image/check-ing.png',
-      'auditFailure': '/pages/image/check-fail.png',
+      'auditing': '/pages/image/check-ing.png',
+      'failure': '/pages/image/check-fail.png',
       'waitInstall': '/pages/image/check-success.png',
-      'auditSuccess': '/pages/image/check-success.png'
+      'success': '/pages/image/check-success.png'
     },
     currentCarInfo: {}, // 当前的车辆信息
   },
@@ -68,14 +68,14 @@ Page({
     })
     let status = result.status
     switch (status) {
-      case 'filingReview': // 完善车辆信息已完成, 等待审核显示
+      case 'auditing': // 完善车辆信息已完成, 等待审核显示
         this.setData({
           currentStep: 1,
           showStep: true,
           maskIsHidden: true
         })
         return
-      case 'auditFailure': // 审核失败, 重新备案
+      case 'failure': // 审核失败, 重新备案
         this.setData({
           currentStep: 3,
           showStep: false,
@@ -93,7 +93,7 @@ Page({
         maskIsHidden: true
       })
       return
-      case 'auditSuccess':
+      case 'success':
         this.setData({
           currentStep: 3,
           showStep: false,

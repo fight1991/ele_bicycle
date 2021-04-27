@@ -1,6 +1,6 @@
 // pages/components/swiper/swiper.js
 var app = getApp()
-const { carInfo_List, carInfo_delete, carInfo_detail } = app.api
+const { carInfo_List, carInfo_delete, carInfo_detail, checkDictionaryVersion, getDictionaryData } = app.api
 Component({
   /**
    * 组件的属性列表
@@ -23,10 +23,15 @@ Component({
     currentId: '', // 当前车辆id
     list: [],
     pageInfo: {
-      'filingReview': '/pages/user/record/record',
+      'auditing': '/pages/user/record/record',
       'waitInstall': '/pages/user/record/record',
       'reportedLost': '/pages/user/loss/loss',
-      'auditFailure': '/pages/user/record/record'
+      'failure': '/pages/user/record/record'
+    }
+  },
+  lifetimes: {
+    attached: async function () {
+      
     }
   },
   pageLifetimes: {

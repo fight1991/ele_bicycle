@@ -20,10 +20,10 @@ Page({
     },
     id: '', // 当前车辆id
     imgInfo: {
-      'scrapAuditing': '/pages/image/check-ing.png'
+      'auditing': '/pages/image/check-ing.png'
     },
     failReason: '',
-    status: 'scrapAuditing', // unScrap:未报废 scrapAuditing:审核中 termination:终止报废 scrapSuccess:报废成功 scrapFailure:报废失败
+    status: 'auditing', // unScrap:未报废 auditing:审核中 termination:终止报废 success:报废成功 failure:报废失败
     imgSrc: '' // 绑定组件upload中的imgSrc的值, 注意只能单层绑定
   },
 
@@ -58,13 +58,13 @@ Page({
           currentStep: 0,
         })
         result.vehicleImage && this.initImgInfo(result.vehicleImage)
-      } else if (status == 'scrapAuditing') {
+      } else if (status == 'auditing') {
         this.setData({
           currentStep: 1
         })
       } else {
         // 失败/成功
-        let type = status == scrapFailure ? 'fail' : 'success'
+        let type = status == failure ? 'fail' : 'success'
         wx.redirectTo({
           url: `/pages/user/result/result?pageFlag=scrap&pageTitle=一键报废&status=${type}&reason=${result.failReason}`,
         })

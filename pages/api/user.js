@@ -109,3 +109,12 @@ export const getMessageDetailApi = (data) => {
     data
   })
 }
+
+// ocr识别
+export const licenseOcr = (data) => {
+  return wx.$post_business({
+    url: '/user-center/ocr/license',
+    data,
+    loadingText: '图片识别中...'
+  })
+}

@@ -7,6 +7,7 @@
     <view class="upload-box">
       <view class="upload-item">
         <upload width="120rpx"
+          bindgetImgInfo="certOcr"
           model:img-src="{{urlCertification}}">
           <text>车辆合格证</text>
           <view class="upload-icon-btn" slot="icon" bindtap="openCase" data-case="cert">
