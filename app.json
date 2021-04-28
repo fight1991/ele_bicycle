@@ -1,32 +1,27 @@
 {
   "pages": [
-    "pages/login/index",
-    "pages/login/signIn",
     "pages/user/index",
-    "pages/user/personalBusiness/index",
     "pages/user/record/record",
     "pages/user/record/law/law",
     "pages/user/scanCode/scanCode",
     "pages/user/camera/front",
     "pages/user/camera/back",
-    "pages/user/center/center",
-    "pages/user/center/editPhone",
-    "pages/user/center/relogin",
-    "pages/user/adminBusiness/index",
-    "pages/user/adminBusiness/installer",
-    "pages/user/adminBusiness/details",
     "pages/user/record_change/record_change",
     "pages/user/record_change/other_status",
     "pages/user/loss/loss",
     "pages/user/scrap/scrap",
     "pages/user/insure/insure",
-    "pages/user/result/result",
-    "pages/user/idcardVerify/idcardVerify",
-    "pages/user/idcardVerify/livingVerify",
-    "pages/user/idcardVerify/livingResult"
+    "pages/user/result/result"
   ],
   "subPackages": [
     {
+      "root": "pages/login",
+      "name": "login",
+      "pages": [
+        "index",
+        "signIn"
+      ]
+    }, {
       "root": "pages/message",
       "name": "message",
       "pages": [
@@ -38,6 +33,36 @@
       "name": "setting",
       "pages": [
         "setting"
+      ]
+    }, {
+      "root": "pages/user/center",
+      "name": "center",
+      "pages": [
+        "center",
+        "editPhone",
+        "relogin"
+      ]
+    }, {
+      "root": "pages/user/idcardVerify",
+      "name": "idcardVerify",
+      "pages": [
+        "idcardVerify",
+        "livingVerify",
+        "livingResult"
+      ]
+    }, {
+      "root": "pages/user/personalBusiness",
+      "name": "personalBusiness",
+      "pages": [
+        "index"
+      ]
+    }, {
+      "root": "pages/user/adminBusiness",
+      "name": "adminBusiness",
+      "pages": [
+        "index",
+        "installer",
+        "details"
       ]
     }
   ],
