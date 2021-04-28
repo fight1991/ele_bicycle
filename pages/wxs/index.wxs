@@ -1,4 +1,5 @@
   var isIncludes = function (arr, prams) {
+    if (!arr) return false
     return arr.indexOf(prams) >= 0
   }
 
