@@ -1,0 +1,5 @@
+/* pages/user/livelihoodBusiness/index.wxss */
+@import '../style/common.wxss';
+.box {
+  padding: 30rpx;
+}

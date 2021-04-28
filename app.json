@@ -11,7 +11,8 @@
     "pages/user/loss/loss",
     "pages/user/scrap/scrap",
     "pages/user/insure/insure",
-    "pages/user/result/result"
+    "pages/user/result/result",
+    "pages/user/livelihoodBusiness/index"
   ],
   "subPackages": [
     {

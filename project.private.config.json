@@ -141,6 +141,12 @@
         {
           "name": "默认启动页",
           "pathName": "pages/login/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "民生行业业务",
+          "pathName": "pages/user/livelihoodBusiness/index",
           "scene": null
         }
       ]

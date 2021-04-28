@@ -27,7 +27,7 @@
         hidden="{{!tools.isIncludes(item.app, appVersion)}}"
         class="bus-item bg-img-base"
         style="background-image:url({{item.bg}})"
-        data-bustype="{{index+1}}">
+        data-page="{{item.page}}">
         <view class="left stopTap">
           <view class="head-title fs16">{{item.zh}}</view>
           <view class="head-title fs12 fc-ccc">{{item.en}}</view>

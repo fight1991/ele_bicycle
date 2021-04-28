@@ -1,0 +1,27 @@
+<!--pages/user/livelihoodBusiness/index.wxml-->
+
+<wxs src="/pages/wxs/index.wxs" module="tools"/>
+<view class="box">
+  <view class="name-area">
+    <name-idcard></name-idcard>
+  </view>
+  <!-- 轮播区域 -->
+  <my-swiper id="mySwiper" bindswitchSwiper="swiperChange"></my-swiper>
+  <view class="grid-box">
+    <block wx:for="{{opList}}" wx:key="pageFlag">
+      <view
+        class="block-item"
+        hidden="{{!tools.isIncludes(item.permission, currentStatus)}}"
+        data-page="{{item.pageFlag}}"
+        bindtap="{{item.clickEvent}}">
+        <view class="img-box">
+          <image class="img-box-item" src="{{item.icon}}" mode="cover"></image>
+        </view>
+        <view class="text">{{item.label}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+<!-- 实名认证提示弹框 -->
+<confirmDialog visible="{{verifyDialogVisible}}" title="身份认证" content="您还未进行身份认证,请先核实认证" bindclose="goToIdcardVerify"></confirmDialog>
+

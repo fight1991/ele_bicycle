@@ -16,29 +16,29 @@ Page({
         en: 'Personal Business',
         bg: utils.imgTobase64('/pages/image/bus-pers.png'),
         app: ['personal'],
-        permission: 1
+        page: 'personalBusiness'
       },{
         zh: '民生行业业务',
         en: 'Specific Industries',
         bg: utils.imgTobase64('/pages/image/bus-live.png'),
         app: ['personal', 'corp'],
-        permission: 0
+        page: 'livelihoodBusiness'
       },{
         zh: '单位业务',
         en: 'Enterprises and institutions',
         bg: utils.imgTobase64('/pages/image/bus-company.png'),
-        permission: 0
+        page: ''
       },{
         zh: '销售门店业务',
         en: 'Sales Store Business',
         bg: utils.imgTobase64('/pages/image/bus-owner.png'),
-        permission: 0
+        page: ''
       },{
         zh: '管理员业务',
         en: 'Administrator Business',
         bg: utils.imgTobase64('/pages/image/bus-admin.png'),
         app: ['personal'],
-        permission: 1
+        page: 'adminBusiness'
       },
     ]
   },
@@ -82,23 +82,18 @@ Page({
   },
   // 路由跳转
   routeTo (e) {
-    let { bustype } = e.target.dataset
-    if (bustype == 1) {
+    let { page } = e.target.dataset
+    if (page == 'personalBusiness') {
       // 订阅消息弹窗, 再路由跳转
       this.showSubscription(() => {
         wx.navigateTo({
           url: '/pages/user/personalBusiness/index',
         })
       })
-    } else if (bustype == 5) {
-      wx.navigateTo({
-        url: '/pages/user/adminBusiness/index',
-      })
     } else {
-      wx.showToast({
-        title: '开发中, 敬请期待',
-        icon: 'none',
-        duration: 1500
+      if (!page) return
+      wx.navigateTo({
+        url: `/pages/user/${page}/index`,
       })
     }
   },
