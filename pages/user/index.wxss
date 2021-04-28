@@ -8,6 +8,16 @@
   align-items: center;
   padding: 0 20rpx 20rpx;
 }
+.right-box, .switch-box {
+  display: flex;
+  align-items: center;
+}
+.switch-box {
+  padding-right: 40rpx;
+}
+.switch-text {
+  padding: 0 10rpx;
+}
 .iconfont-box {
   position: relative;
 }

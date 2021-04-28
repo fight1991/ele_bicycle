@@ -9,16 +9,19 @@ Page({
    */
   data: {
     messageNum: 0, // 消息数量
+    appVersion: 'personal', // personal个人版, corp企业版
     itemList: [
       {
         zh: '居民个人业务',
         en: 'Personal Business',
         bg: utils.imgTobase64('/pages/image/bus-pers.png'),
+        app: ['personal'],
         permission: 1
       },{
         zh: '民生行业业务',
         en: 'Specific Industries',
         bg: utils.imgTobase64('/pages/image/bus-live.png'),
+        app: ['personal', 'corp'],
         permission: 0
       },{
         zh: '单位业务',
@@ -34,6 +37,7 @@ Page({
         zh: '管理员业务',
         en: 'Administrator Business',
         bg: utils.imgTobase64('/pages/image/bus-admin.png'),
+        app: ['personal'],
         permission: 1
       },
     ]
@@ -50,6 +54,13 @@ Page({
         this.routeValid(res.code)
       })
     }
+  },
+  // 版本切换
+  switchVersion () {
+    let { appVersion } = this.data
+    this.setData({
+      appVersion: appVersion == 'personal' ? 'corp' : 'personal'
+    })
   },
   // 判断有没有成功订阅一条消息
   isOrderMessage (res, ids) {

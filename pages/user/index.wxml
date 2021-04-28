@@ -1,11 +1,20 @@
 <!--pages/user/index.wxml-->
+<wxs src="../wxs/index.wxs" module="tools"></wxs>
 <view class="box">
   <view class="center-row">
     <name-idcard></name-idcard>
-    <view class="iconfont-box" bindtap="goToMessagePage">
-      <iconfont icon="message"></iconfont>
-      <iconfont wx:if="{{messageNum > 0}}" class="dot-icon" icon="dot" color="#FF7D3C"></iconfont>
+   
+    <view class="right-box">
+      <view class="switch-box" bindtap="switchVersion">
+        <iconfont icon="switch" size="40rpx" color="#FF7D3C"></iconfont>
+        <text class="switch-text">{{appVersion=='personal' ? '企业版':'个人版'}}</text>
+      </view>
+      <view class="iconfont-box" bindtap="goToMessagePage">
+        <iconfont icon="message"></iconfont>
+        <iconfont wx:if="{{messageNum > 0}}" class="dot-icon" icon="dot" color="#FF7D3C"></iconfont>
+      </view>
     </view>
+    
   </view>
   <banner 
     name="张三"
@@ -14,7 +23,11 @@
   </banner>
   <view class="bussiness-box" bindtap="routeTo">
     <block wx:for="{{itemList}}" wx:key="zh">
-      <view class="bus-item bg-img-base{{item.permission==0? ' mask': ''}}" style="background-image:url({{item.bg}})" data-bustype="{{index+1}}">
+      <view
+        hidden="{{!tools.isIncludes(item.app, appVersion)}}"
+        class="bus-item bg-img-base"
+        style="background-image:url({{item.bg}})"
+        data-bustype="{{index+1}}">
         <view class="left stopTap">
           <view class="head-title fs16">{{item.zh}}</view>
           <view class="head-title fs12 fc-ccc">{{item.en}}</view>
