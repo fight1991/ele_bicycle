@@ -18,7 +18,7 @@
             <view class="img-box">
               <image class="img" src="/pages/image/vechicel.png"/>
             </view>
-            <view class="head-img-text">{{item.vehicleStatus}}</view>
+            <view class="head-img-text">{{dicVehicleStatus[item.vehicleStatus]}}</view>
           </view>
           <!-- 电动车基本信息 -->
           <view class="text-lines" bindtap="openDetailDialog">

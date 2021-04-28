@@ -1,6 +1,6 @@
 // pages/components/swiper/swiper.js
 var app = getApp()
-const { carInfo_List, carInfo_delete, carInfo_detail, checkDictionaryVersion, getDictionaryData } = app.api
+const { carInfo_List, carInfo_delete, carInfo_detail, translateDic, checkDictionaryVersion, getDictionaryData } = app.api
 Component({
   /**
    * 组件的属性列表
@@ -27,15 +27,19 @@ Component({
       'waitInstall': '/pages/user/record/record',
       'reportedLost': '/pages/user/loss/loss',
       'failure': '/pages/user/record/record'
-    }
+    },
+    dicVehicleStatus: {}, // 状态字典
   },
   lifetimes: {
-    attached: async function () {
-      
+    attached: function () {
+
     }
   },
   pageLifetimes: {
-    show () {
+    async show () {
+      this.setData({
+        dicVehicleStatus: await translateDic('vehicleStatus')
+      })
       this.getList()
     }
   },
