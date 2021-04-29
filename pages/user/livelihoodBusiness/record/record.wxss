@@ -35,4 +35,20 @@
   padding: 30rpx 0;
   color: #516dff;
 }
-
+.old-upgrade {
+  padding: 0 30rpx;
+  border-radius: 8rpx;
+  background-color: #fff;
+}
+.upgrade-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f5f5f5;
+}
+.upgrade-item {
+  padding: 30rpx 0;
+}
+.upgrade-item .right {
+  color: #707070;
+}

@@ -5,9 +5,26 @@
     <step stepList="{{stepList}}" step="{{currentStep}}"></step>
   </view>
   <view class="record">
-    <!-- 完善车辆信息区域 -->
-    <view class="bus-area" wx:if="{{currentStep==0}}">
+    <!-- 新车申报 完善车辆信息区域 -->
+    <view class="bus-area" wx:if="{{currentStep==0 && mode=='new'}}">
       <busInfo id="busInfo" bindcheckStatus="getCheckStatus" bindnextStep="progressStatus"></busInfo>
+    </view>
+    <!-- 旧车升级 -->
+    <view class="old-upgrade" wx:if="{{currentStep==0 && mode=='old'}}">
+      <picker bindchange="bindBrandPicker" range="{{brandList}}">
+        <view class="upgrade-item">
+          <view class="left">个人车辆</view>
+          <view class="right">
+            {{brandList[brandIndex]}}
+            <!-- <iconfont icon="arrow-right" size="40rpx" color="#ccc"/> -->
+          </view>
+        </view>
+      </picker>
+      <view class="upgrade-item">
+        <view class="left">升级方式</view>
+        <view class="right">定点安装</view>
+      </view>
+      <fixBtn bindtap="submitOldInfo">提交审核</fixBtn>
     </view>
     <!-- 绑定企业区域 -->
     <view class="bind-corp" wx:if="{{currentStep==1}}">
@@ -42,4 +59,4 @@
     </view>
   </view>
 </view>
-<fixBtn bindtap="routeToPage">返回民生行业首页</fixBtn>
+<fixBtn wx:if="{{currentStep!==0}}" bindtap="routeToPage">返回民生行业首页</fixBtn>

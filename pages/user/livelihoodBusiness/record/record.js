@@ -7,12 +7,15 @@ Page({
    */
   data: {
     opType: 'add', // 页面操作类型
+    mode: 'old',
     showStep: true, // 是否显示进度条
     currentStep: 0, // 当前操作步骤
     maskIsHidden: true, // 蒙层是否隐藏
     stepList: ['完善车辆信息', '绑定企业', '等待审核'],
     checkStatus: 'auditing', // auditing:备案审查 failure:备案审核失败 waitInstall:待安装 success:审核成功
     qrcodeInfo: '',
+    brandList: ['323', '3243'],
+    brandIndex: '',
     id: '', // 车辆id
     installType: 'MAIL', // 安装方式
     vin: '' // 编号
@@ -22,7 +25,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { opType, id, installType, vin } = options
+    let { opType, id, installType, vin, mode } = options
+    if (mode) {
+      this.setData({
+        mode
+      })
+    }
     this.busInfoComponent = this.selectComponent('#busInfo')
     if (opType == 'edit' || opType == 'look') {
       this.data.id = id
@@ -83,6 +91,27 @@ Page({
         })
         return
     }
+  },
+  // 弹出底部选项
+  showSheet () {
+    wx.showActionSheet({
+      itemList: ['1', '2', '3', '4'], // 选择方式
+      success: function(res) {
+        if (!res.cancel) {
+          console.log(res.tabIndex)
+        }
+      }
+    })
+  },
+  // 选择车牌
+  bindBrandPicker (e) {
+    this.setData({
+      brandIndex: e.detail.value
+    })
+  },
+  // 提交旧车审核
+  submitOldInfo () {
+
   },
   routeToPage () {
     wx.reLaunch({
