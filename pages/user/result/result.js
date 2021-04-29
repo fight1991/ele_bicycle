@@ -46,7 +46,7 @@ Page({
   async goToEdit () {
     if (result) {
       wx.redirectTo({
-        url: '/pages/user/record/record?opType=edit',
+        url: '/pages/user/personalBusiness/record/record?opType=edit',
       })
     }
   },

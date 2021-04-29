@@ -8,6 +8,7 @@ Page({
     currentStatus: 'none', // auditing:审核中 failure:审核失败、waitInstall:待安装 registered:已登记、reportedLost:已报失、scrapped:已报废
     bindingDialogVisible: false, // 绑定企业车弹框
     brandNumVisible: false, // 显示车牌的弹框
+    isOutCorpVisible: false, // 退出企业确认框
     brandNum: '',
     opList: [
       {
@@ -50,14 +51,26 @@ Page({
   onLoad: function (options) {
 
   },
+  // 去备案申报
+  goToRecord () {
+    wx.navigateTo({
+      url: './record/record',
+    })
+  },
   // 切换swiper
   swiperChange (e) {
     this.setData({
       currentStatus: e.detail.vehicleStatus
     })
   },
-  // 退出企业
+  // 点击退出企业按钮
   outCorpBtn () {
+    this.setData({
+      isOutCorpVisible: true
+    })
+  },
+  // 退出企业操作
+  outCorpOp () {
 
   },
   // 绑定企业车按钮

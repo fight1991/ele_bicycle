@@ -1,4 +1,4 @@
-// pages/user/record/law/law.js
+// pages/user/personalBusiness/record/law/law.js
 Page({
 
   /**

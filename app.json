@@ -1,8 +1,6 @@
 {
   "pages": [
     "pages/user/index",
-    "pages/user/record/record",
-    "pages/user/record/law/law",
     "pages/user/scanCode/scanCode",
     "pages/user/camera/front",
     "pages/user/camera/back",
@@ -62,7 +60,9 @@
       "root": "pages/user/personalBusiness",
       "name": "personalBusiness",
       "pages": [
-        "index"
+        "index",
+        "record/record",
+        "record/law/law"
       ]
     },
     {

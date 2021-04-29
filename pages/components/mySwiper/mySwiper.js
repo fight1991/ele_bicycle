@@ -23,10 +23,10 @@ Component({
     currentId: '', // 当前车辆id
     list: [],
     pageInfo: {
-      'auditing': '/pages/user/record/record',
-      'waitInstall': '/pages/user/record/record',
+      'auditing': '/pages/user/personalBusiness/record/record',
+      'waitInstall': '/pages/user/personalBusiness/record/record',
       'reportedLost': '/pages/user/loss/loss',
-      'failure': '/pages/user/record/record'
+      'failure': '/pages/user/personalBusiness/record/record'
     },
     dicVehicleStatus: {}, // 状态字典
   },
@@ -128,7 +128,7 @@ Component({
     editBtn (e) {
       let id = e.currentTarget.dataset.id
       wx.navigateTo({
-        url: '/pages/user/record/record?opType=edit&id=' + id,
+        url: '/pages/user/personalBusiness/record/record?opType=edit&id=' + id,
       })
     }
   }

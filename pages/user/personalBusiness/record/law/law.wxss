@@ -1,4 +1,4 @@
-/* pages/user/record/law/law.wxss */
+/* pages/user/personalBusiness/record/law/law.wxss */
 page {
   height: 100%;
 }

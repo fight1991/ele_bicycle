@@ -1,4 +1,4 @@
-/* pages/user/record/record.wxss */
+/* pages/user/personalBusiness/record/record.wxss */
 page {
   height: 100%;
 }

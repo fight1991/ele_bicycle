@@ -205,7 +205,7 @@ Component({
     },
     routeTo () {
       wx.navigateTo({
-        url: '/pages/user/record/law/law',
+        url: '/pages/user/personalBusiness/record/law/law',
       })
     },
     showModal(msg) {

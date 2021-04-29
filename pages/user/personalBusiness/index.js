@@ -93,7 +93,7 @@ Page({
       return
     }
     wx.navigateTo({
-      url: '/pages/user/record/record?op=add',
+      url: '/pages/user/personalBusiness/record/record?op=add',
     })
   },
   // 跳转到相关页面

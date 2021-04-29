@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "busInfo": "./busInfo/busInfo",
+    "busInfo": "/pages/user/common/busInfo/busInfo",
     "mask": "/pages/components/mask/mask",
     "agree": "./recordAgree/recordAgree",
     "qrcode": "/pages/components/qrcode/qrcode"

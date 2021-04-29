@@ -1,4 +1,4 @@
-<!--pages/user/record/record.wxml-->
+<!--pages/user/personalBusiness/record/record.wxml-->
 <scroll-view class="scroll-container" scroll-y="true">
   <!-- 步骤区域 -->
   <view class="step-area" hidden="{{!showStep}}">

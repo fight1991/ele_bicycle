@@ -1,4 +1,4 @@
-// pages/user/record/record.js
+// pages/user/personalBusiness/record/record.js
 var app = getApp()
 const { carInfo_detail, record_status } = app.api
 Page({

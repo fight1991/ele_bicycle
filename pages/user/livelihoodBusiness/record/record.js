@@ -7,7 +7,7 @@ Page({
    */
   data: {
     opType: 'add', // 页面操作类型
-    mode: 'old',
+    mode: 'new',
     showStep: true, // 是否显示进度条
     currentStep: 0, // 当前操作步骤
     maskIsHidden: true, // 蒙层是否隐藏

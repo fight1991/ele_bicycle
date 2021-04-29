@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "busInfo": "/pages/user/record/busInfo/busInfo",
+    "busInfo": "/pages/user/common/busInfo/busInfo",
     "step": "/pages/components/step/step",
     "qrcode": "/pages/components/qrcode/qrcode"
   },

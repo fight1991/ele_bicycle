@@ -42,4 +42,7 @@
 <confirmDialog visible="{{bindingDialogVisible}}" title="绑定企业车" content="请扫描车牌上的二维码" bindclose="scanBrandCode"></confirmDialog>
 <!-- 扫码后显示车牌弹框 -->
 <confirmDialog visible="{{brandNumVisible}}" title="发现车辆{{brandNum}}" content="是否发起绑定申请" bindclose="putBinding"></confirmDialog>
+<!-- 退出企业确认框 -->
+<confirmDialog visible="{{isOutCorpVisible}}" title="退出企业" content="确认后解除和公司的关联关系" bindclose="outCorpOp"></confirmDialog>
+
 
