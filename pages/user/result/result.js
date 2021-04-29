@@ -11,11 +11,11 @@ Page({
     from: 'inside', // 记录从哪个地方跳转过来, 默认为内部页面, server为服务通知跳转进来
     // 审核结果 共用页面, 备案申报服务通知,点击进来页面
     statusText: {
-      'fail': '审核失败',
+      'failure': '审核失败',
       'success': '审核成功'
     },
     statusImg: {
-      'fail': '/pages/image/check-fail.png',
+      'failure': '/pages/image/check-fail.png',
       'success': '/pages/image/check-success.png'
     },
     updateApi: {
@@ -60,7 +60,7 @@ Page({
       })
     } else {
       // 如果审核失败, 则点击已知晓按钮后, 改变状态, 成功则直接返回
-      if (status == 'fail') {
+      if (status == 'failure') {
         await updateApi[pageFlag]({ status: 4 })
       }
       wx.navigateBack({

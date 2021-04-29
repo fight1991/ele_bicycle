@@ -64,9 +64,8 @@ Page({
         })
       } else {
         // 失败/成功
-        let type = status == 'failure' ? 'fail' : 'success'
         wx.redirectTo({
-          url: `/pages/user/result/result?pageFlag=scrap&pageTitle=一键报废&status=${type}&reason=${result.failReason}`,
+          url: `/pages/user/result/result?pageFlag=scrap&pageTitle=一键报废&status=${status}&reason=${result.failReason}`,
         })
       }
     }

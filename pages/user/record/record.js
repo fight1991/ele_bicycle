@@ -13,21 +13,7 @@ Page({
     maskIsHidden: true, // 蒙层是否隐藏
     stepList: ['完善车辆信息', '等待审核'],
     checkStatus: 'auditing', // auditing:备案审查 failure:备案审核失败 waitInstall:待安装 success:审核成功
-    failReason: '', // 审核失败原因
     qrcodeInfo: '',
-    statusText: {
-      'auditing': '您的备案申请审核中，请耐心等待',
-      'failure': '审核失败',
-      'waitInstall': '您的备案申报审核已经通过',
-      'success': '审核成功'
-    },
-    // INSTALLATION MAIL
-    statusImg: {
-      'auditing': '/pages/image/check-ing.png',
-      'failure': '/pages/image/check-fail.png',
-      'waitInstall': '/pages/image/check-success.png',
-      'success': '/pages/image/check-success.png'
-    },
     id: '', // 车辆id
     installType: 'MAIL', // 安装方式
     vin: '' // 编号
@@ -71,8 +57,7 @@ Page({
   // 根据状态判断信息录入到哪个步骤
   getCurrentStepByStatus (result) {
     this.setData({
-      checkStatus: result.status,
-      failReason: result.failReason || ''
+      checkStatus: result.status
     })
     let status = result.status
     switch (status) {
@@ -83,35 +68,21 @@ Page({
           maskIsHidden: true
         })
         return
-      case 'failure': // 审核失败, 重新备案
+      case 'waitInstall': // 审核通过，邮寄车牌, 安装点安装车牌
+        let { vin, id } = this.data
         this.setData({
-          currentStep: 3,
+          currentStep: 2,
+          qrcodeInfo: `?vin=${vin}&vehicleId=${id}`,
           showStep: false,
           maskIsHidden: true
-        })
-        wx.redirectTo({
-          url: `/pages/user/result/result?pageFlag=record&pageTitle=备案申报&reason=${result.failReason}&status=${'fail'}`,
         })
         return
-      case 'waitInstall': // 审核通过，邮寄车牌, 安装点安装车牌
-      let { vin, id } = this.data
-      this.setData({
-        currentStep: 1,
-        qrcodeInfo: `?vin=${vin}&vehicleId=${id}`,
-        showStep: false,
-        maskIsHidden: true
-      })
-      return
-      case 'success':
-        this.setData({
-          currentStep: 3,
-          showStep: false,
-          maskIsHidden: true
-        })
+      case 'failure': // 审核失败, 重新备案
+      case 'success': // 审核成功
         wx.redirectTo({
-          url: `/pages/user/result/result?pageFlag=record&pageTitle=备案申报&status=success`,
+          url: `/pages/user/result/result?pageFlag=record&pageTitle=备案申报&reason=${result.failReason}&status=${status}`,
         })
-      return
+        return
     }
   },
   routeToPage () {

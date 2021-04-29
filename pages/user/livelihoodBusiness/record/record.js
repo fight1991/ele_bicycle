@@ -67,35 +67,21 @@ Page({
           maskIsHidden: true
         })
         return
-      case 'failure': // 审核失败, 重新备案
+      case 'waitInstall': // 审核通过，邮寄车牌, 安装点安装车牌
+        let { vin, id } = this.data
         this.setData({
-          currentStep: 3,
+          currentStep: 2,
+          qrcodeInfo: `?vin=${vin}&vehicleId=${id}`,
           showStep: false,
           maskIsHidden: true
-        })
-        wx.redirectTo({
-          url: `/pages/user/result/result?pageFlag=record&pageTitle=备案申报&reason=${result.failReason}&status=${'fail'}`,
         })
         return
-      case 'waitInstall': // 审核通过，邮寄车牌, 安装点安装车牌
-      let { vin, id } = this.data
-      this.setData({
-        currentStep: 1,
-        qrcodeInfo: `?vin=${vin}&vehicleId=${id}`,
-        showStep: false,
-        maskIsHidden: true
-      })
-      return
-      case 'success':
-        this.setData({
-          currentStep: 3,
-          showStep: false,
-          maskIsHidden: true
-        })
+      case 'failure': // 审核失败, 重新备案
+      case 'success': // 审核成功
         wx.redirectTo({
-          url: `/pages/user/result/result?pageFlag=record&pageTitle=备案申报&status=success`,
+          url: `/pages/user/result/result?pageFlag=record&pageTitle=备案申报&reason=${result.failReason}&status=${status}`,
         })
-      return
+        return
     }
   },
   routeToPage () {

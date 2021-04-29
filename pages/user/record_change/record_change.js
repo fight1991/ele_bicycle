@@ -115,17 +115,11 @@ Page({
         })
         this.clearTimer()
       }
-      // 审核失败
-      if (result.status == 'failure') {
+      // 审核失败 或 成功
+      if (result.status == 'failure' || result.status == 'success') {
         this.clearTimer()
         // 跳转到公共状态的页面
-        this.routeOtherPage('fail', result)
-      }
-      // 审核成功
-      if (result.status == 'success') {
-        this.clearTimer()
-        // 跳转到公共状态的页面
-        this.routeOtherPage('success', result)
+        this.routeOtherPage(result.status, result)
       }
     } else {
       // 说明没有扫码, 判断二维码是否有效
