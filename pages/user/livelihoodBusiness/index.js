@@ -24,7 +24,7 @@ Page({
         icon: '/pages/image/peopleChange.png',
         clickEvent: 'routeTo',
         pageFlag: 'record_change',
-        permission: [ 'none']
+        permission: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
       }, {
         label: '一键报失',
         icon: '/pages/image/baoshi.png',
