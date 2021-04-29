@@ -12,7 +12,8 @@
     "pages/user/scrap/scrap",
     "pages/user/insure/insure",
     "pages/user/result/result",
-    "pages/user/livelihoodBusiness/index"
+    "pages/user/livelihoodBusiness/index",
+    "pages/user/livelihoodBusiness/recordSelect"
   ],
   "subPackages": [
     {
@@ -22,20 +23,23 @@
         "index",
         "signIn"
       ]
-    }, {
+    },
+    {
       "root": "pages/message",
       "name": "message",
       "pages": [
         "messageDetail",
         "messageList"
       ]
-    }, {
+    },
+    {
       "root": "pages/setting",
       "name": "setting",
       "pages": [
         "setting"
       ]
-    }, {
+    },
+    {
       "root": "pages/user/center",
       "name": "center",
       "pages": [
@@ -43,7 +47,8 @@
         "editPhone",
         "relogin"
       ]
-    }, {
+    },
+    {
       "root": "pages/user/idcardVerify",
       "name": "idcardVerify",
       "pages": [
@@ -51,13 +56,15 @@
         "livingVerify",
         "livingResult"
       ]
-    }, {
+    },
+    {
       "root": "pages/user/personalBusiness",
       "name": "personalBusiness",
       "pages": [
         "index"
       ]
-    }, {
+    },
+    {
       "root": "pages/user/adminBusiness",
       "name": "adminBusiness",
       "pages": [

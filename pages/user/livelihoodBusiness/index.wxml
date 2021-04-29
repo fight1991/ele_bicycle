@@ -2,8 +2,24 @@
 
 <wxs src="/pages/wxs/index.wxs" module="tools"/>
 <view class="box">
-  <view class="name-area">
-    <name-idcard></name-idcard>
+  <!-- 退出企业按钮 -->
+  <view class="outBtn-box">
+    <view class="outBtn" bindtap="outCorpBtn">退出企业</view>
+  </view>
+  <!-- 数据信息 -->
+  <view class="data-display">
+    <view class="data-item">
+      <view class="data-head">12</view>
+      <view class="data-foot">骑手积分</view>
+    </view>
+    <view class="data-item">
+      <view class="data-head">12</view>
+      <view class="data-foot">行业车数</view>
+    </view>
+    <view class="data-item">
+      <view class="data-head">12</view>
+      <view class="data-foot">所属公司</view>
+    </view>
   </view>
   <!-- 轮播区域 -->
   <my-swiper id="mySwiper" bindswitchSwiper="swiperChange"></my-swiper>
@@ -22,6 +38,8 @@
     </block>
   </view>
 </view>
-<!-- 实名认证提示弹框 -->
-<confirmDialog visible="{{verifyDialogVisible}}" title="身份认证" content="您还未进行身份认证,请先核实认证" bindclose="goToIdcardVerify"></confirmDialog>
+<!-- 绑定企业车提示弹框 -->
+<confirmDialog visible="{{bindingDialogVisible}}" title="绑定企业车" content="请扫描车牌上的二维码" bindclose="scanBrandCode"></confirmDialog>
+<!-- 扫码后显示车牌弹框 -->
+<confirmDialog visible="{{brandNumVisible}}" title="发现车辆{{brandNum}}" content="是否发起绑定申请" bindclose="putBinding"></confirmDialog>
 

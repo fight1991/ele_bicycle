@@ -147,6 +147,12 @@
         {
           "name": "民生行业业务",
           "pathName": "pages/user/livelihoodBusiness/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "民生备案申报选项",
+          "pathName": "pages/user/livelihoodBusiness/recordSelect",
           "scene": null
         }
       ]
