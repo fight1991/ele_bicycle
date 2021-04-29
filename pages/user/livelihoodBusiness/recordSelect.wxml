@@ -1,2 +1,17 @@
 <!--pages/user/livelihoodBusiness/recordSelect.wxml-->
-<text>pages/user/livelihoodBusiness/recordSelect.wxml</text>
+<view class="box">
+  <view class="select-box">
+    <navigator url="./record/record?mode=new">
+      <view class="select-item one">
+        <view class="head">新车申报</view>
+        <view class="foot">对从事民生行业的新车申请行业车标识</view>
+      </view>
+    </navigator>
+    <navigator url="./record/record?mode=old">
+      <view class="select-item two">
+        <view class="head">居民车升级</view>
+        <view class="foot">非行业车升级成行业车, 流程轻便快捷</view>
+      </view>
+    </navigator>
+  </view>
+</view>

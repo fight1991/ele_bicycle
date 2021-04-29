@@ -153,6 +153,24 @@
         {
           "name": "民生备案申报选项",
           "pathName": "pages/user/livelihoodBusiness/recordSelect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "民生备案申报-完善车辆信息",
+          "pathName": "pages/user/livelihoodBusiness/record/record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "民生备案申报-备案审核中",
+          "pathName": "pages/user/livelihoodBusiness/record/checking",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "民生备案申报-审核通过等待安装",
+          "pathName": "pages/user/livelihoodBusiness/record/waitInstall",
           "scene": null
         }
       ]

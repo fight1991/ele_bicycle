@@ -1,8 +1,7 @@
 {
   "usingComponents": {
-    "busInfo": "./busInfo/busInfo",
-    "mask": "/pages/components/mask/mask",
-    "agree": "./recordAgree/recordAgree",
+    "busInfo": "/pages/user/record/busInfo/busInfo",
+    "step": "/pages/components/step/step",
     "qrcode": "/pages/components/qrcode/qrcode"
   },
   "navigationBarTitleText": "备案申报"

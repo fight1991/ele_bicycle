@@ -13,7 +13,8 @@
     "pages/user/insure/insure",
     "pages/user/result/result",
     "pages/user/livelihoodBusiness/index",
-    "pages/user/livelihoodBusiness/recordSelect"
+    "pages/user/livelihoodBusiness/recordSelect",
+    "pages/user/livelihoodBusiness/record/record"
   ],
   "subPackages": [
     {
@@ -88,7 +89,8 @@
     "mask": "/pages/components/mask/mask",
     "upload": "/pages/components/upload/upload",
     "successPage": "/pages/components/commonSuccess/commonSuccess",
-    "nodata": "/pages/components/nodata/nodata"
+    "nodata": "/pages/components/nodata/nodata",
+    "step": "/pages/components/step/step"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
