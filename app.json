@@ -9,10 +9,7 @@
     "pages/user/loss/loss",
     "pages/user/scrap/scrap",
     "pages/user/insure/insure",
-    "pages/user/result/result",
-    "pages/user/livelihoodBusiness/index",
-    "pages/user/livelihoodBusiness/recordSelect",
-    "pages/user/livelihoodBusiness/record/record"
+    "pages/user/result/result"
   ],
   "subPackages": [
     {
@@ -63,6 +60,15 @@
         "index",
         "record/record",
         "record/law/law"
+      ]
+    },
+    {
+      "root": "pages/user/livelihoodBusiness",
+      "name": "livelihoodBusiness",
+      "pages": [
+        "index",
+        "recordSelect",
+        "record/record"
       ]
     },
     {
