@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "card": "../common/formCard"
+  },
+  "navigationBarTitleText": "申请单"
+}

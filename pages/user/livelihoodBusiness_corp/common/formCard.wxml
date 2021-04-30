@@ -1,0 +1,12 @@
+<!--pages/user/livelihoodBusiness_corp/common/formCard.wxml-->
+<view class="box">
+  <view class="head">
+    <view class="head-left">{{title}}</view>
+    <view class="head-right{{' '+status}}">{{status}}</view>
+  </view>
+  <view class="middle">
+    <view class="middle-left">{{vin}}</view>
+    <view class="middle-right">{{brand}}</view>
+  </view>
+  <view class="foot">{{time}}</view>
+</view>

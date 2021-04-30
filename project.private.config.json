@@ -165,6 +165,12 @@
         {
           "name": "民生行业业务-企业版",
           "pathName": "pages/user/livelihoodBusiness_corp/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "申请单列表",
+          "pathName": "pages/user/livelihoodBusiness_corp/application/list",
           "scene": null
         }
       ]

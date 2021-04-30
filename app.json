@@ -10,7 +10,9 @@
     "pages/user/scrap/scrap",
     "pages/user/insure/insure",
     "pages/user/result/result",
-    "pages/user/livelihoodBusiness_corp/index"
+    "pages/user/livelihoodBusiness_corp/index",
+    "pages/user/livelihoodBusiness_corp/application/list",
+    "pages/user/livelihoodBusiness_corp/check/list"
   ],
   "subPackages": [
     {

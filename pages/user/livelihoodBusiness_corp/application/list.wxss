@@ -1,0 +1,23 @@
+/* pages/user/livelihoodBusiness_corp/application/list.wxss */
+.outer {
+  padding: 30rpx;
+}
+.search-box {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 10rpx;
+  margin-bottom: 30rpx;
+  border-radius: 8rpx;
+}
+.holder-class {
+  font-size: 24rpx;
+  color: #B3B3B3;
+}
+.search-input {
+  flex: 1;
+  height: 70rpx;
+}
+.prefix-icon, .suffix-icon {
+  padding: 0 10rpx;
+}
