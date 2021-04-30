@@ -161,6 +161,11 @@
           "pathName": "pages/user/livelihoodBusiness/record/record",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "民生行业业务-企业版",
+          "pathName": "pages/user/livelihoodBusiness_corp/index",
+          "scene": null
         }
       ]
     }

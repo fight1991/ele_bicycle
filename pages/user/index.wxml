@@ -22,7 +22,7 @@
     headTile1="电动二轮车居民个人电子备案证">
   </banner>
   <view class="bussiness-box" bindtap="routeTo">
-    <block wx:for="{{itemList}}" wx:key="zh">
+    <block wx:for="{{itemList}}" wx:key="id">
       <view
         hidden="{{!tools.isIncludes(item.app, appVersion)}}"
         class="bus-item bg-img-base"

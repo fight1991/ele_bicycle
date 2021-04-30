@@ -16,29 +16,41 @@ Page({
         en: 'Personal Business',
         bg: utils.imgTobase64('/pages/image/bus-pers.png'),
         app: ['personal'],
-        page: 'personalBusiness'
-      },{
+        page: 'personalBusiness',
+        id: 'page-1'
+      },{ // 个人版
         zh: '民生行业业务',
         en: 'Specific Industries',
         bg: utils.imgTobase64('/pages/image/bus-live.png'),
-        app: ['personal', 'corp'],
-        page: 'livelihoodBusiness'
+        app: ['personal'],
+        page: 'livelihoodBusiness',
+        id: 'page-2'
+      },{ // 企业版
+        zh: '民生行业业务',
+        en: 'Specific Industries',
+        bg: utils.imgTobase64('/pages/image/bus-live.png'),
+        app: ['corp'],
+        page: 'livelihoodBusiness_corp',
+        id: 'page-3'
       },{
         zh: '单位业务',
         en: 'Enterprises and institutions',
         bg: utils.imgTobase64('/pages/image/bus-company.png'),
-        page: ''
+        page: '',
+        id: 'page-4'
       },{
         zh: '销售门店业务',
         en: 'Sales Store Business',
         bg: utils.imgTobase64('/pages/image/bus-owner.png'),
-        page: ''
+        page: '',
+        id: 'page-5'
       },{
         zh: '管理员业务',
         en: 'Administrator Business',
         bg: utils.imgTobase64('/pages/image/bus-admin.png'),
         app: ['personal'],
-        page: 'adminBusiness'
+        page: 'adminBusiness',
+        id: 'page-6'
       },
     ]
   },

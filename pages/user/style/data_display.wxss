@@ -1,0 +1,20 @@
+.data-display {
+  display: flex;
+  justify-content: space-between;
+  padding: 40rpx;
+  background-color: #fff;
+  margin: 30rpx 0;
+  border-radius: 8rpx;
+  box-shadow: 0px 2px 16px rgba(21, 86, 160, 0.1);
+}
+.data-item {
+  text-align: center;
+}
+.data-head {
+  color: #3C79FF;
+  font-size: 28rpx;
+  padding-bottom: 10rpx;
+}
+.data-foot {
+  font-size: 24rpx;
+}

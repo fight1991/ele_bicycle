@@ -1,0 +1,15 @@
+/* pages/user/livelihoodBusiness_corp/index.wxss */
+@import "../style/common.wxss";
+@import "../style/data_display.wxss";
+.box {
+  padding: 30rpx;
+}
+.data-display {
+  margin-bottom: 0;
+}
+.no-give {
+  color: #FF7F21;
+}
+.company-name {
+  font-size: 32rpx;
+}

@@ -1,0 +1,39 @@
+
+<wxs src="/pages/wxs/index.wxs" module="tools"/>
+<view class="box">
+  <view class="company-name">快递公司</view>
+  <!-- 数据信息 -->
+  <view class="data-display">
+    <view class="data-item">
+      <view class="data-head">12</view>
+      <view class="data-foot">企业积分</view>
+    </view>
+    <view class="data-item">
+      <view class="data-head">12</view>
+      <view class="data-foot">企业车数</view>
+    </view>
+    <view class="data-item">
+      <view class="data-head">12</view>
+      <view class="data-foot">骑手数量</view>
+    </view>
+    <view class="data-item">
+      <view class="data-head no-give">12</view>
+      <view class="data-foot">未分配</view>
+    </view>
+  </view>
+  <view class="grid-box">
+    <block wx:for="{{opList}}" wx:key="pageFlag">
+      <view
+        class="block-item"
+        data-page="{{item.pageFlag}}"
+        bindtap="{{item.clickEvent}}">
+        <view class="img-box">
+          <image class="img-box-item" src="{{item.icon}}" mode="cover"></image>
+        </view>
+        <view class="text">{{item.label}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+
+
