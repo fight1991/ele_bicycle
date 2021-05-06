@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    details: {}
+    details: {},
+    lossVisible: false,
+    crapVisible: false
   },
 
   /**
@@ -20,7 +22,26 @@ Page({
       url: './assign',
     })
   },
+  // 打开报失确认框
+  openLossVisible () {
+    this.setData({
+      lossVisible: true
+    })
+  },
+  // 打开报废确认框
+  openCrapVisible () {
+    this.setData({
+      scrapVisible: true
+    })
+  },
+  // 报失操作
+  lossOp () {
+    
+  },
+  // 报废操作
+  scrapOp () {
 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

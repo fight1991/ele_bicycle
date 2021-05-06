@@ -39,6 +39,18 @@
 </view>
 <view class="fix-btn">
   <commonBtn width="220rpx" bindtap="riderAssign">骑手分配</commonBtn>
-  <commonBtn width="220rpx">一键报失</commonBtn>
-  <commonBtn width="220rpx">一键报废</commonBtn>
+  <commonBtn width="220rpx" bindtap="openLossVisible">一键报失</commonBtn>
+  <commonBtn width="220rpx" bindtap="openCrapVisible">一键报废</commonBtn>
 </view>
+<confirmDialog
+  visible="{{lossVisible}}"
+  title="一键报失"
+  content="确认之后无法恢复"
+  bindclose="lossOp">
+</confirmDialog>
+<confirmDialog
+  visible="{{scrapVisible}}"
+  title="一键报失"
+  content="确认之后无法恢复"
+  bindclose="scrapOp">
+</confirmDialog>
