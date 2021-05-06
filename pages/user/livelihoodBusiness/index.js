@@ -1,4 +1,6 @@
 // pages/user/livelihoodBusiness/index.js
+var app = getApp()
+const { riderScore, exitOrg, riderVehicleList } = app.api
 Page({
 
   /**
@@ -10,6 +12,7 @@ Page({
     brandNumVisible: false, // 显示车牌的弹框
     isOutCorpVisible: false, // 退出企业确认框
     brandNum: '',
+    scoreInfo: {}, // 积分信息
     opList: [
       {
         label: '备案申报',
@@ -49,7 +52,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getRiderScore()
+  },
+  // 获取积分信息
+  async getRiderScore () {
+    let { result } = await riderScore()
+    if (result) {
+      this.scoreInfo = result
+    }
   },
   // 去备案申报
   goToRecord () {
@@ -70,8 +80,16 @@ Page({
     })
   },
   // 退出企业操作
-  outCorpOp () {
-
+  async outCorpOp () {
+    let { result } = await exitOrg()
+    if (result) {
+      wx.showToast({
+        title: '退出成功!'
+      })
+      this.setData({
+        'scoreInfo.orgName': ''
+      })
+    }
   },
   // 绑定企业车按钮
   bindingMenu () {

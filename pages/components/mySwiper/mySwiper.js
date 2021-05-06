@@ -1,12 +1,25 @@
 // pages/components/swiper/swiper.js
 var app = getApp()
-const { carInfo_List, carInfo_delete, carInfo_detail, translateDic, checkDictionaryVersion, getDictionaryData } = app.api
+const { carInfo_List, carInfo_delete, riderVehicleList, riderVehicleDelete, translateDic, checkDictionaryVersion, getDictionaryData } = app.api
+const apiObj = {
+  personalBusiness: {
+    list: carInfo_List,
+    delete: carInfo_delete
+  },
+  livelihoodBusiness: {
+    list: riderVehicleList,
+    delete: riderVehicleDelete
+  }
+}
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    pageFlag: {
+      type: String,
+      value: 'personalBusiness'
+    }
   },
 
   /**
@@ -23,10 +36,18 @@ Component({
     currentId: '', // 当前车辆id
     list: [],
     pageInfo: {
-      'auditing': '/pages/user/personalBusiness/record/record',
-      'waitInstall': '/pages/user/personalBusiness/record/record',
-      'reportedLost': '/pages/user/loss/loss',
-      'failure': '/pages/user/personalBusiness/record/record'
+      personalBusiness: {
+        'auditing': '/pages/user/personalBusiness/record/record',
+        'waitInstall': '/pages/user/personalBusiness/record/record',
+        'reportedLost': '/pages/user/loss/loss',
+        'failure': '/pages/user/personalBusiness/record/record',
+      },
+      livelihoodBusiness: {
+        'auditing': '/pages/user/livelihoodBusiness/record/record',
+        'waitInstall': '/pages/user/livelihoodBusiness/record/record',
+        'reportedLost': '/pages/user/loss/loss',
+        'failure': '/pages/user/livelihoodBusiness/record/record'
+      }
     },
     dicVehicleStatus: {}, // 状态字典
   },
@@ -50,7 +71,8 @@ Component({
   methods: {
     // 查询列表
     async getList () {
-      let { result } = await carInfo_List()
+      let { pageFlag } = this.data
+      let { result } = await apiObj[pageFlag]['list']()
       if (result && result.length > 0) {
         var vehicleId = wx.getStorageSync('currentVehicleId')
         this.setData({
@@ -85,9 +107,9 @@ Component({
     },
     // 跳转到相关页面
     routeToPage () {
-      let { list, currentIndex, pageInfo } = this.data
+      let { list, currentIndex, pageInfo, pageFlag } = this.data
       let { vehicleStatus, vehicleId, vin, installationMethods} = list[currentIndex]
-      let page = pageInfo[vehicleStatus]
+      let page = pageInfo[pageFlag][vehicleStatus]
       if (!page) return
       wx.navigateTo({
         url: `${page}?opType=look&id=${vehicleId}&installType=${installationMethods}&vin=${vin}`
@@ -116,7 +138,8 @@ Component({
     },
     // 删除车辆信息
     async deleteCarInfo () {
-      let { result } = await carInfo_delete(this.data.currentId)
+      let { pageFlag } = this.data
+      let { result } = await apiObj[pageFlag]['delete'](this.data.currentId)
       if (result) {
         wx.showToast({
           title: '删除成功!'
@@ -127,8 +150,9 @@ Component({
     // 编辑按钮, 跳转到申报页面的完善车辆信息
     editBtn (e) {
       let id = e.currentTarget.dataset.id
+      let { pageFlag } = this.data
       wx.navigateTo({
-        url: '/pages/user/personalBusiness/record/record?opType=edit&id=' + id,
+        url: `/pages/user/${pageFlag}/record/record?opType=edit&id=${id}`,
       })
     }
   }

@@ -5,7 +5,9 @@
     <name-idcard></name-idcard>
   </view>
   <!-- 轮播区域 -->
-  <my-swiper id="mySwiper" bindswitchSwiper="swiperChange"></my-swiper>
+  <my-swiper id="mySwiper" bindswitchSwiper="swiperChange">
+    电动二轮车居民个人电子备案证
+  </my-swiper>
   <view class="grid-box">
     <block wx:for="{{opList}}" wx:key="pageFlag">
       <view

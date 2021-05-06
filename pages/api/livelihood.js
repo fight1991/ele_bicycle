@@ -1,3 +1,70 @@
+// 骑手公司信息api
+// 骑手积分api
+export const riderScore = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderOrg/getScoreInfo',
+    data
+  })
+}
+// 退出企业
+export const exitOrg = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderOrg/exit',
+    data
+  })
+}
+// 同意加入企业
+export const joinOrg = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderOrg/join',
+    data
+  })
+}
+// 获取企业信息
+export const orgInfo = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderOrg/orgInfo',
+    data
+  })
+}
+
+// 骑手车辆信息api>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 骑手 车牌列表
+export const riderBrandList = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderEbike/privateVehicleList',
+    data
+  })
+}
+// 骑手 新车申报
+export const riderVehicleCreate = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderEbike/createNew',
+    data
+  })
+}
+//骑手 删除车辆备案登记
+export const riderVehicleDelete = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderEbike/delete',
+    data
+  })
+}
+//骑手 车辆备案登记详情
+export const riderVehicleDetail = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderEbike/detail',
+    data
+  })
+}
+// 骑手 车辆列表
+export const riderVehicleList = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderEbike/list',
+    data
+  })
+}
+
 // 企业车辆信息api开始>>>>>>>>>>>>>>>>>>
 // 获取申请单列表
 export const getAuditList = (data, page) => {

@@ -9,20 +9,22 @@
   <!-- 数据信息 -->
   <view class="data-display">
     <view class="data-item">
-      <view class="data-head">12</view>
+      <view class="data-head">{{scoreInfo.score || '0'}}</view>
       <view class="data-foot">骑手积分</view>
     </view>
     <view class="data-item">
-      <view class="data-head">12</view>
+      <view class="data-head">{{scoreInfo.riderVehicleCount || '0'}}</view>
       <view class="data-foot">行业车数</view>
     </view>
     <view class="data-item">
-      <view class="data-head">12</view>
+      <view class="data-head">{{scoreInfo.orgName || '-'}}</view>
       <view class="data-foot">所属公司</view>
     </view>
   </view>
   <!-- 轮播区域 -->
-  <my-swiper id="mySwiper" bindswitchSwiper="swiperChange"></my-swiper>
+  <my-swiper id="mySwiper" pageFlag="livelihoodBusiness" bindswitchSwiper="swiperChange">
+    电动二轮车民生行业电子备案证
+  </my-swiper>
   <view class="grid-box">
     <block wx:for="{{opList}}" wx:key="pageFlag">
       <view

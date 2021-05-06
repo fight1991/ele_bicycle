@@ -1,7 +1,7 @@
 <!--pages/components/swiper/swiper.wxml-->
 <view class="swiper-box">
   <view wx:if="{{list.length==0}}" class="banner" style="background-image: url({{bannerBg}});">
-    <view class="title1">电动二轮车居民个人电子备案证</view>
+    <view class="title1"><slot></slot></view>
     <view class="title2">请进行备案申报</view>
   </view>
   <swiper
