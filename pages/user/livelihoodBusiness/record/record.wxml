@@ -1,5 +1,5 @@
 <!--pages/user/livelihoodBusiness/record/record.wxml-->
-<view class="outer">
+<view class="outer-box">
    <!-- 步骤区域 -->
   <view class="step-area" wx:if="{{showStep}}">
     <step stepList="{{stepList}}" step="{{currentStep}}"></step>

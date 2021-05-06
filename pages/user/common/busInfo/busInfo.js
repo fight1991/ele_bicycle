@@ -81,13 +81,13 @@ Component({
     // 表单规则初始化
     initValid () {
       let rules = {
+        urlCertification: {
+          required: true
+        },
         vin: {
           required: true
         },
         brand: {
-          required: true
-        },
-        installationMethods: {
           required: true
         },
         model: {
@@ -96,7 +96,7 @@ Component({
         properties: {
           required: true
         },
-        urlCertification: {
+        installationMethods: {
           required: true
         },
         urlInvoice: {
@@ -111,10 +111,10 @@ Component({
       }
       let messages = {
         urlCertification: {
-          required: '请上传车辆合格证'
+          required: '请先上传车辆合格证'
         },
         vin: {
-          required: '请扫车架号'
+          required: '请输入整车编号'
         },
         brand: {
           required: '请输入品牌'
