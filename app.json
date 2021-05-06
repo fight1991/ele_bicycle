@@ -14,7 +14,9 @@
     "pages/user/livelihoodBusiness_corp/application/list",
     "pages/user/livelihoodBusiness_corp/check/list",
     "pages/user/livelihoodBusiness_corp/rider/list",
-    "pages/user/livelihoodBusiness_corp/corp/list"
+    "pages/user/livelihoodBusiness_corp/corp/list",
+    "pages/user/livelihoodBusiness_corp/corp/detail",
+    "pages/user/livelihoodBusiness_corp/corp/assign"
   ],
   "subPackages": [
     {

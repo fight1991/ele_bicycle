@@ -1,0 +1,21 @@
+<!--pages/user/livelihoodBusiness_corp/corp/assign.wxml-->
+<view class="outer">
+  <searchInput placeHolder="请输入骑手姓名、联系方式"></searchInput>
+  <view class="list-box">
+    <block wx:for="3353535" wx:key="*this">
+      <listTitle
+        showSelectBox="{{true}}"
+        title="张三"
+        subTitle="124344">
+
+      </listTitle>
+    </block>
+  </view>
+</view>
+<fixBtn bindtap="confirmBtn">确定</fixBtn>
+<confirmDialog
+  bindclose="assignRider"
+  title="提示"
+  visible="{{confirmVisible}}"
+  content="确定后该车与骑手绑定, 若有原骑手,解除原骑手绑定关系">
+</confirmDialog>

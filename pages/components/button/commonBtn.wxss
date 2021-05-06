@@ -11,4 +11,5 @@
   font-size: 32rpx;
   margin: 40rpx 0;
   padding: 0 40rpx;
+  box-sizing: border-box;
 }

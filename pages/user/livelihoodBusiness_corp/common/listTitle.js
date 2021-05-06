@@ -20,7 +20,11 @@ Component({
       type: Boolean,
       value: true
     },
-    isSelect: {
+    selected: {
+      type: Boolean,
+      value: false
+    },
+    showSelectBox: {
       type: Boolean,
       value: false
     }
@@ -33,7 +37,6 @@ Component({
     start: 0, // 起始位置
     end: 0, // 结束位置
     isLeft: false, // 是否始左滑
-    isActive: false, // 是否选中
   },
 
   /**
@@ -45,17 +48,11 @@ Component({
       this.triggerEvent('delete', this.data.id)
     },
     boxTap () {
-      let { isLeft, isTouchToLeft, isSelect, isActive, id } = this.data
+      let { isLeft, isTouchToLeft, id } = this.data
       if (isLeft && isTouchToLeft) {
         this.setData({
           isLeft: false
         })
-      }
-      if (isSelect) {
-        this.setData({
-          isActive: !isActive
-        })
-        this.triggerEvent('selectChange', {id, isActive})
       }
     },
     touchstart (e) {

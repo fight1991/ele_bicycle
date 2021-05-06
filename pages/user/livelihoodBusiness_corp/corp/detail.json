@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "listTitle": "../common/listTitle"
+  },
+  "navigationBarTitleText": "企业车管理"
+}

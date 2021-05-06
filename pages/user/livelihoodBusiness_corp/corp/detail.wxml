@@ -1,0 +1,44 @@
+<!--pages/user/livelihoodBusiness_corp/corp/detail.wxml-->
+<view class="outer">
+  <!-- 电动车基本信息 -->
+  <view class="swiper-item-box">
+    <!-- 电动车静态图片 -->
+    <view class="head-img">
+      <view class="img-box">
+        <image class="img" src="/pages/image/vechicel.png"/>
+      </view>
+      <view class="head-img-text">{{12124}}</view>
+    </view>
+    <!-- 电动车基本信息 -->
+    <view class="text-lines">
+      <view class="text-line-item">
+        <view class="line-left">车牌号:</view>
+        <view class="line-right">{{details.plateNo || '-'}}</view>
+      </view>
+      <view class="text-line-item">
+        <view class="line-left">车辆品牌:</view>
+        <view class="line-right">{{details.brand}}</view>
+      </view>
+      <view class="text-line-item">
+        <view class="line-left">型号规格:</view>
+        <view class="line-right">{{details.model}}</view>
+      </view>
+      <view class="text-line-item">
+        <view class="line-left">整车编号:</view>
+        <view class="line-right">{{details.vin}}</view>
+      </view>
+      <view class="text-line-item">
+        <view class="line-left">电动机编号:</view>
+        <view class="line-right">{{details.motorNo}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="rider-info">
+    <listTitle isTouchToLeft="{{false}}" title="张三" subTitle="35353535"></listTitle>
+  </view>
+</view>
+<view class="fix-btn">
+  <commonBtn width="220rpx" bindtap="riderAssign">骑手分配</commonBtn>
+  <commonBtn width="220rpx">一键报失</commonBtn>
+  <commonBtn width="220rpx">一键报废</commonBtn>
+</view>

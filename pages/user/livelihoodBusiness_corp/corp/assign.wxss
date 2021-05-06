@@ -1,0 +1,7 @@
+/* pages/user/livelihoodBusiness_corp/corp/assign.wxss */
+.outer {
+  padding-bottom: 140rpx;
+}
+.list-box {
+  margin-top: 30rpx;
+}

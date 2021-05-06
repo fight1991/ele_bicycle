@@ -15,7 +15,7 @@
   <view wx:if="{{isTouchToLeft}}" class="delete-box" catchtap="deleteBtn" style="width:{{isLeft ? '168rpx' : 0}}">
     <view class="text">删除</view>
   </view>
-  <view wx:if="{{isSelect}}" class="select-box{{isActive ? ' dot-active' : ''}}">
+  <view wx:if="{{showSelectBox}}" class="select-box{{selected ? ' dot-active' : ''}}">
     <view class="dot"></view>
   </view>
 </view>

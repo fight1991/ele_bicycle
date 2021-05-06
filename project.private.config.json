@@ -183,6 +183,13 @@
         {
           "name": "企业车管理",
           "pathName": "pages/user/livelihoodBusiness_corp/corp/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "骑手分配",
+          "pathName": "pages/user/livelihoodBusiness_corp/corp/assign",
+          "query": "",
           "scene": null
         }
       ]
