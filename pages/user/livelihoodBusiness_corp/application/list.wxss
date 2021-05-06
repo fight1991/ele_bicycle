@@ -2,3 +2,21 @@
 .outer {
   padding: 30rpx;
 }
+.tab-box {
+  padding: 30rpx 0;
+  display: flex;
+  justify-content: space-around;
+}
+.tab-item {
+  color: #3C79FF;
+  text-align:center;
+  padding: 10rpx 0;
+  width: 240rpx;
+  border: 1px solid #3C79FF;
+  border-radius: 4rpx;
+}
+.active-tab {
+  background-color: #3C79FF;
+  border: none;
+  color: #fff;
+}

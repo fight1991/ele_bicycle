@@ -4,7 +4,13 @@
   <searchInput
     model:value="{{inputValue}}"
     bindconfirm="confirmBtn"
-    placeHolder="请输入骑手姓名、联系方式"></searchInput>
+    placeHolder="请输入骑手姓名、联系方式">
+  </searchInput>
+  <!-- tab切换区域 -->
+  <view class="tab-box" bindtap="tabClick">
+    <view class="tab-item{{activeIndex == 1 ? ' active-tab' : ''}}" data-index='1'>进行中</view>
+    <view class="tab-item{{activeIndex == 2 ? ' active-tab' : ''}}" data-index='2'>历史</view>
+  </view>
   <!-- 卡片列表区域 -->
   <block wx:for="{{list}}" wx:key="id">
     <card 

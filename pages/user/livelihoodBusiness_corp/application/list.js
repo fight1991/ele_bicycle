@@ -6,6 +6,7 @@ Page({
    */
   data: {
     inputValue: '',
+    activeIndex: 1, // 当前tab值
     list: [
       { 
         title: '企业车申报',
@@ -17,7 +18,7 @@ Page({
       }, { 
         title: '企业车申报',
         status: 'failure',
-        id: '1',
+        id: '2',
         vin: '235235325',
         brand: '江阴E9ii',
         time: '2020.03.03 12:00:00'
@@ -30,6 +31,15 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  // 点击tab
+  tabClick (e) {
+    console.log(e)
+    let index = e.target.dataset.index
+    if (this.data.activeIndex == index) return
+    this.setData({
+      activeIndex: index
+    })
   },
   // 搜索时确定按钮
   confirmBtn (e) {
