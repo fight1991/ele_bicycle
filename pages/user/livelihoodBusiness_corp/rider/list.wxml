@@ -2,9 +2,23 @@
 <view class="outer">
   <view class="head-box">
     <searchInput class="search-box" placeHolder="请输入骑手姓名、联系方式"></searchInput>
-    <iconfont class="icon-add" size="60rpx" icon="add-circle" color="#3C79FF"></iconfont>
+    <iconfont bindtap="showAddDialog" class="icon-add" size="60rpx" icon="add-circle" color="#3C79FF"></iconfont>
   </view>
   <block wx:for="12414143" wx:key="*this">
-    <listTitle></listTitle>
+    <listTitle binddelete="showDeleteDialog"></listTitle>
   </block>
 </view>
+<confirmDialog
+  title="确认删除"
+  content="确认后自动解除企业车关联关系"
+  visible="{{deleteVisible}}"
+  bindclose="deleteRider">
+</confirmDialog>
+<confirmDialog
+  visible="{{addVisible}}"
+  bindclose="addRider">
+  <view class="input-box" slot="content">
+    <input placeholder="请输入手机号" type="number" maxlength="11" model:value="{{mobile}}"/>
+  </view>
+</confirmDialog>
+

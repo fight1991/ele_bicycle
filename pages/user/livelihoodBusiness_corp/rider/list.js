@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    deleteVisible: false, // 删除弹框
+    addVisible: false, // 添加弹框
+    mobile: '', // 手机号
   },
 
   /**
@@ -14,7 +16,26 @@ Page({
   onLoad: function (options) {
 
   },
+  // 显示删除对话框
+  showDeleteDialog () {
+    this.setData({
+      deleteVisible: true
+    })
+  },
+  // 显示添加对话框
+  showAddDialog () {
+    this.setData({
+      addVisible: true
+    })
+  },
+  // 删除骑手
+  deleteRider () {
 
+  },
+  // 添加骑手
+  addRider () {
+    console.log(this.data.mobile)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

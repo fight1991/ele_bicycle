@@ -13,3 +13,7 @@
 .icon-add {
   margin-left: 30rpx;
 }
+.input-box {
+  /* border: 1px solid #ccc; */
+  text-align: left;
+}
