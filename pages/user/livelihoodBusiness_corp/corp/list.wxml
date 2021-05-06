@@ -1,0 +1,24 @@
+<!--pages/user/livelihoodBusiness_corp/corp/list.wxml-->
+<view class="outer">
+  <searchInput placeHolder="请输入车牌、骑手姓名"></searchInput>
+  <view class="tab-box">
+    <block wx:for="4144344" wx:key="*this">
+      <view class="box">
+        <view class="head-img">
+          <image class="static-img" src="/pages/image/vechicel.png"></image>
+        </view>
+        <view class="title-box">
+          <view class="main-title title">江阴</view>
+          <view class="sub-title title">
+            <view class="left">掌管着</view>
+            <view class="right">status</view>
+          </view>
+        </view>
+        <view class="arrow-area">
+          <iconfont icon="arrow-right" color="#ccc"></iconfont>
+        </view>
+      </view>
+    </block>
+    
+  </view>
+</view>

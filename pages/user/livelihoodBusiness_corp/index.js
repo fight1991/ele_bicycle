@@ -14,8 +14,8 @@ Page({
       }, {
         label: '企业车管理',
         icon: '/pages/image/peopleChange.png',
-        clickEvent: 'bindingMenu',
-        pageFlag: 'corpManage'
+        clickEvent: 'routeTo',
+        pageFlag: 'corp'
       }, {
         label: '骑手管理',
         icon: '/pages/image/baoshi.png',

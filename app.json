@@ -13,7 +13,8 @@
     "pages/user/livelihoodBusiness_corp/index",
     "pages/user/livelihoodBusiness_corp/application/list",
     "pages/user/livelihoodBusiness_corp/check/list",
-    "pages/user/livelihoodBusiness_corp/rider/list"
+    "pages/user/livelihoodBusiness_corp/rider/list",
+    "pages/user/livelihoodBusiness_corp/corp/list"
   ],
   "subPackages": [
     {

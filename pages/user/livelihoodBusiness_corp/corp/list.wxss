@@ -1,0 +1,43 @@
+/* pages/user/livelihoodBusiness_corp/corp/list.wxss */
+.outer {
+  padding: 30rpx;
+}
+.tab-box {
+  margin-top: 30rpx;
+}
+.box {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 50rpx 30rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  border-radius: 8rpx;
+  position: relative;
+}
+.static-img {
+  width: 100rpx;
+  height: 100rpx;
+}
+.title-box {
+  padding-left: 40rpx;
+  flex: 1;
+}
+.title {
+  padding: 6rpx 0;
+}
+.main-title {
+  color: #1D1D25;
+}
+.sub-title {
+  color: #808080;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 60rpx;
+}
+.arrow-area {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10rpx;
+}
