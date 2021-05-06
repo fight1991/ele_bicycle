@@ -1,0 +1,21 @@
+<!--pages/user/livelihoodBusiness_corp/common/listTitle.wxml-->
+<view class="box"
+  bindtap="boxTap"
+  bindtouchstart="touchstart"
+  bindtouchmove="touchmove"
+  bindtouchcancel="touchcancel"
+  bindtouchend="touchend">
+  <view class="head-img">
+    <image class="static-img" src="/pages/image/user_static_logo.png"></image>
+  </view>
+  <view class="title-box">
+    <view class="main-title title">{{title}}</view>
+    <view class="sub-title title">{{subTitle}}</view>
+  </view>
+  <view wx:if="{{isTouchToLeft}}" class="delete-box" catchtap="deleteBtn" style="width:{{isLeft ? '168rpx' : 0}}">
+    <view class="text">删除</view>
+  </view>
+  <view wx:if="{{isSelect}}" class="select-box{{isActive ? ' dot-active' : ''}}">
+    <view class="dot"></view>
+  </view>
+</view>

@@ -171,6 +171,12 @@
         {
           "name": "申请单列表",
           "pathName": "pages/user/livelihoodBusiness_corp/application/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "骑手管理列表",
+          "pathName": "pages/user/livelihoodBusiness_corp/rider/list",
           "scene": null
         }
       ]

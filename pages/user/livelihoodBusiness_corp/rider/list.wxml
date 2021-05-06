@@ -1,0 +1,10 @@
+<!--pages/user/livelihoodBusiness_corp/rider/list.wxml-->
+<view class="outer">
+  <view class="head-box">
+    <searchInput class="search-box" placeHolder="请输入骑手姓名、联系方式"></searchInput>
+    <iconfont class="icon-add" size="60rpx" icon="add-circle" color="#3C79FF"></iconfont>
+  </view>
+  <block wx:for="12414143" wx:key="*this">
+    <listTitle></listTitle>
+  </block>
+</view>

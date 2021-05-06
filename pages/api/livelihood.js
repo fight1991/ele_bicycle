@@ -35,8 +35,9 @@ export const orgVehicleRead = (data) => {
     data
   })
 }
+// 企业车备案申报列表
 export const orgVehicleList = (data) => {
-  return wx.$post({
+  return wx.$post_business({
     url: '/ebike-management/orgEbike/vehicleList',
     data
   })

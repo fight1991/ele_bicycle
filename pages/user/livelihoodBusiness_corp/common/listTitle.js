@@ -1,0 +1,91 @@
+// pages/user/livelihoodBusiness_corp/common/listTitle.js
+Component({
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+    id: {
+      type: String,
+      value: ''
+    },
+    title: {
+      type: String,
+      value: '-'
+    },
+    subTitle: {
+      type: String,
+      value: '-'
+    },
+    isTouchToLeft: { // 是否能够左滑
+      type: Boolean,
+      value: true
+    },
+    isSelect: {
+      type: Boolean,
+      value: false
+    }
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    start: 0, // 起始位置
+    end: 0, // 结束位置
+    isLeft: false, // 是否始左滑
+    isActive: false, // 是否选中
+  },
+
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    // 删除按钮
+    deleteBtn (e) {
+      this.triggerEvent('delete', this.data.id)
+    },
+    boxTap () {
+      let { isLeft, isTouchToLeft, isSelect, isActive, id } = this.data
+      if (isLeft && isTouchToLeft) {
+        this.setData({
+          isLeft: false
+        })
+      }
+      if (isSelect) {
+        this.setData({
+          isActive: !isActive
+        })
+        this.triggerEvent('selectChange', {id, isActive})
+      }
+    },
+    touchstart (e) {
+      // console.log(e)
+      if (!this.data.isTouchToLeft) return
+      let startP = e.changedTouches[0].clientX
+      console.log(startP)
+      this.data.start = startP
+    },
+    touchmove (e) {
+      if (!this.data.isTouchToLeft) return
+      // console.log(e)
+    },
+    touchcancel (e) {
+      if (!this.data.isTouchToLeft) return
+      // console.log(e)
+    },
+    touchend (e) {
+      if (!this.data.isTouchToLeft) return
+      // console.log(e)
+      let endP = e.changedTouches[0].clientX
+      console.log(endP)
+      let { start } = this.data
+      // 滑动距离大于100
+      if (endP < start && (start - endP) > 50) { // 说明是左滑
+        this.setData({
+          isLeft: true
+        })
+      }
+      console.log(e)
+    }
+  }
+})

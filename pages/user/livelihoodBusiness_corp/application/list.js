@@ -12,44 +12,7 @@ Page({
     pageSize: 5, // 每页请求数量
     total: 0, // 条目数
     loading: false, // 正在加载
-    list: [
-      { 
-        title: '企业车申报',
-        status: 'auditing',
-        id: '1',
-        vin: '235235325',
-        brand: '江阴E9ii',
-        time: '2020.03.03 12:00:00'
-      }, { 
-        title: '企业车申报',
-        status: 'failure',
-        id: '2',
-        vin: '235235325',
-        brand: '江阴E9ii',
-        time: '2020.03.03 12:00:00'
-      }, { 
-        title: '企业车申报',
-        status: 'failure',
-        id: '3',
-        vin: '235235325',
-        brand: '江阴E9ii',
-        time: '2020.03.03 12:00:00'
-      }, { 
-        title: '企业车申报',
-        status: 'failure',
-        id: '4',
-        vin: '235235325',
-        brand: '江阴E9ii',
-        time: '2020.03.03 12:00:00'
-      }, { 
-        title: '企业车申报',
-        status: 'failure',
-        id: '5',
-        vin: '235235325',
-        brand: '江阴E9ii',
-        time: '2020.03.03 12:00:00'
-      }
-    ],
+    list: [],
     searchStr: '', // 搜索字段
     type: 'toAudit', // 类型  当前tab值 toAudit待审核、history历史
   },
@@ -58,15 +21,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initList()
   },
   // 点击tab
   tabClick (e) {
     console.log(e)
-    let index = e.target.dataset.index
-    if (this.data.activeIndex == index) return
+    let type = e.target.dataset.type
+    if (this.data.type == type) return
     this.setData({
-      activeIndex: index
+      activeIndex: type
     })
     this.initList()
   },

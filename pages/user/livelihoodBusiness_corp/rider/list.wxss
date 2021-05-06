@@ -1,0 +1,15 @@
+/* pages/user/livelihoodBusiness_corp/rider/list.wxss */
+.outer {
+  padding: 30rpx;
+}
+.head-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.search-box {
+  flex: 1;
+}
+.icon-add {
+  margin-left: 30rpx;
+}

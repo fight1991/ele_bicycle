@@ -8,18 +8,21 @@
   </searchInput>
   <!-- tab切换区域 -->
   <view class="tab-box" bindtap="tabClick">
-    <view class="tab-item{{type == 'toAudit' ? ' active-tab' : ''}}" data-index='1'>进行中</view>
-    <view class="tab-item{{type == 'history' ? ' active-tab' : ''}}" data-index='2'>历史</view>
+    <view class="tab-item{{type == 'toAudit' ? ' active-tab' : ''}}" data-type='toAudit'>进行中</view>
+    <view class="tab-item{{type == 'history' ? ' active-tab' : ''}}" data-type='history'>历史</view>
   </view>
   <!-- 卡片列表区域 -->
-  <block wx:for="{{list}}" wx:key="id">
+  <block wx:for="{{list}}" wx:key="auditId">
     <card 
-      title="{{item.title}}"
+      title="{{item.auditType}}"
       vin="{{item.vin}}"
       status="{{item.status}}"
-      time="{{item.time}}"
-      brand="{{item.brand}}">
+      time="{{item.createTime}}"
+      brand="{{item.plateNo}}">
     </card>
   </block>
   <view class="has-more" wx:if="{{list.length > 0}}">{{hasMore ? '上拉加载更多' : '~到底啦~'}}</view>
+  <view wx:else>
+    <nodata>暂无数据</nodata>
+  </view>
 </view>

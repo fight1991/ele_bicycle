@@ -19,8 +19,8 @@ Page({
       }, {
         label: '骑手管理',
         icon: '/pages/image/baoshi.png',
-        clickEvent: 'riderManage',
-        pageFlag: 'riderManage'
+        clickEvent: 'routeTo',
+        pageFlag: 'rider'
       }, {
         label: '申请单',
         icon: '/pages/image/baofei.png',

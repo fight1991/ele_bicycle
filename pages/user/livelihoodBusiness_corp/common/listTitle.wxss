@@ -1,0 +1,63 @@
+/* pages/user/livelihoodBusiness_corp/common/listTitle.wxss */
+.box {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  border-radius: 8rpx;
+  position: relative;
+}
+.static-img {
+  width: 100rpx;
+  height: 100rpx;
+}
+.title-box {
+  padding-left: 40rpx;
+}
+.title {
+  padding: 6rpx 0;
+}
+.main-title {
+  color: #1D1D25;
+}
+.sub-title {
+  color: #808080;
+}
+.select-box {
+  position: absolute;
+  top: 50%;
+  right: 50rpx;
+  transform: translateY(-50%);
+  padding: 6rpx;
+  border: 1px solid #3C79FF;
+  border-radius: 50%;
+
+}
+.dot {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
+.dot-active .dot{
+  background-color: #3C79FF;
+}
+.delete-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #FF7F21;
+  color: #fff;
+  height: 100%;
+  width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  transition: all .3s;
+  overflow: hidden;
+}
+.text {
+  min-width: 100rpx;
+  text-align: center;
+}

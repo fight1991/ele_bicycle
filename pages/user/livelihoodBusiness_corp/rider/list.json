@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "listTitle": "../common/listTitle"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText": "骑手管理"
+}
