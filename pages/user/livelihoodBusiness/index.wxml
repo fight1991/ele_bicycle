@@ -3,7 +3,7 @@
 <wxs src="/pages/wxs/index.wxs" module="tools"/>
 <view class="box">
   <!-- 退出企业按钮 -->
-  <view class="outBtn-box">
+  <view class="outBtn-box" wx:if="{{scoreInfo.orgName}}">
     <view class="outBtn" bindtap="outCorpBtn">退出企业</view>
   </view>
   <!-- 数据信息 -->
