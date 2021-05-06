@@ -50,6 +50,13 @@ export const riderVehicleDelete = (data) => {
     data
   })
 }
+// 骑手备案申报后 查询详情
+export const riderVehicleRead = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderEbike/read',
+    data
+  })
+}
 //骑手 车辆备案登记详情
 export const riderVehicleDetail = (data) => {
   return wx.$post_business({
@@ -61,6 +68,13 @@ export const riderVehicleDetail = (data) => {
 export const riderVehicleList = (data) => {
   return wx.$post_business({
     url: '/ebike-management/riderEbike/list',
+    data
+  })
+}
+// 骑手车辆升级
+export const riderVehicleUpdate = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderEbike/upgrade',
     data
   })
 }

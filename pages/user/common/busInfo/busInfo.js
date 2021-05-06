@@ -1,13 +1,26 @@
 // pages/user/record/busInfo/busInfo.js
 var app = getApp()
-const { carInfo_read, carInfo_add, licenseOcr } = app.api
+const { carInfo_read, riderVehicleCreate, riderVehicleRead, carInfo_add, licenseOcr } = app.api
+const apiObj = {
+  personalBusiness: {
+    read: carInfo_read,
+    create: carInfo_add
+  },
+  livelihoodBusiness: {
+    read: riderVehicleRead,
+    create: riderVehicleCreate
+  }
+}
 import WxValidate from '../../../../utils/WxValidate'
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    pageFlag: {
+      type: String,
+      value: 'personalBusiness'
+    }
   },
 
   /**
@@ -142,7 +155,8 @@ Component({
     },
     // 初始化信息
     async initInfo (id) {
-      let { result } = await carInfo_read(id)
+      let { pageFlag } = this.data
+      let { result } = await apiObj[pageFlag]['read'](id)
       if (result) {
         this.setData({
           busInfo: result
@@ -217,13 +231,14 @@ Component({
     },
     // 提交按钮
     async submitBtn () {
-      this.data.busInfo.urlCertification = this.data.urlCertification || ''
-      this.data.busInfo.urlInvoice = this.data.urlInvoice || ''
-      this.data.busInfo.urlMotor = this.data.urlMotor || ''
-      this.data.busInfo.urlVin = this.data.urlVin || ''
+      let { busInfo, urlCertification, urlInvoice, urlMotor, urlVin, isChecked, pageFlag } = this.data
+      busInfo.urlCertification = urlCertification || ''
+      busInfo.urlInvoice = urlInvoice || ''
+      busInfo.urlMotor = urlMotor || ''
+      busInfo.urlVin = urlVin || ''
       var temp = {
         detail: {
-          value: this.data.busInfo
+          value: busInfo
         }
       }
       // 校验表单
@@ -233,12 +248,12 @@ Component({
         this.showModal(error.msg)
         return
       }
-      if (!this.data.isChecked) {
+      if (!isChecked) {
         this.showModal('请勾选车辆来源合法声明')
         return
       }
       // 发送请求
-      let { result } = await carInfo_add(this.data.busInfo)
+      let { result } = await apiObj[pageFlag]['create'](busInfo)
       if (result) {
         this.triggerEvent('nextStep', result)
         // 审核状态查询

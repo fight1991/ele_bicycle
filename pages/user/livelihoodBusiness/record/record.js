@@ -1,5 +1,5 @@
 var app = getApp()
-const { carInfo_detail, record_status } = app.api
+const { record_status, riderVehicleUpdate, riderBrandList, orgInfo } = app.api
 Page({
 
   /**
@@ -18,7 +18,8 @@ Page({
     brandIndex: '',
     id: '', // 车辆id
     installType: 'MAIL', // 安装方式
-    vin: '' // 编号
+    vin: '', // 编号
+    isBinding: false, // 是否绑定了企业
   },
 
   /**
@@ -30,6 +31,7 @@ Page({
       this.setData({
         mode
       })
+      this.getOldBrandList()
     }
     this.busInfoComponent = this.selectComponent('#busInfo')
     if (opType == 'edit' || opType == 'look') {
@@ -49,10 +51,27 @@ Page({
     }
   },
   // 控制状态条进度
-  progressStatus (e) {
+  async progressStatus (e) {
     this.setData({
       currentStep: 1
     })
+    // 查询用户是否加入企业
+    let { result } = await orgInfo()
+    if (result && result.orgId == -1) {
+      this.setData({
+        isBinding: true,
+        currentStep: 2
+      })
+    }
+  },
+  // 查询旧车牌列表
+  async getOldBrandList () {
+    let { result } = await riderBrandList()
+    if (result) {
+      this.setData({
+        brandList: result
+      })
+    }
   },
   // 审核状态查询
   async getCheckStatus (id) {
@@ -70,7 +89,7 @@ Page({
     switch (status) {
       case 'auditing': // 完善车辆信息已完成, 等待审核显示
         this.setData({
-          currentStep: 1,
+          currentStep: 2,
           showStep: true,
           maskIsHidden: true
         })
@@ -78,7 +97,7 @@ Page({
       case 'waitInstall': // 审核通过，邮寄车牌, 安装点安装车牌
         let { vin, id } = this.data
         this.setData({
-          currentStep: 2,
+          currentStep: 3,
           qrcodeInfo: `?vin=${vin}&vehicleId=${id}`,
           showStep: false,
           maskIsHidden: true
@@ -110,8 +129,12 @@ Page({
     })
   },
   // 提交旧车审核
-  submitOldInfo () {
+  async submitOldInfo () {
+    let { brandList, brandIndex } = this.data
+    let { result } = await riderVehicleUpdate(brandList[brandIndex])
+    if (result) {
 
+    }
   },
   routeToPage () {
     wx.reLaunch({

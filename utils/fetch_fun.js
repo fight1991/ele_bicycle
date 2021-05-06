@@ -39,7 +39,7 @@ const HandleBranch = (_res, other) => {
       return {result: null}
     default:
       wx.showToast({
-        title: _res.message,
+        title: _res.message || '返回数据格式错误',
         duration: 1500,
         icon:'none'
       })

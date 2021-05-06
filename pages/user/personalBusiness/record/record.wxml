@@ -7,7 +7,7 @@
   <view class="record">
     <!-- 完善车辆信息区域 -->
     <view class="bus-area" wx:if="{{currentStep==0}}">
-      <busInfo id="busInfo" bindcheckStatus="getCheckStatus" bindnextStep="progressStatus"></busInfo>
+      <busInfo id="busInfo" bindnextStep="progressStatus"></busInfo>
     </view>
     <!-- 等待审核区域 -->
     <view class="check-area" wx:if="{{currentStep==1}}">
