@@ -11,6 +11,8 @@ import * as usersApi from './pages/api/user'
 import * as recordsApi from './pages/api/record'
 // 字典相关api
 import * as dictApi from './pages/api/dictionary'
+// 民生行业业务 相关api
+import * as orgApi from './pages/api/livelihood'
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -54,7 +56,8 @@ App({
   api: {
     ...usersApi, // 用户相关
     ...recordsApi, // 车辆申报相关
-    ...dictApi // 字典相关
+    ...dictApi, // 字典相关
+    ...orgApi // 民生行业相关
   },
   getWechatCode () {
     return new Promise((relove, reject) => {

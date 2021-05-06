@@ -25,12 +25,12 @@ Page({
         label: '申请单',
         icon: '/pages/image/baofei.png',
         clickEvent: 'routeTo',
-        pageFlag: 'putMenu'
+        pageFlag: 'application'
       }, {
         label: '审核单',
         icon: '/pages/image/baofei.png',
         clickEvent: 'routeTo',
-        pageFlag: 'checkMenu'
+        pageFlag: 'check'
       }, {
         label: '扫码',
         icon: '/pages/image/scan_big1.png',
@@ -46,7 +46,13 @@ Page({
   onLoad: function (options) {
 
   },
-
+  routeTo (e) {
+    console.log(e)
+    let page = e.currentTarget.dataset.page
+    wx.navigateTo({
+      url: `/pages/user/livelihoodBusiness_corp/${page}/list`,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -2,14 +2,14 @@
 <view class="outer">
   <!-- 搜索框区域 -->
   <searchInput
-    model:value="{{inputValue}}"
+    model:value="{{searchStr}}"
     bindconfirm="confirmBtn"
     placeHolder="请输入骑手姓名、联系方式">
   </searchInput>
   <!-- tab切换区域 -->
   <view class="tab-box" bindtap="tabClick">
-    <view class="tab-item{{activeIndex == 1 ? ' active-tab' : ''}}" data-index='1'>进行中</view>
-    <view class="tab-item{{activeIndex == 2 ? ' active-tab' : ''}}" data-index='2'>历史</view>
+    <view class="tab-item{{type == 'toAudit' ? ' active-tab' : ''}}" data-index='1'>进行中</view>
+    <view class="tab-item{{type == 'history' ? ' active-tab' : ''}}" data-index='2'>历史</view>
   </view>
   <!-- 卡片列表区域 -->
   <block wx:for="{{list}}" wx:key="id">
@@ -21,4 +21,5 @@
       brand="{{item.brand}}">
     </card>
   </block>
+  <view class="has-more" wx:if="{{list.length > 0}}">{{hasMore ? '上拉加载更多' : '~到底啦~'}}</view>
 </view>

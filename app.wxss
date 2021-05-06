@@ -113,3 +113,9 @@ page {
 .border-bottom-none {
   border-bottom: none!important;
 }
+.has-more {
+  font-size: 22rpx;
+  text-align: center;
+  padding: 10rpx 0;
+  color: #ccc;
+}
