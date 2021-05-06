@@ -99,7 +99,8 @@
     "upload": "/pages/components/upload/upload",
     "successPage": "/pages/components/commonSuccess/commonSuccess",
     "nodata": "/pages/components/nodata/nodata",
-    "step": "/pages/components/step/step"
+    "step": "/pages/components/step/step",
+    "searchInput": "/pages/components/searchInput/searchInput"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

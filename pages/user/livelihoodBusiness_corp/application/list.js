@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hiddenClearIcon: true,
     inputValue: '',
     list: [
       { 
@@ -32,27 +31,11 @@ Page({
   onLoad: function (options) {
 
   },
-  // 清楚输入框的值
-  clearInput () {
-    this.setData({
-      inputValue: '',
-      hiddenClearIcon: true
-    })
+  // 搜索时确定按钮
+  confirmBtn (e) {
+    // 输入框中的值 e.detail
+    console.log(e.detail, '打印的值')
   },
-  // 输入值改变时
-  searchChange (e) {
-    let value = e.detail.value
-    if (value.trim().length > 0) {
-      this.setData({
-        hiddenClearIcon: false
-      })
-    } else {
-      this.setData({
-        hiddenClearIcon: true
-      })
-    }
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
