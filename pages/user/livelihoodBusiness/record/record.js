@@ -55,14 +55,9 @@ Page({
     this.setData({
       currentStep: 1
     })
-    // 查询用户是否加入企业
-    let { result } = await orgInfo()
-    if (result && result.orgId == -1) {
-      this.setData({
-        isBinding: true,
-        currentStep: 2
-      })
-    }
+    // 查询状态, 检查用户是否加入企业
+    let id = e.detail.vehicleId
+    this.getCheckStatus(id)
   },
   // 查询旧车牌列表
   async getOldBrandList () {
@@ -87,6 +82,13 @@ Page({
     })
     let status = result.status
     switch (status) {
+      case 'unsubmit':
+        this.setData({
+          currentStep: 1,
+          showStep: true,
+          maskIsHidden: true
+        })
+        return
       case 'auditing': // 完善车辆信息已完成, 等待审核显示
         this.setData({
           currentStep: 2,
@@ -96,9 +98,11 @@ Page({
         return
       case 'waitInstall': // 审核通过，邮寄车牌, 安装点安装车牌
         let { vin, id } = this.data
+        // 防止参数有中文字
+        let encodeVin = encodeURIComponent(vin)
         this.setData({
           currentStep: 3,
-          qrcodeInfo: `?vin=${vin}&vehicleId=${id}`,
+          qrcodeInfo: `?vin=${encodeVin}&vehicleId=${id}`,
           showStep: false,
           maskIsHidden: true
         })

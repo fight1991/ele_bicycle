@@ -21,7 +21,7 @@ Page({
       scanType: ['qrCode'],
       success: _res => {
         wx.navigateTo({
-          url: '/pages/user/adminBusiness/details' + _res.result,
+          url: './details'  + _res.result,
         })
       },
       fail: _ => {

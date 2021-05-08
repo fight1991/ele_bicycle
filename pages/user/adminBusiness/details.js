@@ -23,7 +23,7 @@ Page({
   onLoad: function (options) {
     let { vin, vehicleId } = options
     this.setData({
-      'formData.vin': vin,
+      'formData.vin': encodeURIComponent(vin),
       'formData.vehicleId': vehicleId
     })
   },

@@ -46,6 +46,9 @@ Page({
     this.setData({
       currentStep: 1
     })
+    // 查询状态
+    let id = e.detail.vehicleId
+    this.getCheckStatus(id)
   },
   // 审核状态查询
   async getCheckStatus (id) {
@@ -70,9 +73,11 @@ Page({
         return
       case 'waitInstall': // 审核通过，邮寄车牌, 安装点安装车牌
         let { vin, id } = this.data
+        // 防止参数有中文字
+        let encodeVin = encodeURIComponent(vin)
         this.setData({
           currentStep: 2,
-          qrcodeInfo: `?vin=${vin}&vehicleId=${id}`,
+          qrcodeInfo: `?vin=${encodeVin}&vehicleId=${id}`,
           showStep: false,
           maskIsHidden: true
         })
