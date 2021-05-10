@@ -1,20 +1,38 @@
 // pages/user/livelihoodBusiness_corp/corp/list.js
+var app = getApp()
+const { orgVehicleList } = app.api
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // this.getOrgVehicleList()
   },
-
+  itemTap (e) {
+    let { id, status } = e.target.dataset
+    if (status == 'registered') {
+      wx.navigateTo({
+        url: './detail?id=' + id,
+      })
+    }
+  },
+  // 获取企业车列表
+  async getOrgVehicleList () {
+    let { result } = await orgVehicleList()
+    if (result) {
+      this.setData({
+        list: result
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

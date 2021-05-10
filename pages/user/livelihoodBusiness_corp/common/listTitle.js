@@ -74,7 +74,6 @@ Component({
       if (!this.data.isTouchToLeft) return
       // console.log(e)
       let endP = e.changedTouches[0].clientX
-      console.log(endP)
       let { start } = this.data
       // 滑动距离大于100
       if (endP < start && (start - endP) > 50) { // 说明是左滑
@@ -82,7 +81,6 @@ Component({
           isLeft: true
         })
       }
-      console.log(e)
     }
   }
 })

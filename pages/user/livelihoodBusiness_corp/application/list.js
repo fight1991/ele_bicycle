@@ -9,7 +9,7 @@ Page({
   data: {
     hasMore: true,
     pageIndex: 0, // 当前页
-    pageSize: 5, // 每页请求数量
+    pageSize: 10, // 每页请求数量
     total: 0, // 条目数
     loading: false, // 正在加载
     list: [],

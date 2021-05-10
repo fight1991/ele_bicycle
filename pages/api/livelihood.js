@@ -116,7 +116,7 @@ export const riderScrapStatus = (data) => {
 
 // 企业车辆信息api开始>>>>>>>>>>>>>>>>>>
 // 获取申请单列表
-export const getAuditList = (data, page) => {
+export const getAuditList = ({ data, page }) => {
   return wx.$post_business({
     url: '/ebike-management/orgEbike/auditList',
     data,
@@ -151,11 +151,12 @@ export const orgVehicleRead = (data) => {
     data
   })
 }
-// 企业车备案申报列表
-export const orgVehicleList = (data) => {
+// 企业车 列表
+export const orgVehicleList = ({ data, page }) => {
   return wx.$post_business({
     url: '/ebike-management/orgEbike/vehicleList',
-    data
+    data,
+    page
   })
 }
 
@@ -164,6 +165,50 @@ export const orgVehicleList = (data) => {
 export const orgScore = (data) => {
   return wx.$post_business({
     url: '/ebike-management/org/getScoreInfo',
+    data
+  })
+}
+
+// 骑手列表
+export const riderList = (data) => {
+  return wx.$post_business({
+    url: '/user-center/orgUser/list',
+    data
+  })
+}
+// 分配骑手
+export const riderAssign = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/orgRiderManage/assignRider',
+    data
+  })
+}
+// 企业车报废
+export const corpVehicleScrap = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/orgScrap/create',
+    data
+  })
+}
+// 企业车报失
+export const corpVehicleLoss = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/orgReportLoss/create',
+    data
+  })
+}
+// 企业车报废状态查询
+export const corpScrapStatus = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/orgScrap/getStatus',
+    data
+  })
+}
+
+// 企业车报废取消
+export const corpScrapCancel = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/orgScrap/getStatus',
     data
   })
 }

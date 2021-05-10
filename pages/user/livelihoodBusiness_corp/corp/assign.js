@@ -1,21 +1,48 @@
 // pages/user/livelihoodBusiness_corp/corp/assign.js
+var app = getApp()
+const { riderList, riderAssign } = app.api
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    confirmVisible: false
+    confirmVisible: false,
+    currenteId: '', // 当前骑手的id
+    list: [],
+    vehicleId: '' // 车辆id
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let { vehicleId } = options
+    this.data.vehicleId = vehicleId
+  },
+  // 获取骑手列表
+  async riderList () {
+    let { result } = await riderList()
+    if (result) {
+      this.setData({
+        list: result
+      })
+    }
+  },
+  listItemTap (e) {
+    var id = e.target.dataset.id
+    this.setData({
+      currenteId: id
+    })
   },
   // 分配骑手
-  assignRider () {},
+  async assignRider () {
+    let { currenteId, vehicleId } = this.data
+    let { result } = await riderAssign({
+      riderId: currenteId,
+      vehicleId
+    })
+  },
   // 打开确认框
   confirmBtn () {
     this.setData({

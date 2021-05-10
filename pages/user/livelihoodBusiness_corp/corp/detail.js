@@ -1,4 +1,6 @@
 // pages/user/livelihoodBusiness_corp/corp/detail.js
+var app = getApp()
+const { corpVehicleLoss, orgVehicleDetail } = app.api
 Page({
 
   /**
@@ -7,19 +9,31 @@ Page({
   data: {
     details: {},
     lossVisible: false,
-    crapVisible: false
+    crapVisible: false,
+    id: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let { id } = options
+    this.data.id = id
+    this.getDetail()
+  },
+  // 获取车辆信息详情
+  async getDetail () {
+    let { result } = await orgVehicleDetail(this.data.id)
+    if (result) {
+      this.setData({
+        details: result
+      })
+    }
   },
   // 骑手分配
   riderAssign () {
     wx.navigateTo({
-      url: './assign',
+      url: './assign?vehicleId=' + this.data.id,
     })
   },
   // 打开报失确认框
@@ -35,12 +49,21 @@ Page({
     })
   },
   // 报失操作
-  lossOp () {
-    
+  async lossOp () {
+    let { id } = this.data
+    let { result } = await corpVehicleLoss(id)
+    if (result) {
+      // 刷新上一级的列表,并返回
+      wx.navigateBack({
+        delta: 1,
+      })
+    }
   },
   // 报废操作
   scrapOp () {
-
+    wx.navigateTo({
+      url: `/pages/user/scrap/scrap?pageFlag=livelihoodBusiness_corp&id=${this.data.id}`,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

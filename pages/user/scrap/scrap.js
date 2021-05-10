@@ -6,7 +6,10 @@ const {
   car_scrap_cancel,
   riderScrapStatus,
   riderScrapCancel,
-  riderScrap } = app.api
+  riderScrap,
+  corpScrapStatus,
+  corpVehicleScrap,
+  corpScrapCancel } = app.api
 const apiObj = {
   livelihoodBusiness: {
     search: riderScrapStatus,
@@ -17,6 +20,11 @@ const apiObj = {
     search: car_scrap_search,
     create: car_scrap_op,
     cancel: car_scrap_cancel
+  },
+  livelihoodBusiness_corp: {
+    search: corpScrapStatus,
+    create: corpVehicleScrap,
+    cancel: corpScrapCancel
   }
 }
 Page({
@@ -53,7 +61,7 @@ Page({
     let { opType, id, pageFlag } = options
     this.data.pageFlag = pageFlag
     // 点击一键报废进来
-    this.data.id = app.globalData.currentVehicleId
+    this.data.id = app.globalData.currentVehicleId || id
     this.getStatus()
   },
   // 初始化图片信息

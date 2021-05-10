@@ -1,13 +1,15 @@
 <!--pages/user/livelihoodBusiness_corp/corp/assign.wxml-->
 <view class="outer">
   <searchInput placeHolder="请输入骑手姓名、联系方式"></searchInput>
-  <view class="list-box">
+  <view class="list-box" bindtap="listItemTap">
     <block wx:for="3353535" wx:key="*this">
       <listTitle
+        selected="{{item.accountId == currentId}}"
+        data-id="{{item.accountId}}"
+        isTouchToLeft="{{false}}"
         showSelectBox="{{true}}"
-        title="张三"
-        subTitle="124344">
-
+        title="{{item.name}}"
+        subTitle="{{item.mobile}}">
       </listTitle>
     </block>
   </view>

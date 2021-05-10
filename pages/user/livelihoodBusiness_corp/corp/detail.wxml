@@ -7,7 +7,7 @@
       <view class="img-box">
         <image class="img" src="/pages/image/vechicel.png"/>
       </view>
-      <view class="head-img-text">{{12124}}</view>
+      <view class="head-img-text">{{details.status}}</view>
     </view>
     <!-- 电动车基本信息 -->
     <view class="text-lines">
