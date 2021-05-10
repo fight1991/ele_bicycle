@@ -1,23 +1,23 @@
 
 <wxs src="/pages/wxs/index.wxs" module="tools"/>
 <view class="box">
-  <view class="company-name">快递公司</view>
+  <view class="company-name">{{orgCoreInfo.orgName || '-'}}</view>
   <!-- 数据信息 -->
   <view class="data-display">
     <view class="data-item">
-      <view class="data-head">12</view>
+      <view class="data-head">{{orgCoreInfo.score || 0}}</view>
       <view class="data-foot">企业积分</view>
     </view>
     <view class="data-item">
-      <view class="data-head">12</view>
+      <view class="data-head">{{orgCoreInfo.orgVehicleCount || 0}}</view>
       <view class="data-foot">企业车数</view>
     </view>
     <view class="data-item">
-      <view class="data-head">12</view>
+      <view class="data-head">{{orgCoreInfo.riderCount || 0}}</view>
       <view class="data-foot">骑手数量</view>
     </view>
     <view class="data-item">
-      <view class="data-head no-give">12</view>
+      <view class="data-head no-give">{{orgCoreInfo.unassignedCount || 0}}</view>
       <view class="data-foot">未分配</view>
     </view>
   </view>

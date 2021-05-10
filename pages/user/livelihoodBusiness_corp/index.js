@@ -1,10 +1,13 @@
 // pages/user/livelihoodBusiness_corp/index.js
+var app = getApp()
+const { orgScore } = app.api
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    orgCoreInfo: {},
     opList: [
       {
         label: '企业车申报',
@@ -45,6 +48,15 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  // 获取公司积分等信息
+  async getOrgScoreInfo () {
+    let { result } = await orgScore()
+    if (result) {
+      this.setData({
+        orgCoreInfo: result
+      })
+    }
   },
   goToRecord () {
     wx.navigateTo({

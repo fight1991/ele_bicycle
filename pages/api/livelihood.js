@@ -158,3 +158,12 @@ export const orgVehicleList = (data) => {
     data
   })
 }
+
+
+// 公司信息 企业积分等
+export const orgScore = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/org/getScoreInfo',
+    data
+  })
+}
