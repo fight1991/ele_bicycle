@@ -15,11 +15,11 @@
     </view>
     <!-- 旧车升级 -->
     <view class="old-upgrade" wx:if="{{currentStep==0 && mode=='old'}}">
-      <picker bindchange="bindBrandPicker" range="{{brandList}}">
+      <picker bindchange="bindBrandPicker" range="{{brandList}}" range-key="plateNo">
         <view class="upgrade-item">
           <view class="left">个人车辆</view>
           <view class="right">
-            {{brandList[brandIndex]}}
+            {{brandList[brandIndex]['plateNo']}}
             <!-- <iconfont icon="arrow-right" size="40rpx" color="#ccc"/> -->
           </view>
         </view>

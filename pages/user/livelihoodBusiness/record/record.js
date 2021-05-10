@@ -8,13 +8,14 @@ Page({
   data: {
     opType: 'add', // 页面操作类型
     mode: 'new',
+    pageFlag: 'rider', // 骑手版、企业版
     showStep: true, // 是否显示进度条
     currentStep: 0, // 当前操作步骤
     maskIsHidden: true, // 蒙层是否隐藏
     stepList: ['完善车辆信息', '绑定企业', '等待审核'],
     checkStatus: 'auditing', // auditing:备案审查 failure:备案审核失败 waitInstall:待安装 success:审核成功
     qrcodeInfo: '',
-    brandList: ['323', '3243'],
+    brandList: [],
     brandIndex: '',
     id: '', // 车辆id
     installType: 'MAIL', // 安装方式
@@ -135,9 +136,10 @@ Page({
   // 提交旧车审核
   async submitOldInfo () {
     let { brandList, brandIndex } = this.data
-    let { result } = await riderVehicleUpdate(brandList[brandIndex])
+    let id = brandList[brandIndex]['vehicleId']
+    let { result } = await riderVehicleUpdate(id)
     if (result) {
-
+      this.getCheckStatus(id)
     }
   },
   routeToPage () {
