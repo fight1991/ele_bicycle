@@ -1,6 +1,5 @@
-import { record_status_update, car_owner_change_cancel, car_scrap_cancel } from '../../api/record'
+var app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -8,6 +7,7 @@ Page({
     status: 'success',
     reason: '', // 失败原因
     pageFlag: '', // change备案人变更, record备案申报, scrap一键报废, 记录是从哪个页面跳转过来的
+    recordFlag: '', // 哪个页面的备案申报
     from: 'inside', // 记录从哪个地方跳转过来, 默认为内部页面, server为服务通知跳转进来
     // 审核结果 共用页面, 备案申报服务通知,点击进来页面
     statusText: {
@@ -17,23 +17,20 @@ Page({
     statusImg: {
       'failure': '/pages/image/check-fail.png',
       'success': '/pages/image/check-success.png'
-    },
-    updateApi: {
-      scrap: car_scrap_cancel, // 一键报废取消
-      change: car_owner_change_cancel // 备案人变更取消
-    },
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { status, reason = '', pageFlag = '', pageTitle, from } = options
+    let { status, reason = '', pageFlag = '', recordFlag, pageTitle, from } = options
     from && (this.data.from = from)
     this.setData({
       status,
       reason,
-      pageFlag
+      pageFlag,
+      recordFlag
     })
     if (pageTitle) {
       wx.setNavigationBarTitle({
@@ -44,25 +41,23 @@ Page({
 
   // 备案申报审核失败, 点击改变状态后, 跳转到个人信息录入页面
   async goToEdit () {
+    let { recordFlag } = this.data
     if (result) {
       wx.redirectTo({
-        url: '/pages/user/personalBusiness/record/record?opType=edit',
+        url: `/pages/user/${recordFlag}/record/record?opType=edit`,
       })
     }
   },
   // 返回上一步
   async hasKnownBtn () {
-    let { status, updateApi, from, pageFlag} = this.data
+    let { from } = this.data
     if (from == 'server') {
       // 从服务通知跳转过来
       wx.reLaunch({
         url: '/pages/user/index?from=server',
       })
     } else {
-      // 如果审核失败, 则点击已知晓按钮后, 改变状态, 成功则直接返回
-      if (status == 'failure') {
-        await updateApi[pageFlag]({ status: 4 })
-      }
+      // 如果审核失败, 则点击已知晓按钮后, 直接返回
       wx.navigateBack({
         delta: 1
       })

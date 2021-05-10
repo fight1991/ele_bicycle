@@ -46,6 +46,11 @@ Page({
   onLoad: function (options) {
 
   },
+  goToRecord () {
+    wx.navigateTo({
+      url: './record/record',
+    })
+  },
   routeTo (e) {
     console.log(e)
     let page = e.currentTarget.dataset.page

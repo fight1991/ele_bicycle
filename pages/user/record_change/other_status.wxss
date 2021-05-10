@@ -1,5 +1,0 @@
-/* pages/user/record_change/other_status.wxss */
-@import "./style.wxss";
-.status-image {
-  margin-top: 100rpx;
-}

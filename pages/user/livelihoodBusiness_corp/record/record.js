@@ -1,6 +1,6 @@
 // pages/user/personalBusiness/record/record.js
 var app = getApp()
-const { carInfo_detail, record_status } = app.api
+const { record_status } = app.api
 Page({
 
   /**
@@ -85,7 +85,7 @@ Page({
       case 'failure': // 审核失败, 重新备案
       case 'success': // 审核成功
         wx.redirectTo({
-          url: `/pages/user/result/result?recordFlag=personalBusiness&pageFlag=record&pageTitle=备案申报&reason=${result.failReason}&status=${status}`,
+          url: `/pages/user/result/result?recordFlag=livelihoodBusiness_corp&pageFlag=record&pageTitle=备案申报&reason=${result.failReason}&status=${status}`,
         })
         return
     }

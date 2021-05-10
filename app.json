@@ -5,7 +5,6 @@
     "pages/user/camera/front",
     "pages/user/camera/back",
     "pages/user/record_change/record_change",
-    "pages/user/record_change/other_status",
     "pages/user/loss/loss",
     "pages/user/scrap/scrap",
     "pages/user/insure/insure",

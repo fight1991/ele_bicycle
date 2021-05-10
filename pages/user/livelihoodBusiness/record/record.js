@@ -111,7 +111,7 @@ Page({
       case 'failure': // 审核失败, 重新备案
       case 'success': // 审核成功
         wx.redirectTo({
-          url: `/pages/user/result/result?pageFlag=record&pageTitle=备案申报&reason=${result.failReason}&status=${status}`,
+          url: `/pages/user/result/result?recordFlag=livelihoodBusiness&pageFlag=record&pageTitle=备案申报&reason=${result.failReason}&status=${status}`,
         })
         return
     }

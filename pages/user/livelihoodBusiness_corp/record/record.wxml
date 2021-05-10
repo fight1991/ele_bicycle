@@ -1,0 +1,48 @@
+<!--pages/user/personalBusiness/record/record.wxml-->
+<view class="outer-box">
+  <!-- 步骤区域 -->
+  <view class="step-area" hidden="{{!showStep}}">
+    <step stepList="{{stepList}}" step="{{currentStep}}"></step>
+  </view>
+  <view class="record">
+    <!-- 完善车辆信息区域 -->
+    <view class="bus-area" wx:if="{{currentStep==0}}">
+      <busInfo
+        id="busInfo"
+        pageFlag="livelihoodBusiness_corp"
+        bindnextStep="progressStatus">
+      </busInfo>
+    </view>
+    <!-- 等待审核区域 -->
+    <view class="check-area" wx:if="{{currentStep==1}}">
+      <view class="status-image-box">
+        <view class="status-image">
+          <image class="img" src="/pages/image/check-ing.png" mode="widthFix"></image>
+        </view>
+        <view class="image-text">您的备案申请审核中, 请耐心等待</view>
+      </view>
+    </view>
+    <!-- 待安装区域 -->
+    <view class="check-area" wx:if="{{currentStep==2}}">
+      <view class="status-image-box">
+        <view class="status-image">
+          <image class="img" src="/pages/image/check-success.png" mode="widthFix"></image>
+        </view>
+        <view class="image-text">您的备案申报审核已经通过</view>
+      </view>
+      <view class="erweima-box">
+        <view class="erweima-box-txt" wx:if="{{installType=='MAIL'}}">请等待快递员送上车牌并完成安装</view>
+        <view class="erweima-box-txt" wx:else>请去到以下安装点完成车牌安装</view>
+        <view class="erweima-text">安装时展示如下二维码</view>
+        <qrcode width="{{300}}" height="{{300}}" value="{{qrcodeInfo}}"></qrcode>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 返回个人中心按钮-->
+<fixBtn bindtap="routeToPage" wx:if="{{currentStep!=0}}">返回个人中心</fixBtn>
+<!-- 蒙层 -->
+<mask onClickModalClose="{{false}}" id="agreeModal" initValue="{{maskIsHidden}}">
+  <!-- <agree bindcloseAgreeModal="closeAgreeModal"></agree> -->
+  无
+</mask>

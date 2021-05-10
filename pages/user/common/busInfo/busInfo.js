@@ -1,6 +1,6 @@
 // pages/user/record/busInfo/busInfo.js
 var app = getApp()
-const { carInfo_read, riderVehicleCreate, riderVehicleRead, carInfo_add, licenseOcr } = app.api
+const { carInfo_read, riderVehicleCreate, riderVehicleRead, carInfo_add, licenseOcr, orgVehicleRead, orgRecord } = app.api
 const apiObj = {
   personalBusiness: {
     read: carInfo_read,
@@ -9,6 +9,10 @@ const apiObj = {
   livelihoodBusiness: {
     read: riderVehicleRead,
     create: riderVehicleCreate
+  },
+  livelihoodBusiness_corp: {
+    read: orgVehicleRead,
+    create: orgRecord
   }
 }
 import WxValidate from '../../../../utils/WxValidate'
