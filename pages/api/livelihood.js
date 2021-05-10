@@ -43,6 +43,13 @@ export const riderVehicleCreate = (data) => {
     data
   })
 }
+// 绑定企业车
+export const riderBingCorp = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderEbike/bind',
+    data
+  })
+}
 //骑手 删除车辆备案登记
 export const riderVehicleDelete = (data) => {
   return wx.$post_business({
@@ -71,10 +78,38 @@ export const riderVehicleList = (data) => {
     data
   })
 }
+// 骑手 车辆挂失
+export const riderLoss = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderReportLoss/create',
+    data
+  })
+}
 // 骑手车辆升级
 export const riderVehicleUpdate = (data) => {
   return wx.$post_business({
     url: '/ebike-management/riderEbike/upgrade',
+    data
+  })
+}
+// 骑手 车辆报废申请
+export const riderScrap = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderScrap/create',
+    data
+  })
+}
+// 骑手 车辆报废取消申请
+export const riderScrapCancel = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderScrap/delete',
+    data
+  })
+}
+// 骑手 获取车辆报废状态
+export const riderScrapStatus = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderScrap/getStatus',
     data
   })
 }

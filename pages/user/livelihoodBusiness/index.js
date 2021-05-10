@@ -1,6 +1,6 @@
 // pages/user/livelihoodBusiness/index.js
 var app = getApp()
-const { riderScore, exitOrg, riderVehicleList } = app.api
+const { riderScore, exitOrg, riderVehicleList, riderLoss, riderBingCorp } = app.api
 Page({
 
   /**
@@ -52,6 +52,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.mySwiper = this.selectComponent('#mySwiper')
     this.getRiderScore()
   },
   // 获取积分信息
@@ -64,8 +65,40 @@ Page({
   // 去备案申报
   goToRecord () {
     wx.navigateTo({
-      url: './record/record',
+      url: './recordSelect',
     })
+  },
+  // 跳转到相关页面
+  async routeTo (e) {
+    let { page } = e.currentTarget.dataset
+    let route = `/pages/user/${page}/${page}?pageFlag=livelihoodBusiness`
+    if (page == 'loss') {
+      // 弹框提醒
+      this.openLossConfirmMmodal()
+    } else {
+      wx.navigateTo({
+        url: route
+      })
+    }
+  },
+  // 一键报失确认框
+  openLossConfirmMmodal () {
+    wx.showModal({
+      title: '提示',
+      content: '您确定要报失吗?',
+      success: async res => {
+        if (res.confirm) {
+          this.lossOp()
+        }
+      } 
+    })
+  },
+  // 一键报失
+  async lossOp () {
+    let { result } = await riderLoss(app.globalData.currentVehicleId)
+    if (result) {
+      this.mySwiper.getList()
+    }
   },
   // 切换swiper
   swiperChange (e) {
@@ -117,9 +150,14 @@ Page({
       }
     })
   },
-  // 绑定申请
-  putBinding () {
-
+  // 绑定企业车api
+  async bindCorpVechicel () {
+    let { result } = await riderBingCorp(this.data.brandNum)
+    if (result) {
+      wx.showToast({
+        title: '绑定成功!',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

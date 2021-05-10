@@ -1,7 +1,24 @@
 // pages/user/scrap/scrap.js
 var app = getApp()
-const { car_scrap_search, car_scrap_op, car_scrap_cancel } = app.api
-
+const { 
+  car_scrap_search,
+  car_scrap_op,
+  car_scrap_cancel,
+  riderScrapStatus,
+  riderScrapCancel,
+  riderScrap } = app.api
+const apiObj = {
+  livelihoodBusiness: {
+    search: riderScrapStatus,
+    create: riderScrap,
+    cancel: riderScrapCancel
+  },
+  personalBusiness: {
+    search: car_scrap_search,
+    create: car_scrap_op,
+    cancel: car_scrap_cancel
+  }
+}
 Page({
 
   /**
@@ -13,6 +30,7 @@ Page({
     invoiceAuditingNum: 0,
     textNum: 140,
     initNum: 140,
+    pageFlag: 'personalBusiness',
     formData: {
       reason: '',
       vehicleImage: '',
@@ -32,7 +50,8 @@ Page({
    */
   onLoad: function (options) {
     // 点击轮播图进来
-    let { opType, id } = options
+    let { opType, id, pageFlag } = options
+    this.data.pageFlag = pageFlag
     // 点击一键报废进来
     this.data.id = app.globalData.currentVehicleId
     this.getStatus()
@@ -45,7 +64,8 @@ Page({
   },
   // 车辆状态查询
   async getStatus () {
-    let { result } = await car_scrap_search(this.data.id)
+    let { pageFlag } = this.data
+    let { result } = await apiObj[pageFlag]['search'](this.data.id)
     this.handleStatus(result)
   },
   // 处理状态分支
@@ -53,7 +73,8 @@ Page({
     if (result) {
       let status = result.status
       this.setData(result)
-      if (status == 'unScrap') {
+      // 如果status为空值, 说明还未报废
+      if (status == '') {
         this.setData({
           currentStep: 0,
         })
@@ -72,7 +93,8 @@ Page({
   },
   // 取消申请
   async cancelBtn () {
-    let { result } = await car_scrap_cancel(this.data.id)
+    let { pageFlag } = this.data
+    let { result } = await apiObj[pageFlag]['cancel'](this.data.id)
     if (result) {
       wx.showToast({
         title: '取消成功',
@@ -108,9 +130,10 @@ Page({
   },
   // 表单提交
   async submitForm () {
+    let { pageFlag } = this.data
     this.data.formData.vehicleImage = this.data.imgSrc
     this.data.formData.vehicleId = app.globalData.currentVehicleId
-    let { result } = await car_scrap_op(this.data.formData)
+    let { result } = await apiObj[pageFlag]['create'](this.data.formData)
     if (result) {
       this.setData({
         currentStep: 1
