@@ -41,7 +41,6 @@ Page({
   },
   // 删除骑手
   async deleteRider (e) {
-    console.log(this.data.deleteId)
     let { result } = await riderDelete(this.data.deleteId)
     if (result) {
       let { list, deleteId } = this.data
