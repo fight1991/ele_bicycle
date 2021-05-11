@@ -6,13 +6,7 @@ export const riderScore = (data) => {
     data
   })
 }
-// 退出企业
-export const exitOrg = (data) => {
-  return wx.$post_business({
-    url: '/ebike-management/riderOrg/exit',
-    data
-  })
-}
+
 // 同意加入企业
 export const joinOrg = (data) => {
   return wx.$post_business({
@@ -280,7 +274,7 @@ export const refuseOrg = (data) => {
   })
 }
 // 退出企业
-export const outOrg = (data) => {
+export const exitOrg = (data) => {
   return wx.$post_business({
     url: '/user-center/orgUser/leave',
     data

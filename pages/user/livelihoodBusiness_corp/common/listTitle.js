@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    id: {
+    accountId: {
       type: String,
       value: ''
     },
@@ -45,7 +45,7 @@ Component({
   methods: {
     // 删除按钮
     deleteBtn (e) {
-      this.triggerEvent('delete', this.data.id)
+      this.triggerEvent('delete', this.data.accountId)
     },
     boxTap () {
       let { isLeft, isTouchToLeft, id } = this.data
@@ -59,7 +59,6 @@ Component({
       // console.log(e)
       if (!this.data.isTouchToLeft) return
       let startP = e.changedTouches[0].clientX
-      console.log(startP)
       this.data.start = startP
     },
     touchmove (e) {

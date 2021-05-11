@@ -12,7 +12,7 @@
   </view>
   <block wx:for="{{list}}" wx:key="accountId">
     <listTitle
-      id="{{item.accountId}}"
+      accountId="{{item.accountId}}"
       title="{{item.name}}"
       subTitle="{{item.mobile}}"
       binddelete="showDeleteDialog">
