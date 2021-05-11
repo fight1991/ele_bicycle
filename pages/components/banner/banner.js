@@ -5,7 +5,18 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    head: {
+      type: String,
+      value: ''
+    },
+    middle: {
+      type: String,
+      value: ''
+    },
+    foot: {
+      type: String,
+      value: ''
+    }
   },
 
   /**

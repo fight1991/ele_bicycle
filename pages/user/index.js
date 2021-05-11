@@ -1,7 +1,11 @@
 // pages/user/index.js
 var app = getApp()
 const utils = app.utils
-const { getMessageNumApi, corpInfo, toCorp } = app.api
+const { getMessageNumApi, corpInfo, toCorp, bannerRider, bannerCorp } = app.api
+const apiObj = {
+  personal: bannerRider,
+  corp: bannerCorp
+}
 Page({
 
   /**
@@ -54,7 +58,8 @@ Page({
         page: 'adminBusiness',
         id: 'page-6'
       },
-    ]
+    ],
+    bannerInfo: {},
   },
 
   /**
@@ -63,11 +68,13 @@ Page({
   onLoad: async function (options) {
     let { from } = options
     if (from == 'server') { // 从服务通知中跳转, 需要初始化用户信息
-      app.getWechatCode().then(res => {
-        app.globalData.jsCode = res.code
-        this.routeValid(res.code)
-      })
+      this.routeValid()
+    } else {
+      // 判断是个人版还是企业版
+      this.initVersion()
     }
+    // 初始化banner中的数据
+    this.initBannerInfo()
     this.getCorpInfo()
   },
   // 查询公司信息
@@ -81,6 +88,27 @@ Page({
       })
     }
   },
+  // 初始化banner数据
+  async initBannerInfo () {
+    let { appVersion } = this.data
+    let { result } = await apiObj[appVersion]()
+    if (result) {
+      this.setData({
+        bannerInfo: result
+      })
+    }
+  },
+  // 初始化版本 orgId 为 -1 个人版, 否则为企业版
+  initVersion () {
+    var orgId = app.globalData.basicUserInfo.orgId
+    var version = 'corp'
+    if (orgId == -1) {
+      version = 'personal'
+    }
+    this.setData({
+      appVersion: version
+    })
+  },  
   // 切换到企业版
   async switchToCorp (index, callback) {
     let { corpList } = this.data
@@ -99,6 +127,7 @@ Page({
       }
     }
   },
+
   // 版本切换
   switchVersion () {
     let { appVersion } = this.data
@@ -108,6 +137,7 @@ Page({
         this.setData({
           appVersion: appVersion == 'personal' ? 'corp' : 'personal'
         })
+        this.initBannerInfo()
       })
   },
   // 判断有没有成功订阅一条消息
@@ -148,7 +178,8 @@ Page({
   async routeValid (code) {
     var token = wx.getStorageSync('token')
     if (token) {
-      app.initUserInfo()
+      await app.initUserInfo()
+      this.initVersion()
     } else {
       wx.reLaunch({
         url: '/pages/login/signIn',

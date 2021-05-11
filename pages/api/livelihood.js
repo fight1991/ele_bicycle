@@ -249,3 +249,18 @@ export const toCorp = (data) => {
     data
   })
 }
+
+// 首页卡片个人版信息
+export const bannerRider = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/home/getPersonalInfo',
+    data
+  })
+}
+// 首页卡片企业版信息
+export const bannerCorp = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/home/getOrgInfo',
+    data
+  })
+}
