@@ -1,8 +1,13 @@
 <!--pages/user/livelihoodBusiness_corp/corp/assign.wxml-->
 <view class="outer">
-  <searchInput placeHolder="请输入骑手姓名、联系方式"></searchInput>
+  <searchInput
+    model:value="{{searchStr}}"
+    bindclear="initList"
+    bindconfirm="confirmKeyBoardBtn"
+    placeHolder="请输入骑手姓名、联系方式">
+  </searchInput>
   <view class="list-box" bindtap="listItemTap">
-    <block wx:for="3353535" wx:key="*this">
+    <block wx:for="{{list}}" wx:key="accountId">
       <listTitle
         selected="{{item.accountId == currentId}}"
         data-id="{{item.accountId}}"

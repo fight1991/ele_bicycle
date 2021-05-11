@@ -122,3 +122,21 @@ page {
 .outer {
   padding: 30rpx;
 }
+.auditing {
+  color: #3C79FF;
+}
+.waitInstall {
+  color: #2EDB6F;
+}
+.failure {
+  color: #FF7F21;
+}
+.reportedLost {
+  color: #FF7F21;
+}
+.registered {
+  color: #2EDB6F;
+}
+.scrapped {
+  color: #FF7F21;
+}

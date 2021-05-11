@@ -140,7 +140,7 @@ Page({
   async submitForm () {
     let { pageFlag } = this.data
     this.data.formData.vehicleImage = this.data.imgSrc
-    this.data.formData.vehicleId = app.globalData.currentVehicleId
+    this.data.formData.vehicleId = this.data.id
     let { result } = await apiObj[pageFlag]['create'](this.data.formData)
     if (result) {
       this.setData({

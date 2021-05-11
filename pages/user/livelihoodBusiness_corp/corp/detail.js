@@ -1,6 +1,6 @@
 // pages/user/livelihoodBusiness_corp/corp/detail.js
 var app = getApp()
-const { corpVehicleLoss, orgVehicleDetail } = app.api
+const { corpVehicleLoss, orgVehicleDetail, translateDic } = app.api
 Page({
 
   /**
@@ -10,15 +10,19 @@ Page({
     details: {},
     lossVisible: false,
     crapVisible: false,
-    id: ''
+    id: '',
+    dicStatus: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
     let { id } = options
     this.data.id = id
+    this.setData({
+      dicStatus: await translateDic('vehicleStatus')
+    })
     this.getDetail()
   },
   // 获取车辆信息详情
@@ -53,6 +57,9 @@ Page({
     let { id } = this.data
     let { result } = await corpVehicleLoss(id)
     if (result) {
+      var pages = getCurrentPages()
+      var prePage = pages[pages.length - 2]
+      prePage.initList()
       // 刷新上一级的列表,并返回
       wx.navigateBack({
         delta: 1,

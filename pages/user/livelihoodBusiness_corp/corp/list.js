@@ -1,6 +1,6 @@
 // pages/user/livelihoodBusiness_corp/corp/list.js
 var app = getApp()
-const { orgVehicleList: getList, orgRecord } = app.api
+const { orgVehicleList: getList, translateDic } = app.api
 Page({
 
   /**
@@ -13,18 +13,22 @@ Page({
     total: 0, // 条目数
     loading: false, // 正在加载
     list: [],
-    searchStr: ''
+    searchStr: '',
+    dicStatus: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
+    this.setData({
+      dicStatus: await translateDic('vehicleStatus')
+    })
     this.initList()
   },
   // 键盘上的确认按钮
-  confirmBtn () {
-
+  confirmBtn (e) {
+    this.initList()
   },
   itemTap (e) {
     let { id, status } = e.target.dataset
@@ -61,6 +65,7 @@ Page({
         list: resList,
         hasMore: pageIndex * pageSize >= total ? false : true
       })
+      wx.stopPullDownRefresh()
     })
   },
   /**
@@ -95,14 +100,23 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.initList()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (!this.data.hasMore) return
+    let { pageIndex, list } = this.data
+    this.getList(pageIndex, (resList, pagination) => {
+      var { pageIndex, total, pageSize } = pagination
+      this.setData({
+        pageIndex,
+        list: [...list, ...resList],
+        hasMore: pageIndex * pageSize >= total ? false : true
+      })
+    })
   },
 
   /**

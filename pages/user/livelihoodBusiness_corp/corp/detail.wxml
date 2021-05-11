@@ -7,7 +7,7 @@
       <view class="img-box">
         <image class="img" src="/pages/image/vechicel.png"/>
       </view>
-      <view class="head-img-text">{{details.status}}</view>
+      <view class="head-img-text">{{dicStatus[details.vehicleStatus]}}</view>
     </view>
     <!-- 电动车基本信息 -->
     <view class="text-lines">
@@ -33,8 +33,8 @@
       </view>
     </view>
   </view>
-  <view class="rider-info">
-    <listTitle isTouchToLeft="{{false}}" title="张三" subTitle="35353535"></listTitle>
+  <view class="rider-info" wx:if="{{details.riderName}}">
+    <listTitle isTouchToLeft="{{false}}" title="{{details.riderName}}" subTitle="{{details.riderMobile}}"></listTitle>
   </view>
 </view>
 <view class="fix-btn">
@@ -50,7 +50,7 @@
 </confirmDialog>
 <confirmDialog
   visible="{{scrapVisible}}"
-  title="一键报失"
+  title="一键报废"
   content="确认之后无法恢复"
   bindclose="scrapOp">
 </confirmDialog>

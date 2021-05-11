@@ -116,7 +116,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log('下拉了')
     this.initList()
     // 停止下拉刷新
     // wx.stopPullDownRefresh()
@@ -126,7 +125,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('到底了')
     if (!this.data.hasMore) return
     let { pageIndex, list } = this.data
     this.getList(pageIndex, (resList, pagination) => {

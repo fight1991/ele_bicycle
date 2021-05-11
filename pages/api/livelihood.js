@@ -170,10 +170,11 @@ export const orgScore = (data) => {
 }
 
 // 骑手列表
-export const riderList = (data) => {
+export const riderList = ({data, page}) => {
   return wx.$post_business({
     url: '/user-center/orgUser/list',
-    data
+    data,
+    page
   })
 }
 // 分配骑手
