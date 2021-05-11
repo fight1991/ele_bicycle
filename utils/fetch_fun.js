@@ -1,4 +1,4 @@
-const { setUrlParams } = './util.js'
+import { setUrlParams } from './util.js'
 let isTips = false // 防抖
 // 显示loading
 const showLoading = (text = '') => {
