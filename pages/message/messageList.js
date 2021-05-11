@@ -10,8 +10,8 @@ Page({
     // 上拉刷新下拉加载数据
     triggered: false, // 设置当前下拉刷新状态
     hasMore: true, // 是否还有更多数据
-    pageIndex: 0, // 当前页
-    pageSize: 5, // 每页请求数量
+    pageIndex: 1, // 当前页
+    pageSize: 10, // 每页请求数量
     total: 0, // 条目数
     resultList: []
   },
@@ -29,8 +29,7 @@ Page({
     let { pageSize, resultList } = this.data
     let createTime = ''
     let id = ''
-    pageIndex ++
-    if (pageIndex > 1 && resultList.length > 0) {
+    if (resultList.length > 0) {
       var lastData = resultList[resultList.length - 1]
       createTime = lastData.createTime
       id = lastData.id
@@ -101,12 +100,13 @@ Page({
     // }, 1000); //设置执行时间
   },
   onRefresh() {
-    this.getMessageList(0, (list, pagination) => {
-      var { pageIndex, total, pageSize } = pagination
+    this.data.resultList = []
+    this.getMessageList(1, (list, pagination) => {
+      var { total } = pagination
+      var len = list.length
       this.setData({
-        pageIndex,
         resultList: list,
-        hasMore: pageIndex * pageSize >= total ? false : true
+        hasMore: len >= total ? false : true
       })
     })
   },
@@ -115,13 +115,14 @@ Page({
    */
   scrolltolower () {
     if (!this.data.hasMore) return
-    let { pageIndex, resultList } = this.data
-    this.getMessageList(pageIndex, (list, pagination) => {
-      var { pageIndex, total, pageSize } = pagination
+    let { resultList } = this.data
+    this.getMessageList(1, (list, pagination) => {
+      var { pageIndex, total } = pagination
+      var tempR = [...resultList, ...list]
       this.setData({
         pageIndex,
-        resultList: [...resultList, ...list],
-        hasMore: pageIndex * pageSize >= total ? false : true
+        resultList: tempR,
+        hasMore: tempR.length >= total ? false : true
       })
     })
   },
