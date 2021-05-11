@@ -18,8 +18,12 @@
       </listTitle>
     </block>
   </view>
+  <view class="has-more" wx:if="{{list.length > 0}}">{{hasMore ? '上拉加载更多' : '~到底啦~'}}</view>
+  <view wx:else>
+    <nodata>暂无数据</nodata>
+  </view>
+  <fixBtn wx:if="{{list.length > 0}}" bindtap="confirmBtn">确定</fixBtn>
 </view>
-<fixBtn bindtap="confirmBtn">确定</fixBtn>
 <confirmDialog
   bindclose="assignRider"
   title="提示"

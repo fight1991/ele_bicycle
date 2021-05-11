@@ -1,12 +1,27 @@
 <!--pages/user/livelihoodBusiness_corp/rider/list.wxml-->
 <view class="outer">
   <view class="head-box">
-    <searchInput class="search-box" placeHolder="请输入骑手姓名、联系方式"></searchInput>
+    <searchInput
+      class="search-box"
+      model:value="{{searchStr}}"
+      bindclear="initList"
+      bindconfirm="confirmKeyBoardBtn"
+      placeHolder="请输入骑手姓名、联系方式">
+    </searchInput>
     <iconfont bindtap="showAddDialog" class="icon-add" size="60rpx" icon="add-circle" color="#3C79FF"></iconfont>
   </view>
-  <block wx:for="12414143" wx:key="*this">
-    <listTitle binddelete="showDeleteDialog"></listTitle>
+  <block wx:for="{{list}}" wx:key="accountId">
+    <listTitle
+      id="{{item.accountId}}"
+      title="{{item.name}}"
+      subTitle="{{item.mobile}}"
+      binddelete="showDeleteDialog">
+    </listTitle>
   </block>
+  <view class="has-more" wx:if="{{list.length > 0}}">{{hasMore ? '上拉加载更多' : '~到底啦~'}}</view>
+  <view wx:else>
+    <nodata>暂无数据</nodata>
+  </view>
 </view>
 <confirmDialog
   title="确认删除"

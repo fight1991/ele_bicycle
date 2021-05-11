@@ -29,7 +29,6 @@ Page({
   },
   listItemTap (e) {
     var id = e.target.dataset.id
-    console.log(e)
     this.setData({
       currentId: id
     })
@@ -45,9 +44,12 @@ Page({
       wx.showToast({
         title: '分配成功!',
       })
-      wx.navigateBack({
-        delta: 1,
+      this.setData({
+        currentId: ''
       })
+      // wx.navigateBack({
+      //   delta: 1,
+      // })
     }
   },
   // 打开确认框

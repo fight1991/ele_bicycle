@@ -213,3 +213,17 @@ export const corpScrapCancel = (data) => {
     data
   })
 }
+// 邀请骑手加入
+export const inviteRider = (data) => {
+  return wx.$post_business({
+    url: '/user-center/orgUser/invite',
+    data
+  })
+}
+// 公司骑手移除
+export const riderDelete = (data) => {
+  return wx.$post_business({
+    url: '/user-center/orgUser/remove',
+    data
+  })
+}
