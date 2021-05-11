@@ -3,8 +3,9 @@
   <!-- 搜索框区域 -->
   <searchInput
     model:value="{{searchStr}}"
+    bindclear="clearBtn"
     bindconfirm="confirmBtn"
-    placeHolder="请输入骑手姓名、联系方式">
+    placeHolder="请输入车牌号或车架号">
   </searchInput>
   <!-- tab切换区域 -->
   <view class="tab-box" bindtap="tabClick">
@@ -14,9 +15,9 @@
   <!-- 卡片列表区域 -->
   <block wx:for="{{list}}" wx:key="auditId">
     <card 
-      title="{{item.auditType}}"
+      title="{{auditType[item.auditType]}}"
       vin="{{item.vin}}"
-      status="{{item.status}}"
+      status="{{dicStatus[item.status]}}"
       time="{{item.createTime}}"
       brand="{{item.plateNo}}">
     </card>

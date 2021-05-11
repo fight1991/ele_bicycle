@@ -3,7 +3,7 @@
     <view class="prefix-icon">
       <iconfont icon="search" color="#B3B3B3"/>
     </view>
-    <input type="text" value="{{value}}" confirm-type="search" bindconfirm="confirm" bindinput="searchChange" placeholder-class="holder-class" placeholder="请输入骑手姓名、联系方式" class="search-input"/>
+    <input type="text" value="{{value}}" confirm-type="search" bindconfirm="confirm" bindinput="searchChange" placeholder-class="holder-class" placeholder="{{placeHolder}}" class="search-input"/>
     <view class="suffix-icon" bindtap="clearInput" hidden="{{hiddenClearIcon}}">
       <iconfont icon="close-circle" size="40rpx" color="#B3B3B3"/>
     </view>

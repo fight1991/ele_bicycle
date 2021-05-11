@@ -1,6 +1,6 @@
 // pages/user/livelihoodBusiness_corp/application/list.js
 var app = getApp()
-const { getAuditList: getList } = app.api
+const { getAuditList: getList, translateDic } = app.api
 Page({
 
   /**
@@ -15,34 +15,47 @@ Page({
     list: [],
     searchStr: '', // 搜索字段
     type: 'toAudit', // 类型  当前tab值 toAudit待审核、history历史
+    // 翻译map
+    auditType: {
+      recordFiling: '企业车申报',
+      scrap: '一键报废'
+    },
+    dicStatus: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
+    this.setData({
+      dicStatus: await translateDic('recordFiling')
+    })
     this.initList()
   },
   // 点击tab
   tabClick (e) {
-    console.log(e)
     let type = e.target.dataset.type
     if (this.data.type == type) return
     this.setData({
-      activeIndex: type
+      type
     })
+    this.initList()
+  },
+  // 清空条件
+  clearBtn () {
     this.initList()
   },
   // 搜索时确定按钮
   confirmBtn (e) {
     // 输入框中的值 e.detail
-    console.log(e.detail, '打印的值')
+    if (!e.detail.trim()) return
+    this.initList()
   },
   // 获取列表
   async getList (pageIndex, callback) {
     if (this.loading) return
     this.loading = true
-    let { pageSize, searchStr, type } = this.data
+    let { pageSize, type, searchStr } = this.data
     pageIndex ++
     let { result, page } = await getList({
       data: {
@@ -68,6 +81,7 @@ Page({
         list: resList,
         hasMore: pageIndex * pageSize >= total ? false : true
       })
+      wx.stopPullDownRefresh()
     })
   },
   /**

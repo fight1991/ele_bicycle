@@ -36,6 +36,7 @@ Component({
         value: '',
         hiddenClearIcon: true
       })
+      this.triggerEvent('clear')
     },
     // 输入值改变时
     searchChange (e) {

@@ -1,6 +1,10 @@
 <!--pages/user/livelihoodBusiness_corp/corp/list.wxml-->
 <view class="outer">
-  <searchInput placeHolder="请输入车牌、骑手姓名"></searchInput>
+  <searchInput
+    model:value="{{searchStr}}"
+    bindconfirm="confirmBtn"
+    placeHolder="请输入车牌、骑手姓名">
+  </searchInput>
   <view class="tab-box" bindtap="itemTap">
     <block wx:for="{{list}}" wx:key="vehicleId">
       <view class="box"
