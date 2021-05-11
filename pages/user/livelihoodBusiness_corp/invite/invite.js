@@ -1,23 +1,41 @@
-// pages/login/signIn.js
-const utils = require('../../utils/util')
+// pages/user/livelihoodBusiness_corp/invite/invite.js
 var app = getApp()
+const { acceptOrg, refuseOrg } = app.api
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    redirect: ''
+    orgId: '',
+    orgName: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { redirect } = options
-    if (redirect) {
-      this.setData({
-        redirect
+    let { orgId, orgName } = options
+    this.setData({
+      orgId,
+      orgName
+    })
+  },
+  // 拒绝
+  async refuse () {
+    let { result } = await refuseOrg(this.data.orgId)
+    if (result) {
+      wx.showToast({
+        title: '已拒绝!'
+      })
+    }
+  },
+  // 同意加入
+  async accept () {
+    let { result } = await acceptOrg(this.data.orgId)
+    if (result) {
+      wx.showToast({
+        title: '已加入!'
       })
     }
   },

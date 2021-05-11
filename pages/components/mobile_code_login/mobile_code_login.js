@@ -15,6 +15,10 @@ Component({
     flag: {
       type: Number,
       value: 1 // 1为 登录, 2为修改手机号
+    },
+    redirect: {
+      type: String,
+      value: ''
     }
   },
 
@@ -141,9 +145,17 @@ Component({
           data: mobile,
           key: 'mobile',
         })
-        wx.reLaunch({
-          url: '/pages/user/index',
-        })
+        let { redirect } = this.data
+        if (redirect) {
+          var url = decodeURIComponent(redirect)
+          wx.reLaunch({
+            url: url
+          })
+        } else {
+          wx.reLaunch({
+            url: '/pages/user/index',
+          })
+        }
       }
     },
     // 修改手机号api

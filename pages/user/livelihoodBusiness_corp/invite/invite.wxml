@@ -1,0 +1,11 @@
+<!--pages/user/livelihoodBusiness_corp/invite/invite.wxml-->
+<view class="outer">
+  <view class="area">
+    <view>{{orgName}}邀请您成为他旗下骑手</view>
+    <view>您是否同意</view>
+  </view>
+</view>
+<view>
+  <fixBtn type="light" width="50vw" bindtap="refuse">不通过</fixBtn>
+  <fixBtn align="right" width="50vw" bindtap="accept">通过</fixBtn>
+</view>

@@ -1,0 +1,9 @@
+/* pages/user/livelihoodBusiness_corp/invite/invite.wxss */
+.area {
+  padding: 60rpx 0;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: #fff;
+  font-size: 32rpx;
+  margin-top: 40rpx;
+}

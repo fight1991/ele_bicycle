@@ -116,6 +116,20 @@ const openConfirm = ({content, confirm, cancel}) => {
 const isNull = (x) => {
   return (x == undefined || x == null)
 }
+// 将对象{}拼接地址栏传参
+const setUrlParams = (obj) => {
+  if (!obj) return ''
+  if (JSON.stringify(obj) != '{}') {
+    var strArr = []
+    for(key in obj) {
+      var tempStr = key + '=' + obj[key]
+      strArr.push(tempStr)
+    }
+    return strArr.join('&')
+  } else {
+    return ''
+  }
+}
 module.exports = {
   formatTime,
   checkPhone,
@@ -126,5 +140,6 @@ module.exports = {
   showToast,
   imgTobase64,
   openConfirm,
-  isNull
+  isNull,
+  setUrlParams
 }

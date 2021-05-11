@@ -264,3 +264,25 @@ export const bannerCorp = (data) => {
     data
   })
 }
+
+// 同意加入企业
+export const acceptOrg = (data) => {
+  return wx.$post_business({
+    url: '/user-center/orgUser/join',
+    data
+  })
+}
+// 拒绝加入企业
+export const refuseOrg = (data) => {
+  return wx.$post_business({
+    url: '/user-center/orgUser/fail',
+    data
+  })
+}
+// 退出企业
+export const outOrg = (data) => {
+  return wx.$post_business({
+    url: '/user-center/orgUser/leave',
+    data
+  })
+}

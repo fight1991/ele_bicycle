@@ -191,6 +191,12 @@
           "pathName": "pages/user/livelihoodBusiness_corp/corp/assign",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "骑手邀请通知页面",
+          "pathName": "pages/user/livelihoodBusiness_corp/invite/invite",
+          "query": "",
+          "scene": null
         }
       ]
     }
