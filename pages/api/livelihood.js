@@ -78,6 +78,14 @@ export const riderVehicleList = (data) => {
     data
   })
 }
+// 审核单列表
+export const checkList = ({data, page}) => {
+  return wx.$post_business({
+    url: '/ebike-management/orgRiderManage/getAuditList',
+    data,
+    page
+  })
+}
 // 骑手 车辆挂失
 export const riderLoss = (data) => {
   return wx.$post_business({

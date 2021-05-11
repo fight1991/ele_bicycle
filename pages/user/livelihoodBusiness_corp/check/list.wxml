@@ -1,2 +1,28 @@
-<!--pages/user/livelihoodBusiness_corp/check/list.wxml-->
-<text>pages/user/livelihoodBusiness_corp/check/list.wxml</text>
+<view class="outer">
+  <!-- 搜索框区域 -->
+  <searchInput
+    model:value="{{searchStr}}"
+    bindclear="clearBtn"
+    bindconfirm="confirmBtn"
+    placeHolder="请输入车牌号或车架号">
+  </searchInput>
+  <!-- tab切换区域 -->
+  <view class="tab-box" bindtap="tabClick">
+    <view class="tab-item{{type == 'toAudit' ? ' active-tab' : ''}}" data-type='toAudit'>进行中</view>
+    <view class="tab-item{{type == 'history' ? ' active-tab' : ''}}" data-type='history'>历史</view>
+  </view>
+  <!-- 卡片列表区域 -->
+  <block wx:for="{{list}}" wx:key="vehicleId">
+    <card 
+      title="{{item.riderName}}"
+      vin="{{item.vin}}"
+      status="{{dicStatus[item.status]}}"
+      time="{{item.createTime}}"
+      brand="{{item.plateNo}}">
+    </card>
+  </block>
+  <view class="has-more" wx:if="{{list.length > 0}}">{{hasMore ? '上拉加载更多' : '~到底啦~'}}</view>
+  <view wx:else>
+    <nodata>暂无数据</nodata>
+  </view>
+</view>
