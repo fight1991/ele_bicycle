@@ -147,7 +147,10 @@ Page({
   // 订阅消息弹窗
   showSubscription (callback) {
     // 针对其中一条订阅成功, --> accept
-    var ids = ['fEZWMSl8x61va4VrYFaJGkT18NOeCYENRevGHXCpyHg']
+    var ids = [
+      'fEZWMSl8x61va4VrYFaJGkT18NOeCYENRevGHXCpyHg',
+      'STSs3LYg7cFOMDyqmFpikaPCwHgPZSVFVTRjkkz0fCE'
+    ]
     wx.requestSubscribeMessage({
       tmplIds: ids,
       success: (res) => {
@@ -161,11 +164,12 @@ Page({
   // 路由跳转
   routeTo (e) {
     let { page } = e.target.dataset
-    if (page == 'personalBusiness') {
+    let pageArr = ['personalBusiness', 'livelihoodBusiness_corp', 'livelihoodBusiness']
+    if (pageArr.indexOf(page) > -1) {
       // 订阅消息弹窗, 再路由跳转
       this.showSubscription(() => {
         wx.navigateTo({
-          url: '/pages/user/personalBusiness/index',
+          url: `/pages/user/${page}/index`,
         })
       })
     } else {
