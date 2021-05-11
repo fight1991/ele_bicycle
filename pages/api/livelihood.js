@@ -235,3 +235,17 @@ export const riderDelete = (data) => {
     data
   })
 }
+// 查询公司信息
+export const corpInfo = (data) => {
+  return wx.$post_business({
+    url: '/user-center/user/getUserOrgs',
+    data
+  })
+}
+// 切换到公司
+export const toCorp = (data) => {
+  return wx.$post_business({
+    url: '/user-center/changeLoginOrg',
+    data
+  })
+}

@@ -1,7 +1,7 @@
 // pages/user/index.js
 var app = getApp()
 const utils = app.utils
-const { getMessageNumApi } = app.api
+const { getMessageNumApi, corpInfo, toCorp } = app.api
 Page({
 
   /**
@@ -9,6 +9,8 @@ Page({
    */
   data: {
     messageNum: 0, // 消息数量
+    isShowSwitch: false, // 是否显示 个人-公司 切换按钮
+    corpList: [],
     appVersion: 'personal', // personal个人版, corp企业版
     itemList: [
       {
@@ -66,13 +68,47 @@ Page({
         this.routeValid(res.code)
       })
     }
+    this.getCorpInfo()
+  },
+  // 查询公司信息
+  async getCorpInfo () {
+    let { result } = await corpInfo()
+    if (result) {
+      // result.length > 1 说明有公司信息
+      this.setData({
+        isShowSwitch: result.length > 1,
+        corpList: result
+      })
+    }
+  },
+  // 切换到企业版
+  async switchToCorp (index, callback) {
+    let { corpList } = this.data
+    // index 0为个人版, 1为企业版
+    let corpInfo = corpList[index]
+    if (corpInfo) {
+      let { orgId } = corpInfo
+      let { result } = await toCorp({
+        defaultOrg: 1,
+        orgId,
+        userToken: wx.getStorageSync('token')
+      })
+      if (result) {
+        // 重新初始化信息
+        callback && callback()
+      }
+    }
   },
   // 版本切换
   switchVersion () {
     let { appVersion } = this.data
-    this.setData({
-      appVersion: appVersion == 'personal' ? 'corp' : 'personal'
-    })
+    let versionIndex =  appVersion == 'personal' ? 1 : 0
+      this.switchToCorp(versionIndex, () => {
+        app.initUserInfo()
+        this.setData({
+          appVersion: appVersion == 'personal' ? 'corp' : 'personal'
+        })
+      })
   },
   // 判断有没有成功订阅一条消息
   isOrderMessage (res, ids) {

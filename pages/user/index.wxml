@@ -5,7 +5,7 @@
     <name-idcard></name-idcard>
    
     <view class="right-box">
-      <view class="switch-box" bindtap="switchVersion">
+      <view class="switch-box" wx:if="{{isShowSwitch}}" bindtap="switchVersion">
         <iconfont icon="switch" size="40rpx" color="#FF7D3C"></iconfont>
         <text class="switch-text">{{appVersion=='personal' ? '企业版':'个人版'}}</text>
       </view>
