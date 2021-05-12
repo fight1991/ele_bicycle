@@ -72,15 +72,8 @@ Page({
     // 初始化banner中的数据
     this.initBannerInfo()
     // 从globalData中获取权限信息
-    this.mapPermissions()
+    app.mapPermissions(this)
     this.getCorpInfo()
-  },
-  // 初始化权限信息
-  mapPermissions () {
-    let pers = app.globalData.userPermisson
-    this.setData({
-      permissions: pers
-    })
   },
   // 查询公司信息
   async getCorpInfo () {
@@ -142,7 +135,7 @@ Page({
         this.setData({
           appVersion: appVersion == 'personal' ? 'corp' : 'personal'
         })
-        this.mapPermissions()
+        app.mapPermissions(this)
         this.initBannerInfo()
       })
   },

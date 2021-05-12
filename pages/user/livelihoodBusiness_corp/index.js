@@ -8,36 +8,43 @@ Page({
    */
   data: {
     orgCoreInfo: {},
+    permissions: [],
     opList: [
       {
         label: '企业车申报',
         icon: '/pages/image/record.png',
         clickEvent: 'goToRecord',
+        permission: '0103020000',
         pageFlag: 'corpRecord'
       }, {
         label: '企业车管理',
         icon: '/pages/image/peopleChange.png',
         clickEvent: 'routeTo',
+        permission: '0103050000',
         pageFlag: 'corp'
       }, {
         label: '骑手管理',
         icon: '/pages/image/baoshi.png',
         clickEvent: 'routeTo',
+        permission: '0103060000',
         pageFlag: 'rider'
       }, {
         label: '申请单',
         icon: '/pages/image/baofei.png',
         clickEvent: 'routeTo',
+        permission: '0103070000',
         pageFlag: 'application'
       }, {
         label: '审核单',
         icon: '/pages/image/baofei.png',
         clickEvent: 'routeTo',
+        permission: '0103080000',
         pageFlag: 'check'
       }, {
         label: '扫码',
         icon: '/pages/image/scan_big1.png',
         clickEvent: 'scanCode',
+        permission: '',
         pageFlag: 'scan'
       },
     ]
@@ -48,6 +55,7 @@ Page({
    */
   onLoad: function (options) {
     this.getOrgScoreInfo()
+    app.mapPermissions(this)
   },
   // 获取公司积分等信息
   async getOrgScoreInfo () {

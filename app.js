@@ -115,5 +115,12 @@ App({
       orgId: this.globalData.basicUserInfo.orgId
     }, isLoad)
     return true
-  }
+  },
+  // 将权限信息映射到相应的实例中
+  mapPermissions (instance) {
+    let pers = this.globalData.userPermisson
+    instance.setData({
+      permissions: pers
+    })
+  },
 })

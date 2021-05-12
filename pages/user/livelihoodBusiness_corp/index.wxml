@@ -25,6 +25,7 @@
     <block wx:for="{{opList}}" wx:key="pageFlag">
       <view
         class="block-item"
+        hidden="{{!tools.isIncludes(permissions, item.permission)}}"
         data-page="{{item.pageFlag}}"
         bindtap="{{item.clickEvent}}">
         <view class="img-box">
