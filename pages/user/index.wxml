@@ -2,7 +2,7 @@
 <wxs src="../wxs/index.wxs" module="tools"></wxs>
 <view class="box">
   <view class="center-row">
-    <name-idcard></name-idcard>
+    <name-idcard permissions="{{permissions}}"></name-idcard>
    
     <view class="right-box">
       <view class="switch-box" wx:if="{{isShowSwitch}}" bindtap="switchVersion">

@@ -1,8 +1,9 @@
 <!--pages/components/name_idcard/name_idcard.wxml-->
+<wxs src="/pages/wxs/index.wxs" module="tools"></wxs>
 <view class="person-info">
   <view class="name">
     <view class="name-left">{{idName}}</view>
-    <view bindtap="routeToMePage" class="routeMePage">
+    <view bindtap="routeToMePage" class="routeMePage" hidden="{{!tools.isIncludes(permissions, '0106000000')}}">
       <image class="image" src="/pages/image/arrow-right.png"></image>
     </view>
   </view>

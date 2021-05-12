@@ -1,4 +1,5 @@
 <!--pages/user/center/center.wxml-->
+<wxs src="/pages/wxs/index.wxs" module="tools"></wxs>
 <view class="outer">
   <view class="user-bg">
     <view class="user-left">
@@ -16,14 +17,14 @@
     </view>
   </view>
   <view class="change-tab">
-    <view class="tab-item" bindtap="goToVerify">
+    <view class="tab-item" hidden="{{!tools.isIncludes(permissions, '0106010000')}}" bindtap="goToVerify">
       <view>实名认证</view>
       <view class="arrow-r">
         <iconfont icon="arrow-right" color="#ccc"></iconfont>
       </view>
     </view>
     <navigator url="/pages/user/center/editPhone">
-      <view class="tab-item boderNone">
+      <view class="tab-item boderNone" hidden="{{!tools.isIncludes(permissions, '0106020000')}}">
         <view>更换手机号</view>
         <view class="arrow-r">
           <iconfont icon="arrow-right" color="#ccc"></iconfont>

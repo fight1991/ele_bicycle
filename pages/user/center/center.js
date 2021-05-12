@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    permissions: [],
     name: '',
     currentMode: 'hide',
     userInfo: {
@@ -26,6 +27,7 @@ Page({
    */
   onLoad: function (options) {
     var { idNO, mobile, idName } = app.globalData.businessUserInfo
+    app.mapPermissions(this)
     this.setData({
       'userInfo.show': {
         idNO: idNO || '',
