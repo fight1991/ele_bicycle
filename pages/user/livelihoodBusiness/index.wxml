@@ -29,7 +29,7 @@
     <block wx:for="{{opList}}" wx:key="pageFlag">
       <view
         class="block-item"
-        hidden="{{!tools.isIncludes(item.permission, currentStatus)}}"
+        hidden="{{!tools.isIncludes(item.status, currentStatus) || !tools.isIncludes(permissions, item.permission)}}"
         data-page="{{item.pageFlag}}"
         bindtap="{{item.clickEvent}}">
         <view class="img-box">

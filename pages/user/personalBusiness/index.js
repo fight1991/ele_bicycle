@@ -15,6 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    permissions: [],
     verifyDialogVisible: false,
     currentStatus: 'none', // auditing:审核中 failure:审核失败、waitInstall:待安装 registered:已登记、reportedLost:已报失、scrapped:已报废
     opList: [
@@ -23,43 +24,50 @@ Page({
         icon: '/pages/image/record.png',
         clickEvent: 'goToRecord',
         pageFlag: 'record',
-        permission: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
+        permission: '0101010000',
+        status: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
       }, {
         label: '扫码',
         icon: '/pages/image/scan_big1.png',
         clickEvent: 'scanCode',
         pageFlag: 'scan',
-        permission: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
+        permission: '0101020000',
+        status: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
       }, {
         label: '备案人变更',
         icon: '/pages/image/peopleChange.png',
         clickEvent: 'routeTo',
         pageFlag: 'record_change',
-        permission: [ 'registered']
+        permission: '0101030000',
+        status: [ 'registered']
       }, {
         label: '一键报失',
         icon: '/pages/image/baoshi.png',
         clickEvent: 'routeTo',
         pageFlag: 'loss',
-        permission: ['registered']
+        permission: '0101040000',
+        status: ['registered']
       }, {
         label: '一键报废',
         icon: '/pages/image/baofei.png',
         clickEvent: 'routeTo',
         pageFlag: 'scrap',
-        permission: ['registered']
+        permission: '0101050000',
+        status: ['registered']
       }, {
         label: '购买保险查询',
         icon: '/pages/image/purchase.png',
         clickEvent: 'routeTo',
         pageFlag: 'insure',
-        permission: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
+        permission: '0101060000',
+        status: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
       }, {
         label: '安全学习',
         icon: '/pages/image/scan_big1.png',
         clickEvent: 'routeTo',
         pageFlag: 'study',
-        permission: ['other']
+        permission: '0101070000',
+        status: ['other']
       }
     ]
   },
@@ -69,6 +77,7 @@ Page({
    */
   onLoad: function (options) {
     this.mySwiper = this.selectComponent('#mySwiper')
+    app.mapPermissions(this)
   },
   // 切换swiper
   swiperChange (e) {

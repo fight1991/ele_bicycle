@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    permissions: [],
     currentStatus: 'none', // auditing:审核中 failure:审核失败、waitInstall:待安装 registered:已登记、reportedLost:已报失、scrapped:已报废
     bindingDialogVisible: false, // 绑定企业车弹框
     brandNumVisible: false, // 显示车牌的弹框
@@ -19,31 +20,36 @@ Page({
         icon: '/pages/image/record.png',
         clickEvent: 'goToRecord',
         pageFlag: 'record',
-        permission: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
+        permission: '0103020000',
+        status: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
       }, {
         label: '扫码',
         icon: '/pages/image/scan_big1.png',
         clickEvent: 'scanCode',
         pageFlag: 'scan',
-        permission: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
+        permission: '',
+        status: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
       }, {
         label: '绑定企业车',
         icon: '/pages/image/peopleChange.png',
         clickEvent: 'bindingMenu',
+        permission: '0103030000',
         pageFlag: '',
-        permission: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
+        status: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
       }, {
         label: '一键报失',
         icon: '/pages/image/baoshi.png',
         clickEvent: 'routeTo',
         pageFlag: 'loss',
-        permission: ['registered']
+        permission: '0103090000',
+        status: ['registered']
       }, {
         label: '一键报废',
         icon: '/pages/image/baofei.png',
         clickEvent: 'routeTo',
         pageFlag: 'scrap',
-        permission: ['registered']
+        permission: '0103100000',
+        status: ['registered']
       }
     ]
   },
@@ -54,6 +60,7 @@ Page({
   onLoad: function (options) {
     this.mySwiper = this.selectComponent('#mySwiper')
     this.getRiderScore()
+    app.mapPermissions(this)
   },
   // 获取积分信息
   async getRiderScore () {
