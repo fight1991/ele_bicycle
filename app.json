@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/user/index",
     "pages/user/scanCode/scanCode",
     "pages/user/camera/front",
@@ -8,41 +9,29 @@
     "pages/user/loss/loss",
     "pages/user/scrap/scrap",
     "pages/user/insure/insure",
-    "pages/user/result/result",
-    "pages/user/livelihoodBusiness_corp/index",
-    "pages/user/livelihoodBusiness_corp/application/list",
-    "pages/user/livelihoodBusiness_corp/check/list",
-    "pages/user/livelihoodBusiness_corp/rider/list",
-    "pages/user/livelihoodBusiness_corp/corp/list",
-    "pages/user/livelihoodBusiness_corp/corp/detail",
-    "pages/user/livelihoodBusiness_corp/corp/assign",
-    "pages/user/livelihoodBusiness_corp/invite/invite"
+    "pages/user/result/result"
   ],
   "subPackages": [
     {
       "root": "pages/login",
       "name": "login",
       "pages": [
-        "index",
         "signIn"
       ]
-    },
-    {
+    }, {
       "root": "pages/message",
       "name": "message",
       "pages": [
         "messageDetail",
         "messageList"
       ]
-    },
-    {
+    }, {
       "root": "pages/setting",
       "name": "setting",
       "pages": [
         "setting"
       ]
-    },
-    {
+    }, {
       "root": "pages/user/center",
       "name": "center",
       "pages": [
@@ -50,8 +39,7 @@
         "editPhone",
         "relogin"
       ]
-    },
-    {
+    }, {
       "root": "pages/user/idcardVerify",
       "name": "idcardVerify",
       "pages": [
@@ -59,8 +47,7 @@
         "livingVerify",
         "livingResult"
       ]
-    },
-    {
+    }, {
       "root": "pages/user/personalBusiness",
       "name": "personalBusiness",
       "pages": [
@@ -68,8 +55,7 @@
         "record/record",
         "record/law/law"
       ]
-    },
-    {
+    }, {
       "root": "pages/user/livelihoodBusiness",
       "name": "livelihoodBusiness",
       "pages": [
@@ -77,8 +63,21 @@
         "recordSelect",
         "record/record"
       ]
-    },
-    {
+    }, {
+      "root": "pages/user/livelihoodBusiness_corp",
+      "name": "livelihoodBusiness_corp",
+      "pages": [
+        "index",
+        "application/list",
+        "check/list",
+        "corp/list",
+        "corp/assign",
+        "corp/detail",
+        "invite/invite",
+        "record/record",
+        "rider/list"
+      ]
+    }, {
       "root": "pages/user/adminBusiness",
       "name": "adminBusiness",
       "pages": [
