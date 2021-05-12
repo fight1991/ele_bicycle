@@ -59,7 +59,9 @@ Page({
   onLoad: function (options) {
     // 点击轮播图进来
     let { opType, id, pageFlag } = options
-    this.data.pageFlag = pageFlag
+    if (pageFlag) {
+      this.data.pageFlag = pageFlag
+    }
     // 点击一键报废进来
     this.data.id = app.globalData.currentVehicleId || id
     this.getStatus()
