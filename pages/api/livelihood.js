@@ -2,7 +2,7 @@
 // 骑手积分api
 export const riderScore = (data) => {
   return wx.$post_business({
-    url: '/ebike-management/riderOrg/getScoreInfo',
+    url: '/ebike-management/rider/getScoreInfo',
     data
   })
 }
@@ -240,21 +240,6 @@ export const corpInfo = (data) => {
 export const toCorp = (data) => {
   return wx.$post_business({
     url: '/user-center/changeLoginOrg',
-    data
-  })
-}
-
-// 首页卡片个人版信息
-export const bannerRider = (data) => {
-  return wx.$post_business({
-    url: '/ebike-management/home/getPersonalInfo',
-    data
-  })
-}
-// 首页卡片企业版信息
-export const bannerCorp = (data) => {
-  return wx.$post_business({
-    url: '/ebike-management/home/getOrgInfo',
     data
   })
 }

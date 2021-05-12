@@ -1,7 +1,7 @@
 // pages/user/index.js
 var app = getApp()
 const utils = app.utils
-const { getMessageNumApi, corpInfo, toCorp, bannerRider, bannerCorp } = app.api
+const { getMessageNumApi, corpInfo, toCorp, riderScore: bannerRider, orgScore: bannerCorp } = app.api
 const apiObj = {
   personal: bannerRider,
   corp: bannerCorp
@@ -16,45 +16,46 @@ Page({
     isShowSwitch: false, // 是否显示 个人-公司 切换按钮
     corpList: [],
     appVersion: 'personal', // personal个人版, corp企业版
+    permissions: [],
     itemList: [
       {
         zh: '居民个人业务',
         en: 'Personal Business',
         bg: utils.imgTobase64('/pages/image/bus-pers.png'),
         app: ['personal'],
+        permission: '0101000000',
         page: 'personalBusiness',
         id: 'page-1'
-      },{ // 个人版
+      },{
         zh: '民生行业业务',
         en: 'Specific Industries',
         bg: utils.imgTobase64('/pages/image/bus-live.png'),
         app: ['personal'],
+        permission: '0103000000',
         page: 'livelihoodBusiness',
         id: 'page-2'
-      },{ // 企业版
-        zh: '民生行业业务',
-        en: 'Specific Industries',
-        bg: utils.imgTobase64('/pages/image/bus-live.png'),
-        app: ['corp'],
-        page: 'livelihoodBusiness_corp',
-        id: 'page-3'
-      },{
+      }, {
         zh: '单位业务',
         en: 'Enterprises and institutions',
         bg: utils.imgTobase64('/pages/image/bus-company.png'),
+        permission: '0104000000',
         page: '',
+        hidden: true,
         id: 'page-4'
       },{
         zh: '销售门店业务',
         en: 'Sales Store Business',
         bg: utils.imgTobase64('/pages/image/bus-owner.png'),
+        permission: '0105000000',
         page: '',
-        id: 'page-5'
+        id: 'page-5',
+        hidden: true
       },{
         zh: '管理员业务',
         en: 'Administrator Business',
         bg: utils.imgTobase64('/pages/image/bus-admin.png'),
         app: ['personal'],
+        permission: '0102000000',
         page: 'adminBusiness',
         id: 'page-6'
       },
@@ -66,16 +67,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    let { from } = options
-    if (from == 'server') { // 从服务通知中跳转, 需要初始化用户信息
-      this.routeValid()
-    } else {
-      // 判断是个人版还是企业版
-      this.initVersion()
-    }
+    // 判断是个人版还是企业版
+    this.initVersion()
     // 初始化banner中的数据
     this.initBannerInfo()
+    // 从globalData中获取权限信息
+    this.mapPermissions()
     this.getCorpInfo()
+  },
+  // 初始化权限信息
+  mapPermissions () {
+    let pers = app.globalData.userPermisson
+    this.setData({
+      permissions: pers
+    })
   },
   // 查询公司信息
   async getCorpInfo () {
@@ -137,6 +142,7 @@ Page({
         this.setData({
           appVersion: appVersion == 'personal' ? 'corp' : 'personal'
         })
+        this.mapPermissions()
         this.initBannerInfo()
       })
   },
@@ -164,10 +170,15 @@ Page({
   // 路由跳转
   routeTo (e) {
     let { page } = e.target.dataset
-    let pageArr = ['personalBusiness', 'livelihoodBusiness_corp', 'livelihoodBusiness']
+    let pageArr = ['personalBusiness', 'livelihoodBusiness']
     if (pageArr.indexOf(page) > -1) {
       // 订阅消息弹窗, 再路由跳转
       this.showSubscription(() => {
+        // 如果是民生行业业务,判断是跳转到企业版页面还是个人版
+        let { appVersion } = this.data
+        if (page == 'livelihoodBusiness' && appVersion == 'corp') {
+          page = 'livelihoodBusiness_corp'
+        }
         wx.navigateTo({
           url: `/pages/user/${page}/index`,
         })
@@ -176,17 +187,6 @@ Page({
       if (!page) return
       wx.navigateTo({
         url: `/pages/user/${page}/index`,
-      })
-    }
-  },
-  async routeValid (code) {
-    var token = wx.getStorageSync('token')
-    if (token) {
-      await app.initUserInfo()
-      this.initVersion()
-    } else {
-      wx.reLaunch({
-        url: '/pages/login/signIn',
       })
     }
   },

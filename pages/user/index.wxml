@@ -30,7 +30,7 @@
   <view class="bussiness-box" bindtap="routeTo">
     <block wx:for="{{itemList}}" wx:key="id">
       <view
-        hidden="{{!tools.isIncludes(item.app, appVersion)}}"
+        hidden="{{item.hidden || !tools.isIncludes(permissions, item.permission)}}"
         class="bus-item bg-img-base"
         style="background-image:url({{item.bg}})"
         data-page="{{item.page}}">

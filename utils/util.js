@@ -121,7 +121,7 @@ const setUrlParams = (obj) => {
   if (!obj) return ''
   if (JSON.stringify(obj) != '{}') {
     var strArr = []
-    for(key in obj) {
+    for(var key in obj) {
       var tempStr = key + '=' + obj[key]
       strArr.push(tempStr)
     }
