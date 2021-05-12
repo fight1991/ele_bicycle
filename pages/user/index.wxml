@@ -17,7 +17,7 @@
     
   </view>
   <banner
-    wx:if="{{appVersion==personal}}"
+    wx:if="{{appVersion=='personal'}}"
     head="自用车数量 · {{bannerInfo.personalVehicleCount || 0}}辆"
     middle="行业车数量 · {{bannerInfo.industryVehicleCount || 0}}辆"
     foot="所属企业 · {{bannerInfo.orgName}}">

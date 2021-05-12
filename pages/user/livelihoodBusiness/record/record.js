@@ -63,7 +63,7 @@ Page({
   // 查询旧车牌列表
   async getOldBrandList () {
     let { result } = await riderBrandList()
-    if (result) {
+    if (result && typeof result == 'array') {
       this.setData({
         brandList: result
       })
@@ -136,6 +136,13 @@ Page({
   // 提交旧车审核
   async submitOldInfo () {
     let { brandList, brandIndex } = this.data
+    if (brandList && brandList.length == 0) {
+      wx.showToast({
+        title: '请选择个人车辆',
+        icon: 'none'
+      })
+      return
+    }
     let id = brandList[brandIndex]['vehicleId']
     let { result } = await riderVehicleUpdate(id)
     if (result) {
