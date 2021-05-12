@@ -1,4 +1,6 @@
 <!--pages/user/adminBusiness/index.wxml-->
+<wxs src="/pages/wxs/index.wxs" module="tools"></wxs>
+
 <view class="box">
   <name-idcard></name-idcard>
   <view class="grid-box">
@@ -6,7 +8,7 @@
       <view class="img-box">
         <image class="img-box-item" src="/pages/image/installer.png" mode="cover"></image>
       </view>
-      <view class="text">安装上报</view>
+      <view class="text" hidden="{{!tools.isIncludes(permissions, '0102010000')}}">安装上报</view>
     </view>
   </view>
 </view>
