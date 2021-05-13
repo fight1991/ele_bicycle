@@ -21,7 +21,7 @@ export const translateDic = async (dicName) => {
   let localVersion = wx.getStorageSync(localV)
   // 如果本地存在数据, 则查询版本号
   let { result: versionInfo } = await checkDictionaryVersion([dicName])
-  if (!versionInfo) return false
+  if (!versionInfo) return {}
   if (localDicData) {
     if (versionInfo[dicName] == localVersion) {
       return localDicData
@@ -30,7 +30,7 @@ export const translateDic = async (dicName) => {
   wx.setStorageSync(localV, versionInfo[dicName])
   // 重新查询
   let { result: dicDataInfo } = await getDictionaryData([dicName])
-  if (!dicDataInfo) return false
+  if (!dicDataInfo) return {}
   wx.setStorageSync(localKey, dicDataInfo[dicName])
   return dicDataInfo[dicName]
 }

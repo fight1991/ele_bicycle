@@ -25,7 +25,7 @@ Page({
       }, {
         label: '扫码',
         icon: '/pages/image/scan_big1.png',
-        clickEvent: 'scanCode',
+        clickEvent: 'scanBrandCode',
         pageFlag: 'scan',
         permission: '',
         status: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
@@ -34,7 +34,7 @@ Page({
         icon: '/pages/image/peopleChange.png',
         clickEvent: 'bindingMenu',
         permission: '0103030000',
-        pageFlag: '',
+        pageFlag: 'binding',
         status: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
       }, {
         label: '一键报失',
