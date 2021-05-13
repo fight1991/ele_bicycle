@@ -66,7 +66,9 @@ Page({
   async getRiderScore () {
     let { result } = await riderScore()
     if (result) {
-      this.scoreInfo = result
+      this.setData({
+        scoreInfo: result
+      })
     }
   },
   // 去备案申报
@@ -121,7 +123,7 @@ Page({
   },
   // 退出企业操作
   async outCorpOp () {
-    let { result } = await exitOrg()
+    let { result } = await exitOrg(this.data.scoreInfo.orgId)
     if (result) {
       wx.showToast({
         title: '退出成功!'
