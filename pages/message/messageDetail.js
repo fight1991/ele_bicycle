@@ -19,11 +19,11 @@ Page({
     // 有可能是从服务通知点进来
     let fromTag = options.from
     if (!fromTag) {
-      this.getMessageDetail(id)
       if (!isRead) {
         this.changeReadStatus(id)
       }
     }
+    this.getMessageDetail(id)
   },
   async getMessageDetail (id) {
     let { result } = await getMessageDetailApi(id)
