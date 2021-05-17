@@ -63,11 +63,9 @@ Page({
   // 查询旧车牌列表
   async getOldBrandList () {
     let { result } = await riderBrandList()
-    if (result && typeof result == 'array') {
-      this.setData({
-        brandList: result
-      })
-    }
+    this.setData({
+      brandList: result || []
+    })
   },
   // 审核状态查询
   async getCheckStatus (id) {
