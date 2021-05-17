@@ -86,12 +86,12 @@ Component({
               currentIndex: index
             })
             this.triggerEvent('switchSwiper', result[index])
+            return
           }
-        } else {
-          app.saveCurrentVehicleId(result[0]['vehicleId'])
-          wx.setStorageSync('currentVehicleId', result[0]['vehicleId'])
-          this.triggerEvent('switchSwiper', result[0])
         }
+        app.saveCurrentVehicleId(result[0]['vehicleId'])
+        wx.setStorageSync('currentVehicleId', result[0]['vehicleId'])
+        this.triggerEvent('switchSwiper', result[0])
       }
     },
     // 切换轮播图事件

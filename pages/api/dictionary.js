@@ -6,15 +6,18 @@ export const checkDictionaryVersion = (data) => {
   })
 }
 // 按需查询字典
-export const getDictionaryData = (data) => {
+export const getDictionaryData = (data, resultType = 'map') => {
   return wx.$post_user({
     url: '/data-dict/dict/batchGetDictDetail',
-    data
+    data: {
+      dictNames: data,
+      resultType
+    }
   })
 }
 
 // 翻译
-export const translateDic = async (dicName) => {
+export const translateDic = async (dicName, type) => {
   let localKey = 'dicData' + dicName
   let localV = 'dicVersion' + dicName
   let localDicData = wx.getStorageSync(localKey)
@@ -29,7 +32,7 @@ export const translateDic = async (dicName) => {
   }
   wx.setStorageSync(localV, versionInfo[dicName])
   // 重新查询
-  let { result: dicDataInfo } = await getDictionaryData([dicName])
+  let { result: dicDataInfo } = await getDictionaryData([dicName], type)
   if (!dicDataInfo) return {}
   wx.setStorageSync(localKey, dicDataInfo[dicName])
   return dicDataInfo[dicName]

@@ -8,8 +8,8 @@
   bindscrolltolower="scrolltolower"
   lower-threshold="{{50}}">
   <view class="outer">
-    <block wx:for="{{resultList}}" wx:key="id">
-      <navigator url="/pages/message/messageDetail?id={{item.id}}&isRead={{item.readStatus}}">
+    <block wx:for="{{resultList}}" wx:key="messageId">
+      <navigator url="/pages/message/messageDetail?id={{item.messageId}}&isRead={{item.readStatus}}">
         <messageCard
           type="{{item.msgType}}"
           hasRead="{{item.readStatus}}"

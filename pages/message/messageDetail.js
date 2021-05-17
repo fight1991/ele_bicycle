@@ -39,7 +39,7 @@ Page({
     var prevPage = pages[pages.length - 2]
     var tempData = JSON.parse(JSON.stringify(prevPage.data.resultList))
     tempData.some(v => {
-      if (v.id == id) {
+      if (v.messageId == id) {
         v.readStatus = true
         return true
       }
