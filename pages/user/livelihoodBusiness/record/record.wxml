@@ -63,4 +63,4 @@
     </view>
   </view>
 </view>
-<fixBtn wx:if="{{currentStep!==0}}" bindtap="routeToPage">返回民生行业首页</fixBtn>
+<fixBtn wx:if="{{currentStep!==0}}" bindtap="routeToPage">返回首页</fixBtn>

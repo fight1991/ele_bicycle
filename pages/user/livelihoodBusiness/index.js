@@ -31,7 +31,7 @@ Page({
         status: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
       }, {
         label: '绑定企业车',
-        icon: '/pages/image/peopleChange.png',
+        icon: '/pages/image/bindcorp.png',
         clickEvent: 'bindingMenu',
         permission: '0103030000',
         pageFlag: 'binding',
@@ -49,7 +49,7 @@ Page({
         clickEvent: 'routeTo',
         pageFlag: 'scrap',
         permission: '0103100000',
-        status: ['registered']
+        status: ['registered', 'reportedLost']
       }
     ]
   },

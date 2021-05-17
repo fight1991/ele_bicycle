@@ -53,7 +53,7 @@ Page({
         clickEvent: 'routeTo',
         pageFlag: 'scrap',
         permission: '0101050000',
-        status: ['registered']
+        status: ['registered', 'reportedLost']
       }, {
         label: '购买保险查询',
         icon: '/pages/image/purchase.png',

@@ -18,25 +18,25 @@ Page({
         pageFlag: 'corpRecord'
       }, {
         label: '企业车管理',
-        icon: '/pages/image/peopleChange.png',
+        icon: '/pages/image/corpcar.png',
         clickEvent: 'routeTo',
         permission: '0103050000',
         pageFlag: 'corp'
       }, {
         label: '骑手管理',
-        icon: '/pages/image/baoshi.png',
+        icon: '/pages/image/rider.png',
         clickEvent: 'routeTo',
         permission: '0103060000',
         pageFlag: 'rider'
       }, {
         label: '申请单',
-        icon: '/pages/image/baofei.png',
+        icon: '/pages/image/application.png',
         clickEvent: 'routeTo',
         permission: '0103070000',
         pageFlag: 'application'
       }, {
         label: '审核单',
-        icon: '/pages/image/baofei.png',
+        icon: '/pages/image/check.png',
         clickEvent: 'routeTo',
         permission: '0103080000',
         pageFlag: 'check'
