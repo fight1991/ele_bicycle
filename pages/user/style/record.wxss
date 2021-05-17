@@ -1,5 +1,5 @@
 .record {
-  padding: 0px 30rpx 130rpx;
+  padding: 20rpx 30rpx 130rpx;
 }
 .img {
   width: 100%;

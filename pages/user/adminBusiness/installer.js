@@ -26,7 +26,7 @@ Page({
       },
       fail: _ => {
         wx.showToast({
-          title: '扫码失败, 请重试',
+          title: '扫码失败',
           icon: 'error'
         })
       }

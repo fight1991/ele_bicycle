@@ -192,11 +192,9 @@ Page({
   // 获取新消息条数
   async getNewMessageNum () {
     let { result } = await getMessageNumApi()
-    if (typeof result == 'number') {
-      this.setData({
-        messageNum: result
-      })
-    }
+    this.setData({
+      messageNum: typeof result == 'number' ? result : 0
+    })
   },
   // 防止冒泡
   stopTapEvent () {},
