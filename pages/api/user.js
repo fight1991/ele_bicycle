@@ -2,23 +2,23 @@ import config from '../../config/index'
 // 公共平台api开始>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 用户登录
 export const loginApi = (data) => {
-  return wx.$post_user({
-    url: '/data-user/loginByMobile',
+  return wx.$post_business({
+    url: '/user-center/loginByMobile',
     data
   })
 }
 // 根据token查询 用户基本信息
 export const getBasicUserInfo = (isLoading) => {
-  return wx.$post_user({
-    url: '/data-user/user/getUserByToken',
+  return wx.$post_business({
+    url: '/user-center/user/getUserByToken',
     data: wx.getStorageSync('token'),
     isLoading
   })
 }
 // 查询权限编码
 export const getUserPermission = (data = {}, isLoading) => {
-  return wx.$post_user({
-    url: '/data-user/user/getUserViews',
+  return wx.$post_business({
+    url: '/user-center/user/getUserViews',
     data: {
       appId: config.APPID,
       ...data
