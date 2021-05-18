@@ -145,10 +145,10 @@ Component({
           data: mobile,
           key: 'mobile',
         })
-        let { redirect } = this.data
-        console.log(redirect)
+        let redirect = app.redirect
         if (redirect) {
           var url = decodeURIComponent(redirect)
+          app.redirect = ''
           wx.reLaunch({
             url: url
           })

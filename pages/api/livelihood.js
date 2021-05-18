@@ -101,6 +101,20 @@ export const riderLoss = (data) => {
     data
   })
 }
+// 骑手 车辆挂失找回
+export const riderLossFind = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderReportLoss/delete',
+    data
+  })
+}
+// 骑手 车辆挂失状态
+export const riderLossStatus = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/riderReportLoss/getStatus',
+    data
+  })
+}
 // 骑手车辆升级
 export const riderVehicleUpdate = (data) => {
   return wx.$post_business({
@@ -211,6 +225,20 @@ export const corpVehicleScrap = (data) => {
 export const corpVehicleLoss = (data) => {
   return wx.$post_business({
     url: '/ebike-management/orgReportLoss/create',
+    data
+  })
+}
+// 企业车报失已找回
+export const corpVehicleLossFind = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/orgReportLoss/delete',
+    data
+  })
+}
+// 企业车挂失状态
+export const corpVehicleLossStatus = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/orgReportLoss/getStatus',
     data
   })
 }

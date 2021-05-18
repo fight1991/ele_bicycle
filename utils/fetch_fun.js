@@ -1,5 +1,5 @@
 import { setUrlParams } from './util.js'
-let isTips = false // 防抖
+let app = getApp
 // 显示loading
 const showLoading = (text = '') => {
   wx.showLoading({
@@ -26,29 +26,28 @@ const HandleBranch = (_res, other) => {
       }
       return { other: _res.data || true}
     case '0002': // token失效
-      if (!isTips) {
-        isTips = true
+      var token = wx.getStorageSync('token')
+      token && wx.removeStorageSync('token')
+      console.log(app.redirect)
+      if (!app.redirect) {
+        console.log('哈哈哈哈哈')
         wx.showToast({
           title: _res.message,
           duration: 1500,
-          icon:'none',
-          complete: () => {
-            isTips = false
-            var pages = getCurrentPages()
-            var curretPages = pages[pages.length - 1]
-            var route = curretPages.route
-            var params = setUrlParams(curretPages.options)
-            var redirect = '/' + route
-            if (params) {
-              redirect = '/' + route + '?' + params
-            }
-            var encodeRedirect = encodeURIComponent(redirect)
-            var token = wx.getStorageSync('token')
-            token && wx.removeStorageSync('token')
-            wx.reLaunch({
-              url: '/pages/login/signIn?redirect=' + encodeRedirect
-            })
-          }
+          icon:'none'
+        })
+        var pages = getCurrentPages()
+        var curretPages = pages[pages.length - 1]
+        var route = curretPages.route
+        var params = setUrlParams(curretPages.options)
+        var redirect = '/' + route
+        if (params) {
+          redirect = '/' + route + '?' + params
+        }
+        var encodeRedirect = encodeURIComponent(redirect)
+        app.redirect = encodeRedirect
+        wx.reLaunch({
+          url: '/pages/login/signIn'
         })
       }
       return {result: null}

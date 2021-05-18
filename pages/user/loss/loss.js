@@ -1,7 +1,20 @@
 // pages/user/loss/loss.js
 var app = getApp()
-const { car_loss_search, car_loss_reput } = app.api
-
+const { car_loss_search, car_loss_reput, riderLossFind, riderLossStatus, corpVehicleLossFind, corpVehicleLossStatus } = app.api
+const apiObj = {
+  personalBusiness: {
+    status: car_loss_search,
+    find: car_loss_reput
+  },
+  livelihoodBusiness: {
+    status: riderLossStatus,
+    find: riderLossFind
+  },
+  livelihoodBusiness_corp: {
+    status: corpVehicleLossStatus,
+    find: corpVehicleLossFind
+  }
+}
 Page({
 
   /**
@@ -11,7 +24,7 @@ Page({
     failReason: '', // 审核失败原因
     status: 'reporting', // 状态 unreported:未报失 auditing:报失中 success:报失成功
     id: '',
-    pageFlag: ''
+    pageFlag: 'personalBusiness'
   },
 
   /**
@@ -25,21 +38,26 @@ Page({
     this.getLossStatus()
   },
   async getLossStatus () {
-    let { result } = await car_loss_search(this.data.id)
+    let { pageFlag } = this.data
+    let { result } = await apiObj[pageFlag]['status'](this.data.id)
     if (result) {
       this.setData(result)
     }
   },
   // 已找回按钮
   async hasFound () {
-    let { result } = await car_loss_reput(this.data.id)
-    let url = '/pages/user/index'
-    if (this.data.pageFlag) {
-      url = `/pages/user/${pageFlag}/index`
-    }
+    let { pageFlag } = this.data
+    let { result } = await apiObj[pageFlag]['find'](this.data.id)
+    // let url = '/pages/user/index'
+    // if (this.data.pageFlag) {
+    //   url = `/pages/user/${pageFlag}/index`
+    // }
+    var pages = getCurrentPages()
+    var prePage = pages[pages.length - 2]
+    prePage.initList()
     if (result) {
-      wx.reLaunch({
-        url: url
+      wx.navigateBack({
+        delta: 1
       })
     }
   },

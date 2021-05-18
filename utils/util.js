@@ -119,6 +119,8 @@ const isNull = (x) => {
 // 将对象{}拼接地址栏传参
 const setUrlParams = (obj) => {
   if (!obj) return ''
+  // 防止重复拼参数
+  if (obj.redirect) return ''
   if (JSON.stringify(obj) != '{}') {
     var strArr = []
     for(var key in obj) {

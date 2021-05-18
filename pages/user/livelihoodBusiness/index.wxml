@@ -13,7 +13,7 @@
       <view class="data-foot">骑手积分</view>
     </view>
     <view class="data-item">
-      <view class="data-head">{{scoreInfo.riderVehicleCount || '0'}}</view>
+      <view class="data-head">{{scoreInfo.industryVehicleCount || '0'}}</view>
       <view class="data-foot">行业车数</view>
     </view>
     <view class="data-item">
