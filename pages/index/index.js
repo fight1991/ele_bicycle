@@ -32,8 +32,9 @@ Page({
   async routeValid (code) {
     var token = wx.getStorageSync('token')
     if (token) {
-      await app.initUserInfo(false)
-      this.routeTo('/pages/user/index')
+      let res = await app.initUserInfo(false)
+      // 必须保证所有接口返回值都正常才能跳转到首页
+      res && this.routeTo('/pages/user/index')
     } else {
       this.routeTo('/pages/login/signIn')
     }

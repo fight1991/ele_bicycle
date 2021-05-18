@@ -80,17 +80,18 @@ App({
   async initUserInfo (isLoad = true) {
     try {
       isLoad && wx.showLoading('加载中...')
-      await this.saveUserBasicInfo(false)
-      await this.saveUserBusinessInfo(false)
-      await this.saveUserPermissionInfo({
+      let { result: res1 } = await this.saveUserBasicInfo(false)
+      let { result: res2 } = await this.saveUserBusinessInfo(false)
+      let { result: res3 } = await this.saveUserPermissionInfo({
         accountId: this.globalData.basicUserInfo.accountId,
         orgId: this.globalData.basicUserInfo.orgId
       }, false)
       isLoad && wx.hideLoading()
+      return res1 && res2 && res3
     } catch (error) {
       isLoad && wx.hideLoading()
+      return false
     }
-    return true
   },
   // 将权限信息映射到相应的实例中
   mapPermissions (instance) {

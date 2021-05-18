@@ -15,10 +15,6 @@ Component({
     flag: {
       type: Number,
       value: 1 // 1为 登录, 2为修改手机号
-    },
-    redirect: {
-      type: String,
-      value: ''
     }
   },
 

@@ -4,6 +4,6 @@
     <image src="/pages/image/bicycle.png" mode="cover"></image>
   </view>
   <view class="form-container">
-    <mobileCodeLogin redirect="{{redirect}}"></mobileCodeLogin>
+    <mobileCodeLogin></mobileCodeLogin>
   </view>
 </view>

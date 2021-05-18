@@ -28,9 +28,7 @@ const HandleBranch = (_res, other) => {
     case '0002': // token失效
       var token = wx.getStorageSync('token')
       token && wx.removeStorageSync('token')
-      console.log(app.redirect)
       if (!app.redirect) {
-        console.log('哈哈哈哈哈')
         wx.showToast({
           title: _res.message,
           duration: 1500,
@@ -50,7 +48,7 @@ const HandleBranch = (_res, other) => {
           url: '/pages/login/signIn'
         })
       }
-      return {result: null}
+      return { result: null }
     default:
       wx.showToast({
         title: _res.message || '返回数据格式错误',
