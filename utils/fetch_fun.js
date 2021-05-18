@@ -28,7 +28,6 @@ const HandleBranch = (_res, other) => {
       var token = wx.getStorageSync('token')
       token && wx.removeStorageSync('token')
       var app = getApp()
-      console.log(app.redirect)
       if (!app.redirect) {
         wx.showToast({
           title: _res.message,
