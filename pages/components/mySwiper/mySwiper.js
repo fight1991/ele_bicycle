@@ -39,13 +39,13 @@ Component({
       personalBusiness: {
         'auditing': '/pages/user/personalBusiness/record/record',
         'waitInstall': '/pages/user/personalBusiness/record/record',
-        'reportedLost': '/pages/user/loss/loss',
+        'reportedLost': '/pages/user/loss/loss?pageFlag=personalBusiness',
         'failure': '/pages/user/personalBusiness/record/record',
       },
       livelihoodBusiness: {
         'auditing': '/pages/user/livelihoodBusiness/record/record',
         'waitInstall': '/pages/user/livelihoodBusiness/record/record',
-        'reportedLost': '/pages/user/loss/loss',
+        'reportedLost': '/pages/user/loss/loss?pageFlag=livelihoodBusiness',
         'failure': '/pages/user/livelihoodBusiness/record/record'
       }
     },

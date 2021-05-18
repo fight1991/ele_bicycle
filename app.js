@@ -106,14 +106,22 @@ App({
     }
     return true
   },
-  // 初始化所有用户信息
-  async initUserInfo (isLoad) {
-    await this.saveUserBasicInfo(isLoad)
-    await this.saveUserBusinessInfo(isLoad)
-    await this.saveUserPermissionInfo({
-      accountId: this.globalData.basicUserInfo.accountId,
-      orgId: this.globalData.basicUserInfo.orgId
-    }, isLoad)
+  /**  初始化所有用户信息
+   * params: isLoad 是否开启loading
+  */
+  async initUserInfo (isLoad = true) {
+    try {
+      isLoad && wx.showLoading('加载中...')
+      await this.saveUserBasicInfo(false)
+      await this.saveUserBusinessInfo(false)
+      await this.saveUserPermissionInfo({
+        accountId: this.globalData.basicUserInfo.accountId,
+        orgId: this.globalData.basicUserInfo.orgId
+      }, false)
+      isLoad && wx.hideLoading()
+    } catch (error) {
+      isLoad && wx.hideLoading()
+    }
     return true
   },
   // 将权限信息映射到相应的实例中

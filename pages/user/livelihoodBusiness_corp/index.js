@@ -72,7 +72,6 @@ Page({
     })
   },
   routeTo (e) {
-    console.log(e)
     let page = e.currentTarget.dataset.page
     wx.navigateTo({
       url: `/pages/user/livelihoodBusiness_corp/${page}/list`,

@@ -5,5 +5,5 @@
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 50,
   "backgroundTextStyle": "dark",
-  "navigationBarTitleText": "申请单"
+  "navigationBarTitleText": "审核单"
 }

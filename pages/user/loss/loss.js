@@ -10,14 +10,16 @@ Page({
   data: {
     failReason: '', // 审核失败原因
     status: 'reporting', // 状态 unreported:未报失 auditing:报失中 success:报失成功
-    id: ''
+    id: '',
+    pageFlag: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { opType, id } = options
+    let { opType, id, pageFlag } = options
+    this.data.pageFlag = pageFlag
     // 进入页面先查询状态
     this.data.id = app.globalData.currentVehicleId
     this.getLossStatus()
@@ -31,9 +33,13 @@ Page({
   // 已找回按钮
   async hasFound () {
     let { result } = await car_loss_reput(this.data.id)
+    let url = '/pages/user/index'
+    if (this.data.pageFlag) {
+      url = `/pages/user/${pageFlag}/index`
+    }
     if (result) {
       wx.reLaunch({
-        url: '/pages/user/personalBusiness/index',
+        url: url
       })
     }
   },
