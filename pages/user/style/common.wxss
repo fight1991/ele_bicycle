@@ -23,7 +23,6 @@
 .img-box {
   height: 116rpx;
   width: 116rpx;
-  background-color: #f5f5f5;
 }
 .img-box-item {
   width: 100%;
