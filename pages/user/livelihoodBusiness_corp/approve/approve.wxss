@@ -1,0 +1,51 @@
+/* pages/user/livelihoodBusiness_corp/approve/approve.wxss */
+.swiper-item-box {
+  height: 320rpx;
+  border-radius: 14rpx;
+  background: linear-gradient(45deg, #2a53e9, #4689fc);
+  box-sizing: border-box;
+  position: relative;
+  padding: 10rpx;
+  display: flex;
+  color: #fff;
+}
+.head-img {
+  margin: 0 40rpx 0 20rpx;
+}
+.img-box {
+  width: 126rpx;
+  height: 126rpx;
+  margin: 20rpx auto;
+}
+.img-box .img {
+  width: 100%;
+  height: 100%;
+}
+.head-img-text {
+  text-align: center;
+  color: #4DFF5A;
+}
+.text-lines-box {
+  width: 680rpx;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 20rpx 40rpx;
+  border-radius: 10rpx;
+  background: linear-gradient(45deg, #2a53e9, #4689fc);
+}
+.text-lines-box .text-line-item {
+  padding: 10rpx;
+}
+.text-lines, .text-lines-box {
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.text-line-item {
+  display: flex;
+  align-items: center;
+}
+.line-left {
+  margin-right: 10rpx;
+}

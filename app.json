@@ -18,20 +18,23 @@
       "pages": [
         "signIn"
       ]
-    }, {
+    },
+    {
       "root": "pages/message",
       "name": "message",
       "pages": [
         "messageDetail",
         "messageList"
       ]
-    }, {
+    },
+    {
       "root": "pages/setting",
       "name": "setting",
       "pages": [
         "setting"
       ]
-    }, {
+    },
+    {
       "root": "pages/user/center",
       "name": "center",
       "pages": [
@@ -39,7 +42,8 @@
         "editPhone",
         "relogin"
       ]
-    }, {
+    },
+    {
       "root": "pages/user/idcardVerify",
       "name": "idcardVerify",
       "pages": [
@@ -47,7 +51,8 @@
         "livingVerify",
         "livingResult"
       ]
-    }, {
+    },
+    {
       "root": "pages/user/personalBusiness",
       "name": "personalBusiness",
       "pages": [
@@ -55,7 +60,8 @@
         "record/record",
         "record/law/law"
       ]
-    }, {
+    },
+    {
       "root": "pages/user/livelihoodBusiness",
       "name": "livelihoodBusiness",
       "pages": [
@@ -63,7 +69,8 @@
         "recordSelect",
         "record/record"
       ]
-    }, {
+    },
+    {
       "root": "pages/user/livelihoodBusiness_corp",
       "name": "livelihoodBusiness_corp",
       "pages": [
@@ -75,9 +82,11 @@
         "corp/detail",
         "invite/invite",
         "record/record",
-        "rider/list"
+        "rider/list",
+        "approve/approve"
       ]
-    }, {
+    },
+    {
       "root": "pages/user/adminBusiness",
       "name": "adminBusiness",
       "pages": [

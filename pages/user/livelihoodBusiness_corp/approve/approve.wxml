@@ -1,0 +1,36 @@
+<!--pages/user/livelihoodBusiness_corp/approve/approve.wxml-->
+<view class="outer">
+  <view class="swiper-item-box">
+    <!-- 电动车静态图片 -->
+    <view class="head-img">
+      <view class="img-box">
+        <image class="img" src="/pages/image/user_static_logo.png"/>
+      </view>
+      <!-- <view class="head-img-text">{{dicStatus[details.status]}}</view> -->
+    </view>
+    <!-- 电动车基本信息 -->
+    <view class="text-lines">
+      <view class="text-line-item">
+        <view class="line-left">申请人:</view>
+        <view class="line-right">{{details.riderName || '-'}}</view>
+      </view>
+      <view class="text-line-item">
+        <view class="line-left">申请事项:</view>
+        <view class="line-right">{{'绑定企业车'}}</view>
+      </view>
+      <view class="text-line-item">
+        <view class="line-left">相关车辆:</view>
+        <view class="line-right">{{details.plateNo}}</view>
+      </view>
+      <view class="text-line-item">
+        <view class="line-left">申请时间:</view>
+        <view class="line-right">{{details.createTime}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view>
+  <fixBtn type="light" width="50vw" bindtap="refuse">不通过</fixBtn>
+  <fixBtn align="right" width="50vw" bindtap="accept">通过</fixBtn>
+</view>
+

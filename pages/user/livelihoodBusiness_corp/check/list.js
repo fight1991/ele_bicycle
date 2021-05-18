@@ -44,6 +44,14 @@ Page({
   clearBtn () {
     this.initList()
   },
+  // 页面跳转
+  routeTo (e) {
+    let { status, id } = e.target.dataset
+    if (status != 'auditing') return
+    wx.navigateTo({
+      url: '../approve/approve?auditId=' + id,
+    })
+  },
   // 搜索时确定按钮
   confirmBtn (e) {
     // 输入框中的值 e.detail

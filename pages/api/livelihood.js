@@ -80,6 +80,20 @@ export const checkList = ({data, page}) => {
     page
   })
 }
+// 审核单详情
+export const approveDetail = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/orgRiderManage/auditDetail',
+    data
+  })
+}
+// 审核单同意/拒绝
+export const checkApprove = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/orgRiderManage/approval',
+    data
+  })
+}
 // 骑手 车辆挂失
 export const riderLoss = (data) => {
   return wx.$post_business({

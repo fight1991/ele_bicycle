@@ -12,15 +12,20 @@
     <view class="tab-item{{type == 'history' ? ' active-tab' : ''}}" data-type='history'>历史</view>
   </view>
   <!-- 卡片列表区域 -->
-  <block wx:for="{{list}}" wx:key="vehicleId">
-    <card 
-      title="{{item.riderName}}"
-      vin="{{item.vin}}"
-      status="{{dicStatus[item.status]}}"
-      time="{{item.createTime}}"
-      brand="{{item.plateNo}}">
-    </card>
-  </block>
+  <view class="content-box" bindtap="routeTo">
+    <block wx:for="{{list}}" wx:key="vehicleId">
+      <card
+        data-id="{{item.auditId}}"
+        data-status="{{item.status}}"
+        title="{{item.riderName}}"
+        vin="{{item.vin}}"
+        classStatus="{{item.status}}"
+        status="{{dicStatus[item.status]}}"
+        time="{{item.createTime}}"
+        brand="{{item.plateNo}}">
+      </card>
+    </block>
+  </view>
   <view class="has-more" wx:if="{{list.length > 0}}">{{hasMore ? '上拉加载更多' : '~到底啦~'}}</view>
   <view wx:else>
     <nodata>暂无数据</nodata>
