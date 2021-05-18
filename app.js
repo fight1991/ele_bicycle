@@ -130,5 +130,5 @@ App({
     instance.setData({
       permissions: pers
     })
-  },
+  }
 })

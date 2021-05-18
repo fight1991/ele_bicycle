@@ -21,7 +21,7 @@
             <view class="right{{' ' + item.status}}">{{dicStatus[item.status]}}</view>
           </view>
         </view>
-        <view class="arrow-area stopTap" hidden="{{item.status!= 'registered'}}">
+        <view class="arrow-area stopTap">
           <iconfont icon="arrow-right" color="#ccc"></iconfont>
         </view>
       </view>

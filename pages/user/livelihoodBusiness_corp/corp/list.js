@@ -37,6 +37,11 @@ Page({
         url: './detail?id=' + id,
       })
     }
+    if (status == 'reportedLost') {
+      wx.navigateTo({
+        url: `/pages/user/loss/loss?pageFlag=livelihoodBusiness_corp&id=${id}`,
+      })
+    }
   },
   // 获取列表
   async getList (pageIndex, callback) {

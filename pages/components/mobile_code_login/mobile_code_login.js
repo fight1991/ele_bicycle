@@ -146,6 +146,7 @@ Component({
           key: 'mobile',
         })
         let { redirect } = this.data
+        console.log(redirect)
         if (redirect) {
           var url = decodeURIComponent(redirect)
           wx.reLaunch({

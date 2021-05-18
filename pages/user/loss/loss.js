@@ -21,7 +21,7 @@ Page({
     let { opType, id, pageFlag } = options
     this.data.pageFlag = pageFlag
     // 进入页面先查询状态
-    this.data.id = app.globalData.currentVehicleId
+    this.data.id = id || app.globalData.currentVehicleId
     this.getLossStatus()
   },
   async getLossStatus () {
