@@ -13,9 +13,11 @@
     <view class="tab-item{{type == 'history' ? ' active-tab' : ''}}" data-type='history'>历史</view>
   </view>
   <!-- 卡片列表区域 -->
-  <block wx:for="{{list}}" wx:key="auditId">
-    <navigator url="{{pageInfo[item.auditType]}}opType=look&installType={{item.installType}}&id={{item.vehicleId}}&vin={{item.vin}}">
-      <card 
+  <view class="content-box" bindtap="routeTo">
+    <block wx:for="{{list}}" wx:key="auditId">
+      <card
+        data-index="{{index}}"
+        data-auditType="{{item.auditType}}"
         title="{{auditType[item.auditType]}}"
         vin="{{item.vin}}"
         classStatus="{{item.status}}"
@@ -23,8 +25,8 @@
         time="{{item.createTime}}"
         brand="{{item.plateNo}}">
       </card>
-    </navigator>
-  </block>
+    </block>
+  </view>
   <view class="has-more" wx:if="{{list.length > 0}}">{{hasMore ? '上拉加载更多' : '~到底啦~'}}</view>
   <view wx:else>
     <nodata>暂无数据</nodata>

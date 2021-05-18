@@ -1,5 +1,4 @@
 import { setUrlParams } from './util.js'
-let app = getApp
 // 显示loading
 const showLoading = (text = '') => {
   wx.showLoading({
@@ -28,6 +27,8 @@ const HandleBranch = (_res, other) => {
     case '0002': // token失效
       var token = wx.getStorageSync('token')
       token && wx.removeStorageSync('token')
+      var app = getApp()
+      console.log(app.redirect)
       if (!app.redirect) {
         wx.showToast({
           title: _res.message,

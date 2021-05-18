@@ -55,24 +55,27 @@ App({
     let { result } = await this.api.getUserTotalInfo(isLoad)
     if (result) {
       this.globalData.businessUserInfo = result
+      return true
     }
-    return true
+    return false
   },
   // 获取并保存用户基本信息, accountid, orgId等
   async saveUserBasicInfo (isLoad) {
     let { result } = await this.api.getBasicUserInfo(isLoad)
     if (result) {
       this.globalData.basicUserInfo = result
+      return true
     }
-    return true
+    return false
   },
   // 获取并保存用户权限信息
   async saveUserPermissionInfo (data, isLoad) {
     let { result } = await this.api.getUserPermission(data, isLoad)
     if (result) {
       this.globalData.userPermisson = result
+      return true
     }
-    return true
+    return false
   },
   /**  初始化所有用户信息
    * params: isLoad 是否开启loading
@@ -80,9 +83,9 @@ App({
   async initUserInfo (isLoad = true) {
     try {
       isLoad && wx.showLoading('加载中...')
-      let { result: res1 } = await this.saveUserBasicInfo(false)
-      let { result: res2 } = await this.saveUserBusinessInfo(false)
-      let { result: res3 } = await this.saveUserPermissionInfo({
+      let res1 = await this.saveUserBasicInfo(false)
+      let res2 = await this.saveUserBusinessInfo(false)
+      let res3 = await this.saveUserPermissionInfo({
         accountId: this.globalData.basicUserInfo.accountId,
         orgId: this.globalData.basicUserInfo.orgId
       }, false)

@@ -36,6 +36,17 @@ Page({
     })
     this.initList()
   },
+  // 路由
+  routeTo (e) {
+    // url="{{pageInfo[item.auditType]}}opType=look&installType={{item.installType}}&id={{item.vehicleId}}&vin={{item.vin}}"
+    let { pageInfo, list, type } = this.data
+    if (type == 'history') return
+    let { index, audittype } = e.target.dataset
+    let { installType = '', vehicleId, vin } = list[index]
+    wx.navigateTo({
+      url: `${pageInfo[audittype]}opType=look&installType=${installType}&id=${vehicleId}&vin=${vin}`,
+    })
+  },
   // 点击tab
   tabClick (e) {
     let type = e.target.dataset.type
