@@ -6,6 +6,7 @@ Page({
   data: {
     status: 'success',
     reason: '', // 失败原因
+    id: '', // 车辆id
     pageFlag: '', // change备案人变更, record备案申报, scrap一键报废, 记录是从哪个页面跳转过来的
     recordFlag: '', // 哪个页面的备案申报
     from: 'inside', // 记录从哪个地方跳转过来, 默认为内部页面, server为服务通知跳转进来
@@ -24,12 +25,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { status, reason = '', pageFlag = '', recordFlag, pageTitle, from } = options
+    let { status, reason = '', pageFlag = '', id, recordFlag, pageTitle, from } = options
     from && (this.data.from = from)
     this.setData({
       status,
       reason,
       pageFlag,
+      id,
       recordFlag
     })
     if (pageTitle) {
@@ -41,10 +43,10 @@ Page({
 
   // 备案申报审核失败, 点击改变状态后, 跳转到个人信息录入页面
   async goToEdit () {
-    let { recordFlag } = this.data
-    if (result) {
+    let { recordFlag, id } = this.data
+    if (recordFlag) {
       wx.redirectTo({
-        url: `/pages/user/${recordFlag}/record/record?opType=edit`,
+        url: `/pages/user/${recordFlag}/record/record?opType=edit&id=` + id,
       })
     }
   },

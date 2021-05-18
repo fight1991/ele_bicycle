@@ -28,9 +28,11 @@ Page({
     if (opType == 'edit' || opType == 'look') {
       this.data.id = id
       this.data.vin = vin
-      this.setData({
-        installType
-      })
+      if (installType) {
+        this.setData({
+          installType
+        })
+      }
     }
     // 备案编辑
     if (opType == 'edit') {
@@ -63,6 +65,8 @@ Page({
       checkStatus: result.status
     })
     let status = result.status
+    let { vin, id } = this.data
+    console.log(id)
     switch (status) {
       case 'auditing': // 完善车辆信息已完成, 等待审核显示
         this.setData({
@@ -72,7 +76,6 @@ Page({
         })
         return
       case 'waitInstall': // 审核通过，邮寄车牌, 安装点安装车牌
-        let { vin, id } = this.data
         // 防止参数有中文字
         let encodeVin = encodeURIComponent(vin)
         this.setData({
@@ -85,7 +88,7 @@ Page({
       case 'failure': // 审核失败, 重新备案
       case 'success': // 审核成功
         wx.redirectTo({
-          url: `/pages/user/result/result?recordFlag=livelihoodBusiness_corp&pageFlag=record&pageTitle=备案申报&reason=${result.failReason}&status=${status}`,
+          url: `/pages/user/result/result?recordFlag=livelihoodBusiness_corp&pageFlag=record&id=${id}&pageTitle=备案申报&reason=${result.failReason}&status=${status}`,
         })
         return
     }

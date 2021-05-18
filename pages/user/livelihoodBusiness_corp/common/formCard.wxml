@@ -2,7 +2,7 @@
 <view class="box">
   <view class="head">
     <view class="head-left">{{title}}</view>
-    <view class="head-right{{' '+status}}">{{status}}</view>
+    <view class="head-right{{' ' + classStatus}}">{{status}}</view>
   </view>
   <view class="middle">
     <view class="middle-left">{{vin}}</view>

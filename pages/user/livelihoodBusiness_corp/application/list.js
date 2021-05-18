@@ -20,7 +20,11 @@ Page({
       recordFiling: '企业车申报',
       scrap: '一键报废'
     },
-    dicStatus: {}
+    dicStatus: {},
+    pageInfo: {
+      'scrap': '/pages/user/scrap/scrap?pageFlag=livelihoodBusiness_corp&', // 报废页面
+      'recordFiling': '/pages/user/livelihoodBusiness_corp/record/record?' // 申报页面
+    }
   },
 
   /**

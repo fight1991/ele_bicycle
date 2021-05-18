@@ -14,13 +14,16 @@
   </view>
   <!-- 卡片列表区域 -->
   <block wx:for="{{list}}" wx:key="auditId">
-    <card 
-      title="{{auditType[item.auditType]}}"
-      vin="{{item.vin}}"
-      status="{{dicStatus[item.status]}}"
-      time="{{item.createTime}}"
-      brand="{{item.plateNo}}">
-    </card>
+    <navigator url="{{pageInfo[item.auditType]}}opType=look&installType={{item.installType}}&id={{item.vehicleId}}&vin={{item.vin}}">
+      <card 
+        title="{{auditType[item.auditType]}}"
+        vin="{{item.vin}}"
+        classStatus="{{item.status}}"
+        status="{{dicStatus[item.status]}}"
+        time="{{item.createTime}}"
+        brand="{{item.plateNo}}">
+      </card>
+    </navigator>
   </block>
   <view class="has-more" wx:if="{{list.length > 0}}">{{hasMore ? '上拉加载更多' : '~到底啦~'}}</view>
   <view wx:else>

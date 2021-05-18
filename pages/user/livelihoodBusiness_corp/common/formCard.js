@@ -12,6 +12,10 @@ Component({
       type: String,
       value: ''
     },
+    classStatus: {
+      type: String,
+      value: ''
+    },
     vin: {
       type: String,
       value: ''
