@@ -40,13 +40,7 @@ Page({
         clickEvent: 'routeTo',
         permission: '0103080000',
         pageFlag: 'check'
-      }, {
-        label: '扫码',
-        icon: '/pages/image/scan_big1.png',
-        clickEvent: 'scanCode',
-        permission: '',
-        pageFlag: 'scan'
-      },
+      }
     ]
   },
 

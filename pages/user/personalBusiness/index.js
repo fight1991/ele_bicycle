@@ -130,8 +130,10 @@ Page({
         let res = _res.result
         if (res.includes('http')) { // 说明是个链接
           // 跳转到web-view页面
+          console.log(res)
+          let encodeUrl = encodeURIComponent(res)
           wx.navigateTo({
-            url: '/pages/user/scanCode/scanCode?url=' + res,
+            url: '/pages/user/scanCode/scanCode?url=' + encodeUrl,
           })
         } else if (res.includes('&change')){ // 说明扫的是备案人变更的二维码
           let tempArr = res.split('&change')

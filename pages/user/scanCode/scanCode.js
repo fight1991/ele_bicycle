@@ -12,11 +12,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let tempUrl = decodeURIComponent(options.url)
     this.setData({
-      url: options.url
+      url: tempUrl
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

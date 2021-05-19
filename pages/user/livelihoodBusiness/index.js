@@ -132,13 +132,20 @@ Page({
   },
   // 扫描二维码
   scanBrandCode () {
+    encodeURIComponent
     wx.scanCode({
       onlyFromCamera: true,
       scanType: ['qrCode'],
       success: _res => {
+        let str = _res.result
+        let plateNo = ''
+        if (str.indexOf('?') > 0) {
+          let strParams = str.split('?')[1]
+          plateNo = decodeURIComponent(app.utils.getUrlSearch(strParams, 'plateNo'))
+        }
         this.setData({
           bindingDialogVisible: false,
-          brandNum: _res.result || '',
+          brandNum: plateNo,
           brandNumVisible: true
         })
       },
