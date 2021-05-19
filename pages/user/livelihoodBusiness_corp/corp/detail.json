@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "listTitle": "../common/listTitle"
+    "listTitle": "../common/listTitle",
+    "qrcode": "/pages/components/qrcode/qrcode"
   },
-  "navigationBarTitleText": "企业车管理"
+  "navigationBarTitleText": "企业车详情"
 }

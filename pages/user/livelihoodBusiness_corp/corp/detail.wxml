@@ -32,6 +32,9 @@
         <view class="line-right">{{details.motorNo}}</view>
       </view>
     </view>
+    <view class="op-btns">
+      <iconfont wx:if="{{details.vehicleStatus=='registered'}}" icon="erweima" size="140rpx" color="#fff" bindtap="showErweima"></iconfont>
+    </view>
   </view>
   <view class="rider-info" wx:if="{{details.riderName}}">
     <listTitle isTouchToLeft="{{false}}" title="{{details.riderName}}" subTitle="{{details.riderMobile}}"></listTitle>
@@ -54,3 +57,7 @@
   content="确认之后无法恢复"
   bindclose="scrapOp">
 </confirmDialog>
+<!-- 二维码弹窗 -->
+<mask initValue="{{maskHidden}}" contentPadding="10rpx">
+  <qrcode hwidt="{{400}}" height="{{400}}" value="{{codeValue}}" background="transparent"></qrcode>
+</mask>

@@ -61,7 +61,7 @@
 </view>
 <!-- 二维码弹窗 -->
 <mask initValue="{{maskHidden}}" contentPadding="10rpx">
-  <qrcode width="{{300}}" height="{{300}}" value="{{codeValue}}" background="transparent"></qrcode>
+  <qrcode width="{{400}}" height="{{400}}" value="{{codeValue}}" background="transparent"></qrcode>
 </mask>
 <!-- 确认弹框 -->
 <confirmDialog visible="{{confirmDialogVisible}}" content="您确定要删除吗?" bindclose="deleteCarInfo"></confirmDialog>

@@ -8,8 +8,10 @@ Page({
    */
   data: {
     details: {},
+    codeValue: '',
     lossVisible: false,
     crapVisible: false,
+    maskHidden: true, // 设置mask初始为 隐藏, 点击二维码按钮显示
     id: '',
     dicStatus: {}
   },
@@ -50,6 +52,14 @@ Page({
   openCrapVisible () {
     this.setData({
       scrapVisible: true
+    })
+  },
+  // 点击二维码按钮显示二维码
+  showErweima () {
+    let { details } = this.data
+    this.setData({
+      maskHidden: false,
+      codeValue: details['qrCodeUrl']
     })
   },
   // 报失操作

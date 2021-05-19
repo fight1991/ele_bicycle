@@ -49,6 +49,13 @@
 .line-left {
   margin-right: 10rpx;
 }
+.op-btns {
+  position: absolute;
+  top: 15rpx;
+  right: 15rpx;
+  display: flex;
+  flex-direction: column;
+}
 .rider-info {
   margin-top: 30rpx;
 }
