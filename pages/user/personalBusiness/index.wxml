@@ -25,3 +25,9 @@
 </view>
 <!-- 实名认证提示弹框 -->
 <confirmDialog visible="{{verifyDialogVisible}}" title="身份认证" content="您还未进行身份认证,请先核实认证" bindclose="goToIdcardVerify"></confirmDialog>
+<confirmDialog
+  visible="{{lossVisible}}"
+  title="一键报失"
+  content="确定是否执行此操作"
+  bindclose="carLossApi">
+</confirmDialog>

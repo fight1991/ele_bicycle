@@ -45,7 +45,7 @@
 <confirmDialog
   visible="{{lossVisible}}"
   title="一键报失"
-  content="确认之后无法恢复"
+  content="确定是否执行此操作"
   bindclose="lossOp">
 </confirmDialog>
 <confirmDialog

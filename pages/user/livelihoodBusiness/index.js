@@ -12,6 +12,7 @@ Page({
     bindingDialogVisible: false, // 绑定企业车弹框
     brandNumVisible: false, // 显示车牌的弹框
     isOutCorpVisible: false, // 退出企业确认框
+    lossVisible: false,
     brandNum: '',
     scoreInfo: {}, // 积分信息
     opList: [
@@ -83,24 +84,14 @@ Page({
     let route = `/pages/user/${page}/${page}?pageFlag=livelihoodBusiness`
     if (page == 'loss') {
       // 弹框提醒
-      this.openLossConfirmMmodal()
+      this.setData({
+        lossVisible: true
+      })
     } else {
       wx.navigateTo({
         url: route
       })
     }
-  },
-  // 一键报失确认框
-  openLossConfirmMmodal () {
-    wx.showModal({
-      title: '提示',
-      content: '您确定要报失吗?',
-      success: async res => {
-        if (res.confirm) {
-          this.lossOp()
-        }
-      } 
-    })
   },
   // 一键报失
   async lossOp () {

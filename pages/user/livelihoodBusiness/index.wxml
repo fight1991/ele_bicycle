@@ -46,5 +46,12 @@
 <confirmDialog visible="{{brandNumVisible}}" title="发现车辆{{brandNum}}" content="是否发起绑定申请" bindclose="bindCorpVechicel"></confirmDialog>
 <!-- 退出企业确认框 -->
 <confirmDialog visible="{{isOutCorpVisible}}" title="退出企业" content="确认后解除和公司的关联关系" bindclose="outCorpOp"></confirmDialog>
+<!-- 报失确认 -->
+<confirmDialog
+  visible="{{lossVisible}}"
+  title="一键报失"
+  content="确定是否执行此操作"
+  bindclose="lossOp">
+</confirmDialog>
 
 

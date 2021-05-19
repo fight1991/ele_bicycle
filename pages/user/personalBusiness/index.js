@@ -17,6 +17,7 @@ Page({
   data: {
     permissions: [],
     verifyDialogVisible: false,
+    lossVisible: false,
     currentStatus: 'none', // auditing:审核中 failure:审核失败、waitInstall:待安装 registered:已登记、reportedLost:已报失、scrapped:已报废
     opList: [
       {
@@ -111,7 +112,9 @@ Page({
     let route = `/pages/user/${page}/${page}`
     if (page == 'loss') {
       // 弹框提醒
-      this.openLossConfirmMmodal()
+      this.setData({
+        lossVisible: true
+      })
     } else {
       wx.navigateTo({
         url: route
@@ -167,18 +170,6 @@ Page({
     if (result) {
       this.mySwiper.getList()
     }
-  },
-  // 打开一键报失弹框
-  async openLossConfirmMmodal () {
-    wx.showModal({
-      title: '提示',
-      content: '您确定要报失吗?',
-      success: async res => {
-        if (res.confirm) {
-          this.carLossApi()
-        }
-      } 
-    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
