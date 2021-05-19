@@ -62,7 +62,8 @@ Component({
       urlInvoice: '', // 车辆发票
       urlMotor: '', // 电动机编号
       urlVin: '', // 车架号图片地址
-      vin: ''
+      vin: '',
+      motorNo: ''
     },
     hiddenCase: true,
     currentCase: 'cert',
@@ -104,6 +105,9 @@ Component({
         vin: {
           required: true
         },
+        motorNo: {
+          required: true
+        },
         brand: {
           required: true
         },
@@ -132,6 +136,9 @@ Component({
         },
         vin: {
           required: '请输入整车编号'
+        },
+        motorNo: {
+          required: '请输入电动机编码'
         },
         brand: {
           required: '请输入品牌'
@@ -250,6 +257,17 @@ Component({
       if (!isPass) {
         let error = this.validate.errorList[0]
         this.showModal(error.msg)
+        return
+      }
+      // 整车编号, 电动机编码 不能为中文字
+      let { vin, motorNo } = busInfo
+      let reg = /^[0-9A-Za-z]+$/
+      if (!reg.test(vin)) {
+        this.showModal('整车编号由字母和数字组成')
+        return
+      }
+      if (!reg.test(motorNo)) {
+        this.showModal('电动机编码由字母和数字组成')
         return
       }
       if (!isChecked) {

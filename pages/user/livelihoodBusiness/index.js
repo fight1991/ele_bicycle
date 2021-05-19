@@ -122,6 +122,7 @@ Page({
       this.setData({
         'scoreInfo.orgName': ''
       })
+      this.mySwiper.getList()
     }
   },
   // 绑定企业车按钮
