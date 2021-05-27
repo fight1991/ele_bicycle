@@ -6,18 +6,29 @@
       <image class="img" src="{{wxUserImg}}" mode="cover"></image>
     </view>
     <view class="user-middle">
-      <view class="fs20">{{name}}</view>
-      <view class="id-card">{{userInfo[currentMode]['idNO']}}</view>
-      <view>{{userInfo[currentMode]['mobile']}}</view>
+      <view class="fs18">{{userName}}</view>
+      <view class="no-verify" hidden="{{hasRealName}}">
+        <view class="no-verify-item">未实名认证 , 请先认证</view>
+      </view>
+      <view class="id-card">
+        <view class="show-item verify-name" hidden="{{!hasRealName}}">
+          <iconfont icon="realname" color="#fff"></iconfont>
+          已实名
+        </view>
+        <view class="show-item" hidden="{{!hasAuthentication}}">
+          <iconfont icon="rider" color="#fff"></iconfont>
+          骑手认证
+        </view>
+      </view>
     </view>
-    <view class="user-right">
+    <!-- <view class="user-right">
       <show-hide-icon
         bindswitchOp="showText">
       </show-hide-icon>
-    </view>
+    </view> -->
   </view>
   <view class="change-tab">
-    <view class="tab-item" hidden="{{!tools.isIncludes(permissions, '0106010000')}}" bindtap="goToVerify">
+    <view class="tab-item" hidden="{{!tools.isIncludes(permissions, '0106010000') || hasRealName}}" bindtap="goToVerify">
       <view>实名认证</view>
       <view class="arrow-r">
         <iconfont icon="arrow-right" color="#ccc"></iconfont>

@@ -30,10 +30,27 @@
 }
 .user-middle {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 0 10px;
 }
 .user-middle .id-card {
-  padding: 10rpx 0;
+  display: flex;
+  padding-top: 10rpx;
+}
+.no-verify-item {
+  padding: 2rpx 10rpx;
+  border: 1px solid #fff;
+  border-radius: 6rpx;
+  display: inline-block;
+}
+.show-item {
+  display: flex;
+  align-items: center;
+}
+.verify-name {
+  margin-right: 40rpx;
 }
 .user-right {
   align-self: flex-start;

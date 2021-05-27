@@ -253,7 +253,7 @@ export const corpScrapStatus = (data) => {
 // 企业车报废取消
 export const corpScrapCancel = (data) => {
   return wx.$post_business({
-    url: '/ebike-management/orgScrap/getStatus',
+    url: '/ebike-management/orgScrap/delete',
     data
   })
 }

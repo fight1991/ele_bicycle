@@ -7,8 +7,10 @@ Page({
    */
   data: {
     permissions: [],
-    name: '',
     currentMode: 'hide',
+    userName: '',
+    hasRealName: false, // 是否已经实名认证
+    hasAuthentication: false, // 是否已经骑手认证
     userInfo: {
       show: { // 显示的信息
         idNO: '',
@@ -26,16 +28,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var { idNO, mobile, idName } = app.globalData.businessUserInfo
+    var { hasRealName = false, userName = '', hasAuthentication = false } = app.globalData.businessUserInfo
     app.mapPermissions(this)
     this.setData({
-      'userInfo.show': {
-        idNO: idNO || '',
-        mobile: mobile || ''
-      },
-      name: idName || ''
+      userName,
+      hasRealName,
+      hasAuthentication
     })
-    this.getPartInfo()
+    // this.getPartInfo()
   },
   async showText (e) {
     var mode = this.data.currentMode

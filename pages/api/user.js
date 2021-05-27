@@ -32,7 +32,7 @@ export const getUserPermission = (data = {}, isLoading) => {
 // 用户完整信息查询
 export const getUserTotalInfo = (isLoading) => {
   return wx.$post_business({
-    url: '/user-center/personal/getInfo',
+    url: '/user-center/personal/getUserInfo',
     isLoading
   })
 }
