@@ -2,7 +2,6 @@
 <wxs src="/pages/wxs/index.wxs" module="tools"></wxs>
 
 <view class="box">
-  <name-idcard></name-idcard>
   <view class="grid-box">
     <view class="block-item" bindtap="routeTo">
       <view class="img-box">

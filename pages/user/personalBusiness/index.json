@@ -1,7 +1,6 @@
 {
   "usingComponents": {
     "banner": "../../components/banner/banner",
-    "name-idcard": "/pages/components/name_idcard/name_idcard",
     "my-swiper": "/pages/components/mySwiper/mySwiper"
   },
   "navigationBarTitleText": "居民个人业务"

@@ -1,9 +1,6 @@
 <!--pages/user/personalBusiness/index.wxml-->
 <wxs src="/pages/wxs/index.wxs" module="tools"/>
 <view class="box">
-  <view class="name-area">
-    <name-idcard></name-idcard>
-  </view>
   <!-- 轮播区域 -->
   <my-swiper id="mySwiper" bindswitchSwiper="swiperChange">
     电动二轮车居民个人电子备案证

@@ -3,7 +3,6 @@
 <view class="box">
   <view class="center-row">
     <name-idcard permissions="{{permissions}}"></name-idcard>
-   
     <view class="right-box">
       <view class="switch-box" wx:if="{{isShowSwitch}}" bindtap="switchVersion">
         <iconfont icon="switch" size="40rpx" color="#FF7D3C"></iconfont>
