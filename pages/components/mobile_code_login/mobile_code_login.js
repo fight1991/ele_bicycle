@@ -25,7 +25,7 @@ Component({
     confirmDialogVisible: false,
     oldMobile: '',
     mobile: '',
-    authCode: '159951', // 验证码
+    authCode: '', // 验证码159951
     isEditCode: false, // 按钮禁用
     codeText: '获取验证码',
     timerId: 0,

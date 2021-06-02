@@ -36,7 +36,7 @@ Page({
       // 必须保证所有接口返回值都正常才能跳转到首页
       res && this.routeTo('/pages/user/index')
     } else {
-      this.routeTo('/pages/login/signIn')
+      this.routeTo('/pages/index/welcome')
     }
   },
   // 跳转到相关页面

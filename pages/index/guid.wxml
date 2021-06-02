@@ -1,0 +1,24 @@
+<view class="box">
+  <view class="title-row" bindtap="goLogin">
+    注册/登录
+  </view>
+  <banner
+    head="自用车数量 · 0辆"
+    middle="行业车数量 · 0辆"
+    foot="所属企业 · -">
+  </banner>
+  <view class="bussiness-box" bindtap="showTips">
+    <block wx:for="{{itemList}}" wx:key="id">
+      <view
+        class="bus-item bg-img-base"
+        style="background-image:url({{item.bg}})"
+        data-page="{{item.page}}">
+        <view class="left stopTap">
+          <view class="head-title fs16">{{item.zh}}</view>
+          <view class="head-title fs12 fc-ccc">{{item.en}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+

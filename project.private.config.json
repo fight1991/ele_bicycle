@@ -197,6 +197,12 @@
           "pathName": "pages/user/livelihoodBusiness_corp/invite/invite",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "欢迎体验页面",
+          "pathName": "pages/index/welcome",
+          "query": "",
+          "scene": null
         }
       ]
     }

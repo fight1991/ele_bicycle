@@ -1,0 +1,19 @@
+<!--pages/index/welcome.wxml-->
+<view class="outer">
+  <view class="user-img">
+    <image src="/pages/image/bicycle.png" mode="cover"></image>
+  </view>
+  <view class="welcome-title">
+    欢迎使用吉速登记系统
+  </view>
+  <view class="welcome-content">
+    <view class="text">
+      本系统针对江苏无锡范围内电动自行车车主提供了登记备案业务，登录后可查询、办理电动自行车相关业务
+    </view>
+    <view class="btn">
+      <navigator url="./guid">
+        <commonBtn>开始体验</commonBtn>
+      </navigator>
+    </view>
+  </view>
+</view>

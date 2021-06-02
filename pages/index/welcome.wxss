@@ -1,0 +1,29 @@
+/* pages/index/welcome.wxss */
+page {
+  background-color: #fff;
+}
+.user-img {
+  margin: 100rpx auto 60rpx;
+  width: 286rpx;
+  height: 151rpx;
+  /* background-color: #00aaee; */
+  color: #fff;
+}
+.user-img image {
+  width: 100%;
+  height: 100%;
+}
+.welcome-title {
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #4c4c4c;
+  padding: 30rpx 0;
+}
+.welcome-content {
+  color: #666;
+  padding: 30rpx 40rpx;
+}
+.btn {
+  margin-top: 100rpx;
+}
