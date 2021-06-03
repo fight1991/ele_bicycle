@@ -81,12 +81,14 @@ Component({
       let tempPath = res.tempFilePaths[0]
       let url = await uploadApi[this.data.uploadType](tempPath)
       // 更新父组件传递过来的imgSrc值
-      if (url) {
-        this.setData({
-          tempSrc: tempPath, // 用来显示
-          imgSrc: url // 后端所需的真实值
-        })
+      if (!url) {
+        app.messageBox.common('上传失败, 请稍后再试')
+        return
       }
+      this.setData({
+        tempSrc: tempPath, // 用来显示
+        imgSrc: url // 后端所需的真实值
+      })
       this.triggerEvent('getImgInfo', url)
     },
     // 删除已选的图片

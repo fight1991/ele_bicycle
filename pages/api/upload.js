@@ -11,7 +11,7 @@ export const upload_private = (uploadToken, filePath) => {
   var app = getApp()
   var accountId = app.globalData.basicUserInfo.accountId
   return wx.$upload({
-    url: '/service-oss/upload/uploadPrivate',
+    url: '/bmp-oss/upload/uploadPrivate',
     data: {
       uploadToken,
       filePath,
@@ -22,7 +22,7 @@ export const upload_private = (uploadToken, filePath) => {
 // 共享上传
 export const upload_public = (uploadToken, filePath) => {
   return wx.$upload({
-    url: '/service-oss/upload/uploadPublic',
+    url: '/bmp-oss/upload/uploadPublic',
     data: {
       uploadToken,
       filePath

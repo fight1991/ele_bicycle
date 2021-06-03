@@ -1,14 +1,14 @@
 // 查询字典版本
 export const checkDictionaryVersion = (data) => {
   return wx.$post_user({
-    url: '/data-dict/dict/batchGetDictVersionTime',
+    url: '/bmp-dict/dict/batchGetDictVersionTime',
     data
   })
 }
 // 按需查询字典
 export const getDictionaryData = (data, resultType = 'map') => {
   return wx.$post_user({
-    url: '/data-dict/dict/batchGetDictDetail',
+    url: '/bmp-dict/dict/batchGetDictDetail',
     data: {
       dictNames: data,
       resultType

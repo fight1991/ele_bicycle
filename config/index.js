@@ -2,9 +2,9 @@
 export default {
   // 测试
   
-  FILE: 'https://api-common-test.htjiguang.cn', // 文件上传
-  USRE_API: 'https://api-common-test.htjiguang.cn', // 用户相关api接口服务器地址
-  BUSINESS_API: 'https://api-test.htjiguang.cn', // 业务相关api
+  FILE: 'https://test-common-api.htjicon.com', // 文件上传 // 公共平台
+  USRE_API: 'https://test-common-api.htjicon.com', // 字典 // 公共平台
+  BUSINESS_API: 'https://test-el-api.htjicon.com', // 业务相关api
   APPID: 's3002dje293wrops9z' // 自定义项目id, 用户权限用到
   
   // 生产
