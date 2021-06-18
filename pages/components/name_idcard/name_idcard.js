@@ -24,7 +24,7 @@ Component({
   },
   pageLifetimes: {
     show () {
-      let { userName, mobile } = app.globalData.businessUserInfo
+      let { userName, mobile } = app.globalData.userInfo
       let temp = userName || mobile || '未知'
       this.setData({
         idName: temp

@@ -10,9 +10,9 @@
     </searchInput>
     <iconfont bindtap="showAddDialog" class="icon-add" size="60rpx" icon="add-circle" color="#3C79FF"></iconfont>
   </view>
-  <block wx:for="{{list}}" wx:key="accountId">
+  <block wx:for="{{list}}" wx:key="uid">
     <listTitle
-      accountId="{{item.accountId}}"
+      uid="{{item.uid}}"
       title="{{item.name}}"
       subTitle="{{item.mobile}}"
       binddelete="showDeleteDialog">

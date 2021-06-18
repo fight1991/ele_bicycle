@@ -7,10 +7,10 @@
     placeHolder="请输入骑手姓名、联系方式">
   </searchInput>
   <view class="list-box" bindtap="listItemTap">
-    <block wx:for="{{list}}" wx:key="accountId">
+    <block wx:for="{{list}}" wx:key="uid">
       <listTitle
-        selected="{{item.accountId == currentId}}"
-        data-id="{{item.accountId}}"
+        selected="{{item.uid == currentId}}"
+        data-id="{{item.uid}}"
         isTouchToLeft="{{false}}"
         showSelectBox="{{true}}"
         title="{{item.name}}"

@@ -13,7 +13,7 @@ export const uploadInstance = (url, data) => {
       formData: {
         uploadToken: data.uploadToken,
         file: data.filePath,
-        accountId: data.accountId || ''
+        uid: data.uid || ''
       },
       success: resolve,
       fail: reject

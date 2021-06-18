@@ -9,13 +9,13 @@ export const upload_token = () => {
 // 私有上传
 export const upload_private = (uploadToken, filePath) => {
   var app = getApp()
-  var accountId = app.globalData.basicUserInfo.accountId
+  var uid = app.globalData.basicUserInfo.uid
   return wx.$upload({
     url: '/bmp-oss/upload/uploadPrivate',
     data: {
       uploadToken,
       filePath,
-      accountId
+      uid
     }
   })
 }

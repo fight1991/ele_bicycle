@@ -274,14 +274,14 @@ export const riderDelete = (data) => {
 // 查询公司信息
 export const corpInfo = (data) => {
   return wx.$post_business({
-    url: '/user-center/user/getUserOrgs',
+    url: '/user-center/member-user/getUserOrgs',
     data
   })
 }
 // 切换到公司
 export const toCorp = (data) => {
   return wx.$post_business({
-    url: '/user-center/changeLoginOrg',
+    url: '/user-center/member-login/changeLoginOrg',
     data
   })
 }

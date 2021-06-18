@@ -95,7 +95,7 @@ Page({
   // 跳转到备案申报新增页面
   goToRecord () {
     // 查询是否身份已经认证
-    var idNO = app.globalData.businessUserInfo.idNO
+    var idNO = app.globalData.userInfo.idNO
     if (!idNO) {
       this.setData({
         verifyDialogVisible: true

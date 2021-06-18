@@ -3,21 +3,21 @@
   <view class='wx-mask' bindtap='hide'></view>
   <view class='wx-dialog'>
     <view class='wx-dialog-header'>
-      <block wx:if="{{imgSrc}}">
-        <image src="{{imgSrc}}" binderror="loadImageErr" mode="aspectFit" bindtap="getImage"></image>
+      <block wx:if="{{currentImgCodeInfo['base64image']}}">
+        <image class="img-box" src="{{currentImgCodeInfo['base64image']}}" binderror="loadImageErr" mode="aspectFit" bindtap="changeImage"></image>
       </block>
-      <block wx:else><view class="fs12" bindtap="getImage">图片加载中...</view></block>
+      <block wx:else><view class="fs12" bindtap="changeImage">图片加载失败,请点击此处重新获取...</view></block>
     </view>
     <view class='wx-dialog-content'>
       <view class='wx-dialog-item'>
         <view class="input">
-          <input placeholder='请输入图中验证码' model:value='{{code}}'></input>
+          <input focus="{{isFocus}}" placeholder='请输入图中验证码' model:value='{{imageCheckCode}}' maxlength="16"></input>
         </view>
-        <icon type="clear" bindtap="clear"></icon>
+        <icon hidden="{{imageCheckCode.length==0}}" type="clear" bindtap="clear"></icon>
       </view>
     </view>
     <view class='dialog-button'>
-       <!-- <view class='btn-left' bindtap='cancel'>取消</view> -->
+       <view class='btn-left' bindtap='cancel'>取消</view>
        <view class='btn-right' bindtap='ok'>确认</view> 
     </view>
   </view>

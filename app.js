@@ -5,6 +5,8 @@ import './utils/fetch_all'
 
 // 工具类注册
 const utils = require('./utils/util')
+// 弹框注册
+import messageBox from './utils/messageBox'
 // 用户相关api注册
 import * as usersApi from './pages/api/user'
 // 车辆申报相关api注册
@@ -26,6 +28,7 @@ App({
     ...dictApi, // 字典相关
     ...orgApi // 民生行业相关
   },
+  messageBox: messageBox, // 弹框
   redirect: '', // 记录token失效时当前的页面地址
   getWechatCode () {
     return new Promise((relove, reject) => {
@@ -40,7 +43,7 @@ App({
   // 全局共享数据
   globalData: {
     currentVehicleId: '', // 当前车辆信息id
-    businessUserInfo: {}, // 存储用户业务信息
+    userInfo: {}, // 存储用户业务信息
     basicUserInfo: {}, // 存储用户基本信息
     userPermisson: [], // 用户权限
     wxHeadImg: null,
@@ -54,12 +57,12 @@ App({
   async saveUserBusinessInfo (isLoad) {
     let { result } = await this.api.getUserTotalInfo(isLoad)
     if (result) {
-      this.globalData.businessUserInfo = result
+      this.globalData.userInfo = result
       return true
     }
     return false
   },
-  // 获取并保存用户基本信息, accountid, orgId等
+  // 获取并保存用户基本信息, uid, orgId等
   async saveUserBasicInfo (isLoad) {
     let { result } = await this.api.getBasicUserInfo(isLoad)
     if (result) {
@@ -86,7 +89,7 @@ App({
       let res1 = await this.saveUserBasicInfo(false)
       let res2 = await this.saveUserBusinessInfo(false)
       let res3 = await this.saveUserPermissionInfo({
-        accountId: this.globalData.basicUserInfo.accountId,
+        uid: this.globalData.basicUserInfo.uid,
         orgId: this.globalData.basicUserInfo.orgId
       }, false)
       isLoad && wx.hideLoading()

@@ -7,11 +7,11 @@ export const getAllUserInfo = () => {
         url: '/data-user/user/getUserByToken',
         source: 'user'
       }, {
-        url: '/data-user/user/getUserViews',
+        url: '/user-center/member-user/getUserViews',
         source: 'user',
         data: {
           appId: '',
-          accountId: '',
+          uid: '',
           orgId: ''
         }
       }, {

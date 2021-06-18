@@ -1,10 +1,17 @@
 /* pages/components/mobile_code_login/mobile_code_login.wxss */
 .input-container {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #EBEBEB;
   padding: 20px 0;
+}
+.form-box {
+  background-color: #fff;
+  padding: 0rpx 30rpx 10rpx;
+  /* box-shadow: 0px 2px 16px rgba(118, 182, 255, 0.25); */
+  border-radius: 10rpx
 }
 .btn-area {
   margin-top: 120rpx;
+  padding: 0 20rpx;
 }
 .form-item-code {
   display: flex;

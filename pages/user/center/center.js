@@ -28,7 +28,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var { hasRealName = false, userName = '', hasAuthentication = false } = app.globalData.businessUserInfo
+    var { hasRealName = false, userName = '', hasAuthentication = false } = app.globalData.userInfo
     app.mapPermissions(this)
     this.setData({
       userName,
@@ -45,7 +45,7 @@ Page({
   },
   // 跳转到更换手机号页面
   goToVerify () {
-    var idCard = app.globalData.businessUserInfo.idNO
+    var idCard = app.globalData.userInfo.idNO
     if (idCard) {
       wx.showToast({
         title: '已经实名认证了',

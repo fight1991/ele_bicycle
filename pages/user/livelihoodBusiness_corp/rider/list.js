@@ -44,7 +44,7 @@ Page({
     let { result } = await riderDelete(this.data.deleteId)
     if (result) {
       let { list, deleteId } = this.data
-      let tempList = list.filter(v => v.accountId != deleteId)
+      let tempList = list.filter(v => v.uid != deleteId)
       this.setData({
         list: tempList
       })
