@@ -12,8 +12,8 @@
       </view>
       <view class="id-card">
         <view class="show-item verify-name" hidden="{{!hasRealName}}">
-          <iconfont icon="realname" color="#fff"></iconfont>
-          已实名
+          <iconfont icon="realname" size="40rpx" color="#fff"></iconfont>
+          {{' 已实名'}}
         </view>
         <view class="show-item" hidden="{{!hasAuthentication}}">
           <iconfont icon="rider" color="#fff"></iconfont>

@@ -23,7 +23,7 @@
   </banner>
   <banner
     wx:else
-    head="企业名称 · {{bannerInfo.orgName}}"
+    head="企业名称 · {{bannerInfo.orgName || '-'}}"
     middle="行业车数量 · {{bannerInfo.industryVehicleCount || 0}}辆">
   </banner>
   <view class="bussiness-box" bindtap="routeTo">

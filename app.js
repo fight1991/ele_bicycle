@@ -44,7 +44,6 @@ App({
   globalData: {
     currentVehicleId: '', // 当前车辆信息id
     userInfo: {}, // 存储用户业务信息
-    basicUserInfo: {}, // 存储用户基本信息
     userPermisson: [], // 用户权限
     wxHeadImg: null,
     jsCode: '',
@@ -58,15 +57,6 @@ App({
     let { result } = await this.api.getUserTotalInfo(isLoad)
     if (result) {
       this.globalData.userInfo = result
-      return true
-    }
-    return false
-  },
-  // 获取并保存用户基本信息, uid, orgId等
-  async saveUserBasicInfo (isLoad) {
-    let { result } = await this.api.getBasicUserInfo(isLoad)
-    if (result) {
-      this.globalData.basicUserInfo = result
       return true
     }
     return false
@@ -86,14 +76,13 @@ App({
   async initUserInfo (isLoad = true) {
     try {
       isLoad && wx.showLoading('加载中...')
-      let res1 = await this.saveUserBasicInfo(false)
-      let res2 = await this.saveUserBusinessInfo(false)
-      let res3 = await this.saveUserPermissionInfo({
-        uid: this.globalData.basicUserInfo.uid,
-        orgId: this.globalData.basicUserInfo.orgId
+      let res1 = await this.saveUserBusinessInfo(false)
+      let res2 = await this.saveUserPermissionInfo({
+        uid: this.globalData.userInfo.uid,
+        orgId: this.globalData.userInfo.orgId
       }, false)
       isLoad && wx.hideLoading()
-      return res1 && res2 && res3
+      return res1 && res2
     } catch (error) {
       isLoad && wx.hideLoading()
       return false

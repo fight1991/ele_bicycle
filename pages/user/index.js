@@ -98,7 +98,7 @@ Page({
   },
   // 初始化版本 orgId 为 -1 个人版, 否则为企业版
   initVersion () {
-    var orgId = app.globalData.basicUserInfo.orgId
+    var orgId = app.globalData.userInfo.orgId
     var version = 'corp'
     if (orgId == -1) {
       version = 'personal'

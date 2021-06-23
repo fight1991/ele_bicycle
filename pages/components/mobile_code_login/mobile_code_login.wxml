@@ -3,7 +3,7 @@
   <view class="form-box">
     <view class="form-item" wx:if="{{flag==2}}">
       <view class="input-container">
-        <input type="number" maxlength="11" placeholder-class="fs14" placeholder="请输入原手机号" model:value="{{oldMobile}}"></input>
+        <input type="number" placeholder-class="fs14" disabled placeholder="请输入原手机号" model:value="{{'原手机号 : ' + oldMobile}}"></input>
       </view>
     </view>
     <view class="form-item">
