@@ -52,9 +52,6 @@ Page({
     // if (this.data.pageFlag) {
     //   url = `/pages/user/${pageFlag}/index`
     // }
-    var pages = getCurrentPages()
-    var prePage = pages[pages.length - 2]
-    prePage.initList()
     if (result) {
       wx.navigateBack({
         delta: 1
