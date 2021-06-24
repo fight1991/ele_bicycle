@@ -129,7 +129,7 @@ Page({
   // 版本切换
   switchVersion () {
     let { appVersion } = this.data
-    let versionIndex =  appVersion == 'personal' ? 1 : 0
+    let versionIndex =  appVersion == 'personal' ? 0 : 1
       this.switchToCorp(versionIndex, () => {
         app.initUserInfo()
         this.setData({
