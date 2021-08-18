@@ -80,6 +80,11 @@ Component({
           isLeft: true
         })
       }
+      if (endP > start && (endP - start) > 50) { // 说明是右滑
+        this.setData({
+          isLeft: false
+        })
+      }
     }
   }
 })

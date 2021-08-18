@@ -137,6 +137,7 @@ Component({
           data: mobile,
           key: 'mobile',
         })
+        app.redirect = null
         wx.reLaunch({
           url: '/pages/user/index',
         })

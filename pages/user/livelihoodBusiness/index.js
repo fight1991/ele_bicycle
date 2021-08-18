@@ -144,11 +144,16 @@ Page({
           let strParams = str.split('?')[1]
           plateNo = decodeURIComponent(app.utils.getUrlSearch(strParams, 'plateNo'))
         }
-        this.setData({
-          bindingDialogVisible: false,
-          brandNum: plateNo,
-          brandNumVisible: true
-        })
+        if (plateNo) {
+          this.setData({
+            bindingDialogVisible: false,
+            brandNum: plateNo,
+            brandNumVisible: true
+          })
+        } else {
+          app.common.messageBox('不合法的车牌号')
+        }
+       
       },
       fail: _ => {
         wx.showToast({
