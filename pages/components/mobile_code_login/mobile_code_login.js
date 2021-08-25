@@ -137,7 +137,13 @@ Component({
           data: mobile,
           key: 'mobile',
         })
-        app.redirect = null
+        if (app.redirect) {
+          wx.redirect({
+            url: app.redirect,
+          })
+          app.redirect = null
+          return
+        }
         wx.reLaunch({
           url: '/pages/user/index',
         })

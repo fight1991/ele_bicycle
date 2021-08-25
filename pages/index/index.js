@@ -20,10 +20,7 @@ Page({
  * 生命周期函数--监听页面显示
  */
   onShow: function () {
-    app.getWechatCode().then(res => {
-      app.globalData.jsCode = res.code
-      this.routeValid(res.code)
-    })
+    this.routeValid()
   },
   // 入口路由跳转
   // 1. 判断有无token
