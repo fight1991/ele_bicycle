@@ -138,8 +138,8 @@ Component({
           key: 'mobile',
         })
         if (app.redirect) {
-          wx.redirect({
-            url: app.redirect,
+          wx.redirectTo({
+            url: app.redirect
           })
           app.redirect = null
           return

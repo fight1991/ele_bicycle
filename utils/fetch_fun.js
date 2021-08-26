@@ -37,13 +37,13 @@ const HandleBranch = (_res, other) => {
         var pages = getCurrentPages()
         var curretPages = pages[pages.length - 1]
         var route = curretPages.route
+        console.log(route)
         var params = setUrlParams(curretPages.options)
         var redirect = '/' + route
         if (params) {
           redirect = '/' + route + '?' + params
         }
-        var encodeRedirect = encodeURIComponent(redirect)
-        app.redirect = encodeRedirect
+        app.redirect = redirect
         wx.reLaunch({
           url: '/pages/login/signIn'
         })
