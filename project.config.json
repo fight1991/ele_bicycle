@@ -1,5 +1,5 @@
 {
-  "description": "项目配置文件",
+  "description": "二轮车吉速登记",
   "packOptions": {
     "ignore": []
   },
@@ -41,7 +41,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.15.0",
-  "appid": "wx8e45412ac53971b9",
+  "appid": "wx23193e16605f3391",
   "projectname": "ele_bicycel",
   "debugOptions": {
     "hidedInDevtools": []
