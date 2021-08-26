@@ -52,15 +52,14 @@ Component({
     dicVehicleStatus: {}, // 状态字典
   },
   lifetimes: {
-    attached: function () {
-
+    attached: async function () {
+      this.setData({
+        dicVehicleStatus: await translateDic('vehicleStatus')
+      })
     }
   },
   pageLifetimes: {
     async show () {
-      this.setData({
-        dicVehicleStatus: await translateDic('vehicleStatus')
-      })
       this.getList()
     }
   },

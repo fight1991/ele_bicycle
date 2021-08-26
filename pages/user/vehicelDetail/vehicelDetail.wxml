@@ -1,5 +1,5 @@
 <van-cell-group>
-  <van-cell title="车辆状态" value="{{detail.status}}" />
+  <van-cell title="车辆状态" value="{{dicVehicleStatus[detail.vehicleStatus]}}" />
   <van-cell title="车辆品牌" value="{{detail.brand}}" />
   <van-cell title="型号规格" value="{{detail.model}}" />
   <van-cell title="车牌号" value="{{detail.plateNo}}" />

@@ -6,15 +6,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detail: {}
+    detail: {},
+    dicVehicleStatus: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
     let plateNo = options.plateNo
     this.getVehicleInfo(plateNo)
+    this.setData({
+      dicVehicleStatus: await translateDic('vehicleStatus')
+    })
   },
   async getVehicleInfo (plateNo) {
     let { result } = await carInfo_detail(plateNo)
