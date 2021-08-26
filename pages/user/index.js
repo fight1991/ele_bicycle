@@ -147,8 +147,8 @@ Page({
   showSubscription (callback) {
     // 针对其中一条订阅成功, --> accept
     var ids = [
-      'fEZWMSl8x61va4VrYFaJGkT18NOeCYENRevGHXCpyHg',
-      'STSs3LYg7cFOMDyqmFpikaPCwHgPZSVFVTRjkkz0fCE'
+      '_ehdGVWyY5ZIJ1WSWZpL8JTFX_zA6L6EiqkQq8iFhvQ',
+      'ZXhq3hT_x_FgJzwtMcvOS6MUICfpaxBnzeQb3GaOmKA'
     ]
     wx.requestSubscribeMessage({
       tmplIds: ids,
