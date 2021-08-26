@@ -4,9 +4,9 @@ import './publicBag/request/fetch'
 import './publicBag/request/fetch_all'
 // 弹框注册
 import messageBox from './publicBag/plugin/messageBox'
+
 // 工具类注册
 const utils = require('./publicBag/utils/util')
-
 // 用户相关api注册
 import * as usersApi from './pages/api/user'
 // 车辆申报相关api注册

@@ -15,7 +15,7 @@ const apiObj = {
     create: orgRecord
   }
 }
-import WxValidate from '../../../../publicBag/utils/WxValidate'
+import WxValidate from '../../../../publicBag/plugin/WxValidate'
 Component({
   /**
    * 组件的属性列表
