@@ -1,0 +1,22 @@
+{
+  "name": "htjg-bicycle-miniapp",
+  "version": "1.0.0",
+  "description": "吉光出行微信小程序项目\r # 说明\r > 1. 在app.json中注册全局的自定义组件 usingComponents\r # 分包原则\r ## 按照业务功能划分\r > 1. 居民个人业务相关分包\r > 2. 民生行业业务相关分包\r > 3. 管理员业务分包\r > 4. 消息分包\r > 5. 手机权限引导页分包\r ## 按照用户信息相关\r > 1. 登录分包\r > 2. 用户个人中心分包\r > 3. 身份认证分包",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fight1991/ele_bicycle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fight1991/ele_bicycle/issues"
+  },
+  "homepage": "https://github.com/fight1991/ele_bicycle#readme"
+}

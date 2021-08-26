@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/user/index",
-    "pages/user/scanCode/scanCode",
+    "pages/user/vehicelDetail/vehicelDetail",
     "pages/user/camera/front",
     "pages/user/camera/back",
     "pages/user/record_change/record_change",
@@ -114,8 +114,9 @@
     "successPage": "/pages/components/commonSuccess/commonSuccess",
     "nodata": "/pages/components/nodata/nodata",
     "step": "/pages/components/step/step",
-    "searchInput": "/pages/components/searchInput/searchInput"
+    "searchInput": "/pages/components/searchInput/searchInput",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

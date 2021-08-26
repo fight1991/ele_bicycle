@@ -26,7 +26,7 @@ Page({
       }, {
         label: '扫码',
         icon: '/pages/image/scan_big1.png',
-        clickEvent: 'scanBrandCode',
+        clickEvent: 'scanBtn',
         pageFlag: 'scan',
         permission: '',
         status: ['auditing', 'failure', 'waitInstall', 'registered', 'reportedLost', 'none']
@@ -131,9 +131,38 @@ Page({
       bindingDialogVisible: true
     })
   },
-  // 扫描二维码
+  // 扫码按钮
+  scanBtn () {
+    wx.scanCode({
+      onlyFromCamera: true,
+      scanType: ['qrCode'],
+      success: _res => {
+        let res = _res.result
+        if (res.includes('http') && res.includes('plateNo')) { // 说明是个链接
+          // 截取plateNo
+          let index = res.indexOf('plateNo') + 8
+          let plateNo = res.substr(index)
+          wx.navigateTo({
+            url: '/pages/user/vehicelDetail/vehicelDetail?plateNo=' + plateNo
+          })
+          return
+        }
+        wx.showToast({
+          title: '无效的二维码',
+          icon: 'error',
+          duration: 2000
+        })
+      },
+      fail: _ => {
+        wx.showToast({
+          title: '扫码失败',
+          icon: 'error'
+        })
+      }
+    })
+  },
+  // 绑定企业车时扫描二维码
   scanBrandCode () {
-    encodeURIComponent
     wx.scanCode({
       onlyFromCamera: true,
       scanType: ['qrCode'],

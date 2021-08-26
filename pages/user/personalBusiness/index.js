@@ -128,27 +128,29 @@ Page({
       scanType: ['qrCode'],
       success: _res => {
         let res = _res.result
-        if (res.includes('http')) { // 说明是个链接
-          // 跳转到web-view页面
-          console.log(res)
-          let encodeUrl = encodeURIComponent(res)
+        if (res.includes('http') && res.includes('plateNo')) { // 说明是个链接
+          // 截取plateNo
+          let index = res.indexOf('plateNo') + 8
+          let plateNo = res.substr(index)
           wx.navigateTo({
-            url: '/pages/user/scanCode/scanCode?url=' + encodeUrl,
+            url: '/pages/user/vehicelDetail/vehicelDetail?plateNo=' + plateNo
           })
-        } else if (res.includes('&change')){ // 说明扫的是备案人变更的二维码
+          return
+        }
+        if (res.includes('&change')){ // 说明扫的是备案人变更的二维码
           let tempArr = res.split('&change')
           let tokenStr = tempArr[0]
           let idStr = tempArr[1]
           if (tokenStr && idStr) {
             this.recordChange(tokenStr, idStr)
           }
-        } else {
-          wx.showToast({
-            title: '无效的二维码',
-            icon: 'error',
-            duration: 2000
-          })
+          return
         }
+        wx.showToast({
+          title: '无效的二维码',
+          icon: 'error',
+          duration: 2000
+        })
       }
     })
   },

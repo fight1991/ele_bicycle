@@ -1,0 +1,8 @@
+<van-cell-group>
+  <van-cell title="车辆状态" value="{{detail.status}}" />
+  <van-cell title="车辆品牌" value="{{detail.brand}}" />
+  <van-cell title="型号规格" value="{{detail.model}}" />
+  <van-cell title="车牌号" value="{{detail.plateNo}}" />
+  <van-cell title="整车编号" value="{{detail.vin}}" />
+  <van-cell title="电动机编号" value="{{detail.motorNo}}" />
+</van-cell-group>
