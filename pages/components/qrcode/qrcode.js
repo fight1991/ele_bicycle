@@ -1,6 +1,5 @@
 // pages/components/qrcode/qrcode.js
-// import drawQrcode from '../../../utils/weapp.qrcode.js'
-const QR = require('../../../utils/weapp-qrcode.js')
+const QR = require('../../../publicBag/utils/weapp-qrcode.js')
 const rpx2px = wx.getSystemInfoSync().windowWidth / 750
 Component({
   /**

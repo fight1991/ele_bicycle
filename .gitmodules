@@ -1,0 +1,3 @@
+[submodule "publicBag"]
+	path = publicBag
+	url = https://git.htjicon.com/htjicon/share-submodule-miniapp.git
