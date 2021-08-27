@@ -162,12 +162,23 @@ Page({
     })
     if (result) {
       // 解决在ios中弹框不显示问题
-      this.iosTimer = setTimeout(() => {
-        wx.showToast({
-          title: '操作成功!'
-        })
-      }, 300)
+      wx.hideLoading()
+      wx.showToast({
+        title: '操作成功!'
+      })
     }
+    // if (other) {
+    //   let sys = wx.getSystemInfoSync()
+    //   if (sys.platform == 'ios') {
+    //     setTimeout(() => {
+    //       wx.showToast({
+    //         title: other.message,
+    //         duration: 2000,
+    //         icon:'none'
+    //       })
+    //     }, 500)
+    //   }
+    // }
   },
   // 车辆挂失api
   async carLossApi (paramsStr) {
