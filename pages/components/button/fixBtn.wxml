@@ -1,6 +1,0 @@
-<!--pages/components/button/fixBtn.wxml-->
-<view
-  class="{{type=='light'? 'btn-box light' : 'btn-box'}}"
-  style="width: {{width}}; {{align}}:0;">
-  <slot></slot>
-</view>

@@ -21,7 +21,7 @@
       <!-- 身份证正面区域 -->
       <view class="idcard idcard-front">
         <upload 
-          closeIcon="{{false}}"
+          closeIcon="{{true}}"
           model:img-src="{{frontImgUrl}}"
           staticSrc="/pages/image/front.png"
           mode="aspectFit"
@@ -32,7 +32,7 @@
       <!-- 身份证反面区域 -->
       <view class="idcard idcard-back">
         <upload 
-          closeIcon="{{false}}"
+          closeIcon="{{true}}"
           model:img-src="{{backImgUrl}}"
           staticSrc="/pages/image/back.png"
           mode="aspectFit"

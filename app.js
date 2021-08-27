@@ -8,6 +8,9 @@ import './publicBag/request/fetch_all'
 import messageBox from './publicBag/plugin/messageBox'
 // 工具类注册
 const utils = require('./publicBag/utils/util')
+
+// 上传api注册
+import * as uploadApi from './pages/api/upload'
 // 用户相关api注册
 import * as usersApi from './pages/api/user'
 // 车辆申报相关api注册
@@ -24,6 +27,7 @@ App({
   utils: utils,
   // 绑定api
   api: {
+    ...uploadApi, // 上传相关
     ...usersApi, // 用户相关
     ...recordsApi, // 车辆申报相关
     ...dictApi, // 字典相关

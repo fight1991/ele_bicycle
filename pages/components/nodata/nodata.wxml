@@ -1,7 +1,0 @@
-<!--pages/components/nodata/nodata.wxml-->
-<view class="image-box">
-  <image class="img" src="/pages/image/no_data.png" mode="widthFix"></image>
-  <view class="text">
-    <slot></slot>
-  </view>
-</view>
