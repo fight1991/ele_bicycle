@@ -17,7 +17,7 @@
           <input type="number" model:value="{{authCode}}" disabled="{{!isEditCode}}" focus="{{isEditCode}}" maxlength="6" placeholder-class="fs14" placeholder="验证码"></input>
         </view>
         <!-- 暂时去掉图片验证码功能 将showDialog方法替换成getCode -->
-        <view class="btn-code" bindtap="showDialog">{{codeText}}</view>
+        <view class="btn-code" bindtap="getCode">{{codeText}}</view>
       </view>
     </view>
   </view>

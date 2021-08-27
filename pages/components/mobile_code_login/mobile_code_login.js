@@ -61,7 +61,8 @@ Component({
       if (this.data.timerId) return
       if (!utils.checkPhone(this.data.mobile)) return
       let { result } = await getCodeApi({
-        mobile: this.data.mobile
+        mobile: this.data.mobile,
+        type: 'login'
       })
       if (result) {
         // 调用获取验证码api成功后, 开启倒计时
