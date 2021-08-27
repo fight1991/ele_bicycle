@@ -1,10 +1,11 @@
+// 重写原生loading方法
+import './publicBag/utils/rewriteLoading'
 // 一般请求方法注册
 import './publicBag/request/fetch'
 // 批量请求注册
 import './publicBag/request/fetch_all'
 // 弹框注册
 import messageBox from './publicBag/plugin/messageBox'
-
 // 工具类注册
 const utils = require('./publicBag/utils/util')
 // 用户相关api注册

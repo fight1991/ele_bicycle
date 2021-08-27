@@ -1,5 +1,5 @@
 var app = getApp()
-const { carInfoByPlateNo } = app.api
+const { carInfoByPlateNo, translateDic } = app.api
 Page({
 
   /**
@@ -21,7 +21,7 @@ Page({
     })
   },
   async getVehicleInfo (plateNo) {
-    let { result } = await carInfo_detail(plateNo)
+    let { result } = await carInfoByPlateNo(plateNo)
     if (result) {
       this.setData({
         detail: result

@@ -203,6 +203,12 @@
           "pathName": "pages/index/welcome",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "车辆详情页面",
+          "pathName": "pages/user/vehicelDetail/vehicelDetail",
+          "query": "",
+          "scene": null
         }
       ]
     }
