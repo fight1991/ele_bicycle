@@ -29,6 +29,13 @@ export const carInfo_detail = (data) => {
     data
   })
 }
+// 根据车牌号车辆信息详情
+export const carInfoByPlateNo = (data) => {
+  return wx.$post_business({
+    url: '/ebike-management/ebike/publicDetail',
+    data
+  })
+}
 // 查询车辆信息
 export const carInfo_read = (data) => {
   return wx.$post_business({

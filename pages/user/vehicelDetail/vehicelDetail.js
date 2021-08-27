@@ -1,5 +1,5 @@
 var app = getApp()
-const { carInfo_detail } = app.api
+const { carInfoByPlateNo } = app.api
 Page({
 
   /**

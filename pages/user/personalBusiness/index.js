@@ -162,10 +162,11 @@ Page({
     })
     if (result) {
       // 解决在ios中弹框不显示问题
-      wx.hideLoading()
-      wx.showToast({
-        title: '操作成功!'
-      })
+      this.iosTimer = setTimeout(() => {
+        wx.showToast({
+          title: '操作成功!'
+        })
+      }, 300)
     }
   },
   // 车辆挂失api
@@ -193,7 +194,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.iosTimer && clearTimeout(this.iosTimer)
   },
 
   /**

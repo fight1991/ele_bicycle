@@ -69,8 +69,6 @@ Page({
   onLoad: async function (options) {
     // 判断是个人版还是企业版
     this.initVersion()
-    // 初始化banner中的数据
-    this.initBannerInfo()
     // 从globalData中获取权限信息
     app.mapPermissions(this)
     this.getCorpInfo()
@@ -211,6 +209,8 @@ Page({
   onShow: function () {
     wx.hideHomeButton()
     this.getNewMessageNum()
+    // 初始化banner中的数据
+    this.initBannerInfo()
   },
 
   /**
