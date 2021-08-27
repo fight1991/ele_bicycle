@@ -16,9 +16,9 @@
         <view class="input">
           <input type="text" disabled value="{{formData.vin}}"/>
         </view>
-        <view class="icon" bindtap="scanBtn" data-flag="vin">
-          <!-- <image src="/pages/image/scan.png"></image> -->
-        </view>
+        <!-- <view class="icon" bindtap="scanBtn" data-flag="vin">
+          <image src="/pages/image/scan.png"></image>
+        </view> -->
       </view>
     </view>
     <!-- 附件区域 -->

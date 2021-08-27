@@ -31,9 +31,21 @@ Page({
     var flag = e.currentTarget.dataset.flag
     wx.scanCode({
       onlyFromCamera: true,
-      success: res => {
-        this.setData({
-          ['formData.' + flag]: res.result
+      success: _res => {
+        let res = _res.result
+        if (res.includes('http') && res.includes('plateNo')) { // 说明是个链接
+          // 截取plateNo
+          let index = res.indexOf('plateNo') + 8
+          let plateNo = res.substr(index)
+          this.setData({
+            ['formData.' + flag]: plateNo
+          })
+          return
+        }
+        wx.showToast({
+          title: '无效的二维码',
+          icon: 'error',
+          duration: 2000
         })
       }
     })
