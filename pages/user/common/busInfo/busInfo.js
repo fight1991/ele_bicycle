@@ -261,7 +261,7 @@ Component({
       }
       // 整车编号, 电动机编码 不能为中文字
       let { vin, motorNo } = busInfo
-      let reg = /^[0-9A-Za-z]+$/
+      let reg = /^[0-9A-Za-z\-]+$/
       if (!reg.test(vin)) {
         this.showModal('整车编号由字母和数字组成')
         return
